@@ -33,18 +33,13 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-3 sm:gap-4">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-[#FDC902] flex items-center justify-center text-slate-950 font-black text-lg sm:text-xl shadow-[0_6px_20px_rgba(253,201,2,0.35)] group-hover:scale-105 transition-transform">
-              HM
-            </div>
-            <div className="whitespace-nowrap">
-              <span className="text-base sm:text-xl font-black tracking-tight text-white flex items-center gap-1">
-                Harrison Mosco
-              </span>
-              <span className="block text-[8px] sm:text-[10px] font-bold text-[#FDC902] uppercase tracking-wider sm:tracking-widest -mt-0.5 sm:mt-0">
-                Business Launch &amp; Automation
-              </span>
-            </div>
+          <Link href="/" className="flex flex-col group shrink-0">
+            <span className="text-base sm:text-xl font-black tracking-tight text-white group-hover:text-[#FDC902] transition-colors leading-tight">
+              Harrison Mosco
+            </span>
+            <span className="block text-[8px] sm:text-[10px] font-bold text-[#FDC902] uppercase tracking-wider sm:tracking-widest">
+              Business Launch &amp; Automation
+            </span>
           </Link>
 
           {/* Desktop Navigation - Stretchy & Never Breaks */}
@@ -249,17 +244,17 @@ export function Header() {
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="xl:hidden bg-[#0d1424] border-b border-slate-800 px-4 sm:px-6 pt-3 pb-8 space-y-1.5 shadow-2xl animate-fadeIn">
+        <div className="xl:hidden bg-[#0d1424] border-b border-slate-800 px-4 pt-2 pb-6 space-y-1 shadow-2xl animate-fadeIn">
           <Link
             href="/"
-            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
+            className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
             <span>Home</span>
           </Link>
           <Link
             href="/limited"
-            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-[#FDC902] bg-[#FDC902]/10 border border-[#FDC902]/30"
+            className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-bold text-[#FDC902] bg-[#FDC902]/10 border border-[#FDC902]/30"
             onClick={() => setMobileOpen(false)}
           >
             <span>Limited Company Registration</span>
@@ -267,7 +262,7 @@ export function Header() {
           </Link>
           <Link
             href="/launch"
-            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
+            className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
             <span>Ultimate Launch Package</span>
@@ -275,7 +270,7 @@ export function Header() {
           </Link>
           <Link
             href="/business-name"
-            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
+            className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
             <span>Business Name Registration</span>
@@ -283,14 +278,14 @@ export function Header() {
           </Link>
           <Link
             href="/single-services"
-            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
+            className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
             <span>Single Services (SCUML, Trademark, Tax)</span>
           </Link>
           <Link
             href="/track"
-            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
+            className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
             <span>Track Application Status</span>
@@ -298,25 +293,25 @@ export function Header() {
           </Link>
           <Link
             href="/about"
-            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
+            className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
             <span>About Harrison Mosco</span>
           </Link>
           <Link
             href="/book"
-            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5"
+            className="flex items-center justify-between py-2 px-3 rounded-lg text-sm font-bold text-white hover:bg-white/5"
             onClick={() => setMobileOpen(false)}
           >
             <span>Book Consultation</span>
           </Link>
-          <div className="pt-3">
+          <div className="pt-2 text-center">
             <Link
               href="/limited#application"
-              className="block w-full py-3.5 text-center text-sm font-black text-slate-950 bg-[#FDC902] hover:bg-amber-400 rounded-xl shadow-lg transition-all"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-black text-slate-950 bg-[#FDC902] hover:bg-amber-400 rounded-xl shadow-md transition-all"
               onClick={() => setMobileOpen(false)}
             >
-              Start Limited Company Application &rarr;
+              <span>Start Application &rarr;</span>
             </Link>
           </div>
         </div>

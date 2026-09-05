@@ -69,11 +69,11 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10">
           {/* Brand Info */}
           <div className="space-y-3 sm:space-y-4">
-            <div className="flex items-center gap-2.5 sm:gap-3">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FDC902] text-slate-950 flex items-center justify-center font-black text-base sm:text-lg">
-                HM
-              </div>
-              <span className="text-lg sm:text-xl font-black text-white">Harrison Mosco</span>
+            <div className="flex flex-col">
+              <span className="text-base sm:text-xl font-black text-white leading-tight">Harrison Mosco</span>
+              <span className="text-[9px] sm:text-[10px] font-bold text-[#FDC902] uppercase tracking-wider">
+                Business Launch &amp; Automation
+              </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
               Harrison Mosco is a corporate infrastructure, brand identity, and workflow automation studio.

@@ -241,7 +241,7 @@ export default function LimitedCompanyPage() {
       <div className="glow-orb w-[500px] h-[500px] bg-emerald-500/8 top-1/2 left-0" />
 
       {/* Hero Section */}
-      <section className="py-12 sm:py-28 border-b border-slate-800 relative z-10 overflow-hidden">
+      <section className="py-10 sm:py-24 border-b border-slate-800 relative z-10 overflow-hidden">
         {/* Ambient Corporate Skyline Background Texture */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <Image
@@ -256,36 +256,36 @@ export default function LimitedCompanyPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <Reveal type="left" duration={0.8} className="lg:col-span-7 space-y-5 sm:space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[11px] sm:text-xs font-black uppercase tracking-wider">
+            <Reveal type="left" duration={0.8} className="lg:col-span-7 space-y-4 sm:space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[10px] sm:text-xs font-black uppercase tracking-wider">
                 <Building2 className="w-3.5 h-3.5 text-[#FDC902] shrink-0" />
                 <span>CAC Accredited Corporate Desk</span>
               </div>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-[1.15]">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.2]">
                 Limited Company (Ltd) Registration
               </h1>
-              <p className="text-sm sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
+              <p className="text-xs sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
                 Designed for Nigerian founders, diaspora entrepreneurs, and corporate bodies who require verified incorporation,
                 shareholding documentation, corporate tax setup, and brand assets under one coordinated legal desk.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
                 <a
                   href="#packages"
-                  className="w-full sm:w-auto text-center px-6 sm:px-8 py-3.5 sm:py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-2xl text-xs sm:text-base shadow-[0_12px_30px_rgba(253,201,2,0.3)] transition-all"
+                  className="w-auto inline-flex items-center justify-center text-center px-5 py-2.5 sm:px-7 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm shadow-[0_8px_25px_rgba(253,201,2,0.25)] transition-all"
                 >
                   View 3 Packages
                 </a>
                 <a
                   href="#application"
-                  className="w-full sm:w-auto text-center px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/50 text-white font-bold rounded-2xl text-xs sm:text-base transition-all"
+                  className="w-auto inline-flex items-center justify-center text-center px-5 py-2.5 sm:px-7 sm:py-3.5 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/50 text-white font-bold rounded-xl text-xs sm:text-sm transition-all"
                 >
                   Proceed to Application
                 </a>
               </div>
 
               {/* Trust Badges */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-6 pt-3 text-xs sm:text-sm font-bold text-slate-300">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 pt-2 text-xs sm:text-sm font-bold text-slate-300">
                 <span className="flex items-center gap-2 text-[#FDC902]">
                   <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" /> Official Status Report Included
                 </span>
@@ -301,8 +301,8 @@ export default function LimitedCompanyPage() {
             {/* Right Card (Uncropped Leadership Framing) */}
             <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-5">
               <HoverCard>
-                <div className="bg-[#0f172a] rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 shadow-2xl overflow-hidden space-y-5">
-                  <div className="relative h-48 sm:h-64 w-full">
+                <div className="bg-[#0f172a] rounded-2xl sm:rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 shadow-2xl overflow-hidden space-y-4 sm:space-y-5">
+                  <div className="relative h-44 sm:h-64 w-full">
                     <Image
                       src="/images/accredited-consultation.jpg"
                       alt="Accredited Corporate Limited Company Consultation and Filing"
@@ -311,21 +311,21 @@ export default function LimitedCompanyPage() {
                       sizes="(max-width: 768px) 100vw, 40vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/30 to-transparent" />
-                    <div className="absolute bottom-3 left-4 sm:bottom-4 sm:left-6 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-[10px] sm:text-xs font-black uppercase">
+                    <div className="absolute bottom-3 left-4 sm:bottom-4 sm:left-6 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-[10px] sm:text-xs font-black uppercase">
                       <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902] shrink-0" />
                       <span>Accredited CAC Governance</span>
                     </div>
                   </div>
 
-                  <div className="p-5 sm:p-8 pt-0 space-y-3 sm:space-y-4">
-                    <h3 className="text-lg sm:text-2xl font-black text-white leading-snug">
+                  <div className="p-4 sm:p-7 pt-0 space-y-2.5 sm:space-y-4">
+                    <h3 className="text-base sm:text-xl font-black text-white leading-snug">
                       A Limited Company is mandatory for major contracts, corporate tenders, bank loans, and foreign investment.
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                       Choose Limited Company Registration if you require a formal separate legal corporate entity with allotted shares.
                       Delivered digitally as certified true PDF documents with official verification barcodes.
                     </p>
-                    <div className="pt-3 border-t border-slate-800">
+                    <div className="pt-2.5 border-t border-slate-800">
                       <Link
                         href="/launch"
                         className="text-xs sm:text-sm font-black text-[#FDC902] hover:underline flex items-center gap-1.5"
@@ -343,32 +343,32 @@ export default function LimitedCompanyPage() {
       </section>
 
       {/* Fact Strip */}
-      <section className="bg-[#060910] py-8 sm:py-10 border-b border-slate-800 text-slate-300">
+      <section className="bg-[#060910] py-6 sm:py-8 border-b border-slate-800 text-slate-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 text-center">
-            <div className="p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-6 text-center">
+            <div className="p-2.5 sm:p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
               <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Starting Base</span>
-              <strong className="text-base sm:text-2xl font-black text-[#FDC902] mt-1 block">From NGN 60,000</strong>
+              <strong className="text-sm sm:text-xl font-black text-[#FDC902] mt-1 block">From NGN 60,000</strong>
               <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">Starter, Pro, or Premium</p>
             </div>
-            <div className="p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+            <div className="p-2.5 sm:p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
               <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Included Capital</span>
-              <strong className="text-base sm:text-2xl font-black text-white mt-1 block">1M Shares + 2 Dirs</strong>
+              <strong className="text-sm sm:text-xl font-black text-white mt-1 block">1M Shares + 2 Dirs</strong>
               <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">Calculated automatically</p>
             </div>
-            <div className="p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+            <div className="p-2.5 sm:p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
               <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Turnaround Time</span>
-              <strong className="text-base sm:text-2xl font-black text-white mt-1 block">3 to 7 Days</strong>
+              <strong className="text-sm sm:text-xl font-black text-white mt-1 block">3 to 7 Days</strong>
               <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">Working days via fast track</p>
             </div>
-            <div className="p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+            <div className="p-2.5 sm:p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
               <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Advisory Desk</span>
-              <strong className="text-base sm:text-2xl font-black text-white mt-1 block">Port Harcourt HQ</strong>
+              <strong className="text-sm sm:text-xl font-black text-white mt-1 block">Port Harcourt HQ</strong>
               <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">Direct founder contact</p>
             </div>
-            <div className="col-span-2 sm:col-span-1 p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+            <div className="col-span-2 sm:col-span-1 p-2.5 sm:p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
               <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Certified Delivery</span>
-              <strong className="text-base sm:text-2xl font-black text-emerald-400 mt-1 block">Digital Certified</strong>
+              <strong className="text-sm sm:text-xl font-black text-emerald-400 mt-1 block">Digital Certified</strong>
               <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">High resolution PDF files</p>
             </div>
           </div>
@@ -376,50 +376,50 @@ export default function LimitedCompanyPage() {
       </section>
 
       {/* Pricing Tiers Section */}
-      <section id="packages" className="py-16 sm:py-32 bg-[#0a0e17] scroll-mt-20 sm:scroll-mt-36">
+      <section id="packages" className="py-12 sm:py-24 bg-[#0a0e17] scroll-mt-20 sm:scroll-mt-36">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal type="up" duration={0.8}>
-            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-              <span className="text-[11px] sm:text-xs font-black text-[#FDC902] uppercase tracking-widest block mb-2">
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14">
+              <span className="text-[10px] sm:text-xs font-black text-[#FDC902] uppercase tracking-widest block mb-1.5">
                 Transparent Package Options
               </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mt-1">
+              <h2 className="text-xl sm:text-3xl lg:text-4xl font-black text-white mt-1">
                 Select Your Incorporation Package
               </h2>
-              <p className="text-xs sm:text-base text-slate-300 mt-2 sm:mt-3">
+              <p className="text-xs sm:text-sm text-slate-300 mt-1.5 sm:mt-2">
                 Base fee covers NGN 1 Million authorized share capital and up to 2 directors. All statutory taxes included.
               </p>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 max-w-6xl mx-auto items-stretch">
             {/* Starter */}
             <Reveal type="left" delay={150} duration={0.8}>
-              <div className="bg-[#0f172a] rounded-3xl border border-slate-800 p-6 sm:p-10 flex flex-col justify-between transition-card hover:border-slate-700 shadow-xl h-full">
+              <div className="bg-[#0f172a] rounded-2xl sm:rounded-3xl border border-slate-800 p-5 sm:p-8 flex flex-col justify-between transition-card hover:border-slate-700 shadow-xl h-full">
                 <div>
-                  <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400">
                     Starter Tier
                   </span>
-                  <div className="text-3xl sm:text-4xl font-black text-white mt-2 sm:mt-3">NGN 60,000</div>
-                  <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed font-normal">
+                  <div className="text-2xl sm:text-3xl font-black text-white mt-1.5 sm:mt-2">NGN 60,000</div>
+                  <p className="text-xs sm:text-sm text-slate-400 mt-1.5 leading-relaxed font-normal">
                     Core legal CAC registration documents and official Tax ID.
                   </p>
 
-                  <div className="mt-6 sm:mt-8 space-y-3 text-xs sm:text-base text-slate-300 font-medium">
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
+                  <div className="mt-5 sm:mt-6 space-y-2.5 text-xs sm:text-sm text-slate-300 font-medium">
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
                       <span>Official CAC Certificate of Incorporation</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
                       <span>CAC Status Report (Director Allocation)</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
                       <span>Memorandum &amp; Articles (MEMART)</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
                       <span>NRS Corporate Tax Identification Number</span>
                     </div>
                   </div>
@@ -430,7 +430,7 @@ export default function LimitedCompanyPage() {
                     setPackageChoice("Starter");
                     document.getElementById("application")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="mt-8 sm:mt-10 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-xl text-xs sm:text-sm transition-colors border border-slate-700"
+                  className="mt-6 sm:mt-8 w-full py-2.5 sm:py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-xl text-xs sm:text-sm transition-colors border border-slate-700"
                 >
                   Select Starter Package
                 </button>
@@ -439,39 +439,39 @@ export default function LimitedCompanyPage() {
 
             {/* Pro - Featured Card */}
             <Reveal type="up" delay={250} duration={0.8}>
-              <div className="bg-[#FDC902] text-slate-950 rounded-3xl p-6 sm:p-10 flex flex-col justify-between shadow-[0_20px_50px_rgba(253,201,2,0.35)] relative transition-card scale-[1.02] sm:scale-105 border-4 border-white/20 h-full">
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-slate-950 text-[#FDC902] font-black text-[10px] sm:text-xs tracking-widest uppercase px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full shadow-lg">
+              <div className="bg-[#FDC902] text-slate-950 rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between shadow-[0_15px_40px_rgba(253,201,2,0.25)] relative transition-card border-2 border-[#FDC902] h-full">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-950 text-[#FDC902] font-black text-[10px] sm:text-xs tracking-widest uppercase px-3 py-1 rounded-full shadow-lg">
                   Most Popular
                 </span>
 
                 <div>
-                  <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-slate-900">
+                  <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-900">
                     Pro Package
                   </span>
-                  <div className="text-3xl sm:text-4xl font-black text-slate-950 mt-2 sm:mt-3">NGN 100,000</div>
-                  <p className="text-xs sm:text-sm text-slate-900 mt-2 leading-relaxed font-semibold">
+                  <div className="text-2xl sm:text-3xl font-black text-slate-950 mt-1.5 sm:mt-2">NGN 100,000</div>
+                  <p className="text-xs sm:text-sm text-slate-900 mt-1.5 leading-relaxed font-semibold">
                     Incorporation, tax portal setup, plus complete corporate branding kit.
                   </p>
 
-                  <div className="mt-6 sm:mt-8 space-y-3 text-xs sm:text-base text-slate-950 font-bold">
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
+                  <div className="mt-5 sm:mt-6 space-y-2.5 text-xs sm:text-sm text-slate-950 font-bold">
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-slate-950 shrink-0" />
                       <span>Everything in Starter (CAC, MEMART, TIN)</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-slate-950 shrink-0" />
                       <span>Tax Filing Account and Rev360 Setup</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-slate-950 shrink-0" />
                       <span>Executive Corporate Logo and Guidelines</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-slate-950 shrink-0" />
                       <span>Official Letterhead and Business Card Files</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-slate-950 shrink-0" />
                       <span>12-Page Corporate Profile Document (PDF)</span>
                     </div>
                   </div>
@@ -482,7 +482,7 @@ export default function LimitedCompanyPage() {
                     setPackageChoice("Pro");
                     document.getElementById("application")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="mt-8 sm:mt-10 w-full py-3.5 sm:py-4 bg-slate-950 hover:bg-slate-900 text-white font-black rounded-xl text-xs sm:text-sm transition-all shadow-xl"
+                  className="mt-6 sm:mt-8 w-full py-2.5 sm:py-3.5 bg-slate-950 hover:bg-slate-900 text-white font-black rounded-xl text-xs sm:text-sm transition-all shadow-xl"
                 >
                   Select Pro Package (NGN 100,000)
                 </button>
@@ -491,31 +491,31 @@ export default function LimitedCompanyPage() {
 
             {/* Premium */}
             <Reveal type="right" delay={350} duration={0.8}>
-              <div className="bg-[#0f172a] rounded-3xl border border-slate-800 p-6 sm:p-10 flex flex-col justify-between transition-card hover:border-slate-700 shadow-xl h-full">
+              <div className="bg-[#0f172a] rounded-2xl sm:rounded-3xl border border-slate-800 p-5 sm:p-8 flex flex-col justify-between transition-card hover:border-slate-700 shadow-xl h-full">
                 <div>
-                  <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400">
                     Premium Tier
                   </span>
-                  <div className="text-3xl sm:text-4xl font-black text-white mt-2 sm:mt-3">NGN 350,000</div>
-                  <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed font-normal">
+                  <div className="text-2xl sm:text-3xl font-black text-white mt-1.5 sm:mt-2">NGN 350,000</div>
+                  <p className="text-xs sm:text-sm text-slate-400 mt-1.5 leading-relaxed font-normal">
                     Everything in Pro plus custom single-page website and corporate emails.
                   </p>
 
-                  <div className="mt-6 sm:mt-8 space-y-3 text-xs sm:text-base text-slate-300 font-medium">
-                    <div className="flex items-center gap-2.5 sm:gap-3 text-white font-bold">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
+                  <div className="mt-5 sm:mt-6 space-y-2.5 text-xs sm:text-sm text-slate-300 font-medium">
+                    <div className="flex items-center gap-2.5 text-white font-bold">
+                      <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
                       <span>Everything in Pro (Full CAC and Branding)</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
                       <span>Single-Page Responsive Corporate Website</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
                       <span>Custom Domain (.com / .ng) + SSL for One Year</span>
                     </div>
-                    <div className="flex items-center gap-2.5 sm:gap-3">
-                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
                       <span>Corporate Email Accounts (e.g. info@yourname.ng)</span>
                     </div>
                   </div>
@@ -526,7 +526,7 @@ export default function LimitedCompanyPage() {
                     setPackageChoice("Premium");
                     document.getElementById("application")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="mt-8 sm:mt-10 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-xl text-xs sm:text-sm transition-colors border border-slate-700"
+                  className="mt-6 sm:mt-8 w-full py-2.5 sm:py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-xl text-xs sm:text-sm transition-colors border border-slate-700"
                 >
                   Select Premium Package
                 </button>
@@ -537,17 +537,17 @@ export default function LimitedCompanyPage() {
       </section>
 
       {/* Interactive Application Form & Live Receipt */}
-      <section id="application" className="py-16 sm:py-32 bg-[#070b13] border-t border-slate-800 scroll-mt-20 sm:scroll-mt-36">
+      <section id="application" className="py-12 sm:py-24 bg-[#070b13] border-t border-slate-800 scroll-mt-20 sm:scroll-mt-36">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal type="up" duration={0.8}>
-            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-              <span className="text-[11px] sm:text-xs font-black text-[#FDC902] uppercase tracking-widest block mb-2">
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14">
+              <span className="text-[10px] sm:text-xs font-black text-[#FDC902] uppercase tracking-widest block mb-1.5">
                 Application Desk
               </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mt-1">
+              <h2 className="text-xl sm:text-3xl lg:text-4xl font-black text-white mt-1">
                 Order Your Limited Company Filing
               </h2>
-              <p className="text-xs sm:text-base text-slate-300 mt-2">
+              <p className="text-xs sm:text-sm text-slate-300 mt-1.5">
                 Enter your entity details and director allocations. Your invoice updates in real time on the right.
               </p>
             </div>
@@ -555,14 +555,14 @@ export default function LimitedCompanyPage() {
 
           {/* Success / Post-Submission Screen */}
           {submittedOrderRef ? (
-            <div className="max-w-3xl mx-auto bg-[#0f172a] border-2 border-emerald-500/50 p-5 sm:p-12 rounded-3xl text-center space-y-6 sm:space-y-7 shadow-2xl">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto shadow-lg">
-                <CheckCircle2 className="w-8 h-8 sm:w-9 sm:h-9" />
+            <div className="max-w-3xl mx-auto bg-[#0f172a] border-2 border-emerald-500/50 p-5 sm:p-10 rounded-2xl sm:rounded-3xl text-center space-y-5 sm:space-y-6 shadow-2xl">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
 
               <div>
                 <span
-                  className={`inline-block text-[10px] sm:text-xs font-black uppercase tracking-widest px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full mb-3 ${
+                  className={`inline-block text-[10px] sm:text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full mb-2.5 ${
                     paymentConfirmed
                       ? "bg-emerald-500 text-slate-950 shadow-md"
                       : "bg-[#FDC902] text-slate-950"
@@ -572,14 +572,14 @@ export default function LimitedCompanyPage() {
                     ? "PAYMENT VERIFIED • ORDER CONFIRMED"
                     : "APPLICATION SUBMITTED • AWAITING SETTLEMENT"}
                 </span>
-                <h3 className="text-2xl sm:text-4xl font-black text-white">
+                <h3 className="text-xl sm:text-3xl font-black text-white">
                   {paymentConfirmed
                     ? "CAC Filing Initiated Successfully!"
                     : "Registration Application Logged"}
                 </h3>
-                <p className="text-xs sm:text-base text-slate-300 leading-relaxed mt-2 max-w-xl mx-auto">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mt-1.5 max-w-xl mx-auto">
                   Your permanent order reference code is{" "}
-                  <span className="font-mono font-black text-[#FDC902] bg-[#0a0e17] px-2.5 py-1 rounded-md border border-slate-700">
+                  <span className="font-mono font-black text-[#FDC902] bg-[#0a0e17] px-2 py-0.5 rounded border border-slate-700">
                     {submittedOrderRef}
                   </span>
                   . An automated digital dossier has been generated.
@@ -587,28 +587,28 @@ export default function LimitedCompanyPage() {
               </div>
 
               {/* Real-time Order Summary Grid */}
-              <div className="p-4 sm:p-6 bg-[#0a0e17] rounded-2xl border border-slate-800 text-left grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
+              <div className="p-3.5 sm:p-5 bg-[#0a0e17] rounded-xl border border-slate-800 text-left grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-4 text-xs sm:text-sm">
                 <div>
                   <span className="text-[10px] sm:text-xs text-slate-500 uppercase font-bold block">Proposed Entity</span>
-                  <strong className="text-white text-sm sm:text-base font-black">{proposedName1} Ltd</strong>
+                  <strong className="text-white text-xs sm:text-sm font-black">{proposedName1} Ltd</strong>
                 </div>
                 <div>
                   <span className="text-[10px] sm:text-xs text-slate-500 uppercase font-bold block">Package &amp; Capital</span>
-                  <strong className="text-[#FDC902] text-sm sm:text-base font-black">
+                  <strong className="text-[#FDC902] text-xs sm:text-sm font-black">
                     {packageChoice} ({shareCapitalMillions}M Shares)
                   </strong>
                 </div>
                 <div>
                   <span className="text-[10px] sm:text-xs text-slate-500 uppercase font-bold block">Total Amount</span>
-                  <strong className="text-white text-sm sm:text-base font-black">{pricing.formattedTotal}</strong>
+                  <strong className="text-white text-xs sm:text-sm font-black">{pricing.formattedTotal}</strong>
                 </div>
                 <div>
                   <span className="text-[10px] sm:text-xs text-slate-500 uppercase font-bold block">Payment Status</span>
                   <strong
                     className={
                       paymentConfirmed
-                        ? "text-emerald-400 text-sm sm:text-base font-black flex items-center gap-1.5"
-                        : "text-[#FDC902] text-sm sm:text-base font-black flex items-center gap-1.5"
+                        ? "text-emerald-400 text-xs sm:text-sm font-black flex items-center gap-1.5"
+                        : "text-[#FDC902] text-xs sm:text-sm font-black flex items-center gap-1.5"
                     }
                   >
                     <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -618,15 +618,15 @@ export default function LimitedCompanyPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
+              <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 pt-1">
                 {!paymentConfirmed && (
                   <button
                     type="button"
                     onClick={() => launchPaystackModal(submittedOrderRef)}
-                    className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-base transition-all shadow-[0_12px_30px_rgba(253,201,2,0.3)] flex items-center justify-center gap-2"
+                    className="w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all shadow-[0_8px_20px_rgba(253,201,2,0.25)] gap-2"
                   >
-                    <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span>Pay Online with Paystack (Test / Live)</span>
+                    <CreditCard className="w-4 h-4" />
+                    <span>Pay Online with Paystack</span>
                   </button>
                 )}
 
@@ -645,18 +645,18 @@ export default function LimitedCompanyPage() {
                       paymentStatus: paymentConfirmed ? "PAID_CONFIRMED" : "PENDING_PAYMENT",
                     });
                   }}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs sm:text-base transition-all border border-slate-600 flex items-center justify-center gap-2"
+                  className="w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs sm:text-sm transition-all border border-slate-600 gap-2"
                 >
-                  <Download className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902]" />
-                  <span>Download Official {paymentConfirmed ? "Paid Receipt" : "Invoice"} PDF</span>
+                  <Download className="w-4 h-4 text-[#FDC902]" />
+                  <span>Download {paymentConfirmed ? "Receipt" : "Invoice"} PDF</span>
                 </button>
 
                 <Link
                   href={`/track?ref=${submittedOrderRef}`}
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs sm:text-base border border-slate-700 flex items-center justify-center gap-2"
+                  className="w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs sm:text-sm border border-slate-700 gap-2"
                 >
-                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902]" />
-                  <span>Track 5 Milestones Online</span>
+                  <Clock className="w-4 h-4 text-[#FDC902]" />
+                  <span>Track Milestones</span>
                 </Link>
 
                 <a
@@ -667,32 +667,32 @@ export default function LimitedCompanyPage() {
                   }.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-xs sm:text-base transition-all shadow-md flex items-center justify-center gap-2"
+                  className="w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-xs sm:text-sm transition-all shadow-md gap-2"
                 >
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>Confirm on WhatsApp Desk &rarr;</span>
+                  <Phone className="w-4 h-4" />
+                  <span>Confirm on WhatsApp &rarr;</span>
                 </a>
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
               {/* Form Column */}
-              <div className="lg:col-span-7 bg-[#0f172a] p-5 sm:p-8 lg:p-12 rounded-3xl border border-slate-800 shadow-2xl">
-                <form onSubmit={handleSubmitOrder} className="space-y-10">
+              <div className="lg:col-span-7 bg-[#0f172a] p-4 sm:p-7 lg:p-9 rounded-2xl sm:rounded-3xl border border-slate-800 shadow-2xl">
+                <form onSubmit={handleSubmitOrder} className="space-y-7 sm:space-y-9">
                   {errorMessage && (
-                    <div className="p-5 bg-rose-950/40 border border-rose-500/50 rounded-2xl text-rose-300 text-sm font-bold">
+                    <div className="p-3.5 sm:p-4 bg-rose-950/40 border border-rose-500/50 rounded-xl text-rose-300 text-xs sm:text-sm font-bold">
                       {errorMessage}
                     </div>
                   )}
 
                   {/* B2B Outsourcing Toggle */}
-                  <div className="p-6 rounded-2xl bg-[#0a0e17] border border-slate-800 shadow-md">
-                    <span className="block text-sm font-black text-white mb-3">
+                  <div className="p-4 sm:p-5 rounded-xl bg-[#0a0e17] border border-slate-800 shadow-md">
+                    <span className="block text-xs sm:text-sm font-black text-white mb-2.5">
                       Are you the original business owner or an agent outsourcing this job to us?
                     </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-sm">
                       <label
-                        className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                        className={`flex items-center gap-2.5 p-3 rounded-xl border-2 cursor-pointer transition-all ${
                           !isOutsourcing
                             ? "bg-slate-900 border-[#FDC902] text-white font-black"
                             : "bg-[#0a0e17] border-slate-800 text-slate-400"
@@ -709,7 +709,7 @@ export default function LimitedCompanyPage() {
                       </label>
 
                       <label
-                        className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                        className={`flex items-center gap-2.5 p-3 rounded-xl border-2 cursor-pointer transition-all ${
                           isOutsourcing
                             ? "bg-slate-900 border-[#FDC902] text-white font-black"
                             : "bg-[#0a0e17] border-slate-800 text-slate-400"
@@ -727,38 +727,38 @@ export default function LimitedCompanyPage() {
                     </div>
 
                     {isOutsourcing && (
-                      <div className="mt-5 pt-5 border-t border-slate-800 space-y-4">
-                        <div className="text-xs text-slate-400 font-semibold">
+                      <div className="mt-4 pt-4 border-t border-slate-800 space-y-3">
+                        <div className="text-[11px] sm:text-xs text-slate-400 font-medium">
                           Agent Billing Details: We send the final invoice and confirmation directly to you so your client does not see the wholesale price.
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           <input
                             type="text"
                             placeholder="Your Name (Agent or Firm)"
                             value={billingName}
                             onChange={(e) => setBillingName(e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           />
                           <input
                             type="email"
                             placeholder="Your Billing Email"
                             value={billingEmail}
                             onChange={(e) => setBillingEmail(e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           />
                           <input
                             type="tel"
                             placeholder="Your Phone Number"
                             value={billingPhone}
                             onChange={(e) => setBillingPhone(e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           />
                           <input
                             type="text"
                             placeholder="Agency or Business Name"
                             value={billingBusinessName}
                             onChange={(e) => setBillingBusinessName(e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           />
                         </div>
                       </div>
@@ -766,18 +766,18 @@ export default function LimitedCompanyPage() {
                   </div>
 
                   {/* 1. Package & Capital */}
-                  <div className="space-y-5">
-                    <h3 className="text-sm font-black text-white uppercase tracking-wider">
+                  <div className="space-y-4">
+                    <h3 className="text-xs sm:text-sm font-black text-white uppercase tracking-wider">
                       1. Package and Capital Details
                     </h3>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                       <div>
-                        <label className="block text-xs font-black uppercase tracking-wider text-slate-300 mb-2">Package Tier</label>
+                        <label className="block text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-300 mb-1.5">Package Tier</label>
                         <select
                           value={packageChoice}
                           onChange={(e) => setPackageChoice(e.target.value as LimitedPackageType)}
-                          className="w-full px-5 py-4 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-sm font-bold text-white focus:border-[#FDC902] focus:outline-none"
+                          className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-xs sm:text-sm font-bold text-white focus:border-[#FDC902] focus:outline-none"
                         >
                           <option value="Starter">Starter Tier (NGN 60,000)</option>
                           <option value="Pro">Pro Package (NGN 100,000)</option>
@@ -786,7 +786,7 @@ export default function LimitedCompanyPage() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-black uppercase tracking-wider text-slate-300 mb-2">
+                        <label className="block text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-300 mb-1.5">
                           Share Capital (in Millions)
                         </label>
                         <input
@@ -796,27 +796,27 @@ export default function LimitedCompanyPage() {
                           step="1"
                           value={shareCapitalMillions}
                           onChange={(e) => setShareCapitalMillions(Math.max(1, Number(e.target.value)))}
-                          className="w-full px-5 py-4 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-sm font-bold text-white focus:border-[#FDC902] focus:outline-none"
+                          className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-xs sm:text-sm font-bold text-white focus:border-[#FDC902] focus:outline-none"
                         />
-                        <span className="text-xs text-slate-400 mt-1.5 block font-medium">
+                        <span className="text-[10px] sm:text-xs text-slate-400 mt-1 block font-medium">
                           Base covers 1M shares. Additional capital: NGN 30,000 per 1M.
                         </span>
                       </div>
                     </div>
 
-                    <div className="p-4 bg-[#0a0e17] rounded-xl border border-slate-800 text-sm text-slate-300 font-mono font-bold">
+                    <div className="p-3 bg-[#0a0e17] rounded-xl border border-slate-800 text-xs text-slate-300 font-mono font-bold">
                       {pricing.summaryText}
                     </div>
                   </div>
 
                   {/* 2. Proposed Names */}
-                  <div className="space-y-5">
-                    <h3 className="text-sm font-black text-white uppercase tracking-wider">
+                  <div className="space-y-4">
+                    <h3 className="text-xs sm:text-sm font-black text-white uppercase tracking-wider">
                       2. Proposed Corporate Names
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                       <div>
-                        <label className="block text-xs font-black uppercase tracking-wider text-slate-300 mb-2">
+                        <label className="block text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-300 mb-1.5">
                           Proposed Name (Option 1) *
                         </label>
                         <input
@@ -825,11 +825,11 @@ export default function LimitedCompanyPage() {
                           value={proposedName1}
                           onChange={(e) => setProposedName1(e.target.value)}
                           placeholder="e.g. Apex Dynamics Ltd"
-                          className="w-full px-5 py-4 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-sm sm:text-base font-bold text-white focus:border-[#FDC902] focus:outline-none"
+                          className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-xs sm:text-sm font-bold text-white focus:border-[#FDC902] focus:outline-none"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-black uppercase tracking-wider text-slate-300 mb-2">
+                        <label className="block text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-300 mb-1.5">
                           Alternative Name (Option 2) *
                         </label>
                         <input
@@ -838,13 +838,13 @@ export default function LimitedCompanyPage() {
                           value={proposedName2}
                           onChange={(e) => setProposedName2(e.target.value)}
                           placeholder="e.g. Apex Innovations Ltd"
-                          className="w-full px-5 py-4 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-sm sm:text-base font-bold text-white focus:border-[#FDC902] focus:outline-none"
+                          className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-xs sm:text-sm font-bold text-white focus:border-[#FDC902] focus:outline-none"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-black uppercase tracking-wider text-slate-300 mb-2">
+                      <label className="block text-[11px] sm:text-xs font-black uppercase tracking-wider text-slate-300 mb-1.5">
                         Principal Nature of Business / Objectives *
                       </label>
                       <textarea
@@ -853,24 +853,24 @@ export default function LimitedCompanyPage() {
                         value={businessActivity}
                         onChange={(e) => setBusinessActivity(e.target.value)}
                         placeholder="Describe what your business will do (e.g. Haulage, agriculture, trading, software development)."
-                        className="w-full px-5 py-4 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-sm sm:text-base text-white font-medium focus:border-[#FDC902] focus:outline-none"
+                        className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium focus:border-[#FDC902] focus:outline-none"
                       />
                     </div>
                   </div>
 
                   {/* 3. Directors */}
-                  <div className="space-y-6">
-                    <div className="flex items-center justify-between">
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
                       <div>
-                        <h3 className="text-sm font-black text-white uppercase tracking-wider">
+                        <h3 className="text-xs sm:text-sm font-black text-white uppercase tracking-wider">
                           3. Directors and Shareholders ({directors.length})
                         </h3>
-                        <p className="text-xs text-slate-400 mt-0.5">
+                        <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5">
                           Base package includes up to two directors. Additional directors add NGN 5,000 each.
                         </p>
                       </div>
                       <span
-                        className={`text-xs font-mono font-black px-3 py-1.5 rounded-lg ${
+                        className={`text-[10px] sm:text-xs font-mono font-black px-2.5 py-1 rounded-md shrink-0 ${
                           Math.abs(totalSharePercentage - 100) < 0.01
                             ? "bg-emerald-950/40 text-emerald-400 border border-emerald-500/40"
                             : "bg-rose-950/40 text-rose-400 border border-rose-500/40"
@@ -883,10 +883,10 @@ export default function LimitedCompanyPage() {
                     {directors.map((dir, idx) => (
                       <div
                         key={idx}
-                        className="p-6 rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-5 shadow-md"
+                        className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-3.5 sm:space-y-4 shadow-md"
                       >
-                        <div className="flex items-center justify-between pb-3.5 border-b border-slate-800">
-                          <span className="text-sm font-black text-[#FDC902]">
+                        <div className="flex items-center justify-between pb-2.5 border-b border-slate-800">
+                          <span className="text-xs sm:text-sm font-black text-[#FDC902]">
                             Director {idx + 1}
                           </span>
                           {directors.length > 1 && (
@@ -895,21 +895,21 @@ export default function LimitedCompanyPage() {
                               onClick={() => handleRemoveDirector(idx)}
                               className="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 font-bold"
                             >
-                              <Trash2 className="w-4 h-4" />
+                              <Trash2 className="w-3.5 h-3.5" />
                               <span>Remove</span>
                             </button>
                           )}
                         </div>
 
                         {/* Name Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                           <input
                             type="text"
                             required
                             placeholder="First Name *"
                             value={dir.firstName}
                             onChange={(e) => handleUpdateDirector(idx, "firstName", e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           />
                           <input
                             type="text"
@@ -917,42 +917,42 @@ export default function LimitedCompanyPage() {
                             placeholder="Surname *"
                             value={dir.surname}
                             onChange={(e) => handleUpdateDirector(idx, "surname", e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           />
                           <input
                             type="text"
                             placeholder="Other Names"
                             value={dir.otherNames}
                             onChange={(e) => handleUpdateDirector(idx, "otherNames", e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           />
                         </div>
 
                         {/* DOB, Gender, Share % */}
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                           <div>
-                            <label className="text-xs font-bold text-slate-400 block mb-1">Date of Birth *</label>
+                            <label className="text-[11px] font-bold text-slate-400 block mb-1">Date of Birth *</label>
                             <input
                               type="date"
                               required
                               value={dir.dob}
                               onChange={(e) => handleUpdateDirector(idx, "dob", e.target.value)}
-                              className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                              className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                             />
                           </div>
                           <div>
-                            <label className="text-xs font-bold text-slate-400 block mb-1">Gender *</label>
+                            <label className="text-[11px] font-bold text-slate-400 block mb-1">Gender *</label>
                             <select
                               value={dir.gender}
                               onChange={(e) => handleUpdateDirector(idx, "gender", e.target.value)}
-                              className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                              className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                             >
                               <option value="Male">Male</option>
                               <option value="Female">Female</option>
                             </select>
                           </div>
                           <div>
-                            <label className="text-xs font-bold text-slate-400 block mb-1">Share % (e.g. 50) *</label>
+                            <label className="text-[11px] font-bold text-slate-400 block mb-1">Share % (e.g. 50) *</label>
                             <input
                               type="number"
                               required
@@ -962,39 +962,39 @@ export default function LimitedCompanyPage() {
                               onChange={(e) =>
                                 handleUpdateDirector(idx, "sharePercentage", Number(e.target.value))
                               }
-                              className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-black"
+                              className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-black"
                             />
                           </div>
                         </div>
 
                         {/* Contact */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           <input
                             type="email"
                             required
                             placeholder="Email Address *"
                             value={dir.email}
                             onChange={(e) => handleUpdateDirector(idx, "email", e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           />
                           <input
                             type="tel"
                             required
-                            placeholder="Phone Number (e.g. 08137092154) *"
+                            placeholder="Phone (e.g. 08137092154) *"
                             value={dir.phone}
                             onChange={(e) => handleUpdateDirector(idx, "phone", e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           />
                         </div>
 
                         {/* Location Dropdowns */}
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                           <div>
-                            <label className="text-xs font-bold text-slate-400 block mb-1">State of Residence *</label>
+                            <label className="text-[11px] font-bold text-slate-400 block mb-1">State of Residence *</label>
                             <select
                               value={dir.state}
                               onChange={(e) => handleUpdateDirector(idx, "state", e.target.value)}
-                              className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                              className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                             >
                               {NIGERIAN_STATES.map((st) => (
                                 <option key={st} value={st}>
@@ -1004,11 +1004,11 @@ export default function LimitedCompanyPage() {
                             </select>
                           </div>
                           <div>
-                            <label className="text-xs font-bold text-slate-400 block mb-1">Local Govt Area (LGA) *</label>
+                            <label className="text-[11px] font-bold text-slate-400 block mb-1">Local Govt (LGA) *</label>
                             <select
                               value={dir.lga}
                               onChange={(e) => handleUpdateDirector(idx, "lga", e.target.value)}
-                              className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                              className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                             >
                               {(NIGERIA_STATES_AND_LGAS[dir.state] || []).map((lga) => (
                                 <option key={lga} value={lga}>
@@ -1018,14 +1018,14 @@ export default function LimitedCompanyPage() {
                             </select>
                           </div>
                           <div>
-                            <label className="text-xs font-bold text-slate-400 block mb-1">City / Town *</label>
+                            <label className="text-[11px] font-bold text-slate-400 block mb-1">City / Town *</label>
                             <input
                               type="text"
                               required
                               placeholder="City / Town"
                               value={dir.city}
                               onChange={(e) => handleUpdateDirector(idx, "city", e.target.value)}
-                              className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                              className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                             />
                           </div>
                         </div>
@@ -1036,15 +1036,15 @@ export default function LimitedCompanyPage() {
                           placeholder="Complete Residential Address (Street, Building, Flat) *"
                           value={dir.address}
                           onChange={(e) => handleUpdateDirector(idx, "address", e.target.value)}
-                          className="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                          className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                         />
 
                         {/* ID Type */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           <select
                             value={dir.idType}
                             onChange={(e) => handleUpdateDirector(idx, "idType", e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-medium"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-medium"
                           >
                             <option value="NIN">National Identification Number (NIN)</option>
                             <option value="International Passport">International Passport</option>
@@ -1057,60 +1057,62 @@ export default function LimitedCompanyPage() {
                             placeholder="Identification Number (11-digit NIN) *"
                             value={dir.idNumber}
                             onChange={(e) => handleUpdateDirector(idx, "idNumber", e.target.value)}
-                            className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-black"
+                            className="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white font-black"
                           />
                         </div>
                       </div>
                     ))}
 
-                    <button
-                      type="button"
-                      onClick={handleAddDirector}
-                      className="w-full py-4 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 text-[#FDC902] font-black text-sm rounded-2xl flex items-center justify-center gap-2 transition-all"
-                    >
-                      <UserPlus className="w-5 h-5" />
-                      <span>Add Additional Director / Shareholder (+NGN 5,000 each)</span>
-                    </button>
+                    <div className="flex justify-center sm:justify-start">
+                      <button
+                        type="button"
+                        onClick={handleAddDirector}
+                        className="w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-[#FDC902] font-black text-xs sm:text-sm rounded-xl gap-2 transition-all"
+                      >
+                        <UserPlus className="w-4 h-4" />
+                        <span>Add Director / Shareholder (+NGN 5,000 each)</span>
+                      </button>
+                    </div>
                   </div>
 
                   {/* 4. Add-ons */}
-                  <div className="pt-5 border-t border-slate-800 space-y-4">
-                    <span className="block text-sm font-black uppercase tracking-wider text-white">
+                  <div className="pt-4 border-t border-slate-800 space-y-3">
+                    <span className="block text-xs sm:text-sm font-black uppercase tracking-wider text-white">
                       4. High-Impact Add-ons
                     </span>
 
-                    <label className="flex items-center justify-between p-5 rounded-2xl bg-[#0a0e17] border border-slate-800 cursor-pointer hover:border-[#FDC902]/50 transition-colors">
-                      <div className="flex items-center gap-4">
+                    <label className="flex items-center justify-between p-3.5 sm:p-4 rounded-xl bg-[#0a0e17] border border-slate-800 cursor-pointer hover:border-[#FDC902]/50 transition-colors">
+                      <div className="flex items-center gap-3 sm:gap-3.5">
                         <input
                           type="checkbox"
                           checked={includeAiVideo}
                           onChange={(e) => setIncludeAiVideo(e.target.checked)}
-                          className="w-5 h-5 rounded text-[#FDC902] focus:ring-[#FDC902] bg-slate-900 border-slate-700"
+                          className="w-4 h-4 sm:w-5 sm:h-5 rounded text-[#FDC902] focus:ring-[#FDC902] bg-slate-900 border-slate-700 shrink-0"
                         />
                         <div>
-                          <span className="text-base font-black text-white block">
+                          <span className="text-xs sm:text-sm font-black text-white block">
                             Branded AI Video Commercial (+NGN 45,000)
                           </span>
-                          <span className="text-xs sm:text-sm text-slate-400">
+                          <span className="text-[11px] sm:text-xs text-slate-400">
                             Custom social media launch video produced by our dedicated media specialist.
                           </span>
                         </div>
                       </div>
                     </label>
 
-                    <label className="flex items-center justify-between p-5 rounded-2xl bg-[#0a0e17] border border-slate-800 cursor-pointer hover:border-emerald-500/50 transition-colors">
-                      <div className="flex items-center gap-4">
+                    <label className="flex items-center justify-between p-3.5 sm:p-4 rounded-xl bg-[#0a0e17] border border-slate-800 cursor-pointer hover:border-emerald-500/50 transition-colors">
+                      <div className="flex items-center gap-3 sm:gap-3.5">
                         <input
                           type="checkbox"
                           checked={includeAutomation}
                           onChange={(e) => setIncludeAutomation(e.target.checked)}
-                          className="w-5 h-5 rounded text-emerald-500 focus:ring-emerald-500 bg-slate-900 border-slate-700"
+                          className="w-4 h-4 sm:w-5 sm:h-5 rounded text-emerald-500 focus:ring-emerald-500 bg-slate-900 border-slate-700 shrink-0"
                         />
                         <div>
-                          <span className="text-base font-black text-white block">
+                          <span className="text-xs sm:text-sm font-black text-white block">
                             Automated Invoicing &amp; Receipt Engine (+NGN 35,000)
                           </span>
-                          <span className="text-xs sm:text-sm text-slate-400">
+                          <span className="text-[11px] sm:text-xs text-slate-400">
                             End manual receipts. Automated WhatsApp and email receipts dispatched when clients pay.
                           </span>
                         </div>
@@ -1119,20 +1121,20 @@ export default function LimitedCompanyPage() {
                   </div>
 
                   {/* 5. Payment Method Selection */}
-                  <div className="pt-5 border-t border-slate-800 space-y-4">
+                  <div className="pt-4 border-t border-slate-800 space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="block text-sm font-black uppercase tracking-wider text-white">
+                      <span className="block text-xs sm:text-sm font-black uppercase tracking-wider text-white">
                         5. Preferred Payment Method
                       </span>
-                      <span className="text-xs text-emerald-400 font-bold bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-500/30">
+                      <span className="text-[10px] sm:text-xs text-emerald-400 font-bold bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
                         Test Mode Active
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <label
                         onClick={() => setPaymentMethod("PAYSTACK")}
-                        className={`p-5 rounded-2xl border-2 cursor-pointer transition-all flex items-start gap-4 ${
+                        className={`p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition-all flex items-start gap-3 ${
                           paymentMethod === "PAYSTACK"
                             ? "bg-[#141d33] border-[#FDC902] text-white shadow-[0_4px_20px_rgba(253,201,2,0.2)]"
                             : "bg-[#0a0e17] border-slate-800 text-slate-400 hover:border-slate-700"
@@ -1143,13 +1145,11 @@ export default function LimitedCompanyPage() {
                           name="payment_choice"
                           checked={paymentMethod === "PAYSTACK"}
                           onChange={() => setPaymentMethod("PAYSTACK")}
-                          className="mt-1 w-4 h-4 text-[#FDC902] focus:ring-[#FDC902]"
+                          className="mt-1 w-3.5 h-3.5 text-[#FDC902] focus:ring-[#FDC902] shrink-0"
                         />
                         <div>
-                          <div className="flex items-center gap-2">
-                            <span className="text-base font-black text-white">Paystack Online Gateway</span>
-                          </div>
-                          <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                          <span className="text-xs sm:text-sm font-black text-white block">Paystack Online Gateway</span>
+                          <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 leading-relaxed">
                             Pay with Cards, USSD, Bank Transfer, Apple Pay, or QR with automated instant receipting.
                           </p>
                         </div>
@@ -1157,7 +1157,7 @@ export default function LimitedCompanyPage() {
 
                       <label
                         onClick={() => setPaymentMethod("TRANSFER")}
-                        className={`p-5 rounded-2xl border-2 cursor-pointer transition-all flex items-start gap-4 ${
+                        className={`p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition-all flex items-start gap-3 ${
                           paymentMethod === "TRANSFER"
                             ? "bg-[#141d33] border-[#FDC902] text-white shadow-[0_4px_20px_rgba(253,201,2,0.2)]"
                             : "bg-[#0a0e17] border-slate-800 text-slate-400 hover:border-slate-700"
@@ -1168,11 +1168,11 @@ export default function LimitedCompanyPage() {
                           name="payment_choice"
                           checked={paymentMethod === "TRANSFER"}
                           onChange={() => setPaymentMethod("TRANSFER")}
-                          className="mt-1 w-4 h-4 text-[#FDC902] focus:ring-[#FDC902]"
+                          className="mt-1 w-3.5 h-3.5 text-[#FDC902] focus:ring-[#FDC902] shrink-0"
                         />
                         <div>
-                          <span className="text-base font-black text-white block">Direct Bank Transfer</span>
-                          <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                          <span className="text-xs sm:text-sm font-black text-white block">Direct Bank Transfer</span>
+                          <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5 leading-relaxed">
                             Transfer directly to Harrison Mosco corporate account and confirm with our WhatsApp desk.
                           </p>
                         </div>
@@ -1181,39 +1181,41 @@ export default function LimitedCompanyPage() {
                   </div>
 
                   {/* Submit */}
-                  <div className="pt-6 border-t border-slate-800 space-y-5">
-                    <label className="flex items-start gap-3 text-xs sm:text-sm text-slate-300 cursor-pointer font-medium">
+                  <div className="pt-4 border-t border-slate-800 space-y-4">
+                    <label className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300 cursor-pointer font-medium">
                       <input
                         type="checkbox"
                         checked={termsAccepted}
                         onChange={(e) => setTermsAccepted(e.target.checked)}
-                        className="mt-1 w-5 h-5 rounded text-[#FDC902] bg-slate-900 border-slate-700"
+                        className="mt-0.5 w-4 h-4 rounded text-[#FDC902] bg-slate-900 border-slate-700 shrink-0"
                       />
-                      <span>
+                      <span className="text-[11px] sm:text-xs leading-relaxed">
                         I confirm that the provided incorporation information is accurate and agree to the statutory compliance terms.
                       </span>
                     </label>
 
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-base rounded-2xl shadow-[0_12px_35px_rgba(253,201,2,0.3)] transition-all flex items-center justify-center gap-2.5"
-                    >
-                      <CreditCard className="w-5 h-5" />
-                      <span>
-                        {isSubmitting
-                          ? "Processing..."
-                          : paymentMethod === "PAYSTACK"
-                          ? `Pay Online with Paystack (${pricing.formattedTotal})`
-                          : `Submit Application via Transfer (${pricing.formattedTotal})`}
-                      </span>
-                    </button>
+                    <div className="flex justify-center">
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-auto inline-flex items-center justify-center px-6 py-3.5 sm:px-8 sm:py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-[0_8px_25px_rgba(253,201,2,0.25)] transition-all gap-2"
+                      >
+                        <CreditCard className="w-4 h-4" />
+                        <span>
+                          {isSubmitting
+                            ? "Processing..."
+                            : paymentMethod === "PAYSTACK"
+                            ? `Pay Online with Paystack (${pricing.formattedTotal})`
+                            : `Submit Application via Transfer (${pricing.formattedTotal})`}
+                        </span>
+                      </button>
+                    </div>
                   </div>
                 </form>
               </div>
 
               {/* Real-Time Digital Receipt Sidebar */}
-              <div className="lg:col-span-5 sticky top-28 space-y-6">
+              <div className="lg:col-span-5 sticky top-28 space-y-5">
                 <DigitalReceipt
                   packageType={packageChoice}
                   basePrice={pricing.basePrice}
@@ -1229,18 +1231,18 @@ export default function LimitedCompanyPage() {
                   }
                 />
 
-                <div className="p-6 bg-[#0f172a] rounded-3xl border border-slate-800 text-sm text-slate-300 space-y-3 shadow-xl">
-                  <span className="font-black text-white text-base block">Direct Founder Inquiry</span>
-                  <p className="leading-relaxed">
+                <div className="p-4 sm:p-6 bg-[#0f172a] rounded-2xl sm:rounded-3xl border border-slate-800 text-xs sm:text-sm text-slate-300 space-y-2.5 shadow-xl">
+                  <span className="font-black text-white text-sm sm:text-base block">Direct Founder Inquiry</span>
+                  <p className="leading-relaxed text-xs sm:text-sm">
                     Have a question before submitting? You can speak directly with Harrison Mosco on WhatsApp to verify proposed names and share structures.
                   </p>
                   <a
                     href="https://wa.me/2348137092154?text=Hello%20Harrison%2C%20I%20am%20reviewing%20the%20Limited%20Company%20page%20and%20need%20clarification."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#FDC902] font-black hover:underline"
+                    className="inline-flex items-center gap-1.5 text-[#FDC902] font-black hover:underline text-xs sm:text-sm"
                   >
-                    <Phone className="w-4 h-4" />
+                    <Phone className="w-3.5 h-3.5" />
                     <span>Talk to Harrison on WhatsApp &rarr;</span>
                   </a>
                 </div>

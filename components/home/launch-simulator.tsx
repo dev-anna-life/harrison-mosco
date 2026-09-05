@@ -89,26 +89,26 @@ Please confirm availability and let's get started.`;
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Reveal type="up" duration={0.8}>
-          <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-16">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[11px] sm:text-xs font-black uppercase tracking-wider mb-3 sm:mb-4">
+          <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-14">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[10px] sm:text-xs font-black uppercase tracking-wider mb-2.5 sm:mb-3">
               <Sliders className="w-3.5 h-3.5" />
               <span>Interactive Cost Calculator</span>
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+            <h2 className="text-xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
               Configure Your Custom Launch and Automation Setup
             </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-slate-300 mt-3 sm:mt-4 leading-relaxed max-w-2xl mx-auto font-normal">
+            <p className="text-xs sm:text-base text-slate-300 mt-2 sm:mt-3 leading-relaxed max-w-2xl mx-auto font-normal">
               Adjust your authorized share capital, add our dedicated marketing video deliverables, and inspect your itemized government and legal breakdown live.
             </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           {/* Controls Column */}
-          <div className="lg:col-span-7 bg-[#0f172a] p-5 sm:p-10 rounded-2xl sm:rounded-3xl border border-slate-800 space-y-6 sm:space-y-8 shadow-xl">
+          <div className="lg:col-span-7 bg-[#0f172a] p-4 sm:p-7 rounded-2xl sm:rounded-3xl border border-slate-800 space-y-5 sm:space-y-7 shadow-xl">
             {/* 1. Proposed Name */}
             <div>
-              <label className="block text-xs sm:text-sm font-black uppercase tracking-wider text-slate-200 mb-2">
+              <label className="block text-xs sm:text-sm font-black uppercase tracking-wider text-slate-200 mb-1.5">
                 1. Proposed Business Name
               </label>
               <input
@@ -116,36 +116,36 @@ Please confirm availability and let's get started.`;
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
                 placeholder="Enter proposed name (e.g. Apex Logistics)"
-                className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-[#0a0e17] border-2 border-slate-700 rounded-xl sm:rounded-2xl text-white font-bold focus:border-[#FDC902] focus:outline-none text-sm sm:text-lg"
+                className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border-2 border-slate-700 rounded-xl text-white font-bold focus:border-[#FDC902] focus:outline-none text-xs sm:text-base"
               />
             </div>
 
             {/* 2. Package Tier Selector */}
             <div>
-              <label className="block text-xs sm:text-sm font-black uppercase tracking-wider text-slate-200 mb-2">
+              <label className="block text-xs sm:text-sm font-black uppercase tracking-wider text-slate-200 mb-1.5">
                 2. Select Core Package Tier
               </label>
-              <div className="grid grid-cols-3 gap-2 sm:gap-4">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 {(["Starter", "Pro", "Premium"] as LimitedPackageType[]).map((pkg) => (
                   <button
                     key={pkg}
                     type="button"
                     onClick={() => setPackageType(pkg)}
-                    className={`p-3 sm:p-5 rounded-xl sm:rounded-2xl border-2 text-left transition-all ${
+                    className={`p-2.5 sm:p-4 rounded-xl border-2 text-left transition-all ${
                       packageType === pkg
                         ? "bg-[#141d33] border-[#FDC902] text-white shadow-[0_4px_20px_rgba(253,201,2,0.2)]"
                         : "bg-[#0a0e17] border-slate-800 text-slate-400 hover:text-white"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs sm:text-sm font-black">{pkg}</span>
+                      <span className="text-[11px] sm:text-xs font-black">{pkg}</span>
                       {pkg === "Pro" && (
-                        <span className="text-[9px] sm:text-[10px] bg-[#FDC902] text-slate-950 font-black px-1.5 py-0.5 rounded uppercase">
+                        <span className="text-[8px] sm:text-[9px] bg-[#FDC902] text-slate-950 font-black px-1 py-0.2 rounded uppercase">
                           Hot
                         </span>
                       )}
                     </div>
-                    <div className="text-sm sm:text-xl font-black text-[#FDC902] mt-1.5 sm:mt-2">
+                    <div className="text-xs sm:text-base font-black text-[#FDC902] mt-1">
                       {pkg === "Starter" ? "NGN 60k" : pkg === "Pro" ? "NGN 100k" : "NGN 350k"}
                     </div>
                   </button>

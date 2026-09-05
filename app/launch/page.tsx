@@ -61,7 +61,7 @@ export default function UltimateLaunchPage() {
       <div className="glow-orb w-[500px] h-[500px] bg-emerald-500/10 bottom-1/4 left-10" />
 
       {/* Hero */}
-      <section className="py-12 sm:py-28 border-b border-slate-800 relative z-10 overflow-hidden">
+      <section className="py-10 sm:py-24 border-b border-slate-800 relative z-10 overflow-hidden">
         {/* Luxury Obsidian Architectural Background Texture */}
         <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
           <Image
@@ -74,19 +74,19 @@ export default function UltimateLaunchPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17]/90 via-[#0a0e17]/70 to-[#0a0e17]" />
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-8 relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5 sm:space-y-7 relative z-10">
           <Reveal type="down" duration={0.6}>
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[11px] sm:text-xs font-black uppercase tracking-wider">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[10px] sm:text-xs font-black uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-[#FDC902] shrink-0" />
               <span>Turnkey Enterprise Suite</span>
             </span>
           </Reveal>
 
           <Reveal type="up" delay={150} duration={0.8}>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-[1.15]">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.2]">
               Ultimate Nigerian Business Launch Package
             </h1>
-            <p className="text-sm sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed mt-3 sm:mt-4 font-normal">
+            <p className="text-xs sm:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed mt-2.5 sm:mt-3 font-normal">
               Incorporate, brand, legally protect, and automate your Nigerian enterprise under one coordinated legal desk.
               A comprehensive launch solution designed for ambitious founders, diaspora investors, and growing corporate bodies.
             </p>
@@ -94,20 +94,20 @@ export default function UltimateLaunchPage() {
 
           {/* Pricing Box */}
           <Reveal type="scale" delay={300} duration={0.8}>
-            <div className="p-6 sm:p-10 lg:p-12 bg-[#0f172a] rounded-3xl border-2 border-slate-700/80 max-w-lg mx-auto shadow-2xl space-y-2.5 sm:space-y-3">
-              <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#FDC902] block">
+            <div className="p-5 sm:p-8 bg-[#0f172a] rounded-2xl sm:rounded-3xl border-2 border-slate-700/80 max-w-md mx-auto shadow-2xl space-y-2 sm:space-y-2.5">
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-[#FDC902] block">
                 All-Inclusive Enterprise Fee
               </span>
-              <div className="text-3xl sm:text-5xl font-black text-[#FDC902]">NGN 1,000,000</div>
-              <p className="text-xs sm:text-sm text-slate-400">Inclusive of 7.5% VAT and statutory government filing fees</p>
-              <div className="mt-5 pt-5 sm:mt-6 sm:pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-around gap-2 text-xs sm:text-sm text-slate-300 font-bold">
-                <span className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#FDC902] shrink-0" />
-                  <span>10 to 21 Working Days</span>
+              <div className="text-2xl sm:text-4xl font-black text-[#FDC902]">NGN 1,000,000</div>
+              <p className="text-[11px] sm:text-xs text-slate-400 font-normal">Inclusive of 7.5% VAT and statutory government filing fees</p>
+              <div className="mt-4 pt-4 sm:mt-5 sm:pt-5 border-t border-slate-800 flex flex-row items-center justify-around gap-2 text-xs sm:text-sm text-slate-300 font-bold">
+                <span className="flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-[#FDC902] shrink-0" />
+                  <span>10 to 21 Days</span>
                 </span>
-                <span className="hidden sm:inline">•</span>
-                <span className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>•</span>
+                <span className="flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>Certified Execution</span>
                 </span>
               </div>
@@ -115,21 +115,21 @@ export default function UltimateLaunchPage() {
           </Reveal>
 
           <Reveal type="up" delay={450} duration={0.8}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 pt-2 sm:pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 pt-2">
               <a
                 href="https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20am%20interested%20in%20the%20Ultimate%20Nigeria%20Business%20Launch%20Package%20(NGN%201%2C000%2C000).%20Let's%20discuss%20my%20onboarding."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-base rounded-2xl shadow-[0_12px_35px_rgba(253,201,2,0.3)] transition-all flex items-center justify-center gap-2 sm:gap-3"
+                className="w-auto inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-[0_8px_25px_rgba(253,201,2,0.25)] transition-all gap-2"
               >
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                <Phone className="w-4 h-4 shrink-0" />
                 <span>Initiate Launch Onboarding via WhatsApp</span>
               </a>
               <Link
                 href="/book"
-                className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/60 text-white font-bold text-xs sm:text-base rounded-2xl transition-all text-center"
+                className="w-auto inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3.5 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/60 text-white font-bold text-xs sm:text-sm rounded-xl transition-all text-center"
               >
-                Schedule Founder Discovery Session
+                Schedule Discovery Session
               </Link>
             </div>
           </Reveal>

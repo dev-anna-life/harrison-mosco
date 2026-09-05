@@ -110,67 +110,71 @@ export function NameCheckerLead() {
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={status === "checking"}
-            className="w-full py-3.5 sm:py-4.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-sm sm:text-base transition-all shadow-[0_6px_25px_rgba(253,201,2,0.25)] flex items-center justify-center gap-2"
-          >
-            <Search className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span>{status === "checking" ? "Running CAC Algorithm..." : "Check Name Availability & Reserve Now"}</span>
-          </button>
+          <div className="flex justify-center sm:justify-start">
+            <button
+              type="submit"
+              disabled={status === "checking"}
+              className="w-auto inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all shadow-[0_6px_20px_rgba(253,201,2,0.2)] gap-2"
+            >
+              <Search className="w-4 h-4" />
+              <span>{status === "checking" ? "Running CAC Check..." : "Check Availability & Reserve Now"}</span>
+            </button>
+          </div>
         </form>
       ) : (
         <div className="mt-5 sm:mt-8 p-4 sm:p-6 rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-4 sm:space-y-5 animate-fadeIn">
           {status === "available" ? (
             <div className="space-y-3 sm:space-y-4">
-              <div className="flex items-center gap-2.5 sm:gap-3 text-emerald-400 font-black text-base sm:text-lg">
-                <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
+              <div className="flex items-center gap-2.5 sm:gap-3 text-emerald-400 font-black text-sm sm:text-base">
+                <CheckCircle2 className="w-5 h-5 shrink-0" />
                 <span>Great News! &ldquo;{proposedName}&rdquo; Appears Distinctive &amp; Registrable</span>
               </div>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                 Our initial statutory check shows this name does not conflict with common restricted federal prefixes. We have dispatched this inquiry to Harrison Mosco to lock in your priority reservation.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1">
                 <a
                   href={whatsappReservationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-3 sm:px-6 sm:py-3.5 bg-[#25D366] hover:bg-emerald-600 text-white font-black rounded-xl text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-md text-center"
+                  className="w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 bg-[#25D366] hover:bg-emerald-600 text-white font-black rounded-xl text-xs sm:text-sm transition-all gap-2 shadow-md text-center"
                 >
                   <Phone className="w-4 h-4" />
                   <span>Lock In Name on WhatsApp &rarr;</span>
                 </a>
                 <Link
                   href="/limited#application"
-                  className="px-5 py-3 sm:px-6 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all flex items-center justify-center gap-2 text-center"
+                  className="w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all gap-2 text-center"
                 >
-                  <span>Start Complete Limited Company Filing</span>
+                  <span>Start Complete Filing</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
           ) : (
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 text-amber-400 font-black text-lg">
-                <AlertCircle className="w-6 h-6 shrink-0" />
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex items-center gap-2.5 text-amber-400 font-black text-sm sm:text-base">
+                <AlertCircle className="w-5 h-5 shrink-0" />
                 <span>Advisory Notice: &ldquo;{proposedName}&rdquo; Contains Special Statutory Words</span>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                 Names containing words like &quot;National&quot;, &quot;Federal&quot;, or &quot;Group&quot; require specialized consent and higher share capital thresholds under CAMA 2020. Our legal team can help you restructure it to pass CAC screening without query.
               </p>
-              <a
-                href={whatsappReservationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-sm transition-all"
-              >
-                <Phone className="w-4 h-4" />
-                <span>Restructure Name with Harrison Mosco</span>
-              </a>
+              <div className="pt-1">
+                <a
+                  href={whatsappReservationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span>Restructure Name with Harrison Mosco</span>
+                </a>
+              </div>
             </div>
           )}
 
-          <div className="pt-3 border-t border-slate-800">
+          <div className="pt-2 border-t border-slate-800">
             <button
               onClick={() => setStatus("idle")}
               className="text-xs text-slate-400 hover:text-white underline font-semibold"

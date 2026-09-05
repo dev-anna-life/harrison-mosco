@@ -75,27 +75,27 @@ export function LivePreviewer() {
         {/* Mockup Box */}
         <div className="max-w-5xl mx-auto">
           {/* Tabs */}
-          <div className="flex flex-col xs:flex-row justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-5 sm:mb-8">
             <button
               onClick={() => setActiveTab("certificate")}
-              className={`w-full xs:w-auto px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-2xl text-xs sm:text-base font-black transition-all flex items-center justify-center gap-2 ${
+              className={`w-auto inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 rounded-xl text-xs sm:text-sm font-black transition-all gap-2 ${
                 activeTab === "certificate"
-                  ? "bg-[#FDC902] text-slate-950 shadow-[0_4px_25px_rgba(253,201,2,0.3)]"
+                  ? "bg-[#FDC902] text-slate-950 shadow-[0_4px_20px_rgba(253,201,2,0.25)]"
                   : "bg-slate-900 text-slate-300 hover:text-white border border-slate-800"
               }`}
             >
-              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ShieldCheck className="w-4 h-4" />
               <span>Official CAC Certificate</span>
             </button>
             <button
               onClick={() => setActiveTab("receipt")}
-              className={`w-full xs:w-auto px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl sm:rounded-2xl text-xs sm:text-base font-black transition-all flex items-center justify-center gap-2 ${
+              className={`w-auto inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 rounded-xl text-xs sm:text-sm font-black transition-all gap-2 ${
                 activeTab === "receipt"
-                  ? "bg-[#FDC902] text-slate-950 shadow-[0_4px_25px_rgba(253,201,2,0.3)]"
+                  ? "bg-[#FDC902] text-slate-950 shadow-[0_4px_20px_rgba(253,201,2,0.25)]"
                   : "bg-slate-900 text-slate-300 hover:text-white border border-slate-800"
               }`}
             >
-              <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
+              <FileText className="w-4 h-4" />
               <span>Automated Receipt</span>
             </button>
           </div>
@@ -213,18 +213,18 @@ export function LivePreviewer() {
           )}
 
           {/* Action CTAs & Download Option */}
-          <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div className="mt-6 sm:mt-10 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4">
             <Link
               href="/limited#application"
-              className="w-full sm:w-auto px-6 sm:px-10 py-3.5 sm:py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-base rounded-xl sm:rounded-2xl shadow-[0_8px_30px_rgba(253,201,2,0.3)] transition-all flex items-center justify-center gap-2 text-center"
+              className="w-auto inline-flex items-center justify-center px-5 py-2.5 sm:px-8 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-[0_8px_25px_rgba(253,201,2,0.25)] transition-all gap-2 text-center"
             >
               <span>Register &quot;{displayLimitedName}&quot; Now</span>
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ArrowRight className="w-4 h-4" />
             </Link>
 
             <button
               onClick={handleDownloadCertificatePDF}
-              className="w-full sm:w-auto px-5 sm:px-8 py-3.5 sm:py-4 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/50 text-white font-bold text-xs sm:text-base rounded-xl sm:rounded-2xl transition-all flex items-center justify-center gap-2"
+              className="w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/50 text-white font-bold text-xs sm:text-sm rounded-xl transition-all gap-2"
             >
               <Download className="w-4 h-4 text-[#FDC902]" />
               <span>Download Preview PDF</span>
@@ -234,7 +234,7 @@ export function LivePreviewer() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-5 sm:px-8 py-3.5 sm:py-4 bg-[#25D366] hover:bg-emerald-600 text-white font-bold text-xs sm:text-base rounded-xl sm:rounded-2xl transition-all flex items-center justify-center gap-2"
+              className="w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 bg-[#25D366] hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm rounded-xl transition-all gap-2"
             >
               <Phone className="w-4 h-4" />
               <span>Verify on WhatsApp</span>

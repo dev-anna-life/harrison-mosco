@@ -104,7 +104,7 @@ export default function SingleServicesPage() {
       <div className="glow-orb w-[600px] h-[600px] bg-[#FDC902]/8 top-0 right-1/3" />
 
       {/* Hero */}
-      <section className="py-12 sm:py-28 border-b border-slate-800 relative z-10 overflow-hidden">
+      <section className="py-10 sm:py-24 border-b border-slate-800 relative z-10 overflow-hidden">
         {/* Luxury Obsidian Ambient Background */}
         <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
           <Image
@@ -117,19 +117,19 @@ export default function SingleServicesPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17]/90 via-[#0a0e17]/70 to-[#0a0e17]" />
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5 sm:space-y-6 relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-6 relative z-10">
           <Reveal type="down" duration={0.6}>
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[11px] sm:text-xs font-black uppercase tracking-wider">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[10px] sm:text-xs font-black uppercase tracking-wider">
               <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902] shrink-0" />
               <span>A La Carte Compliance &amp; Legal Desk</span>
             </span>
           </Reveal>
 
           <Reveal type="up" delay={150} duration={0.8}>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15]">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.2]">
               Individual Compliance Services
             </h1>
-            <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mt-3 sm:mt-4 font-normal">
+            <p className="text-xs sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed mt-2.5 sm:mt-3 font-normal">
               Order single compliance certificates, federal trademark filings, tax portal integrations, or post-incorporation updates without purchasing a full package.
             </p>
           </Reveal>
@@ -137,7 +137,7 @@ export default function SingleServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 sm:py-32 bg-[#070b13] relative overflow-hidden">
+      <section className="py-12 sm:py-24 bg-[#070b13] relative overflow-hidden">
         {/* Ambient Corporate Skyline Background */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <Image
@@ -150,53 +150,53 @@ export default function SingleServicesPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {services.map((svc, idx) => (
               <Reveal key={svc.id} type="up" delay={idx * 100} duration={0.8}>
                 <HoverCard>
                   <div
                     id={svc.id}
-                    className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-[#0f172a] border border-slate-800 hover:border-[#FDC902]/50 transition-card shadow-2xl flex flex-col justify-between h-full"
+                    className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#0f172a] border border-slate-800 hover:border-[#FDC902]/50 transition-card shadow-xl flex flex-col justify-between h-full"
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-[#FDC902]">
+                        <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-[#FDC902]">
                           {svc.category}
                         </span>
-                        <span className="text-[10px] sm:text-xs text-slate-400 font-mono font-bold bg-[#0a0e17] px-2.5 py-1 rounded-md border border-slate-800 shrink-0">
+                        <span className="text-[10px] sm:text-xs text-slate-400 font-mono font-bold bg-[#0a0e17] px-2 py-0.5 rounded border border-slate-800 shrink-0">
                           {svc.turnaround}
                         </span>
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-black text-white mt-3 sm:mt-4">{svc.title}</h3>
-                      <div className="text-2xl sm:text-3xl font-black text-[#FDC902] mt-2 sm:mt-3">
+                      <h3 className="text-lg sm:text-xl font-black text-white mt-2.5 sm:mt-3">{svc.title}</h3>
+                      <div className="text-xl sm:text-2xl font-black text-[#FDC902] mt-1.5 sm:mt-2">
                         {formatNGN(svc.price)}
                       </div>
 
-                      <p className="text-xs sm:text-sm text-slate-300 mt-3 sm:mt-4 leading-relaxed font-normal">
+                      <p className="text-xs sm:text-sm text-slate-300 mt-2 sm:mt-3 leading-relaxed font-normal">
                         {svc.description}
                       </p>
 
-                      <ul className="mt-5 sm:mt-6 space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-slate-200 border-t border-slate-800/80 pt-4 sm:pt-5 font-bold">
+                      <ul className="mt-4 sm:mt-5 space-y-2 text-xs sm:text-sm text-slate-200 border-t border-slate-800/80 pt-3.5 sm:pt-4 font-bold">
                         {svc.highlights.map((h, i) => (
-                          <li key={i} className="flex items-center gap-2 sm:gap-2.5">
-                            <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
+                          <li key={i} className="flex items-center gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FDC902] shrink-0" />
                             <span>{h}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-slate-800">
+                    <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-slate-800">
                       <a
                         href={`https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20want%20to%20order%20the%20${encodeURIComponent(
                           svc.title
                         )}%20(${formatNGN(svc.price)}).`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-3.5 sm:py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-[0_6px_25px_rgba(253,201,2,0.25)]"
+                        className="w-full py-2.5 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(253,201,2,0.2)]"
                       >
-                        <Phone className="w-4 h-4 shrink-0" />
+                        <Phone className="w-3.5 h-3.5 shrink-0" />
                         <span>Order via WhatsApp ({formatNGN(svc.price)})</span>
                       </a>
                     </div>
