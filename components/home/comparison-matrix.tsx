@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { X, Check, Zap } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -34,8 +35,19 @@ export function ComparisonMatrix() {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-[#070b13] border-b border-slate-800 text-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 sm:py-32 bg-[#070b13] border-b border-slate-800 text-white relative overflow-hidden">
+      {/* Corporate Skyline Ambient Background */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <Image
+          src="/images/bg-corporate-skyline.jpg"
+          alt="Corporate Skyline"
+          fill
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070b13] via-[#070b13]/85 to-[#070b13]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Reveal type="up" duration={0.8}>
           <div className="text-center max-w-4xl mx-auto mb-16">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider mb-4">

@@ -241,8 +241,20 @@ export default function LimitedCompanyPage() {
       <div className="glow-orb w-[500px] h-[500px] bg-emerald-500/8 top-1/2 left-0" />
 
       {/* Hero Section */}
-      <section className="py-20 sm:py-28 border-b border-slate-800 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 sm:py-28 border-b border-slate-800 relative z-10 overflow-hidden">
+        {/* Ambient Corporate Skyline Background Texture */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <Image
+            src="/images/bg-corporate-skyline.jpg"
+            alt="Corporate Skyline Background"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17]/90 via-[#0a0e17]/70 to-[#0a0e17]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <Reveal type="left" duration={0.8} className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
@@ -286,19 +298,19 @@ export default function LimitedCompanyPage() {
               </div>
             </Reveal>
 
-            {/* Right Card */}
+            {/* Right Card (Uncropped Leadership Framing) */}
             <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-5">
               <HoverCard>
                 <div className="bg-[#0f172a] rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 shadow-2xl overflow-hidden space-y-6">
-                  <div className="relative h-48 sm:h-56 w-full">
+                  <div className="relative h-60 sm:h-64 w-full">
                     <Image
                       src="/images/executive-office.jpg"
                       alt="Corporate Limited Company Filing"
                       fill
-                      className="object-cover object-center"
+                      className="object-cover object-top"
                       sizes="(max-width: 768px) 100vw, 40vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/30 to-transparent" />
                     <div className="absolute bottom-4 left-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
                       <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902]" />
                       <span>Corporate Standard</span>

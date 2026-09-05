@@ -23,8 +23,20 @@ export default function AboutPage() {
       <div className="glow-orb w-[500px] h-[500px] bg-emerald-500/8 bottom-1/3 left-0" />
 
       {/* Hero */}
-      <section className="py-20 sm:py-28 border-b border-slate-800 relative z-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <section className="py-20 sm:py-28 border-b border-slate-800 relative z-10 overflow-hidden">
+        {/* Luxury Obsidian Ambient Background */}
+        <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
+          <Image
+            src="/images/bg-luxury-obsidian.jpg"
+            alt="Luxury Obsidian Architecture"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17]/90 via-[#0a0e17]/70 to-[#0a0e17]" />
+        </div>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <Reveal type="down" duration={0.6}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
               <Award className="w-4 h-4 text-[#FDC902]" />
@@ -44,8 +56,19 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy & Executive Leadership Section (Single Dedicated Image: Executive Leader) */}
-      <section className="py-24 sm:py-32 bg-[#070b13]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      <section className="py-24 sm:py-32 bg-[#070b13] relative overflow-hidden">
+        {/* Ambient Corporate Skyline Background */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <Image
+            src="/images/bg-corporate-skyline.jpg"
+            alt="Corporate Skyline Background"
+            fill
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070b13] via-[#070b13]/85 to-[#070b13]" />
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <Reveal type="left" duration={0.8} className="space-y-6">
               <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
@@ -74,20 +97,20 @@ export default function AboutPage() {
               </div>
             </Reveal>
 
-            {/* The Executive Leader Image */}
+            {/* The Executive Leader Image (Strictly Single Leadership Photo, Uncropped) */}
             <Reveal type="right" delay={200} duration={0.8}>
               <HoverCard>
                 <div className="rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 overflow-hidden shadow-2xl bg-[#0f172a] relative">
-                  <div className="relative h-96 sm:h-[450px] w-full">
+                  <div className="relative h-96 sm:h-[480px] lg:h-[520px] w-full">
                     <Image
                       src="/images/executive-office.jpg"
-                      alt="Harrison Mosco Executive Boardroom Leadership"
+                      alt="Harrison Mosco Executive Leadership in Corner Office"
                       fill
-                      className="object-cover object-center"
+                      className="object-cover object-top"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent opacity-90" />
                     <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800 space-y-1">
                       <strong className="text-white text-sm sm:text-base font-black block">
                         Accredited Corporate Affairs Commission Governance

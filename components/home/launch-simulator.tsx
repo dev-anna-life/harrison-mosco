@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   calculateLimitedCompanyPrice,
@@ -72,8 +73,21 @@ Please confirm availability and let's get started.`;
   const whatsappUrl = `https://wa.me/2348137092154?text=${encodeURIComponent(whatsappPayload)}`;
 
   return (
-    <section className="py-24 sm:py-32 bg-[#0a0e17] border-b border-slate-800 text-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 sm:py-32 bg-[#0a0e17] border-b border-slate-800 text-white relative overflow-hidden">
+      {/* Luxury Obsidian Ambient Background Texture */}
+      <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
+        <Image
+          src="/images/bg-luxury-obsidian.jpg"
+          alt="Fintech & Automation Obsidian Texture"
+          fill
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17] via-[#0a0e17]/80 to-[#0a0e17]" />
+      </div>
+
+      <div className="glow-orb w-[500px] h-[500px] bg-[#FDC902]/8 top-10 right-10" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Reveal type="up" duration={0.8}>
           <div className="text-center max-w-4xl mx-auto mb-16">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider mb-4">

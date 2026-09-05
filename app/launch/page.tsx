@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Sparkles,
@@ -11,6 +12,7 @@ import {
   ArrowRight,
   Phone,
   Lock,
+  Layers,
 } from "lucide-react";
 import { formatNGN } from "@/lib/pricing-engine";
 import { Reveal } from "@/components/motion/Reveal";
@@ -54,11 +56,25 @@ export default function UltimateLaunchPage() {
 
   return (
     <div className="bg-[#0a0e17] text-white min-h-screen relative overflow-hidden">
-      <div className="glow-orb w-[600px] h-[600px] bg-[#FDC902]/8 top-0 right-1/4" />
+      {/* Ambient Orbs */}
+      <div className="glow-orb w-[600px] h-[600px] bg-[#FDC902]/10 top-0 right-1/4" />
+      <div className="glow-orb w-[500px] h-[500px] bg-emerald-500/10 bottom-1/4 left-10" />
 
       {/* Hero */}
-      <section className="py-20 sm:py-28 border-b border-slate-800 relative z-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <section className="py-20 sm:py-28 border-b border-slate-800 relative z-10 overflow-hidden">
+        {/* Luxury Obsidian Architectural Background Texture */}
+        <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
+          <Image
+            src="/images/bg-luxury-obsidian.jpg"
+            alt="Luxury Architecture Texture"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17]/90 via-[#0a0e17]/70 to-[#0a0e17]" />
+        </div>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative z-10">
           <Reveal type="down" duration={0.6}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
               <Sparkles className="w-4 h-4 text-[#FDC902]" />
@@ -121,8 +137,19 @@ export default function UltimateLaunchPage() {
       </section>
 
       {/* Feature Grid */}
-      <section className="py-24 sm:py-32 bg-[#070b13]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 sm:py-32 bg-[#070b13] relative overflow-hidden">
+        {/* Corporate Skyline Ambient Background */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <Image
+            src="/images/bg-corporate-skyline.jpg"
+            alt="Corporate Skyline Background"
+            fill
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070b13] via-[#070b13]/85 to-[#070b13]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <Reveal type="up" duration={0.8}>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block mb-2">
@@ -136,6 +163,81 @@ export default function UltimateLaunchPage() {
               </p>
             </div>
           </Reveal>
+
+          {/* Visual Deliverables Showcase (Uncropped 16:9 Cards) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <Reveal type="left" delay={100} duration={0.8}>
+              <div className="rounded-3xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-2xl space-y-4">
+                <div className="relative h-48 sm:h-52 w-full">
+                  <Image
+                    src="/images/reels/brand-launch-ai.jpg"
+                    alt="Corporate Brand Identity and Media Deliverables"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent" />
+                  <span className="absolute top-3 left-3 text-[10px] font-black uppercase text-[#FDC902] bg-slate-950/80 px-3 py-1 rounded-full border border-[#FDC902]/30 backdrop-blur-sm">
+                    Visual Identity
+                  </span>
+                </div>
+                <div className="p-6 pt-0 space-y-2">
+                  <h4 className="text-lg font-black text-white">Executive Brand System</h4>
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    Logo suite, 12-page company profile, stationery templates, and high-impact social media video commercials.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal type="up" delay={200} duration={0.8}>
+              <div className="rounded-3xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-2xl space-y-4">
+                <div className="relative h-48 sm:h-52 w-full">
+                  <Image
+                    src="/images/reels/fintech-ai.jpg"
+                    alt="Live Automated Invoicing and Billing Operations"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent" />
+                  <span className="absolute top-3 left-3 text-[10px] font-black uppercase text-emerald-400 bg-slate-950/80 px-3 py-1 rounded-full border border-emerald-500/30 backdrop-blur-sm">
+                    Automated Operations
+                  </span>
+                </div>
+                <div className="p-6 pt-0 space-y-2">
+                  <h4 className="text-lg font-black text-white">Automated WhatsApp Receipts</h4>
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    Real-time payment triggers that issue branded customer receipts directly to WhatsApp and email in two seconds.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal type="right" delay={300} duration={0.8}>
+              <div className="rounded-3xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-2xl space-y-4">
+                <div className="relative h-48 sm:h-52 w-full">
+                  <Image
+                    src="/images/reels/real-estate-ai.jpg"
+                    alt="Enterprise Corporate Legal and SCUML Protection"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent" />
+                  <span className="absolute top-3 left-3 text-[10px] font-black uppercase text-[#FDC902] bg-slate-950/80 px-3 py-1 rounded-full border border-[#FDC902]/30 backdrop-blur-sm">
+                    Statutory Protection
+                  </span>
+                </div>
+                <div className="p-6 pt-0 space-y-2">
+                  <h4 className="text-lg font-black text-white">SCUML, Trademark &amp; CAC</h4>
+                  <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    Anti-money laundering clearance, nationwide trademark ownership, and certified limited company incorporation.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {launchFeatures.map((feat, idx) => (

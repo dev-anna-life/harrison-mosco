@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ShieldCheck,
@@ -103,8 +104,20 @@ export default function SingleServicesPage() {
       <div className="glow-orb w-[600px] h-[600px] bg-[#FDC902]/8 top-0 right-1/3" />
 
       {/* Hero */}
-      <section className="py-20 sm:py-28 border-b border-slate-800 relative z-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <section className="py-20 sm:py-28 border-b border-slate-800 relative z-10 overflow-hidden">
+        {/* Luxury Obsidian Ambient Background */}
+        <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
+          <Image
+            src="/images/bg-luxury-obsidian.jpg"
+            alt="Luxury Obsidian Architecture"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17]/90 via-[#0a0e17]/70 to-[#0a0e17]" />
+        </div>
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
           <Reveal type="down" duration={0.6}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-[#FDC902]" />
@@ -124,8 +137,19 @@ export default function SingleServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 sm:py-32 bg-[#070b13]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 sm:py-32 bg-[#070b13] relative overflow-hidden">
+        {/* Ambient Corporate Skyline Background */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <Image
+            src="/images/bg-corporate-skyline.jpg"
+            alt="Corporate Skyline"
+            fill
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070b13] via-[#070b13]/85 to-[#070b13]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((svc, idx) => (
               <Reveal key={svc.id} type="up" delay={idx * 100} duration={0.8}>
