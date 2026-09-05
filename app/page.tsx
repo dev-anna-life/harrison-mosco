@@ -162,13 +162,13 @@ export default function HomePage() {
           </Reveal>
 
           {/* Split 1: Legal Foundation */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <Reveal type="left" duration={0.8} className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
                 <Building2 className="w-4 h-4" />
                 <span>01. Statutory Legal Foundation</span>
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
                 CAC Incorporation, SCUML Banking &amp; Trademark Protection
               </h3>
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
@@ -200,56 +200,31 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6">
-              <HoverCard>
-                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
-                  <div className="relative h-80 sm:h-[440px] w-full">
-                    <Image
-                      src="/images/cac-operations-team.jpg"
-                      alt="Nigerian CAC Legal Operations and Document Fulfillment Team"
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902]" />
-                      <span>In-House Legal Fulfillment Team</span>
-                    </div>
-                    <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800">
-                      <strong className="text-white text-sm font-black block">Certified Document Review</strong>
-                      <span className="text-xs text-slate-400">Zero-Query MEMART Drafting &amp; CAC Barcode Verification</span>
-                    </div>
-                  </div>
-                </div>
-              </HoverCard>
+              <div className="w-full relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
+                <Image
+                  src="/images/cac-operations-team.jpg"
+                  alt="Nigerian CAC Legal Operations and Document Fulfillment Team"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </div>
             </Reveal>
           </div>
 
           {/* Split 2: Visual Presentation (Reversed) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <Reveal type="left" delay={200} duration={0.8} className="lg:col-span-6 order-2 lg:order-1">
-              <HoverCard>
-                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
-                  <div className="relative h-80 sm:h-[440px] w-full">
-                    <Image
-                      src="/images/executive-boardroom.jpg"
-                      alt="Executive Corporate Boardroom and Enterprise Branding"
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
-                      <Sparkles className="w-3.5 h-3.5 text-[#FDC902]" />
-                      <span>Executive Brand Architecture</span>
-                    </div>
-                    <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800">
-                      <strong className="text-white text-sm font-black block">Turnkey Corporate Presentation</strong>
-                      <span className="text-xs text-slate-400">12-Page Profile • Executive Logo • Studio Video Commercial</span>
-                    </div>
-                  </div>
-                </div>
-              </HoverCard>
+              <div className="w-full relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
+                <Image
+                  src="/images/executive-boardroom.jpg"
+                  alt="Executive Corporate Boardroom and Enterprise Branding"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </Reveal>
 
             <Reveal type="right" duration={0.8} className="lg:col-span-6 space-y-6 order-1 lg:order-2">
@@ -257,7 +232,7 @@ export default function HomePage() {
                 <Sparkles className="w-4 h-4" />
                 <span>02. Visual Presentation</span>
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
                 Corporate Branding, Company Profile &amp; Video Media
               </h3>
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
@@ -289,13 +264,13 @@ export default function HomePage() {
           </div>
 
           {/* Split 3: Automated Operations */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <Reveal type="left" duration={0.8} className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-black uppercase tracking-wider">
                 <Zap className="w-4 h-4" />
                 <span>03. Automated Operations</span>
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
                 Live WhatsApp Billing, Automated Invoicing &amp; Audit Logs
               </h3>
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
@@ -326,28 +301,15 @@ export default function HomePage() {
             </Reveal>
 
             <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6">
-              <HoverCard>
-                <div className="rounded-3xl border-2 border-slate-800 hover:border-emerald-500/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
-                  <div className="relative h-80 sm:h-[440px] w-full">
-                    <Image
-                      src="/images/automated-invoicing-desk.jpg"
-                      alt="Automated Billing, WhatsApp Receipts and Live Telemetry Desk"
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-emerald-500/40 text-emerald-400 text-xs font-black uppercase">
-                      <Zap className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Live Billing Automation</span>
-                    </div>
-                    <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800">
-                      <strong className="text-white text-sm font-black block">Automated WhatsApp Receipts</strong>
-                      <span className="text-xs text-slate-400">Instant Customer Verification &amp; Cloud Ledger Sync</span>
-                    </div>
-                  </div>
-                </div>
-              </HoverCard>
+              <div className="w-full relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
+                <Image
+                  src="/images/automated-invoicing-desk.jpg"
+                  alt="Automated Billing, WhatsApp Receipts and Live Telemetry Desk"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </Reveal>
           </div>
         </div>

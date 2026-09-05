@@ -73,35 +73,18 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28 relative z-10">
           {/* 1. Founder Spotlight: Who Harrison Mosco is for CAC Purpose */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <Reveal type="left" duration={0.8} className="lg:col-span-6">
-              <HoverCard>
-                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
-                  <div className="relative h-96 sm:h-[480px] lg:h-[520px] w-full">
-                    <Image
-                      src="/images/accredited-consultation.jpg"
-                      alt="Accredited Corporate Affairs Commission Consultation Desk"
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent opacity-90" />
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
-                      <Award className="w-3.5 h-3.5 text-[#FDC902]" />
-                      <span>Accredited CAC Consultant</span>
-                    </div>
-                    <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800 space-y-1">
-                      <strong className="text-white text-sm sm:text-base font-black block">
-                        Direct Corporate Advisory &amp; Certificate Delivery
-                      </strong>
-                      <span className="text-xs text-[#FDC902] font-semibold block">
-                        Port Harcourt Headquarters • Zero-Query Statutory Filing
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </HoverCard>
+              <div className="w-full relative aspect-[16/10] sm:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
+                <Image
+                  src="/images/accredited-consultation.jpg"
+                  alt="Accredited Corporate Affairs Commission Consultation Desk"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </div>
             </Reveal>
 
             <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6 space-y-6">
@@ -149,12 +132,12 @@ export default function AboutPage() {
           </div>
 
           {/* 2. Operations & Fulfillment Desk (Side-by-Side) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <Reveal type="left" duration={0.8} className="lg:col-span-6 space-y-6 order-2 lg:order-1">
               <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
                 02. Operational Execution
               </span>
-              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
                 An In-House Legal Fulfillment Team Behind Every Filing
               </h3>
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
@@ -177,55 +160,37 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6 order-1 lg:order-2">
-              <HoverCard>
-                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
-                  <div className="relative h-80 sm:h-[440px] w-full">
-                    <Image
-                      src="/images/cac-operations-team.jpg"
-                      alt="Harrison Mosco In-House Legal Operations and CAC Fulfillment Team"
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902]" />
-                      <span>In-House Legal Operations Desk</span>
-                    </div>
-                  </div>
-                </div>
-              </HoverCard>
+              <div className="w-full relative aspect-[16/10] sm:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
+                <Image
+                  src="/images/cac-operations-team.jpg"
+                  alt="Harrison Mosco In-House Legal Operations and CAC Fulfillment Team"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </Reveal>
           </div>
 
           {/* 3. Diaspora & Enterprise Infrastructure (Side-by-Side) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <Reveal type="left" duration={0.8} className="lg:col-span-6">
-              <HoverCard>
-                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
-                  <div className="relative h-80 sm:h-[440px] w-full">
-                    <Image
-                      src="/images/executive-boardroom.jpg"
-                      alt="Enterprise Boardroom and Turnkey Launch Infrastructure"
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
-                      <Globe2 className="w-3.5 h-3.5 text-[#FDC902]" />
-                      <span>Diaspora &amp; Enterprise Desk</span>
-                    </div>
-                  </div>
-                </div>
-              </HoverCard>
+              <div className="w-full relative aspect-[16/10] sm:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
+                <Image
+                  src="/images/executive-boardroom.jpg"
+                  alt="Enterprise Boardroom and Turnkey Launch Infrastructure"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </Reveal>
 
             <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6 space-y-6">
               <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
                 03. Cross-Border Capability
               </span>
-              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
                 Built for Nigerian Founders &amp; Diaspora Investors Worldwide
               </h3>
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">

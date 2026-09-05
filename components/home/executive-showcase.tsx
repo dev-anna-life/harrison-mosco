@@ -26,44 +26,18 @@ export function ExecutiveShowcase() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left: Prominent Concierge Reception Desk Image */}
+          {/* Left: Prominent Concierge Reception Desk Image (Uncropped 16:10 Natural Split) */}
           <Reveal type="left" duration={0.8} className="lg:col-span-7">
-            <HoverCard>
-              <div className="bg-[#0f172a] rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative group">
-                <div className="relative h-80 sm:h-[460px] w-full">
-                  <Image
-                    src="/images/concierge-reception.jpg"
-                    alt="Harrison Mosco Corporate Reception and Concierge Desk"
-                    fill
-                    className="object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 1024px) 100vw, 60vw"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
-
-                  {/* Top Floating Badge */}
-                  <div className="absolute top-5 left-5 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/50 text-[#FDC902] text-xs font-black uppercase tracking-wider shadow-xl">
-                    <MapPin className="w-4 h-4 text-[#FDC902]" />
-                    <span>Port Harcourt Headquarters Concierge</span>
-                  </div>
-
-                  {/* Bottom Floating Info Pill */}
-                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-700/80 flex flex-wrap items-center justify-between gap-3 shadow-2xl">
-                    <div>
-                      <strong className="text-white text-sm sm:text-base font-black block">
-                        Direct In-Person &amp; Diaspora Concierge
-                      </strong>
-                      <span className="text-xs text-slate-400 font-medium">
-                        Rockville Place, SARS Road, Port Harcourt • Nationwide Desk
-                      </span>
-                    </div>
-                    <span className="text-xs font-black text-[#FDC902] bg-[#FDC902]/10 px-3 py-1 rounded-lg border border-[#FDC902]/30">
-                      Verified Accredited
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </HoverCard>
+            <div className="w-full relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
+              <Image
+                src="/images/concierge-reception.jpg"
+                alt="Harrison Mosco Corporate Reception and Concierge Desk"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                priority
+              />
+            </div>
           </Reveal>
 
           {/* Right: Content & Executive Advisory */}
