@@ -76,7 +76,7 @@ export async function triggerPaystackCheckout({
   reference,
   customerName = "Valued Customer",
   companyName = "Proposed Entity",
-  publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_test_d3c348982a7f5c76579bb8876a3be81a54593f6c",
+  publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_test_3d8368a8f1ab5464b9eb965a088bad111609f9d9",
   onSuccess,
   onClose,
   onError,

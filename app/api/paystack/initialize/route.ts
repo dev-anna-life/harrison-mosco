@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     }
 
     const paystackSecretKey =
-      process.env.PAYSTACK_SECRET_KEY || "sk_test_614a4c58cf3ff9638c353b3fb3bc8d5306e9ecba";
+      process.env.PAYSTACK_SECRET_KEY || "sk_test_b604b0b52df41d559205f8733c6a9abbe849b538";
 
     // Attempt Paystack API call
     const res = await fetch("https://api.paystack.co/transaction/initialize", {
