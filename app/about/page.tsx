@@ -12,6 +12,9 @@ import {
   Mail,
   Award,
   ArrowRight,
+  Sparkles,
+  Zap,
+  Globe2,
 } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { HoverCard } from "@/components/motion/HoverCard";
@@ -40,7 +43,7 @@ export default function AboutPage() {
           <Reveal type="down" duration={0.6}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
               <Award className="w-4 h-4 text-[#FDC902]" />
-              <span>Accredited Legal &amp; Branding Studio</span>
+              <span>Accredited Corporate Affairs Commission (CAC) Governance</span>
             </span>
           </Reveal>
 
@@ -49,16 +52,16 @@ export default function AboutPage() {
               About Harrison Mosco
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mt-4 font-normal">
-              Harrison Mosco bridges the gap between statutory corporate registration, executive visual branding, and automated digital operations for Nigerian enterprises worldwide.
+              Bridging statutory Nigerian incorporation, banking compliance, executive brand presentation, and automated digital operations for founders worldwide.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Philosophy & Executive Leadership Section (Single Dedicated Image: Executive Leader) */}
+      {/* Main Narrative with Side-by-Side Sections */}
       <section className="py-24 sm:py-32 bg-[#070b13] relative overflow-hidden">
         {/* Ambient Corporate Skyline Background */}
-        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
           <Image
             src="/images/bg-corporate-skyline.jpg"
             alt="Corporate Skyline Background"
@@ -68,25 +71,72 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#070b13] via-[#070b13]/85 to-[#070b13]" />
         </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <Reveal type="left" duration={0.8} className="space-y-6">
-              <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
-                The Core Philosophy
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight">
-                Why Standard Registration Is No Longer Enough
-              </h2>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
-                Registering a company with the CAC gives you legal existence, but it does not give you commercial capability.
-                Founders spend weeks chasing unaccredited agents, then months struggling to get a corporate bank account opened,
-                writing manual paper receipts, and hunting for graphic designers who understand corporate elegance.
-              </p>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
-                Harrison Mosco was created to resolve this breakdown. We combine legal incorporation, SCUML banking compliance,
-                executive brand identity, video marketing reels, and automated customer billing into one seamless, professional engagement.
-              </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28 relative z-10">
+          {/* 1. Founder Spotlight: Who Harrison Mosco is for CAC Purpose */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <Reveal type="left" duration={0.8} className="lg:col-span-6">
+              <HoverCard>
+                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
+                  <div className="relative h-96 sm:h-[480px] lg:h-[520px] w-full">
+                    <Image
+                      src="/images/accredited-consultation.jpg"
+                      alt="Accredited Corporate Affairs Commission Consultation Desk"
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent opacity-90" />
+                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
+                      <Award className="w-3.5 h-3.5 text-[#FDC902]" />
+                      <span>Accredited CAC Consultant</span>
+                    </div>
+                    <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800 space-y-1">
+                      <strong className="text-white text-sm sm:text-base font-black block">
+                        Direct Corporate Advisory &amp; Certificate Delivery
+                      </strong>
+                      <span className="text-xs text-[#FDC902] font-semibold block">
+                        Port Harcourt Headquarters • Zero-Query Statutory Filing
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </HoverCard>
+            </Reveal>
 
+            <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6 space-y-6">
+              <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
+                Principal Leadership &amp; Governance
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+                Meet Harrison Mosco
+              </h2>
+              <h3 className="text-lg sm:text-xl text-[#FDC902] font-bold">
+                Principal Consultant &amp; Accredited Corporate Governance Strategist
+              </h3>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                Harrison Mosco leads the strategic direction and corporate compliance desk at Harrison Mosco. With extensive accreditation and deep experience in Nigerian statutory corporate governance, his work focuses on ensuring ambitious entrepreneurs, corporate bodies, and diaspora investors move from concept to verified market presence without regulatory friction.
+              </p>
+              <div className="space-y-4 pt-2">
+                <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1.5">
+                  <strong className="text-white text-sm font-black flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-[#FDC902]" />
+                    <span>Accredited CAC Governance &amp; Zero-Query Oversight</span>
+                  </strong>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Harrison personally oversees corporate name reservation, object clause drafting, and MEMART share allocation to guarantee 100% compliance with CAMA (Companies and Allied Matters Act) regulations.
+                  </p>
+                </div>
+                <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1.5">
+                  <strong className="text-white text-sm font-black flex items-center gap-2">
+                    <Building2 className="w-4 h-4 text-[#FDC902]" />
+                    <span>End-to-End Statutory Compliance Ecosystem</span>
+                  </strong>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Direct coordination for SCUML anti-money laundering certification with the EFCC/NFIU for commercial banking, NRS Corporate Tax ID (TIN) activation on Rev360, and federal trademark filings.
+                  </p>
+                </div>
+              </div>
               <div className="pt-2">
                 <Link
                   href="/limited"
@@ -96,28 +146,51 @@ export default function AboutPage() {
                 </Link>
               </div>
             </Reveal>
+          </div>
 
-            {/* The Executive Leader Image (Strictly Single Leadership Photo, Uncropped) */}
-            <Reveal type="right" delay={200} duration={0.8}>
+          {/* 2. Operations & Fulfillment Desk (Side-by-Side) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <Reveal type="left" duration={0.8} className="lg:col-span-6 space-y-6 order-2 lg:order-1">
+              <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
+                02. Operational Execution
+              </span>
+              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+                An In-House Legal Fulfillment Team Behind Every Filing
+              </h3>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                We do not outsource your company formation to unverified roadside agents. Our dedicated operational team in Port Harcourt validates director identification, drafts statutory resolutions, and verifies certified true copies directly with the CAC registry.
+              </p>
+              <ul className="space-y-3 pt-2 text-sm sm:text-base text-slate-200 font-bold">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>CAMA-Compliant Articles of Association &amp; Share Structuring</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>Certified Digital True Copy PDFs with Verification Barcodes</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>Dedicated Post-Incorporation Support (Annual Returns &amp; Directorships)</span>
+                </li>
+              </ul>
+            </Reveal>
+
+            <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6 order-1 lg:order-2">
               <HoverCard>
-                <div className="rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 overflow-hidden shadow-2xl bg-[#0f172a] relative">
-                  <div className="relative h-96 sm:h-[480px] lg:h-[520px] w-full">
+                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
+                  <div className="relative h-80 sm:h-[440px] w-full">
                     <Image
-                      src="/images/executive-office.jpg"
-                      alt="Harrison Mosco Executive Leadership in Corner Office"
+                      src="/images/cac-operations-team.jpg"
+                      alt="Harrison Mosco In-House Legal Operations and CAC Fulfillment Team"
                       fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      priority
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent opacity-90" />
-                    <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800 space-y-1">
-                      <strong className="text-white text-sm sm:text-base font-black block">
-                        Accredited Corporate Affairs Commission Governance
-                      </strong>
-                      <span className="text-xs text-[#FDC902] font-semibold block">
-                        Port Harcourt Headquarters • Zero-Query Legal Desk
-                      </span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
+                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902]" />
+                      <span>In-House Legal Operations Desk</span>
                     </div>
                   </div>
                 </div>
@@ -125,76 +198,101 @@ export default function AboutPage() {
             </Reveal>
           </div>
 
-          {/* 3 Commitments */}
-          <Reveal type="up" delay={200} duration={0.8}>
-            <div className="p-8 sm:p-12 rounded-3xl bg-[#0f172a] border border-slate-800 shadow-xl space-y-6">
-              <h3 className="text-2xl sm:text-3xl font-black text-white">Three Commitments to Every Client</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm sm:text-base text-slate-300 font-medium">
-                <div className="p-5 rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-2">
-                  <div className="flex items-center gap-2.5 text-[#FDC902] font-black">
-                    <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
-                    <span>Zero Rejection Guarantee</span>
+          {/* 3. Diaspora & Enterprise Infrastructure (Side-by-Side) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <Reveal type="left" duration={0.8} className="lg:col-span-6">
+              <HoverCard>
+                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
+                  <div className="relative h-80 sm:h-[440px] w-full">
+                    <Image
+                      src="/images/executive-boardroom.jpg"
+                      alt="Enterprise Boardroom and Turnkey Launch Infrastructure"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
+                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
+                      <Globe2 className="w-3.5 h-3.5 text-[#FDC902]" />
+                      <span>Diaspora &amp; Enterprise Desk</span>
+                    </div>
                   </div>
-                  <p className="text-xs text-slate-400 font-normal leading-relaxed">
-                    Every CAC filing is reviewed by accredited legal professionals before submission to ensure approval without query.
-                  </p>
                 </div>
+              </HoverCard>
+            </Reveal>
 
-                <div className="p-5 rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-2">
-                  <div className="flex items-center gap-2.5 text-[#FDC902] font-black">
-                    <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
-                    <span>True Digital Handover</span>
-                  </div>
-                  <p className="text-xs text-slate-400 font-normal leading-relaxed">
-                    All certificates, MEMART documents, and brand manuals are delivered in high-resolution certified digital format.
-                  </p>
+            <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6 space-y-6">
+              <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
+                03. Cross-Border Capability
+              </span>
+              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+                Built for Nigerian Founders &amp; Diaspora Investors Worldwide
+              </h3>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                Diaspora entrepreneurs in the UK, US, Canada, and EU face significant challenges establishing Nigerian businesses—from opaque timelines to lack of physical trust. Harrison Mosco eliminates this gap with structured digital onboarding, certified legal handovers, and direct WhatsApp executive advisory.
+              </p>
+              <div className="space-y-3 pt-2 text-sm sm:text-base text-slate-200 font-bold">
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>Remote Diaspora Onboarding (NIN &amp; International Passport Support)</span>
                 </div>
-
-                <div className="p-5 rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-2">
-                  <div className="flex items-center gap-2.5 text-[#FDC902] font-black">
-                    <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
-                    <span>Direct Founder Access</span>
-                  </div>
-                  <p className="text-xs text-slate-400 font-normal leading-relaxed">
-                    Client conversations are handled directly with Harrison Mosco through our Port Harcourt headquarters and WhatsApp.
-                  </p>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>SCUML Anti-Money Laundering for Diaspora Bank Accounts</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <span>Turnkey Branding, Company Profile &amp; Billing Automation</span>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
 
-          {/* Regional Hubs & Physical Footprint */}
-          <Reveal type="up" delay={300} duration={0.8}>
+          {/* Physical Headquarters Card */}
+          <Reveal type="up" delay={200} duration={0.8}>
             <div className="p-8 sm:p-14 rounded-3xl bg-[#0f172a] border border-slate-800 shadow-2xl space-y-8">
               <div className="text-center max-w-2xl mx-auto space-y-3">
                 <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
                   Physical Footprint
                 </span>
                 <h3 className="text-3xl sm:text-4xl font-black text-white">
-                  Nationwide Coordination Desks
+                  Headquarters &amp; Direct Advisory Desk
                 </h3>
                 <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                  Our primary legal operational desk operates from Port Harcourt, with active contact desks serving entrepreneurs across Lagos, Abuja, and international diaspora clients worldwide.
+                  Our primary legal operational desk operates from Port Harcourt, serving entrepreneurs across all 36 Nigerian states and international diaspora clients.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 text-sm">
-                <div className="p-6 bg-[#0a0e17] rounded-2xl border border-slate-800 space-y-2">
-                  <span className="text-[#FDC902] font-black uppercase text-xs block">Headquarters</span>
-                  <strong className="block text-white text-base">Port Harcourt Desk</strong>
-                  <p className="text-slate-400 text-xs">Rockville Place, SARS Road, Port Harcourt, Rivers State.</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-sm">
+                <div className="p-6 rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-3">
+                  <div className="flex items-center gap-3 text-white font-black text-base">
+                    <MapPin className="w-5 h-5 text-[#FDC902]" />
+                    <span>Port Harcourt Operations Headquarters</span>
+                  </div>
+                  <p className="text-slate-300 leading-relaxed font-normal">
+                    1st Floor, Rockville Place, Opposite Suntaal, SARS Road, Port Harcourt, Rivers State, Nigeria.
+                  </p>
+                  <span className="inline-block text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-md border border-emerald-500/30">
+                    Open Mon - Fri: 8:00 AM - 6:00 PM WAT
+                  </span>
                 </div>
 
-                <div className="p-6 bg-[#0a0e17] rounded-2xl border border-slate-800 space-y-2">
-                  <span className="text-slate-400 font-black uppercase text-xs block">South-West Hub</span>
-                  <strong className="block text-white text-base">Lagos Contact Desk</strong>
-                  <p className="text-slate-400 text-xs">Okoye Street, Bucknor, Isolo Jakande Gate, Lagos State.</p>
-                </div>
-
-                <div className="p-6 bg-[#0a0e17] rounded-2xl border border-slate-800 space-y-2">
-                  <span className="text-slate-400 font-black uppercase text-xs block">Federal Capital</span>
-                  <strong className="block text-white text-base">Abuja FCT Desk</strong>
-                  <p className="text-slate-400 text-xs">Kusase Plaza, Dutse Apo, Federal Capital Territory.</p>
+                <div className="p-6 rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-3">
+                  <div className="flex items-center gap-3 text-white font-black text-base">
+                    <Phone className="w-5 h-5 text-[#FDC902]" />
+                    <span>Direct WhatsApp &amp; Client Desk</span>
+                  </div>
+                  <p className="text-slate-300 leading-relaxed font-normal">
+                    Direct executive consultation with Harrison Mosco for pre-incorporation advisory and package onboarding.
+                  </p>
+                  <a
+                    href="https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20am%20reviewing%20your%20About%20page%20and%20want%20to%20consult%20on%20my%20business%20registration."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-black text-[#FDC902] hover:underline pt-1"
+                  >
+                    <span>Message +234 813 709 2154 on WhatsApp &rarr;</span>
+                  </a>
                 </div>
               </div>
             </div>

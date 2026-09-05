@@ -304,8 +304,8 @@ export default function LimitedCompanyPage() {
                 <div className="bg-[#0f172a] rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 shadow-2xl overflow-hidden space-y-6">
                   <div className="relative h-60 sm:h-64 w-full">
                     <Image
-                      src="/images/executive-office.jpg"
-                      alt="Corporate Limited Company Filing"
+                      src="/images/accredited-consultation.jpg"
+                      alt="Accredited Corporate Limited Company Consultation and Filing"
                       fill
                       className="object-cover object-top"
                       sizes="(max-width: 768px) 100vw, 40vw"
@@ -313,7 +313,7 @@ export default function LimitedCompanyPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/30 to-transparent" />
                     <div className="absolute bottom-4 left-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
                       <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902]" />
-                      <span>Corporate Standard</span>
+                      <span>Accredited CAC Governance</span>
                     </div>
                   </div>
 

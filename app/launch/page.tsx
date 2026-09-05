@@ -170,7 +170,7 @@ export default function UltimateLaunchPage() {
               <div className="rounded-3xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-2xl space-y-4">
                 <div className="relative h-48 sm:h-52 w-full">
                   <Image
-                    src="/images/reels/brand-launch-ai.jpg"
+                    src="/images/executive-boardroom.jpg"
                     alt="Corporate Brand Identity and Media Deliverables"
                     fill
                     className="object-cover object-center"
@@ -194,7 +194,7 @@ export default function UltimateLaunchPage() {
               <div className="rounded-3xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-2xl space-y-4">
                 <div className="relative h-48 sm:h-52 w-full">
                   <Image
-                    src="/images/reels/fintech-ai.jpg"
+                    src="/images/automated-invoicing-desk.jpg"
                     alt="Live Automated Invoicing and Billing Operations"
                     fill
                     className="object-cover object-center"
@@ -218,7 +218,7 @@ export default function UltimateLaunchPage() {
               <div className="rounded-3xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-2xl space-y-4">
                 <div className="relative h-48 sm:h-52 w-full">
                   <Image
-                    src="/images/reels/real-estate-ai.jpg"
+                    src="/images/cac-operations-team.jpg"
                     alt="Enterprise Corporate Legal and SCUML Protection"
                     fill
                     className="object-cover object-center"

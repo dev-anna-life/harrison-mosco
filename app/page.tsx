@@ -132,24 +132,24 @@ export default function HomePage() {
         <LivePreviewer />
       </Reveal>
 
-      {/* 3. The 3 Core Pillars */}
-      <section className="py-20 sm:py-28 bg-[#070b13] text-white border-b border-slate-800 relative overflow-hidden">
+      {/* 3. The 3 Core Pillars (Spacious Side-by-Side Architecture) */}
+      <section className="py-24 sm:py-32 bg-[#070b13] text-white border-b border-slate-800 relative overflow-hidden">
         {/* Ambient Corporate Skyline Background */}
-        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+        <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
           <Image
             src="/images/bg-corporate-skyline.jpg"
             alt="Corporate Skyline Background"
             fill
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070b13] via-[#070b13]/85 to-[#070b13]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#070b13] via-[#070b13]/90 to-[#070b13]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-28">
           <Reveal type="up" duration={0.8}>
-            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+            <div className="text-center max-w-3xl mx-auto">
               <span className="text-xs sm:text-sm font-black text-[#FDC902] uppercase tracking-widest block mb-2">
-                Integrated Capabilities
+                Integrated Launch Capabilities
               </span>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
                 Everything Handled Under One Coordinated Team
@@ -161,170 +161,190 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {/* Pillar 1 */}
-            <Reveal type="left" delay={150} duration={0.8}>
-              <HoverCard>
-                <div className="rounded-3xl bg-[#0f172a] border border-slate-800 hover:border-[#FDC902]/50 transition-card shadow-2xl h-full flex flex-col justify-between overflow-hidden">
-                  <div>
-                    {/* Visual Showcase Header */}
-                    <div className="relative h-48 sm:h-52 w-full bg-gradient-to-br from-slate-900 via-[#0a0e17] to-amber-950/40 p-6 flex flex-col justify-between border-b border-slate-800/80">
-                      <div className="flex items-center justify-between">
-                        <div className="w-12 h-12 rounded-2xl bg-[#FDC902]/15 text-[#FDC902] flex items-center justify-center shadow-md">
-                          <Building2 className="w-6 h-6" />
-                        </div>
-                        <span className="text-[10px] font-black uppercase tracking-wider text-[#FDC902] bg-[#FDC902]/10 border border-[#FDC902]/30 px-3 py-1 rounded-full">
-                          Certified Registry
-                        </span>
-                      </div>
-                      <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 backdrop-blur-sm">
-                        <div className="flex items-center justify-between text-xs">
-                          <span className="font-mono text-slate-300 font-bold">CAC / RC REGISTRATION</span>
-                          <span className="text-emerald-400 font-bold">VERIFIED</span>
-                        </div>
-                        <p className="text-[11px] text-slate-400 mt-0.5">Original Certified PDFs with Verification Barcodes</p>
-                      </div>
-                    </div>
+          {/* Split 1: Legal Foundation */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <Reveal type="left" duration={0.8} className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
+                <Building2 className="w-4 h-4" />
+                <span>01. Statutory Legal Foundation</span>
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+                CAC Incorporation, SCUML Banking &amp; Trademark Protection
+              </h3>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                We secure official pre-incorporation name reservations, draft compliant MEMART documents with custom share allocations,
+                and obtain certified CAC certificates without queries. Every entity is equipped with verified NRS Corporate Tax ID and anti-money laundering clearance.
+              </p>
+              <ul className="space-y-3 pt-2 text-sm sm:text-base text-slate-200 font-bold">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>Limited Companies, Business Names &amp; Incorporated Trustees</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>SCUML Anti-Money Laundering for Corporate Bank Accounts</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>Federal Ministry of Trade Trademark Registration</span>
+                </li>
+              </ul>
+              <div className="pt-2">
+                <Link
+                  href="/limited"
+                  className="inline-flex items-center gap-2 text-sm font-black text-[#FDC902] hover:underline"
+                >
+                  <span>Explore Limited Company Incorporation &rarr;</span>
+                </Link>
+              </div>
+            </Reveal>
 
-                    <div className="p-6 sm:p-8 space-y-3">
-                      <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
-                        01. Legal Foundation
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-black text-white">CAC Incorporation &amp; Compliance</h3>
-                      <p className="text-sm text-slate-300 leading-relaxed font-normal">
-                        Limited Companies, Business Names, and Incorporated Trustees. We secure official pre-incorporation name reservations,
-                        draft compliant MEMART documents, and issue your verified NRS Corporate Tax ID.
-                      </p>
+            <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6">
+              <HoverCard>
+                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
+                  <div className="relative h-80 sm:h-[440px] w-full">
+                    <Image
+                      src="/images/cac-operations-team.jpg"
+                      alt="Nigerian CAC Legal Operations and Document Fulfillment Team"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
+                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902]" />
+                      <span>In-House Legal Fulfillment Team</span>
+                    </div>
+                    <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800">
+                      <strong className="text-white text-sm font-black block">Certified Document Review</strong>
+                      <span className="text-xs text-slate-400">Zero-Query MEMART Drafting &amp; CAC Barcode Verification</span>
                     </div>
                   </div>
+                </div>
+              </HoverCard>
+            </Reveal>
+          </div>
 
-                  <div className="p-6 sm:p-8 pt-0">
-                    <ul className="space-y-2.5 text-sm text-slate-200 pt-4 border-t border-slate-800/80 font-bold">
-                      <li className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>CAC Status Report and MEMART</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>SCUML Anti-Money Laundering</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>Trademark Filing and Protection</span>
-                      </li>
-                    </ul>
+          {/* Split 2: Visual Presentation (Reversed) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <Reveal type="left" delay={200} duration={0.8} className="lg:col-span-6 order-2 lg:order-1">
+              <HoverCard>
+                <div className="rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
+                  <div className="relative h-80 sm:h-[440px] w-full">
+                    <Image
+                      src="/images/executive-boardroom.jpg"
+                      alt="Executive Corporate Boardroom and Enterprise Branding"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
+                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
+                      <Sparkles className="w-3.5 h-3.5 text-[#FDC902]" />
+                      <span>Executive Brand Architecture</span>
+                    </div>
+                    <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800">
+                      <strong className="text-white text-sm font-black block">Turnkey Corporate Presentation</strong>
+                      <span className="text-xs text-slate-400">12-Page Profile • Executive Logo • Studio Video Commercial</span>
+                    </div>
                   </div>
                 </div>
               </HoverCard>
             </Reveal>
 
-            {/* Pillar 2 */}
-            <Reveal type="up" delay={250} duration={0.8}>
-              <HoverCard>
-                <div className="rounded-3xl bg-[#0f172a] border border-slate-800 hover:border-[#FDC902]/50 transition-card shadow-2xl h-full flex flex-col justify-between overflow-hidden">
-                  <div>
-                    {/* Visual Showcase Header (Uncropped 16:9 Brand Launch Reel Image) */}
-                    <div className="relative h-48 sm:h-52 w-full overflow-hidden border-b border-slate-800/80">
-                      <Image
-                        src="/images/reels/brand-launch-ai.jpg"
-                        alt="Executive Corporate Branding and Video Commercials"
-                        fill
-                        className="object-cover object-center transform hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-slate-950/40 to-transparent" />
-                      <div className="absolute top-4 right-4 text-[10px] font-black uppercase tracking-wider text-white bg-slate-950/80 border border-[#FDC902]/40 px-3 py-1 rounded-full backdrop-blur-md">
-                        Studio Media Suite
-                      </div>
-                      <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-xs font-bold text-white bg-slate-950/80 p-2 rounded-xl border border-slate-800 backdrop-blur-sm">
-                        <Sparkles className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span className="truncate">Executive Logo • 12-Page Profile • Video Ad</span>
-                      </div>
-                    </div>
+            <Reveal type="right" duration={0.8} className="lg:col-span-6 space-y-6 order-1 lg:order-2">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
+                <Sparkles className="w-4 h-4" />
+                <span>02. Visual Presentation</span>
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+                Corporate Branding, Company Profile &amp; Video Media
+              </h3>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                Move into the market with instant executive credibility. Direct brand oversight overseen by Harrison Mosco produces a complete corporate identity manual, letterheads, business cards, a 12-page investor profile, and studio-grade video commercials for social media launch.
+              </p>
+              <ul className="space-y-3 pt-2 text-sm sm:text-base text-slate-200 font-bold">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>Executive Corporate Logo &amp; Typography System</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>12-Page Structured Company Profile PDF Document</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <span>1080p Studio Video Commercials for LinkedIn &amp; Instagram</span>
+                </li>
+              </ul>
+              <div className="pt-2">
+                <Link
+                  href="/launch"
+                  className="inline-flex items-center gap-2 text-sm font-black text-[#FDC902] hover:underline"
+                >
+                  <span>View Ultimate Launch Package &rarr;</span>
+                </Link>
+              </div>
+            </Reveal>
+          </div>
 
-                    <div className="p-6 sm:p-8 space-y-3">
-                      <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block">
-                        02. Visual Presentation
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-black text-white">Corporate Branding &amp; Media</h3>
-                      <p className="text-sm text-slate-300 leading-relaxed font-normal">
-                        Executive design direction overseen directly by Harrison Mosco, paired with studio-grade marketing commercials
-                        produced for your official social media launch across LinkedIn, Instagram, and TikTok.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-6 sm:p-8 pt-0">
-                    <ul className="space-y-2.5 text-sm text-slate-200 pt-4 border-t border-slate-800/80 font-bold">
-                      <li className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>Executive Logo and Brand System</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>12-Page Corporate Profile PDF</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>High-Impact Video Commercials</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </HoverCard>
+          {/* Split 3: Automated Operations */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <Reveal type="left" duration={0.8} className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-black uppercase tracking-wider">
+                <Zap className="w-4 h-4" />
+                <span>03. Automated Operations</span>
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-black text-white leading-tight">
+                Live WhatsApp Billing, Automated Invoicing &amp; Audit Logs
+              </h3>
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                End repetitive manual bookkeeping and missing transaction receipts. We configure automated invoicing workflows that instantly generate branded digital receipts with customer references and dispatch them to client WhatsApp and email within two seconds of payment clearance.
+              </p>
+              <ul className="space-y-3 pt-2 text-sm sm:text-base text-slate-200 font-bold">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <span>Instant 2-Second WhatsApp Receipt Dispatch</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <span>Real-Time Customer Audit &amp; Revenue Telemetry</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <span>Cloud Invoicing Architecture with Verified Barcodes</span>
+                </li>
+              </ul>
+              <div className="pt-2">
+                <Link
+                  href="/limited#application"
+                  className="inline-flex items-center gap-2 text-sm font-black text-[#FDC902] hover:underline"
+                >
+                  <span>Configure Automated Operations on Limited Company &rarr;</span>
+                </Link>
+              </div>
             </Reveal>
 
-            {/* Pillar 3 */}
-            <Reveal type="right" delay={350} duration={0.8}>
+            <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-6">
               <HoverCard>
-                <div className="rounded-3xl bg-[#0f172a] border border-slate-800 hover:border-[#FDC902]/50 transition-card shadow-2xl h-full flex flex-col justify-between overflow-hidden">
-                  <div>
-                    {/* Visual Showcase Header (Uncropped 16:9 Automated Invoicing Image) */}
-                    <div className="relative h-48 sm:h-52 w-full overflow-hidden border-b border-slate-800/80">
-                      <Image
-                        src="/images/reels/fintech-ai.jpg"
-                        alt="Automated Billing and Invoicing Operations"
-                        fill
-                        className="object-cover object-center transform hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-slate-950/40 to-transparent" />
-                      <div className="absolute top-4 right-4 text-[10px] font-black uppercase tracking-wider text-emerald-400 bg-slate-950/80 border border-emerald-500/40 px-3 py-1 rounded-full backdrop-blur-md">
-                        Live Automation
-                      </div>
-                      <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 text-xs font-bold text-white bg-slate-950/80 p-2 rounded-xl border border-slate-800 backdrop-blur-sm">
-                        <Zap className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span className="truncate">Instant WhatsApp Receipts &amp; Audit Logs</span>
-                      </div>
+                <div className="rounded-3xl border-2 border-slate-800 hover:border-emerald-500/60 overflow-hidden shadow-2xl bg-[#0f172a] relative">
+                  <div className="relative h-80 sm:h-[440px] w-full">
+                    <Image
+                      src="/images/automated-invoicing-desk.jpg"
+                      alt="Automated Billing, WhatsApp Receipts and Live Telemetry Desk"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
+                    <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-emerald-500/40 text-emerald-400 text-xs font-black uppercase">
+                      <Zap className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Live Billing Automation</span>
                     </div>
-
-                    <div className="p-6 sm:p-8 space-y-3">
-                      <span className="text-xs font-black text-emerald-400 uppercase tracking-widest block">
-                        03. Automated Operations
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-black text-white">Invoicing &amp; Receipt Automation</h3>
-                      <p className="text-sm text-slate-300 leading-relaxed font-normal">
-                        End repetitive manual paperwork. We configure digital billing and automated receipts that trigger instantly
-                        to your customers via WhatsApp and email the moment payments clear.
-                      </p>
+                    <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-800">
+                      <strong className="text-white text-sm font-black block">Automated WhatsApp Receipts</strong>
+                      <span className="text-xs text-slate-400">Instant Customer Verification &amp; Cloud Ledger Sync</span>
                     </div>
-                  </div>
-
-                  <div className="p-6 sm:p-8 pt-0">
-                    <ul className="space-y-2.5 text-sm text-slate-200 pt-4 border-t border-slate-800/80 font-bold">
-                      <li className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span>Automated WhatsApp Receipts</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span>Cloud Invoicing Architecture</span>
-                      </li>
-                      <li className="flex items-center gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span>Customer Audit Tracking</span>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </HoverCard>
