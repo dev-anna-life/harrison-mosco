@@ -1,0 +1,122 @@
+// =========================================================
+// PRISMA DATABASE SCHEMA - HARRISON MOSCO PLATFORM
+// =========================================================
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum OrderStatus {
+  PENDING_PAYMENT
+  PAYMENT_CONFIRMED
+  NAME_RESERVATION_SUBMITTED
+  NAME_APPROVED
+  DOCUMENT_DRAFTING
+  CAC_SUBMITTED
+  CERTIFICATE_ISSUED
+  DELIVERED
+}
+
+enum PackageType {
+  STARTER
+  PRO
+  PREMIUM
+  ULTIMATE_LAUNCH
+  BUSINESS_NAME
+}
+
+model Order {
+  id                      String        @id @default(cuid())
+  reference               String        @unique // e.g. HM-2026-8941
+  customerName            String
+  customerEmail           String
+  customerPhone           String
+  isOutsourcing           Boolean       @default(false)
+  billingName             String?
+  billingEmail            String?
+  billingPhone            String?
+  billingBusinessName     String?
+  billingAddress          String?
+  proposedName1           String
+  proposedName2           String
+  natureOfBusiness        String
+  packageType             PackageType
+  shareCapitalMillions    Int           @default(1)
+  baseAmount              Decimal
+  sharesAdditionAmount    Decimal       @default(0)
+  directorsAdditionAmount Decimal       @default(0)
+  aiVideoAmount           Decimal       @default(0)
+  automationAmount        Decimal       @default(0)
+  totalAmount             Decimal
+  status                  OrderStatus   @default(PENDING_PAYMENT)
+  paymentReference        String?       @unique
+  paidAt                  DateTime?
+  directors               Director[]
+  notes                   String?
+  createdAt               DateTime      @default(now())
+  updatedAt               DateTime      @updatedAt
+}
+
+model Director {
+  id                    String        @id @default(cuid())
+  orderId               String
+  order                 Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  firstName             String
+  surname               String
+  otherNames            String?
+  dob                   DateTime
+  gender                String
+  sharePercentage       Float
+  email                 String
+  phoneCountryCode      String        @default("+234")
+  phone                 String
+  state                 String
+  lga                   String
+  city                  String
+  address               String
+  idType                String
+  idNumber              String
+  idDocumentUrl         String?
+  signatureUrl          String?
+  passportPhotoUrl      String?
+  createdAt             DateTime      @default(now())
+}
+
+model Lead {
+  id                    String        @id @default(cuid())
+  fullName              String
+  phone                 String
+  email                 String?
+  proposedName          String?
+  interestedPackage     String?
+  estimatedBudget       Decimal?
+  source                String        @default("website")
+  contacted             Boolean       @default(false)
+  createdAt             DateTime      @default(now())
+}
+
+model Consultation {
+  id                    String        @id @default(cuid())
+  fullName              String
+  email                 String
+  phone                 String
+  topic                 String
+  preferredDate         DateTime?
+  notes                 String?
+  status                String        @default("SCHEDULED")
+  createdAt             DateTime      @default(now())
+}
+
+model Admin {
+  id                    String        @id @default(cuid())
+  email                 String        @unique
+  passwordHash          String
+  name                  String
+  role                  String        @default("SUPER_ADMIN")
+  createdAt             DateTime      @default(now())
+}
