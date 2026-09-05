@@ -34,7 +34,7 @@ export default function HomePage() {
       {/* 1. Hero Section with Fluid Typography & Luxury Background Texture */}
       <section className="relative pt-16 pb-20 sm:pt-28 sm:pb-32 border-b border-slate-800/80 overflow-hidden">
         {/* Subtle Luxury Obsidian Architectural Texture */}
-        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+        <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
           <Image
             src="/images/bg-luxury-obsidian.jpg"
             alt="Harrison Mosco Luxury Texture"
@@ -42,7 +42,7 @@ export default function HomePage() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17] via-transparent to-[#0a0e17]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e17]/90 via-[#0a0e17]/60 to-[#0a0e17]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -339,14 +339,14 @@ export default function HomePage() {
       <Reveal type="up" duration={0.8}>
         <section className="py-20 sm:py-28 bg-[#05080f] text-white border-t border-slate-800 relative overflow-hidden">
           {/* Corporate Skyline Ambient Background */}
-          <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
+          <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
             <Image
               src="/images/bg-corporate-skyline.jpg"
               alt="Nigerian Corporate Skyline"
               fill
               className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#05080f] via-[#05080f]/70 to-[#05080f]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#05080f] via-[#05080f]/50 to-[#05080f]" />
           </div>
 
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">

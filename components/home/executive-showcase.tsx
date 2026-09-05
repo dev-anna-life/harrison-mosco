@@ -3,160 +3,118 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck, Building2, CheckCircle2, ArrowRight, MapPin, Award } from "lucide-react";
+import { ShieldCheck, Building2, CheckCircle2, ArrowRight, MapPin, Phone, Award, Clock } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { HoverCard } from "@/components/motion/HoverCard";
 
 export function ExecutiveShowcase() {
   return (
     <section className="py-24 sm:py-32 bg-[#060910] border-b border-slate-800 text-white relative overflow-hidden">
-      {/* Bespoke Luxury Background Texture */}
-      <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
+      {/* Luxury Obsidian Architectural Grid Texture */}
+      <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
         <Image
           src="/images/bg-luxury-obsidian.jpg"
-          alt="Luxury Obsidian Architecture"
+          alt="Luxury Obsidian Architecture Texture"
           fill
           className="object-cover object-center"
-          priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060910] via-transparent to-[#060910]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060910] via-[#060910]/80 to-[#060910]" />
       </div>
 
-      <div className="glow-orb w-[600px] h-[600px] bg-[#FDC902]/8 top-0 right-1/4" />
-      <div className="glow-orb w-[500px] h-[500px] bg-emerald-500/8 bottom-0 left-1/4" />
+      <div className="glow-orb w-[600px] h-[600px] bg-[#FDC902]/10 top-0 right-1/4" />
+      <div className="glow-orb w-[500px] h-[500px] bg-emerald-500/10 bottom-0 left-1/4" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <Reveal type="up" duration={0.8}>
-          <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider mb-4">
-              <Award className="w-4 h-4" />
-              <span>Accredited Physical &amp; Digital Presence</span>
-            </span>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-              Corporate Authority Built on Physical Trust
-            </h2>
-            <p className="text-base sm:text-lg text-slate-300 mt-4 leading-relaxed font-normal max-w-2xl mx-auto">
-              Unlike nameless online portals or unaccredited agents, Harrison Mosco provides accredited legal governance,
-              executive board-level advisory, and nationwide coordination from our Port Harcourt headquarters.
-            </p>
-          </div>
-        </Reveal>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
-          {/* Card 1 (First): Concierge Desk & Physical Client Handover */}
-          <Reveal type="left" duration={0.8}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left: Prominent Concierge Reception Desk Image */}
+          <Reveal type="left" duration={0.8} className="lg:col-span-7">
             <HoverCard>
-              <div className="bg-[#0f172a]/90 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 overflow-hidden shadow-2xl transition-card h-full flex flex-col justify-between">
-                <div className="relative h-72 sm:h-96 w-full overflow-hidden">
+              <div className="bg-[#0f172a] rounded-3xl border-2 border-slate-800 hover:border-[#FDC902]/60 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative group">
+                <div className="relative h-80 sm:h-[460px] w-full">
                   <Image
                     src="/images/concierge-reception.jpg"
-                    alt="Harrison Mosco Concierge Reception and Client Onboarding"
+                    alt="Harrison Mosco Corporate Reception and Concierge Desk"
                     fill
-                    className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/30 to-transparent" />
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-emerald-500/40 text-emerald-400 text-xs font-black uppercase tracking-wider">
-                    <MapPin className="w-4 h-4 text-emerald-400" />
-                    <span>Port Harcourt HQ Concierge Desk</span>
-                  </div>
-                </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/20 to-transparent" />
 
-                <div className="p-8 sm:p-10 space-y-5 flex-1 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <h3 className="text-2xl sm:text-3xl font-black text-white">
-                      Direct Founder Concierge &amp; Diaspora Desk
-                    </h3>
-                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                      Whether you are an entrepreneur in Port Harcourt or a Nigerian in the diaspora (UK, US, Canada),
-                      our dedicated concierge coordinates your corporate certificates, trademark filings, and automated receipts seamlessly.
-                    </p>
+                  {/* Top Floating Badge */}
+                  <div className="absolute top-5 left-5 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-950/85 backdrop-blur-md border border-[#FDC902]/50 text-[#FDC902] text-xs font-black uppercase tracking-wider shadow-xl">
+                    <MapPin className="w-4 h-4 text-[#FDC902]" />
+                    <span>Port Harcourt Headquarters Concierge</span>
                   </div>
 
-                  <div className="space-y-2.5 pt-4 border-t border-slate-800 text-sm text-slate-200 font-bold">
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                      <span>Physical Office at Rockville Place, SARS Road</span>
+                  {/* Bottom Floating Info Pill */}
+                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-slate-700/80 flex flex-wrap items-center justify-between gap-3 shadow-2xl">
+                    <div>
+                      <strong className="text-white text-sm sm:text-base font-black block">
+                        Direct In-Person &amp; Diaspora Concierge
+                      </strong>
+                      <span className="text-xs text-slate-400 font-medium">
+                        Rockville Place, SARS Road, Port Harcourt • Nationwide Desk
+                      </span>
                     </div>
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                      <span>Dedicated Diaspora Client Onboarding</span>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                      <span>Real-Time WhatsApp Updates on Every Milestone</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-4">
-                    <Link
-                      href="/book"
-                      className="inline-flex items-center gap-2 text-sm font-black text-[#FDC902] hover:underline"
-                    >
-                      <span>Book a Strategic Consultation Session &rarr;</span>
-                    </Link>
+                    <span className="text-xs font-black text-[#FDC902] bg-[#FDC902]/10 px-3 py-1 rounded-lg border border-[#FDC902]/30">
+                      Verified Accredited
+                    </span>
                   </div>
                 </div>
               </div>
             </HoverCard>
           </Reveal>
 
-          {/* Card 2: Executive Office & Legal Governance */}
-          <Reveal type="right" delay={200} duration={0.8}>
-            <HoverCard>
-              <div className="bg-[#0f172a]/90 backdrop-blur-sm rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 overflow-hidden shadow-2xl transition-card h-full flex flex-col justify-between">
-                <div className="relative h-72 sm:h-96 w-full overflow-hidden">
-                  <Image
-                    src="/images/executive-office.jpg"
-                    alt="Harrison Mosco Executive Corporate Governance Desk"
-                    fill
-                    className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/30 to-transparent" />
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase tracking-wider">
-                    <ShieldCheck className="w-4 h-4 text-[#FDC902]" />
-                    <span>Accredited CAC Governance</span>
-                  </div>
-                </div>
+          {/* Right: Content & Executive Advisory */}
+          <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-5 space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
+              <Award className="w-4 h-4" />
+              <span>Physical Trust &amp; Corporate Excellence</span>
+            </div>
 
-                <div className="p-8 sm:p-10 space-y-5 flex-1 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <h3 className="text-2xl sm:text-3xl font-black text-white">
-                      Executive Legal Foundation &amp; Compliance
-                    </h3>
-                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                      Every Limited Company filing is directed by accredited corporate professionals who structure your authorized
-                      share capital, draft bulletproof MEMART articles, and verify statutory compliance before submission to the CAC portal.
-                    </p>
-                  </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+              A Dedicated Legal &amp; Concierge Desk for Serious Founders
+            </h2>
 
-                  <div className="space-y-2.5 pt-4 border-t border-slate-800 text-sm text-slate-200 font-bold">
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
-                      <span>Zero-Query CAC Document Guarantee</span>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
-                      <span>NRS Corporate Tax ID (TIN) &amp; Rev360 Setup</span>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
-                      <span>Certified High-Resolution Digital True Copies</span>
-                    </div>
-                  </div>
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+              Unlike nameless internet portals, Harrison Mosco pairs cutting-edge automated billing with a physical corporate presence.
+              Every filing, share allocation, and brand asset is coordinated with direct founder accountability.
+            </p>
 
-                  <div className="pt-4">
-                    <Link
-                      href="/limited"
-                      className="inline-flex items-center gap-2 text-sm font-black text-[#FDC902] hover:underline"
-                    >
-                      <span>Explore Limited Company Registration &rarr;</span>
-                    </Link>
-                  </div>
-                </div>
+            <div className="space-y-3.5 pt-2 text-sm sm:text-base text-slate-200 font-bold">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                <span>Zero-Query CAC Incorporation Guarantee</span>
               </div>
-            </HoverCard>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                <span>Seamless Diaspora Onboarding (UK, US, Canada, EU)</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                <span>Instant Digital PDF Delivery + Physical Barcodes</span>
+              </div>
+            </div>
+
+            <div className="pt-4 flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/limited"
+                className="px-8 py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-2xl text-sm sm:text-base shadow-[0_12px_30px_rgba(253,201,2,0.3)] transition-all text-center flex items-center justify-center gap-2"
+              >
+                <span>Start Limited Company</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <a
+                href="https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20am%20reviewing%20your%20concierge%20desk%20and%20want%20to%20discuss%20incorporating%20my%20business."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-4 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/50 text-white font-bold rounded-2xl text-sm sm:text-base transition-all text-center flex items-center justify-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                <span>WhatsApp Advisory</span>
+              </a>
+            </div>
           </Reveal>
         </div>
       </div>
