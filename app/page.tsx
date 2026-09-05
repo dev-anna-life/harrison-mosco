@@ -20,6 +20,7 @@ import { LivePreviewer } from "@/components/home/live-previewer";
 import { LaunchSimulator } from "@/components/home/launch-simulator";
 import { ComparisonMatrix } from "@/components/home/comparison-matrix";
 import { NameCheckerLead } from "@/components/home/name-checker-lead";
+import { ExecutiveShowcase } from "@/components/home/executive-showcase";
 
 export default function HomePage() {
   return (
@@ -244,6 +245,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* 3.5. Executive Authority Showcase (Thanny Chris Luxury Visual Anchors) */}
+      <ExecutiveShowcase />
 
       {/* 4. Interactive Simulator with Lead Capture & PDF Export */}
       <Reveal type="up" duration={0.8}>

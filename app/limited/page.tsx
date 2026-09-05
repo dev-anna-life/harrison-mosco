@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Building2,
@@ -288,28 +289,39 @@ export default function LimitedCompanyPage() {
             {/* Right Card */}
             <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-5">
               <HoverCard>
-                <div className="bg-[#0f172a] p-10 rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 shadow-2xl space-y-5">
-                  <div className="w-14 h-14 rounded-2xl bg-[#FDC902] text-slate-950 flex items-center justify-center font-black text-xl shadow-lg">
-                    RC
+                <div className="bg-[#0f172a] rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 shadow-2xl overflow-hidden space-y-6">
+                  <div className="relative h-48 sm:h-56 w-full">
+                    <Image
+                      src="/images/executive-office.jpg"
+                      alt="Corporate Limited Company Filing"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 40vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent" />
+                    <div className="absolute bottom-4 left-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902]" />
+                      <span>Corporate Standard</span>
+                    </div>
                   </div>
-                  <span className="text-xs font-black uppercase tracking-widest text-[#FDC902] block">
-                    Corporate Standard
-                  </span>
-                  <h3 className="text-2xl font-black text-white leading-snug">
-                    A Limited Company is mandatory for major contracts, corporate tenders, bank loans, and foreign investment.
-                  </h3>
-                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                    Choose Limited Company Registration if you require a formal separate legal corporate entity with allotted shares.
-                    Delivered digitally as certified true PDF documents with official verification barcodes.
-                  </p>
-                  <div className="pt-3 border-t border-slate-800">
-                    <Link
-                      href="/launch"
-                      className="text-sm font-black text-[#FDC902] hover:underline flex items-center gap-1.5"
-                    >
-                      <span>Need our NGN 1,000,000 Ultimate Launch Suite instead?</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+
+                  <div className="p-8 pt-0 space-y-4">
+                    <h3 className="text-2xl font-black text-white leading-snug">
+                      A Limited Company is mandatory for major contracts, corporate tenders, bank loans, and foreign investment.
+                    </h3>
+                    <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                      Choose Limited Company Registration if you require a formal separate legal corporate entity with allotted shares.
+                      Delivered digitally as certified true PDF documents with official verification barcodes.
+                    </p>
+                    <div className="pt-3 border-t border-slate-800">
+                      <Link
+                        href="/launch"
+                        className="text-sm font-black text-[#FDC902] hover:underline flex items-center gap-1.5"
+                      >
+                        <span>Need our NGN 1,000,000 Ultimate Launch Suite instead?</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </HoverCard>
