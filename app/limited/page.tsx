@@ -13,7 +13,12 @@ import {
   Phone,
   Clock,
   FileCheck,
+  CreditCard,
+  Download,
+  Sparkles,
+  ExternalLink,
 } from "lucide-react";
+import confetti from "canvas-confetti";
 import {
   calculateLimitedCompanyPrice,
   LimitedPackageType,
@@ -23,6 +28,8 @@ import { NIGERIA_STATES_AND_LGAS, NIGERIAN_STATES } from "@/lib/nigeria-data";
 import { DigitalReceipt } from "@/components/shared/digital-receipt";
 import { Reveal } from "@/components/motion/Reveal";
 import { HoverCard } from "@/components/motion/HoverCard";
+import { triggerPaystackCheckout } from "@/lib/paystack";
+import { printDigitalReceipt } from "@/lib/pdf-generator";
 
 interface DirectorFormState {
   firstName: string;
@@ -82,9 +89,11 @@ export default function LimitedCompanyPage() {
   const [directors, setDirectors] = useState<DirectorFormState[]>([INITIAL_DIRECTOR]);
   const [termsAccepted, setTermsAccepted] = useState(true);
 
-  // Submission State
+  // Payment Options & State
+  const [paymentMethod, setPaymentMethod] = useState<"PAYSTACK" | "TRANSFER">("PAYSTACK");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedOrderRef, setSubmittedOrderRef] = useState<string | null>(null);
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   // Price Calculation
@@ -133,6 +142,38 @@ export default function LimitedCompanyPage() {
     setDirectors(updated);
   };
 
+  // Launch Paystack modal for a given reference
+  const launchPaystackModal = (ref: string) => {
+    const customerEmail = directors[0].email || billingEmail || "customer@example.com";
+    const customerName = `${directors[0].firstName} ${directors[0].surname}`.trim() || billingName || "Founder";
+    const company = proposedName1 ? `${proposedName1} Ltd` : "Proposed Company Ltd";
+
+    triggerPaystackCheckout({
+      email: customerEmail,
+      amountNGN: pricing.totalPayable,
+      reference: ref,
+      customerName,
+      companyName: company,
+      onSuccess: async (payRef) => {
+        try {
+          await fetch(`/api/paystack/verify?reference=${encodeURIComponent(payRef)}`);
+        } catch (vErr) {
+          console.warn("Verification ping:", vErr);
+        }
+        setPaymentConfirmed(true);
+        try {
+          confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+        } catch (cErr) {}
+      },
+      onClose: () => {
+        // User closed modal
+      },
+      onError: (err) => {
+        setErrorMessage(err || "Paystack initialization failed.");
+      },
+    });
+  };
+
   // Submit
   const handleSubmitOrder = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -179,7 +220,13 @@ export default function LimitedCompanyPage() {
       }
 
       setSubmittedOrderRef(data.reference);
-      window.scrollTo({ top: 400, behavior: "smooth" });
+
+      // Trigger Paystack if selected
+      if (paymentMethod === "PAYSTACK") {
+        launchPaystackModal(data.reference);
+      }
+
+      window.scrollTo({ top: 350, behavior: "smooth" });
     } catch (err: any) {
       setErrorMessage(err.message || "Failed to submit order. Please check your parameters.");
     } finally {
@@ -366,7 +413,7 @@ export default function LimitedCompanyPage() {
               </div>
             </Reveal>
 
-            {/* Pro - Inspired by Thanny Chris Gold Featured Card */}
+            {/* Pro - Featured Card */}
             <Reveal type="up" delay={250} duration={0.8}>
               <div className="bg-[#FDC902] text-slate-950 rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-[0_20px_50px_rgba(253,201,2,0.35)] relative transition-card scale-105 border-4 border-white/20 h-full">
                 <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-slate-950 text-[#FDC902] font-black text-xs tracking-widest uppercase px-4 py-1.5 rounded-full shadow-lg">
@@ -482,35 +529,125 @@ export default function LimitedCompanyPage() {
             </div>
           </Reveal>
 
-          {/* Success Screen */}
+          {/* Success / Post-Submission Screen */}
           {submittedOrderRef ? (
-            <div className="max-w-2xl mx-auto bg-[#0f172a] border-2 border-emerald-500/50 p-10 sm:p-14 rounded-3xl text-center space-y-6 shadow-2xl">
-              <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-8 h-8" />
+            <div className="max-w-3xl mx-auto bg-[#0f172a] border-2 border-emerald-500/50 p-8 sm:p-12 rounded-3xl text-center space-y-7 shadow-2xl">
+              <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                <CheckCircle2 className="w-9 h-9" />
               </div>
-              <h3 className="text-3xl font-black text-white">Application Submitted Successfully</h3>
-              <p className="text-base text-slate-300 leading-relaxed">
-                Your order reference code is{" "}
-                <span className="font-mono font-black text-[#FDC902] bg-[#0a0e17] px-3 py-1 rounded-md border border-slate-700">
-                  {submittedOrderRef}
+
+              <div>
+                <span
+                  className={`inline-block text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 ${
+                    paymentConfirmed
+                      ? "bg-emerald-500 text-slate-950 shadow-md"
+                      : "bg-[#FDC902] text-slate-950"
+                  }`}
+                >
+                  {paymentConfirmed
+                    ? "PAYMENT VERIFIED • ORDER CONFIRMED"
+                    : "APPLICATION SUBMITTED • AWAITING SETTLEMENT"}
                 </span>
-                . An automated digital receipt has been created and dispatched to your email.
-              </p>
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <h3 className="text-3xl sm:text-4xl font-black text-white">
+                  {paymentConfirmed
+                    ? "CAC Filing Initiated Successfully!"
+                    : "Registration Application Logged"}
+                </h3>
+                <p className="text-base text-slate-300 leading-relaxed mt-2 max-w-xl mx-auto">
+                  Your permanent order reference code is{" "}
+                  <span className="font-mono font-black text-[#FDC902] bg-[#0a0e17] px-3 py-1 rounded-md border border-slate-700">
+                    {submittedOrderRef}
+                  </span>
+                  . An automated digital dossier has been generated.
+                </p>
+              </div>
+
+              {/* Real-time Order Summary Grid */}
+              <div className="p-6 bg-[#0a0e17] rounded-2xl border border-slate-800 text-left grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="text-xs text-slate-500 uppercase font-bold block">Proposed Entity</span>
+                  <strong className="text-white text-base font-black">{proposedName1} Ltd</strong>
+                </div>
+                <div>
+                  <span className="text-xs text-slate-500 uppercase font-bold block">Package &amp; Capital</span>
+                  <strong className="text-[#FDC902] text-base font-black">
+                    {packageChoice} ({shareCapitalMillions}M Shares)
+                  </strong>
+                </div>
+                <div>
+                  <span className="text-xs text-slate-500 uppercase font-bold block">Total Amount</span>
+                  <strong className="text-white text-base font-black">{pricing.formattedTotal}</strong>
+                </div>
+                <div>
+                  <span className="text-xs text-slate-500 uppercase font-bold block">Payment Status</span>
+                  <strong
+                    className={
+                      paymentConfirmed
+                        ? "text-emerald-400 text-base font-black flex items-center gap-1.5"
+                        : "text-[#FDC902] text-base font-black flex items-center gap-1.5"
+                    }
+                  >
+                    <ShieldCheck className="w-4 h-4" />
+                    <span>{paymentConfirmed ? "PAID IN FULL (Paystack)" : "Pending Payment"}</span>
+                  </strong>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+                {!paymentConfirmed && (
+                  <button
+                    type="button"
+                    onClick={() => launchPaystackModal(submittedOrderRef)}
+                    className="w-full sm:w-auto px-8 py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-base transition-all shadow-[0_12px_30px_rgba(253,201,2,0.3)] flex items-center justify-center gap-2"
+                  >
+                    <CreditCard className="w-5 h-5" />
+                    <span>Pay Online with Paystack (Test / Live)</span>
+                  </button>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    printDigitalReceipt({
+                      reference: submittedOrderRef,
+                      customerName: `${directors[0].firstName} ${directors[0].surname}`,
+                      companyName: `${proposedName1} Ltd`,
+                      packageType: packageChoice,
+                      shareCapitalMillions,
+                      directorCount: directors.length,
+                      totalAmount: pricing.totalPayable,
+                      formattedTotal: pricing.formattedTotal,
+                      paymentStatus: paymentConfirmed ? "PAID_CONFIRMED" : "PENDING_PAYMENT",
+                    });
+                  }}
+                  className="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-base transition-all border border-slate-600 flex items-center justify-center gap-2"
+                >
+                  <Download className="w-5 h-5 text-[#FDC902]" />
+                  <span>Download Official {paymentConfirmed ? "Paid Receipt" : "Invoice"} PDF</span>
+                </button>
+
+                <Link
+                  href={`/track?ref=${submittedOrderRef}`}
+                  className="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-base border border-slate-700 flex items-center justify-center gap-2"
+                >
+                  <Clock className="w-5 h-5 text-[#FDC902]" />
+                  <span>Track 5 Milestones Online</span>
+                </Link>
+
                 <a
-                  href={`https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20just%20submitted%20my%20Limited%20Company%20order%20Ref%3A%20${submittedOrderRef}.`}
+                  href={`https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20have%20submitted%20my%20Limited%20Company%20filing%20Ref%3A%20${submittedOrderRef}%20for%20${encodeURIComponent(
+                    proposedName1
+                  )}%20Ltd%20(${pricing.formattedTotal}).%20Payment%20Status%3A%20${
+                    paymentConfirmed ? "PAID%20VIA%20PAYSTACK" : "DIRECT%20TRANSFER"
+                  }.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-base transition-all shadow-md"
+                  className="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-base transition-all shadow-md flex items-center justify-center gap-2"
                 >
-                  Continue to WhatsApp Desk &rarr;
+                  <Phone className="w-5 h-5" />
+                  <span>Confirm on WhatsApp Desk &rarr;</span>
                 </a>
-                <Link
-                  href="/track"
-                  className="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-base border border-slate-700"
-                >
-                  Track Filing Online
-                </Link>
               </div>
             </div>
           ) : (
@@ -604,7 +741,7 @@ export default function LimitedCompanyPage() {
                     )}
                   </div>
 
-                  {/* Package & Capital */}
+                  {/* 1. Package & Capital */}
                   <div className="space-y-5">
                     <h3 className="text-sm font-black text-white uppercase tracking-wider">
                       1. Package and Capital Details
@@ -648,7 +785,7 @@ export default function LimitedCompanyPage() {
                     </div>
                   </div>
 
-                  {/* Proposed Names */}
+                  {/* 2. Proposed Names */}
                   <div className="space-y-5">
                     <h3 className="text-sm font-black text-white uppercase tracking-wider">
                       2. Proposed Corporate Names
@@ -697,7 +834,7 @@ export default function LimitedCompanyPage() {
                     </div>
                   </div>
 
-                  {/* Directors */}
+                  {/* 3. Directors */}
                   <div className="space-y-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -899,10 +1036,6 @@ export default function LimitedCompanyPage() {
                             className="px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white font-black"
                           />
                         </div>
-
-                        <p className="text-xs text-slate-400 font-medium">
-                          Note: You can submit director signatures and NIN slips directly via WhatsApp after payment if you do not have them saved on your current device.
-                        </p>
                       </div>
                     ))}
 
@@ -916,7 +1049,7 @@ export default function LimitedCompanyPage() {
                     </button>
                   </div>
 
-                  {/* Add-ons */}
+                  {/* 4. Add-ons */}
                   <div className="pt-5 border-t border-slate-800 space-y-4">
                     <span className="block text-sm font-black uppercase tracking-wider text-white">
                       4. High-Impact Add-ons
@@ -961,6 +1094,68 @@ export default function LimitedCompanyPage() {
                     </label>
                   </div>
 
+                  {/* 5. Payment Method Selection */}
+                  <div className="pt-5 border-t border-slate-800 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="block text-sm font-black uppercase tracking-wider text-white">
+                        5. Preferred Payment Method
+                      </span>
+                      <span className="text-xs text-emerald-400 font-bold bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-500/30">
+                        Test Mode Active
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <label
+                        onClick={() => setPaymentMethod("PAYSTACK")}
+                        className={`p-5 rounded-2xl border-2 cursor-pointer transition-all flex items-start gap-4 ${
+                          paymentMethod === "PAYSTACK"
+                            ? "bg-[#141d33] border-[#FDC902] text-white shadow-[0_4px_20px_rgba(253,201,2,0.2)]"
+                            : "bg-[#0a0e17] border-slate-800 text-slate-400 hover:border-slate-700"
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="payment_choice"
+                          checked={paymentMethod === "PAYSTACK"}
+                          onChange={() => setPaymentMethod("PAYSTACK")}
+                          className="mt-1 w-4 h-4 text-[#FDC902] focus:ring-[#FDC902]"
+                        />
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-base font-black text-white">Paystack Online Gateway</span>
+                          </div>
+                          <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                            Pay with Cards, USSD, Bank Transfer, Apple Pay, or QR with automated instant receipting.
+                          </p>
+                        </div>
+                      </label>
+
+                      <label
+                        onClick={() => setPaymentMethod("TRANSFER")}
+                        className={`p-5 rounded-2xl border-2 cursor-pointer transition-all flex items-start gap-4 ${
+                          paymentMethod === "TRANSFER"
+                            ? "bg-[#141d33] border-[#FDC902] text-white shadow-[0_4px_20px_rgba(253,201,2,0.2)]"
+                            : "bg-[#0a0e17] border-slate-800 text-slate-400 hover:border-slate-700"
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="payment_choice"
+                          checked={paymentMethod === "TRANSFER"}
+                          onChange={() => setPaymentMethod("TRANSFER")}
+                          className="mt-1 w-4 h-4 text-[#FDC902] focus:ring-[#FDC902]"
+                        />
+                        <div>
+                          <span className="text-base font-black text-white block">Direct Bank Transfer</span>
+                          <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                            Transfer directly to Harrison Mosco corporate account and confirm with our WhatsApp desk.
+                          </p>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
                   {/* Submit */}
                   <div className="pt-6 border-t border-slate-800 space-y-5">
                     <label className="flex items-start gap-3 text-xs sm:text-sm text-slate-300 cursor-pointer font-medium">
@@ -971,7 +1166,7 @@ export default function LimitedCompanyPage() {
                         className="mt-1 w-5 h-5 rounded text-[#FDC902] bg-slate-900 border-slate-700"
                       />
                       <span>
-                        I confirm that the provided incorporation information is accurate and agree to the compliance terms.
+                        I confirm that the provided incorporation information is accurate and agree to the statutory compliance terms.
                       </span>
                     </label>
 
@@ -980,9 +1175,13 @@ export default function LimitedCompanyPage() {
                       disabled={isSubmitting}
                       className="w-full py-5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-base rounded-2xl shadow-[0_12px_35px_rgba(253,201,2,0.3)] transition-all flex items-center justify-center gap-2.5"
                     >
-                      <Lock className="w-5 h-5" />
+                      <CreditCard className="w-5 h-5" />
                       <span>
-                        {isSubmitting ? "Processing..." : `Submit Registration Order (${pricing.formattedTotal})`}
+                        {isSubmitting
+                          ? "Processing..."
+                          : paymentMethod === "PAYSTACK"
+                          ? `Pay Online with Paystack (${pricing.formattedTotal})`
+                          : `Submit Application via Transfer (${pricing.formattedTotal})`}
                       </span>
                     </button>
                   </div>
