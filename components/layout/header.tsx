@@ -19,29 +19,29 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#FDC902]/20 bg-[#0a0e17]/95 backdrop-blur-xl text-white transition-all">
-      {/* Top Notice Bar */}
-      <div className="bg-[#05080e] border-b border-slate-800/80 text-slate-300 py-2.5 px-4 text-center text-xs sm:text-sm font-medium">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
-          <span className="w-2 h-2 rounded-full bg-[#FDC902] animate-pulse shrink-0"></span>
-          <span>Accredited CAC corporate incorporation, branding, and billing automation desk.</span>
+      {/* Top Notice Bar - Ultra sleek on mobile */}
+      <div className="bg-[#05080e] border-b border-slate-800/80 text-slate-300 py-1.5 sm:py-2 px-3 sm:px-4 text-center text-[11px] sm:text-xs font-medium">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-1.5 sm:gap-2 flex-wrap">
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#FDC902] animate-pulse shrink-0"></span>
+          <span className="truncate max-w-[240px] xs:max-w-none">Accredited CAC Corporate &amp; Automation Desk.</span>
           <Link href="/limited" className="text-[#FDC902] hover:text-amber-300 font-bold underline ml-1 whitespace-nowrap">
-            Register your company online &rarr;
+            Register Online &rarr;
           </Link>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 sm:h-24 gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-3 sm:gap-4">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#FDC902] flex items-center justify-center text-slate-950 font-black text-xl sm:text-2xl shadow-[0_8px_25px_rgba(253,201,2,0.35)] group-hover:scale-105 transition-transform">
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-[#FDC902] flex items-center justify-center text-slate-950 font-black text-lg sm:text-xl shadow-[0_6px_20px_rgba(253,201,2,0.35)] group-hover:scale-105 transition-transform">
               HM
             </div>
             <div className="whitespace-nowrap">
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-1.5">
+              <span className="text-base sm:text-xl font-black tracking-tight text-white flex items-center gap-1">
                 Harrison Mosco
               </span>
-              <span className="block text-[10px] sm:text-xs font-bold text-[#FDC902] uppercase tracking-widest mt-0.5">
+              <span className="block text-[8px] sm:text-[10px] font-bold text-[#FDC902] uppercase tracking-wider sm:tracking-widest -mt-0.5 sm:mt-0">
                 Business Launch &amp; Automation
               </span>
             </div>
@@ -249,70 +249,74 @@ export function Header() {
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="xl:hidden bg-[#0d1424] border-b border-slate-800 px-6 pt-4 pb-8 space-y-4">
+        <div className="xl:hidden bg-[#0d1424] border-b border-slate-800 px-4 sm:px-6 pt-3 pb-8 space-y-1.5 shadow-2xl animate-fadeIn">
           <Link
             href="/"
-            className="block py-3 text-lg font-black text-white border-b border-slate-800"
+            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
-            Home
+            <span>Home</span>
           </Link>
           <Link
             href="/limited"
-            className="block py-3 text-lg font-black text-[#FDC902] border-b border-slate-800"
+            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-[#FDC902] bg-[#FDC902]/10 border border-[#FDC902]/30"
             onClick={() => setMobileOpen(false)}
           >
-            Limited Company Registration (from NGN 60,000)
+            <span>Limited Company Registration</span>
+            <span className="text-[10px] bg-[#FDC902] text-slate-950 font-black px-2 py-0.5 rounded uppercase">From N60k</span>
           </Link>
           <Link
             href="/launch"
-            className="block py-3 text-lg font-black text-white border-b border-slate-800"
+            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
-            Ultimate Launch Package (NGN 1,000,000)
+            <span>Ultimate Launch Package</span>
+            <span className="text-[10px] bg-slate-800 text-[#FDC902] font-black px-2 py-0.5 rounded border border-slate-700">N1,000,000</span>
           </Link>
           <Link
             href="/business-name"
-            className="block py-3 text-lg font-black text-white border-b border-slate-800"
+            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
-            Business Name Registration
+            <span>Business Name Registration</span>
+            <span className="text-[10px] text-slate-400 font-bold">From N25k</span>
           </Link>
           <Link
             href="/single-services"
-            className="block py-3 text-lg font-black text-white border-b border-slate-800"
+            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
-            Single Services (SCUML, Trademark, Tax)
+            <span>Single Services (SCUML, Trademark, Tax)</span>
           </Link>
           <Link
             href="/track"
-            className="block py-3 text-lg font-black text-white border-b border-slate-800"
+            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
-            Track Application Status
+            <span>Track Application Status</span>
+            <Search className="w-4 h-4 text-[#FDC902]" />
           </Link>
           <Link
             href="/about"
-            className="block py-3 text-lg font-black text-white border-b border-slate-800"
+            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5 border-b border-slate-800/60"
             onClick={() => setMobileOpen(false)}
           >
-            About Harrison Mosco
+            <span>About Harrison Mosco</span>
           </Link>
           <Link
             href="/book"
-            className="block py-3 text-lg font-black text-white"
+            className="flex items-center justify-between py-3 px-3 rounded-xl text-base font-bold text-white hover:bg-white/5"
             onClick={() => setMobileOpen(false)}
           >
-            Book Consultation
+            <span>Book Consultation</span>
           </Link>
           <div className="pt-3">
             <Link
               href="/limited#application"
-              className="block w-full py-4 text-center text-sm font-black text-slate-950 bg-[#FDC902] rounded-xl shadow-lg whitespace-nowrap"
+              className="block w-full py-3.5 text-center text-sm font-black text-slate-950 bg-[#FDC902] hover:bg-amber-400 rounded-xl shadow-lg transition-all"
               onClick={() => setMobileOpen(false)}
             >
-              Register Limited Company
+              Start Limited Company Application &rarr;
             </Link>
           </div>
         </div>

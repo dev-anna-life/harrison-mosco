@@ -241,7 +241,7 @@ export default function LimitedCompanyPage() {
       <div className="glow-orb w-[500px] h-[500px] bg-emerald-500/8 top-1/2 left-0" />
 
       {/* Hero Section */}
-      <section className="py-20 sm:py-28 border-b border-slate-800 relative z-10 overflow-hidden">
+      <section className="py-12 sm:py-28 border-b border-slate-800 relative z-10 overflow-hidden">
         {/* Ambient Corporate Skyline Background Texture */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <Image
@@ -255,45 +255,45 @@ export default function LimitedCompanyPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <Reveal type="left" duration={0.8} className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-xs font-black uppercase tracking-wider">
-                <Building2 className="w-4 h-4 text-[#FDC902]" />
-                <span>CAC Corporate Affairs Commission Accredited Desk</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <Reveal type="left" duration={0.8} className="lg:col-span-7 space-y-5 sm:space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[11px] sm:text-xs font-black uppercase tracking-wider">
+                <Building2 className="w-3.5 h-3.5 text-[#FDC902] shrink-0" />
+                <span>CAC Accredited Corporate Desk</span>
               </div>
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-tight">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-[1.15]">
                 Limited Company (Ltd) Registration
               </h1>
-              <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl font-normal">
+              <p className="text-sm sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
                 Designed for Nigerian founders, diaspora entrepreneurs, and corporate bodies who require verified incorporation,
                 shareholding documentation, corporate tax setup, and brand assets under one coordinated legal desk.
               </p>
 
-              <div className="flex flex-wrap gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
                 <a
                   href="#packages"
-                  className="px-8 py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-2xl text-sm sm:text-base shadow-[0_12px_30px_rgba(253,201,2,0.3)] transition-all"
+                  className="w-full sm:w-auto text-center px-6 sm:px-8 py-3.5 sm:py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-2xl text-xs sm:text-base shadow-[0_12px_30px_rgba(253,201,2,0.3)] transition-all"
                 >
                   View 3 Packages
                 </a>
                 <a
                   href="#application"
-                  className="px-8 py-4 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/50 text-white font-bold rounded-2xl text-sm sm:text-base transition-all"
+                  className="w-full sm:w-auto text-center px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/50 text-white font-bold rounded-2xl text-xs sm:text-base transition-all"
                 >
                   Proceed to Application
                 </a>
               </div>
 
               {/* Trust Badges */}
-              <div className="flex flex-wrap items-center gap-6 pt-4 text-sm font-bold text-slate-300">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-6 pt-3 text-xs sm:text-sm font-bold text-slate-300">
                 <span className="flex items-center gap-2 text-[#FDC902]">
-                  <CheckCircle2 className="w-5 h-5 text-[#FDC902]" /> Official Status Report Included
+                  <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" /> Official Status Report Included
                 </span>
                 <span className="flex items-center gap-2 text-[#FDC902]">
-                  <CheckCircle2 className="w-5 h-5 text-[#FDC902]" /> NRS Corporate Tax ID (TIN)
+                  <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" /> NRS Corporate Tax ID (TIN)
                 </span>
                 <span className="flex items-center gap-2 text-[#FDC902]">
-                  <CheckCircle2 className="w-5 h-5 text-[#FDC902]" /> Inclusive of 7.5% VAT
+                  <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" /> Inclusive of 7.5% VAT
                 </span>
               </div>
             </Reveal>
@@ -301,8 +301,8 @@ export default function LimitedCompanyPage() {
             {/* Right Card (Uncropped Leadership Framing) */}
             <Reveal type="right" delay={200} duration={0.8} className="lg:col-span-5">
               <HoverCard>
-                <div className="bg-[#0f172a] rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 shadow-2xl overflow-hidden space-y-6">
-                  <div className="relative h-60 sm:h-64 w-full">
+                <div className="bg-[#0f172a] rounded-3xl border border-slate-800 hover:border-[#FDC902]/50 shadow-2xl overflow-hidden space-y-5">
+                  <div className="relative h-48 sm:h-64 w-full">
                     <Image
                       src="/images/accredited-consultation.jpg"
                       alt="Accredited Corporate Limited Company Consultation and Filing"
@@ -311,27 +311,27 @@ export default function LimitedCompanyPage() {
                       sizes="(max-width: 768px) 100vw, 40vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/30 to-transparent" />
-                    <div className="absolute bottom-4 left-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-xs font-black uppercase">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902]" />
+                    <div className="absolute bottom-3 left-4 sm:bottom-4 sm:left-6 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-[#FDC902]/40 text-[#FDC902] text-[10px] sm:text-xs font-black uppercase">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#FDC902] shrink-0" />
                       <span>Accredited CAC Governance</span>
                     </div>
                   </div>
 
-                  <div className="p-8 pt-0 space-y-4">
-                    <h3 className="text-2xl font-black text-white leading-snug">
+                  <div className="p-5 sm:p-8 pt-0 space-y-3 sm:space-y-4">
+                    <h3 className="text-lg sm:text-2xl font-black text-white leading-snug">
                       A Limited Company is mandatory for major contracts, corporate tenders, bank loans, and foreign investment.
                     </h3>
-                    <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                       Choose Limited Company Registration if you require a formal separate legal corporate entity with allotted shares.
                       Delivered digitally as certified true PDF documents with official verification barcodes.
                     </p>
                     <div className="pt-3 border-t border-slate-800">
                       <Link
                         href="/launch"
-                        className="text-sm font-black text-[#FDC902] hover:underline flex items-center gap-1.5"
+                        className="text-xs sm:text-sm font-black text-[#FDC902] hover:underline flex items-center gap-1.5"
                       >
                         <span>Need our NGN 1,000,000 Ultimate Launch Suite instead?</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </Link>
                     </div>
                   </div>
@@ -343,83 +343,83 @@ export default function LimitedCompanyPage() {
       </section>
 
       {/* Fact Strip */}
-      <section className="bg-[#060910] py-10 border-b border-slate-800 text-slate-300">
+      <section className="bg-[#060910] py-8 sm:py-10 border-b border-slate-800 text-slate-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 text-center">
-            <div>
-              <span className="text-slate-500 block uppercase font-bold text-xs">Starting Base</span>
-              <strong className="text-xl sm:text-2xl font-black text-[#FDC902] mt-1 block">From NGN 60,000</strong>
-              <p className="text-slate-400 text-xs mt-0.5">Starter, Pro, or Premium</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 text-center">
+            <div className="p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+              <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Starting Base</span>
+              <strong className="text-base sm:text-2xl font-black text-[#FDC902] mt-1 block">From NGN 60,000</strong>
+              <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">Starter, Pro, or Premium</p>
             </div>
-            <div>
-              <span className="text-slate-500 block uppercase font-bold text-xs">Included Capital</span>
-              <strong className="text-xl sm:text-2xl font-black text-white mt-1 block">1M Shares + 2 Dirs</strong>
-              <p className="text-slate-400 text-xs mt-0.5">Calculated automatically</p>
+            <div className="p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+              <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Included Capital</span>
+              <strong className="text-base sm:text-2xl font-black text-white mt-1 block">1M Shares + 2 Dirs</strong>
+              <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">Calculated automatically</p>
             </div>
-            <div>
-              <span className="text-slate-500 block uppercase font-bold text-xs">Turnaround Time</span>
-              <strong className="text-xl sm:text-2xl font-black text-white mt-1 block">3 to 7 Days</strong>
-              <p className="text-slate-400 text-xs mt-0.5">Working days via fast track</p>
+            <div className="p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+              <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Turnaround Time</span>
+              <strong className="text-base sm:text-2xl font-black text-white mt-1 block">3 to 7 Days</strong>
+              <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">Working days via fast track</p>
             </div>
-            <div>
-              <span className="text-slate-500 block uppercase font-bold text-xs">Advisory Desk</span>
-              <strong className="text-xl sm:text-2xl font-black text-white mt-1 block">Port Harcourt HQ</strong>
-              <p className="text-slate-400 text-xs mt-0.5">Direct founder contact</p>
+            <div className="p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+              <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Advisory Desk</span>
+              <strong className="text-base sm:text-2xl font-black text-white mt-1 block">Port Harcourt HQ</strong>
+              <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">Direct founder contact</p>
             </div>
-            <div>
-              <span className="text-slate-500 block uppercase font-bold text-xs">Certified Delivery</span>
-              <strong className="text-xl sm:text-2xl font-black text-emerald-400 mt-1 block">Digital Certified</strong>
-              <p className="text-slate-400 text-xs mt-0.5">High resolution PDF files</p>
+            <div className="col-span-2 sm:col-span-1 p-3 bg-[#0a0e17] sm:bg-transparent rounded-xl border border-slate-800/80 sm:border-0">
+              <span className="text-slate-500 block uppercase font-bold text-[10px] sm:text-xs">Certified Delivery</span>
+              <strong className="text-base sm:text-2xl font-black text-emerald-400 mt-1 block">Digital Certified</strong>
+              <p className="text-slate-400 text-[10px] sm:text-xs mt-0.5">High resolution PDF files</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Pricing Tiers Section */}
-      <section id="packages" className="py-24 sm:py-32 bg-[#0a0e17] scroll-mt-28 sm:scroll-mt-36">
+      <section id="packages" className="py-16 sm:py-32 bg-[#0a0e17] scroll-mt-20 sm:scroll-mt-36">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal type="up" duration={0.8}>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block mb-2">
+            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+              <span className="text-[11px] sm:text-xs font-black text-[#FDC902] uppercase tracking-widest block mb-2">
                 Transparent Package Options
               </span>
-              <h2 className="text-4xl sm:text-5xl font-black text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mt-1">
                 Select Your Incorporation Package
               </h2>
-              <p className="text-base sm:text-lg text-slate-300 mt-3">
+              <p className="text-xs sm:text-base text-slate-300 mt-2 sm:mt-3">
                 Base fee covers NGN 1 Million authorized share capital and up to 2 directors. All statutory taxes included.
               </p>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
             {/* Starter */}
             <Reveal type="left" delay={150} duration={0.8}>
-              <div className="bg-[#0f172a] rounded-3xl border border-slate-800 p-8 sm:p-10 flex flex-col justify-between transition-card hover:border-slate-700 shadow-xl h-full">
+              <div className="bg-[#0f172a] rounded-3xl border border-slate-800 p-6 sm:p-10 flex flex-col justify-between transition-card hover:border-slate-700 shadow-xl h-full">
                 <div>
-                  <span className="text-xs font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-slate-400">
                     Starter Tier
                   </span>
-                  <div className="text-4xl font-black text-white mt-3">NGN 60,000</div>
-                  <p className="text-sm text-slate-400 mt-2 leading-relaxed font-normal">
+                  <div className="text-3xl sm:text-4xl font-black text-white mt-2 sm:mt-3">NGN 60,000</div>
+                  <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed font-normal">
                     Core legal CAC registration documents and official Tax ID.
                   </p>
 
-                  <div className="mt-8 space-y-3.5 text-sm sm:text-base text-slate-300 font-medium">
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <div className="mt-6 sm:mt-8 space-y-3 text-xs sm:text-base text-slate-300 font-medium">
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
                       <span>Official CAC Certificate of Incorporation</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
                       <span>CAC Status Report (Director Allocation)</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
                       <span>Memorandum &amp; Articles (MEMART)</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
                       <span>NRS Corporate Tax Identification Number</span>
                     </div>
                   </div>
@@ -430,7 +430,7 @@ export default function LimitedCompanyPage() {
                     setPackageChoice("Starter");
                     document.getElementById("application")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="mt-10 w-full py-4 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-xl text-sm transition-colors border border-slate-700"
+                  className="mt-8 sm:mt-10 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-xl text-xs sm:text-sm transition-colors border border-slate-700"
                 >
                   Select Starter Package
                 </button>
@@ -439,39 +439,39 @@ export default function LimitedCompanyPage() {
 
             {/* Pro - Featured Card */}
             <Reveal type="up" delay={250} duration={0.8}>
-              <div className="bg-[#FDC902] text-slate-950 rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-[0_20px_50px_rgba(253,201,2,0.35)] relative transition-card scale-105 border-4 border-white/20 h-full">
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-slate-950 text-[#FDC902] font-black text-xs tracking-widest uppercase px-4 py-1.5 rounded-full shadow-lg">
+              <div className="bg-[#FDC902] text-slate-950 rounded-3xl p-6 sm:p-10 flex flex-col justify-between shadow-[0_20px_50px_rgba(253,201,2,0.35)] relative transition-card scale-[1.02] sm:scale-105 border-4 border-white/20 h-full">
+                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-slate-950 text-[#FDC902] font-black text-[10px] sm:text-xs tracking-widest uppercase px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full shadow-lg">
                   Most Popular
                 </span>
 
                 <div>
-                  <span className="text-xs font-black uppercase tracking-widest text-slate-900">
+                  <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-slate-900">
                     Pro Package
                   </span>
-                  <div className="text-4xl font-black text-slate-950 mt-3">NGN 100,000</div>
-                  <p className="text-sm text-slate-900 mt-2 leading-relaxed font-semibold">
+                  <div className="text-3xl sm:text-4xl font-black text-slate-950 mt-2 sm:mt-3">NGN 100,000</div>
+                  <p className="text-xs sm:text-sm text-slate-900 mt-2 leading-relaxed font-semibold">
                     Incorporation, tax portal setup, plus complete corporate branding kit.
                   </p>
 
-                  <div className="mt-8 space-y-3.5 text-sm sm:text-base text-slate-950 font-bold">
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-slate-950 shrink-0" />
+                  <div className="mt-6 sm:mt-8 space-y-3 text-xs sm:text-base text-slate-950 font-bold">
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
                       <span>Everything in Starter (CAC, MEMART, TIN)</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-slate-950 shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
                       <span>Tax Filing Account and Rev360 Setup</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-slate-950 shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
                       <span>Executive Corporate Logo and Guidelines</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-slate-950 shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
                       <span>Official Letterhead and Business Card Files</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-slate-950 shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 shrink-0" />
                       <span>12-Page Corporate Profile Document (PDF)</span>
                     </div>
                   </div>
@@ -482,7 +482,7 @@ export default function LimitedCompanyPage() {
                     setPackageChoice("Pro");
                     document.getElementById("application")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="mt-10 w-full py-4 bg-slate-950 hover:bg-slate-900 text-white font-black rounded-xl text-sm transition-all shadow-xl"
+                  className="mt-8 sm:mt-10 w-full py-3.5 sm:py-4 bg-slate-950 hover:bg-slate-900 text-white font-black rounded-xl text-xs sm:text-sm transition-all shadow-xl"
                 >
                   Select Pro Package (NGN 100,000)
                 </button>
@@ -491,31 +491,31 @@ export default function LimitedCompanyPage() {
 
             {/* Premium */}
             <Reveal type="right" delay={350} duration={0.8}>
-              <div className="bg-[#0f172a] rounded-3xl border border-slate-800 p-8 sm:p-10 flex flex-col justify-between transition-card hover:border-slate-700 shadow-xl h-full">
+              <div className="bg-[#0f172a] rounded-3xl border border-slate-800 p-6 sm:p-10 flex flex-col justify-between transition-card hover:border-slate-700 shadow-xl h-full">
                 <div>
-                  <span className="text-xs font-black uppercase tracking-widest text-slate-400">
+                  <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-slate-400">
                     Premium Tier
                   </span>
-                  <div className="text-4xl font-black text-white mt-3">NGN 350,000</div>
-                  <p className="text-sm text-slate-400 mt-2 leading-relaxed font-normal">
+                  <div className="text-3xl sm:text-4xl font-black text-white mt-2 sm:mt-3">NGN 350,000</div>
+                  <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed font-normal">
                     Everything in Pro plus custom single-page website and corporate emails.
                   </p>
 
-                  <div className="mt-8 space-y-3.5 text-sm sm:text-base text-slate-300 font-medium">
-                    <div className="flex items-center gap-3 text-white font-bold">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                  <div className="mt-6 sm:mt-8 space-y-3 text-xs sm:text-base text-slate-300 font-medium">
+                    <div className="flex items-center gap-2.5 sm:gap-3 text-white font-bold">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
                       <span>Everything in Pro (Full CAC and Branding)</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
                       <span>Single-Page Responsive Corporate Website</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
                       <span>Custom Domain (.com / .ng) + SSL for One Year</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#FDC902] shrink-0" />
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902] shrink-0" />
                       <span>Corporate Email Accounts (e.g. info@yourname.ng)</span>
                     </div>
                   </div>
@@ -526,7 +526,7 @@ export default function LimitedCompanyPage() {
                     setPackageChoice("Premium");
                     document.getElementById("application")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="mt-10 w-full py-4 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-xl text-sm transition-colors border border-slate-700"
+                  className="mt-8 sm:mt-10 w-full py-3.5 sm:py-4 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-xl text-xs sm:text-sm transition-colors border border-slate-700"
                 >
                   Select Premium Package
                 </button>
@@ -537,17 +537,17 @@ export default function LimitedCompanyPage() {
       </section>
 
       {/* Interactive Application Form & Live Receipt */}
-      <section id="application" className="py-24 sm:py-32 bg-[#070b13] border-t border-slate-800 scroll-mt-28 sm:scroll-mt-36">
+      <section id="application" className="py-16 sm:py-32 bg-[#070b13] border-t border-slate-800 scroll-mt-20 sm:scroll-mt-36">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal type="up" duration={0.8}>
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-black text-[#FDC902] uppercase tracking-widest block mb-2">
+            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+              <span className="text-[11px] sm:text-xs font-black text-[#FDC902] uppercase tracking-widest block mb-2">
                 Application Desk
               </span>
-              <h2 className="text-4xl sm:text-5xl font-black text-white mt-1">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mt-1">
                 Order Your Limited Company Filing
               </h2>
-              <p className="text-base sm:text-lg text-slate-300 mt-2">
+              <p className="text-xs sm:text-base text-slate-300 mt-2">
                 Enter your entity details and director allocations. Your invoice updates in real time on the right.
               </p>
             </div>
@@ -555,14 +555,14 @@ export default function LimitedCompanyPage() {
 
           {/* Success / Post-Submission Screen */}
           {submittedOrderRef ? (
-            <div className="max-w-3xl mx-auto bg-[#0f172a] border-2 border-emerald-500/50 p-8 sm:p-12 rounded-3xl text-center space-y-7 shadow-2xl">
-              <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto shadow-lg">
-                <CheckCircle2 className="w-9 h-9" />
+            <div className="max-w-3xl mx-auto bg-[#0f172a] border-2 border-emerald-500/50 p-5 sm:p-12 rounded-3xl text-center space-y-6 sm:space-y-7 shadow-2xl">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                <CheckCircle2 className="w-8 h-8 sm:w-9 sm:h-9" />
               </div>
 
               <div>
                 <span
-                  className={`inline-block text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-3 ${
+                  className={`inline-block text-[10px] sm:text-xs font-black uppercase tracking-widest px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full mb-3 ${
                     paymentConfirmed
                       ? "bg-emerald-500 text-slate-950 shadow-md"
                       : "bg-[#FDC902] text-slate-950"
@@ -572,14 +572,14 @@ export default function LimitedCompanyPage() {
                     ? "PAYMENT VERIFIED • ORDER CONFIRMED"
                     : "APPLICATION SUBMITTED • AWAITING SETTLEMENT"}
                 </span>
-                <h3 className="text-3xl sm:text-4xl font-black text-white">
+                <h3 className="text-2xl sm:text-4xl font-black text-white">
                   {paymentConfirmed
                     ? "CAC Filing Initiated Successfully!"
                     : "Registration Application Logged"}
                 </h3>
-                <p className="text-base text-slate-300 leading-relaxed mt-2 max-w-xl mx-auto">
+                <p className="text-xs sm:text-base text-slate-300 leading-relaxed mt-2 max-w-xl mx-auto">
                   Your permanent order reference code is{" "}
-                  <span className="font-mono font-black text-[#FDC902] bg-[#0a0e17] px-3 py-1 rounded-md border border-slate-700">
+                  <span className="font-mono font-black text-[#FDC902] bg-[#0a0e17] px-2.5 py-1 rounded-md border border-slate-700">
                     {submittedOrderRef}
                   </span>
                   . An automated digital dossier has been generated.
@@ -587,45 +587,45 @@ export default function LimitedCompanyPage() {
               </div>
 
               {/* Real-time Order Summary Grid */}
-              <div className="p-6 bg-[#0a0e17] rounded-2xl border border-slate-800 text-left grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+              <div className="p-4 sm:p-6 bg-[#0a0e17] rounded-2xl border border-slate-800 text-left grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
                 <div>
-                  <span className="text-xs text-slate-500 uppercase font-bold block">Proposed Entity</span>
-                  <strong className="text-white text-base font-black">{proposedName1} Ltd</strong>
+                  <span className="text-[10px] sm:text-xs text-slate-500 uppercase font-bold block">Proposed Entity</span>
+                  <strong className="text-white text-sm sm:text-base font-black">{proposedName1} Ltd</strong>
                 </div>
                 <div>
-                  <span className="text-xs text-slate-500 uppercase font-bold block">Package &amp; Capital</span>
-                  <strong className="text-[#FDC902] text-base font-black">
+                  <span className="text-[10px] sm:text-xs text-slate-500 uppercase font-bold block">Package &amp; Capital</span>
+                  <strong className="text-[#FDC902] text-sm sm:text-base font-black">
                     {packageChoice} ({shareCapitalMillions}M Shares)
                   </strong>
                 </div>
                 <div>
-                  <span className="text-xs text-slate-500 uppercase font-bold block">Total Amount</span>
-                  <strong className="text-white text-base font-black">{pricing.formattedTotal}</strong>
+                  <span className="text-[10px] sm:text-xs text-slate-500 uppercase font-bold block">Total Amount</span>
+                  <strong className="text-white text-sm sm:text-base font-black">{pricing.formattedTotal}</strong>
                 </div>
                 <div>
-                  <span className="text-xs text-slate-500 uppercase font-bold block">Payment Status</span>
+                  <span className="text-[10px] sm:text-xs text-slate-500 uppercase font-bold block">Payment Status</span>
                   <strong
                     className={
                       paymentConfirmed
-                        ? "text-emerald-400 text-base font-black flex items-center gap-1.5"
-                        : "text-[#FDC902] text-base font-black flex items-center gap-1.5"
+                        ? "text-emerald-400 text-sm sm:text-base font-black flex items-center gap-1.5"
+                        : "text-[#FDC902] text-sm sm:text-base font-black flex items-center gap-1.5"
                     }
                   >
-                    <ShieldCheck className="w-4 h-4" />
+                    <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     <span>{paymentConfirmed ? "PAID IN FULL (Paystack)" : "Pending Payment"}</span>
                   </strong>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
                 {!paymentConfirmed && (
                   <button
                     type="button"
                     onClick={() => launchPaystackModal(submittedOrderRef)}
-                    className="w-full sm:w-auto px-8 py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-base transition-all shadow-[0_12px_30px_rgba(253,201,2,0.3)] flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-base transition-all shadow-[0_12px_30px_rgba(253,201,2,0.3)] flex items-center justify-center gap-2"
                   >
-                    <CreditCard className="w-5 h-5" />
+                    <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
                     <span>Pay Online with Paystack (Test / Live)</span>
                   </button>
                 )}
@@ -645,17 +645,17 @@ export default function LimitedCompanyPage() {
                       paymentStatus: paymentConfirmed ? "PAID_CONFIRMED" : "PENDING_PAYMENT",
                     });
                   }}
-                  className="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-base transition-all border border-slate-600 flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs sm:text-base transition-all border border-slate-600 flex items-center justify-center gap-2"
                 >
-                  <Download className="w-5 h-5 text-[#FDC902]" />
+                  <Download className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902]" />
                   <span>Download Official {paymentConfirmed ? "Paid Receipt" : "Invoice"} PDF</span>
                 </button>
 
                 <Link
                   href={`/track?ref=${submittedOrderRef}`}
-                  className="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-base border border-slate-700 flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs sm:text-base border border-slate-700 flex items-center justify-center gap-2"
                 >
-                  <Clock className="w-5 h-5 text-[#FDC902]" />
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#FDC902]" />
                   <span>Track 5 Milestones Online</span>
                 </Link>
 
@@ -667,17 +667,17 @@ export default function LimitedCompanyPage() {
                   }.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-base transition-all shadow-md flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl text-xs sm:text-base transition-all shadow-md flex items-center justify-center gap-2"
                 >
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Confirm on WhatsApp Desk &rarr;</span>
                 </a>
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
               {/* Form Column */}
-              <div className="lg:col-span-7 bg-[#0f172a] p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl">
+              <div className="lg:col-span-7 bg-[#0f172a] p-5 sm:p-8 lg:p-12 rounded-3xl border border-slate-800 shadow-2xl">
                 <form onSubmit={handleSubmitOrder} className="space-y-10">
                   {errorMessage && (
                     <div className="p-5 bg-rose-950/40 border border-rose-500/50 rounded-2xl text-rose-300 text-sm font-bold">

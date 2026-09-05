@@ -62,27 +62,27 @@ export function NameCheckerLead() {
   )}.%20Please%20verify%20and%20reserve%20this%20name%20for%20me.`;
 
   return (
-    <div className="w-full max-w-4xl mx-auto my-12 p-6 sm:p-10 rounded-3xl bg-[#0f172a] border-2 border-[#FDC902]/40 shadow-2xl relative overflow-hidden">
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+    <div className="w-full max-w-4xl mx-auto my-6 sm:my-12 p-5 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#0f172a] border-2 border-[#FDC902]/40 shadow-2xl relative overflow-hidden text-left">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-6 border-b border-slate-800">
         <div>
-          <span className="text-xs font-black uppercase tracking-widest text-[#FDC902] flex items-center gap-2">
-            <Sparkles className="w-4 h-4" />
+          <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-[#FDC902] flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5" />
             <span>Instant Pre-Incorporation Search</span>
           </span>
-          <h3 className="text-2xl sm:text-3xl font-black text-white mt-1">
+          <h3 className="text-xl sm:text-3xl font-black text-white mt-1">
             Free CAC Business Name Availability Check
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
             Verify whether your proposed company name complies with CAC Part B guidelines before paying filing fees.
           </p>
         </div>
-        <span className="px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 text-xs font-black uppercase tracking-wider shrink-0">
+        <span className="px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 text-[10px] sm:text-xs font-black uppercase tracking-wider shrink-0 self-start sm:self-auto">
           100% Free Service
         </span>
       </div>
 
       {status === "idle" || status === "checking" ? (
-        <form onSubmit={handleCheck} className="mt-8 space-y-4">
+        <form onSubmit={handleCheck} className="mt-5 sm:mt-8 space-y-3 sm:space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <input
               type="text"
@@ -90,7 +90,7 @@ export function NameCheckerLead() {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="Your Full Name"
-              className="px-4 py-4 bg-[#0a0e17] border border-slate-700 focus:border-[#FDC902] rounded-xl text-white text-sm font-medium focus:outline-none"
+              className="px-4 py-3 sm:py-4 bg-[#0a0e17] border border-slate-700 focus:border-[#FDC902] rounded-xl text-white text-sm font-medium focus:outline-none"
             />
             <input
               type="tel"
@@ -98,7 +98,7 @@ export function NameCheckerLead() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="WhatsApp Number (08123...)"
-              className="px-4 py-4 bg-[#0a0e17] border border-slate-700 focus:border-[#FDC902] rounded-xl text-white text-sm font-medium focus:outline-none"
+              className="px-4 py-3 sm:py-4 bg-[#0a0e17] border border-slate-700 focus:border-[#FDC902] rounded-xl text-white text-sm font-medium focus:outline-none"
             />
             <input
               type="text"
@@ -106,28 +106,28 @@ export function NameCheckerLead() {
               value={proposedName}
               onChange={(e) => setProposedName(e.target.value)}
               placeholder="Proposed Company Name"
-              className="px-4 py-4 bg-[#0a0e17] border border-slate-700 focus:border-[#FDC902] rounded-xl text-white text-sm font-bold focus:outline-none"
+              className="px-4 py-3 sm:py-4 bg-[#0a0e17] border border-slate-700 focus:border-[#FDC902] rounded-xl text-white text-sm font-bold focus:outline-none"
             />
           </div>
 
           <button
             type="submit"
             disabled={status === "checking"}
-            className="w-full py-4.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-sm sm:text-base transition-all shadow-[0_6px_25px_rgba(253,201,2,0.25)] flex items-center justify-center gap-2"
+            className="w-full py-3.5 sm:py-4.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-sm sm:text-base transition-all shadow-[0_6px_25px_rgba(253,201,2,0.25)] flex items-center justify-center gap-2"
           >
-            <Search className="w-5 h-5" />
+            <Search className="w-4 h-4 sm:w-5 sm:h-5" />
             <span>{status === "checking" ? "Running CAC Algorithm..." : "Check Name Availability & Reserve Now"}</span>
           </button>
         </form>
       ) : (
-        <div className="mt-8 p-6 rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-5 animate-fadeIn">
+        <div className="mt-5 sm:mt-8 p-4 sm:p-6 rounded-2xl bg-[#0a0e17] border border-slate-800 space-y-4 sm:space-y-5 animate-fadeIn">
           {status === "available" ? (
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 text-emerald-400 font-black text-lg">
-                <CheckCircle2 className="w-6 h-6 shrink-0" />
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex items-center gap-2.5 sm:gap-3 text-emerald-400 font-black text-base sm:text-lg">
+                <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
                 <span>Great News! &ldquo;{proposedName}&rdquo; Appears Distinctive &amp; Registrable</span>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                 Our initial statutory check shows this name does not conflict with common restricted federal prefixes. We have dispatched this inquiry to Harrison Mosco to lock in your priority reservation.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
@@ -135,14 +135,14 @@ export function NameCheckerLead() {
                   href={whatsappReservationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3.5 bg-[#25D366] hover:bg-emerald-600 text-white font-black rounded-xl text-sm transition-all flex items-center justify-center gap-2 shadow-md"
+                  className="px-5 py-3 sm:px-6 sm:py-3.5 bg-[#25D366] hover:bg-emerald-600 text-white font-black rounded-xl text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-md text-center"
                 >
                   <Phone className="w-4 h-4" />
                   <span>Lock In Name on WhatsApp &rarr;</span>
                 </a>
                 <Link
                   href="/limited#application"
-                  className="px-6 py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-sm transition-all flex items-center justify-center gap-2"
+                  className="px-5 py-3 sm:px-6 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all flex items-center justify-center gap-2 text-center"
                 >
                   <span>Start Complete Limited Company Filing</span>
                   <ArrowRight className="w-4 h-4" />
