@@ -305,7 +305,7 @@ export default function LimitedCompanyPage() {
       </section>
 
       {/* Pricing Tiers Section */}
-      <section id="packages" className="py-24 sm:py-32 bg-[#0a0e17]">
+      <section id="packages" className="py-24 sm:py-32 bg-[#0a0e17] scroll-mt-28 sm:scroll-mt-36">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal type="up" duration={0.8}>
             <div className="text-center max-w-3xl mx-auto mb-16">
@@ -466,7 +466,7 @@ export default function LimitedCompanyPage() {
       </section>
 
       {/* Interactive Application Form & Live Receipt */}
-      <section id="application" className="py-24 sm:py-32 bg-[#070b13] border-t border-slate-800">
+      <section id="application" className="py-24 sm:py-32 bg-[#070b13] border-t border-slate-800 scroll-mt-28 sm:scroll-mt-36">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal type="up" duration={0.8}>
             <div className="text-center max-w-3xl mx-auto mb-16">
