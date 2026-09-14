@@ -2,18 +2,14 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
-    fullName: "",
-    businessName: "",
+    name: "",
     email: "",
-    phoneNumber: "",
-    businessStage: "Select stage",
-    primaryGoal: "Select goal",
-    projectDetails: "",
-    agreeTerms: true,
+    service: "Business foundation",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,476 +26,561 @@ export default function HomePage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fullName: formData.fullName,
-          whatsappPhone: formData.phoneNumber || "+2340000000000",
+          fullName: formData.name,
+          whatsappPhone: "+2340000000000",
           email: formData.email,
-          proposedBusinessName: formData.businessName || "Pending Business Name",
-          packageInterested: `${formData.primaryGoal} (${formData.businessStage})`,
+          proposedBusinessName: "Consultation Request",
+          packageInterested: formData.service || "Business foundation",
           shareCapitalMillions: 1,
-          notes: formData.projectDetails,
-          source: "eponix_home_consultation",
+          notes: formData.message,
+          source: "eponix_home_consult_form",
         }),
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to submit inquiry");
-      }
+      if (!res.ok) throw new Error("Failed to submit inquiry");
       setIsSubmitted(true);
-    } catch (err: any) {
+    } catch (err) {
       console.error("Submission error:", err);
-      setErrorMessage("Could not submit your request. Please try again or reach out directly.");
+      setErrorMessage("Could not submit request. Please try again or message us.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const services = [
+    {
+      num: "01",
+      title: "Business Registration & Compliance",
+      desc: "Business setup, structure guidance and practical compliance support.",
+      href: "/services",
+    },
+    {
+      num: "02",
+      title: "Brand Strategy & Identity",
+      desc: "Clear positioning and a brand presence your audience can trust.",
+      href: "/services",
+    },
+    {
+      num: "03",
+      title: "Website & Digital Presence",
+      desc: "High-performing digital homes that make it easy to be found and chosen.",
+      href: "/services",
+    },
+    {
+      num: "04",
+      title: "AI & Business Automation",
+      desc: "Practical systems that reduce friction and make everyday work smarter.",
+      href: "/services",
+    },
+    {
+      num: "05",
+      title: "Business Advisory",
+      desc: "Strategic guidance for decisions, structure and sustained progress.",
+      href: "/services",
+    },
+    {
+      num: "06",
+      title: "Growth & Visibility",
+      desc: "Marketing and digital growth support built around the next opportunity.",
+      href: "/services",
+    },
+  ];
+
   return (
-    <div className="bg-[#0b120f] text-[#f5f7ef]">
-      {/* 1. Hero Section */}
-      <section className="bg-[#07100c] text-[#f5f7ef] py-20 lg:py-28 border-b border-[#26362c]">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
-            {/* Left Hero Main */}
-            <div className="lg:col-span-8 space-y-6">
-              <div className="eyebrow">Business &amp; Digital Solutions</div>
-              <h1 className="heading-1">We Build, Brand &amp; Grow Businesses.</h1>
-              <p className="lead-text">
-                From business registration and compliance to branding, digital presence, AI, automation and growth, Eponix Digital helps you build the infrastructure your business needs to operate professionally and grow.
+    <div className="text-[#f4f6ed]">
+      {/* 1. HERO SECTION (Dark #101713) */}
+      <section className="min-h-[780px] lg:min-h-[830px] flex items-end relative overflow-hidden bg-[#101713]">
+        {/* Hero Background Gradient Overlay */}
+        <div className="absolute inset-0 z-0 opacity-40 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#17382b] via-[#101713] to-[#0c1210]" />
+
+        <div className="wrap w-full relative z-10 pb-16 pt-32 lg:pt-48">
+          <div className="max-w-[720px] space-y-5">
+            <div className="eyebrow">Business &amp; Digital Solutions</div>
+            <h1 className="text-[44px] sm:text-[60px] md:text-[76px] lg:text-[96px] font-bold leading-[0.98] tracking-[-0.072em] text-[#f4f6ed]">
+              We Build,{" "}
+              <em className="font-serif italic font-semibold text-[#c9f95a]">Brand</em>{" "}
+              &amp; Grow Businesses.
+            </h1>
+            <p className="max-w-[590px] text-[#dae0db] text-[15px] sm:text-[16px] leading-[1.72]">
+              From business registration and compliance to branding, digital presence, AI, automation and growth, Eponix Digital builds the infrastructure your business needs to operate professionally and grow.
+            </p>
+            <div className="pt-3 flex flex-wrap items-center gap-3.5">
+              <a href="#consult" className="btn primary">
+                <span>Book a Consultation</span>
+                <span className="text-[18px] leading-none">→</span>
+              </a>
+              <Link href="/services" className="btn">
+                <span>Explore Our Services</span>
+                <span className="text-[18px] leading-none">→</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-20 pt-5 border-t border-[rgba(244,246,237,0.14)] font-mono text-[10px] tracking-[0.13em] text-[#d9e1d9]">
+            BUSINESS FOUNDATION · BRANDING · DIGITAL · AI &amp; AUTOMATION · GROWTH
+          </div>
+        </div>
+
+        {/* Scroll Tag Indicator */}
+        <div className="hidden lg:block absolute right-7 bottom-16 [writing-mode:vertical-rl] font-mono text-[10px] tracking-[0.18em] text-[#e0e8e0]">
+          SCROLL TO EXPLORE
+          <span className="block w-[1px] h-[51px] bg-[#c9f95a] mx-auto mt-4" />
+        </div>
+      </section>
+
+      {/* 2. TICKER STRIP (Electric Lime #c9f95a) */}
+      <div className="bg-[#c9f95a] text-[#0c1210] py-5 overflow-hidden">
+        <div className="flex gap-8 whitespace-nowrap justify-center font-extrabold text-[12px] tracking-[0.03em]">
+          <span>REGISTER <i className="not-italic text-[17px]">✦</i></span>
+          <span>BUILD <i className="not-italic text-[17px]">✦</i></span>
+          <span>BRAND <i className="not-italic text-[17px]">✦</i></span>
+          <span>DIGITISE <i className="not-italic text-[17px]">✦</i></span>
+          <span>GROW <i className="not-italic text-[17px]">✦</i></span>
+        </div>
+      </div>
+
+      {/* 3. ABOUT SECTION (Light Cream #f4f6ed) */}
+      <section className="bg-[#f4f6ed] text-[#0c1210] py-24 lg:py-28" id="about">
+        <div className="wrap">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+            <div className="lg:col-span-6 space-y-4">
+              <div className="font-mono text-[10px] font-medium tracking-[0.17em] uppercase text-[#367054]">
+                More than a service provider
+              </div>
+              <h2 className="text-[34px] sm:text-[46px] lg:text-[62px] font-bold leading-[1.03] tracking-[-0.065em] text-[#0c1210]">
+                Your business needs a{" "}
+                <span className="font-serif italic font-semibold text-[#367054]">stronger foundation.</span>
+              </h2>
+            </div>
+
+            <div className="lg:col-span-6 space-y-6 pt-2">
+              <p className="text-[17px] sm:text-[18px] text-[#425148] leading-relaxed">
+                Eponix Digital is a business infrastructure and digital systems company for ambitious founders, growing teams and established organisations across Nigeria.
               </p>
-              <div className="pt-2 flex flex-wrap items-center gap-3.5">
-                <a href="#consultation" className="ep-btn ep-btn-primary">
-                  Book a Consultation
-                </a>
-                <Link href="/services" className="ep-btn ep-btn-light">
-                  Explore Our Services
-                </Link>
+              <p className="text-[17px] sm:text-[18px] text-[#425148] leading-relaxed">
+                We bring the essential pieces together—so your business is properly structured, clearly positioned and ready to scale with confidence.
+              </p>
+
+              <div className="mt-8 border-t border-[#cbd2c7]">
+                <div className="py-4 border-b border-[#cbd2c7] flex items-center justify-between font-extrabold text-[15px] text-[#0c1210]">
+                  <span>Built for real business growth</span>
+                  <span className="font-mono text-[11px] text-[#607067]">01</span>
+                </div>
+                <div className="py-4 border-b border-[#cbd2c7] flex items-center justify-between font-extrabold text-[15px] text-[#0c1210]">
+                  <span>Designed around your next stage</span>
+                  <span className="font-mono text-[11px] text-[#607067]">02</span>
+                </div>
+                <div className="py-4 border-b border-[#cbd2c7] flex items-center justify-between font-extrabold text-[15px] text-[#0c1210]">
+                  <span>Powered by practical systems</span>
+                  <span className="font-mono text-[11px] text-[#607067]">03</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. JOURNEY SECTION (Split: Left Green #17382b / Right Light Sage #e6eadf) */}
+      <section className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Left Column (Dark Forest Green #17382b) */}
+        <div className="bg-[#17382b] text-[#f4f6ed] py-20 lg:py-28 px-7 sm:px-12 lg:px-16 flex flex-col justify-center">
+          <div className="max-w-[440px] space-y-4">
+            <div className="eyebrow">The Eponix journey</div>
+            <h2 className="text-[34px] sm:text-[46px] lg:text-[58px] font-bold leading-[1.02] tracking-[-0.06em] text-[#f4f6ed]">
+              From idea to a business built to move.
+            </h2>
+            <p className="text-[#c3d1c7] text-[15px] sm:text-[16px] leading-relaxed">
+              One thoughtful journey. The right support at every important step.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Column (Light Sage #e6eadf) */}
+        <div className="bg-[#e6eadf] text-[#0c1210] py-16 lg:py-24 px-7 sm:px-12 lg:px-16 flex flex-col justify-center">
+          <div className="max-w-[500px]">
+            <div className="grid grid-cols-[56px_1fr] gap-5 py-5 border-b border-[#bbc3b9]">
+              <div className="font-mono font-medium text-[11px] text-[#4f6758]">01 / START</div>
+              <div>
+                <h3 className="text-[19px] font-bold tracking-[-0.04em] text-[#0c1210] mb-1">Clarify the vision</h3>
+                <p className="text-[13px] text-[#536258] leading-relaxed">We help turn an idea into a clear, actionable business direction.</p>
               </div>
             </div>
 
-            {/* Right Hero Card */}
-            <div className="lg:col-span-4">
-              <div className="bg-[rgba(8,15,11,0.88)] border border-[rgba(198,255,63,0.42)] p-7 sm:p-8 space-y-4">
-                <div className="ep-tag text-[#c6ff3f]">From Discovery to Automation</div>
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f5f7ef] leading-tight">
-                  Build the business.<br />
-                  Build the system.
+            <div className="grid grid-cols-[56px_1fr] gap-5 py-5 border-b border-[#bbc3b9]">
+              <div className="font-mono font-medium text-[11px] text-[#4f6758]">02 / STRUCT</div>
+              <div>
+                <h3 className="text-[19px] font-bold tracking-[-0.04em] text-[#0c1210] mb-1">Build the foundation</h3>
+                <p className="text-[13px] text-[#536258] leading-relaxed">Set up the legal, operational and strategic basics for professional business.</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-[56px_1fr] gap-5 py-5 border-b border-[#bbc3b9]">
+              <div className="font-mono font-medium text-[11px] text-[#4f6758]">03 / PRESENT</div>
+              <div>
+                <h3 className="text-[19px] font-bold tracking-[-0.04em] text-[#0c1210] mb-1">Shape the brand</h3>
+                <p className="text-[13px] text-[#536258] leading-relaxed">Create a confident identity and digital presence that earns attention.</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-[56px_1fr] gap-5 py-5">
+              <div className="font-mono font-medium text-[11px] text-[#4f6758]">04 / GROW</div>
+              <div>
+                <h3 className="text-[19px] font-bold tracking-[-0.04em] text-[#0c1210] mb-1">Install better systems</h3>
+                <p className="text-[13px] text-[#536258] leading-relaxed">Use technology, automation and practical growth support to go further.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. SIGNATURE OFFER / PACKAGE SECTION (Dark #151e1a + Lime #c9f95a Side) */}
+      <section className="bg-[#151e1a] py-24 lg:py-28" style={{ background: "radial-gradient(circle at 78% 15%, #315e46 0, transparent 32%), #151e1a" }}>
+        <div className="wrap">
+          <div className="border border-[rgba(244,246,237,0.14)] grid grid-cols-1 lg:grid-cols-12">
+            {/* Package Main Left (Dark) */}
+            <div className="lg:col-span-8 p-8 sm:p-14 space-y-6">
+              <div className="inline-block border border-[#c9f95a]/45 text-[#c9f95a] px-2.5 py-1 font-mono text-[10px] tracking-[0.1em]">
+                SIGNATURE OFFER
+              </div>
+              <h2 className="text-[32px] sm:text-[42px] lg:text-[52px] font-bold leading-[1.06] tracking-[-0.06em] text-[#f4f6ed]">
+                The Ultimate Business Launch Package.
+              </h2>
+              <p className="text-[#c2ccc5] text-[15px] leading-relaxed max-w-[620px]">
+                A more complete way to start. This guided package brings the core building blocks of a professional business into one focused launch experience.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 pt-4">
+                {[
+                  "Business foundation support",
+                  "Brand identity essentials",
+                  "Digital presence setup",
+                  "Operational guidance",
+                  "Launch-ready systems",
+                  "Growth pathway planning",
+                ].map((item, idx) => (
+                  <div key={idx} className="py-3.5 border-t border-[rgba(244,246,237,0.14)] font-bold text-[13px] text-[#f4f6ed] flex items-center gap-3">
+                    <span className="text-[#c9f95a] text-[14px]">↗</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Package Side Right (Electric Lime #c9f95a) */}
+            <div className="lg:col-span-4 p-8 sm:p-12 bg-[#c9f95a] text-[#0c1210] flex flex-col justify-between space-y-8">
+              <div className="space-y-3">
+                <div className="font-mono text-[10px] font-medium tracking-[0.17em] uppercase text-[#17382b]">
+                  Built for founders
+                </div>
+                <h3 className="text-[26px] sm:text-[30px] font-bold leading-[1.1] tracking-[-0.05em] text-[#0c1210]">
+                  Start with intention. Launch with confidence.
                 </h3>
-                <p className="text-[#aab6ad] text-[15px] leading-relaxed">
-                  One connected partner across foundation, identity, digital systems, AI, automation and growth.
+                <p className="text-[13px] text-[#1e3427] leading-relaxed">
+                  Every business is different. We’ll help you shape the right scope for yours.
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 2. Band Strip (01 REGISTER, 02 BUILD, 03 BRAND, 04 DIGITISE) */}
-      <section className="bg-[#10261a] text-[#f5f7ef] py-16 md:py-20 border-t border-b border-[#33473a]">
-        <div className="site-container">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-[#26362c]">
-            <div className="bg-[#0b1510] p-7 min-h-[180px] flex flex-col justify-between">
-              <div className="ep-num">01</div>
               <div>
-                <b className="text-[16px] text-[#f5f7ef] tracking-wide block mb-1">REGISTER</b>
-                <p className="text-[14px] text-[#aab6ad]">Give the business its legal foundation.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-7 min-h-[180px] flex flex-col justify-between">
-              <div className="ep-num">02</div>
-              <div>
-                <b className="text-[16px] text-[#f5f7ef] tracking-wide block mb-1">BUILD</b>
-                <p className="text-[14px] text-[#aab6ad]">Put the right business and compliance systems in place.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-7 min-h-[180px] flex flex-col justify-between">
-              <div className="ep-num">03</div>
-              <div>
-                <b className="text-[16px] text-[#f5f7ef] tracking-wide block mb-1">BRAND</b>
-                <p className="text-[14px] text-[#aab6ad]">Make the business professional and recognisable.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-7 min-h-[180px] flex flex-col justify-between">
-              <div className="ep-num">04</div>
-              <div>
-                <b className="text-[16px] text-[#f5f7ef] tracking-wide block mb-1">DIGITISE</b>
-                <p className="text-[14px] text-[#aab6ad]">Build a digital presence that works.</p>
+                <a href="#consult" className="btn dark">
+                  <span>Talk to our team</span>
+                  <span className="text-[18px] leading-none">→</span>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. The Eponix Approach */}
-      <section className="bg-[#0b120f] py-20 lg:py-28">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-12">
-            <div>
-              <div className="eyebrow">The Eponix Approach</div>
-              <h2 className="heading-2">Your business. Properly built for the digital world.</h2>
-            </div>
-            <div className="text-[#aab6ad] text-[18px] leading-relaxed">
-              Eponix brings business and digital services together — registration, compliance, branding, websites, digital tools, AI, automation and growth. You bring the business. We help build the infrastructure around it.
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="ep-card">
-              <div className="ep-tag">Foundation</div>
-              <h3 className="heading-3">Start correctly.</h3>
-              <p>Business registration, tax, compliance and trademark support.</p>
-            </div>
-
-            <div className="ep-card">
-              <div className="ep-tag">Identity</div>
-              <h3 className="heading-3">Look the part.</h3>
-              <p>Brand identity, corporate materials and a professional presence.</p>
-            </div>
-
-            <div className="ep-card">
-              <div className="ep-tag">Systems</div>
-              <h3 className="heading-3">Make it work.</h3>
-              <p>Websites, email, digital tools, AI and automation.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Our Journey */}
-      <section id="journey" className="bg-[#102118] py-20 lg:py-28 border-t border-b border-[#26362c]">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-12">
-            <div>
-              <div className="eyebrow">Our Journey</div>
-              <h2 className="heading-2">From idea to a business built to move.</h2>
-            </div>
-            <div className="text-[#aab6ad] text-[18px] leading-relaxed">
-              A connected pathway that grows with the business.
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-[1px] bg-[#26362c]">
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">01</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">DISCOVER</b>
-                <p className="text-[13px] text-[#aab6ad]">Understand the business.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">02</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">FOUNDATION</b>
-                <p className="text-[13px] text-[#aab6ad]">Build the foundation.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">03</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">IDENTITY</b>
-                <p className="text-[13px] text-[#aab6ad]">Build the brand.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">04</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">DIGITAL</b>
-                <p className="text-[13px] text-[#aab6ad]">Go digital.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">05</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">AI &amp; AUTOMATION</b>
-                <p className="text-[13px] text-[#aab6ad]">Work smarter.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">06</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">GROWTH</b>
-                <p className="text-[13px] text-[#aab6ad]">Build the growth engine.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Signature Offer */}
-      <section className="bg-[#0b120f] py-20 lg:py-28">
-        <div className="site-container">
-          <div className="bg-[#070d0a] border border-[#33473a] p-8 sm:p-14 space-y-6">
-            <div className="eyebrow">Signature Offer</div>
-            <h2 className="heading-2">Everything your business needs to launch professionally.</h2>
-            <p className="lead-text">
-              The Ultimate Business Launch Package brings legal foundation, compliance, identity and digital presence together under one coordinated team.
+      {/* 6. SERVICES GRID (Dark Obsidian #101713) */}
+      <section className="bg-[#101713] text-[#f4f6ed] py-24 lg:py-28 border-t border-[rgba(244,246,237,0.14)]" id="services">
+        <div className="wrap">
+          <div className="max-w-[690px] space-y-4 mb-14">
+            <div className="eyebrow">What we do</div>
+            <h2 className="text-[34px] sm:text-[46px] lg:text-[58px] font-bold leading-[1.08] tracking-[-0.055em] text-[#f4f6ed]">
+              Everything your business needs to show up, work better and grow.
+            </h2>
+            <p className="text-[#b8c1bb] text-[15px]">
+              Choose focused support or let us build a joined-up foundation around your goals.
             </p>
-            <div className="pt-2 flex flex-wrap items-center gap-3.5">
-              <Link href="/services" className="ep-btn ep-btn-primary">
-                See What You Get
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-[rgba(244,246,237,0.14)]">
+            {services.map((srv) => (
+              <Link
+                key={srv.num}
+                href={srv.href}
+                className="p-8 border-r border-b border-[rgba(244,246,237,0.14)] min-h-[280px] flex flex-col justify-between hover:bg-[#17382b] transition-colors relative group"
+              >
+                <div>
+                  <span className="font-mono text-[11px] text-[#c9f95a] block mb-8">
+                    {srv.num}
+                  </span>
+                  <h3 className="text-[21px] font-bold leading-[1.15] tracking-[-0.045em] text-[#f4f6ed] mb-2.5">
+                    {srv.title}
+                  </h3>
+                  <p className="text-[13px] text-[#aebbb3] leading-relaxed">
+                    {srv.desc}
+                  </p>
+                </div>
+                <div className="mt-8 text-[#c9f95a] text-[20px] font-bold self-end group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                  ↗
+                </div>
               </Link>
-              <a href="#consultation" className="ep-btn ep-btn-light">
-                Get Started
-              </a>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 6. Services Grid */}
-      <section className="bg-[#101914] py-20 lg:py-28 border-t border-b border-[#26362c]">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-12">
-            <div>
-              <div className="eyebrow">Services</div>
-              <h2 className="heading-2">Choose the right starting point.</h2>
-            </div>
-            <div className="text-[#aab6ad] text-[18px] leading-relaxed">
-              Start with a specific need or move through the full business journey.
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Card 1: CAC Registration (Dark) */}
-            <Link href="/services" className="ep-card dark block group">
-              <div className="ep-tag">01 / Foundation</div>
-              <h3 className="heading-3">CAC Registration</h3>
-              <p>Business Name, Limited Company and NGO / Incorporated Trustees.</p>
-              <span className="ep-link group-hover:text-[#c6ff3f]">Open CAC services →</span>
-            </Link>
-
-            {/* Card 2: Compliance & Tax */}
-            <Link href="/services" className="ep-card block group">
-              <div className="ep-tag">02 / Readiness</div>
-              <h3 className="heading-3">Compliance &amp; Tax</h3>
-              <p>SCUML, NRS Tax ID / Rev360, NAFDAC and related support.</p>
-              <span className="ep-link group-hover:text-[#c6ff3f]">Open compliance →</span>
-            </Link>
-
-            {/* Card 3: Trademark Registration */}
-            <Link href="/services" className="ep-card block group">
-              <div className="ep-tag">03 / Protection</div>
-              <h3 className="heading-3">Trademark Registration</h3>
-              <p>Search, filing and all 45 trademark classes.</p>
-              <span className="ep-link group-hover:text-[#c6ff3f]">Open trademark →</span>
-            </Link>
-
-            {/* Card 4: Brand & Digital */}
-            <Link href="/services" className="ep-card block group">
-              <div className="ep-tag">04 / Expression</div>
-              <h3 className="heading-3">Brand &amp; Digital</h3>
-              <p>Identity, website, corporate email and digital tools.</p>
-              <span className="ep-link group-hover:text-[#c6ff3f]">Open brand services →</span>
-            </Link>
-
-            {/* Card 5: AI, Marketing & Growth */}
-            <Link href="/services" className="ep-card block group">
-              <div className="ep-tag">05 / Momentum</div>
-              <h3 className="heading-3">AI, Marketing &amp; Growth</h3>
-              <p>Automation, agents, AI video and visibility support.</p>
-              <span className="ep-link group-hover:text-[#c6ff3f]">Open growth services →</span>
-            </Link>
-
-            {/* Card 6: Complete Business Infrastructure (Lime) */}
-            <Link href="/services" className="ep-card lime block group">
-              <div className="ep-tag text-[#071007] border-[#071007]">06 / Connected</div>
-              <h3 className="heading-3 text-[#071007]">Complete Business Infrastructure</h3>
-              <p className="text-[#183018]">Build the pieces together instead of managing disconnected providers.</p>
-              <span className="ep-link text-[#071007] group-hover:underline">Explore all services →</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Why Eponix Band */}
-      <section className="bg-[#10261a] text-[#f5f7ef] py-20 border-t border-b border-[#33473a]">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div>
-              <div className="eyebrow">Why Eponix</div>
-              <h2 className="heading-2">One professional partner.</h2>
-            </div>
-            <div>
-              <p className="text-[#d1dbd3] text-[18px] leading-relaxed">
-                Built around your business. Foundation first. Digital by design. Built to scale. We combine local business insight with practical digital systems.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Consultation / Intake Section */}
-      <section id="consultation" className="bg-[#0b120f] py-20 lg:py-28">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left Content */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="eyebrow">Not Sure Where to Start?</div>
-              <h2 className="heading-2">Tell us about your business.</h2>
-              <p className="lead-text">
-                Complete the details and the Eponix team will review your request and contact you.
-              </p>
-              <div className="flex flex-wrap gap-2.5 pt-2">
-                <span className="ep-tag">One Team</span>
-                <span className="ep-tag">Dedicated Support</span>
-                <span className="ep-tag">Secure Submission</span>
+      {/* 7. WHY EPONIX SECTION (Light Cream #f4f6ed) */}
+      <section className="bg-[#f4f6ed] text-[#0c1210] py-24 lg:py-28">
+        <div className="wrap">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            <div className="lg:col-span-5 space-y-4">
+              <div className="font-mono text-[10px] font-medium tracking-[0.17em] uppercase text-[#367054]">
+                Why Eponix
               </div>
+              <h2 className="text-[34px] sm:text-[46px] lg:text-[58px] font-bold leading-[1.03] tracking-[-0.065em] text-[#0c1210]">
+                We see the whole business, not just the next task.
+              </h2>
             </div>
 
-            {/* Right Form */}
+            <div className="lg:col-span-7 border-t border-[#cbd2c7]">
+              {[
+                {
+                  num: "01",
+                  title: "One strategic partner",
+                  desc: "Connected expertise from foundation through growth.",
+                },
+                {
+                  num: "02",
+                  title: "Built for the Nigerian market",
+                  desc: "Local context, professional standards and practical direction.",
+                },
+                {
+                  num: "03",
+                  title: "Clarity over complexity",
+                  desc: "We make important business decisions easier to navigate.",
+                },
+                {
+                  num: "04",
+                  title: "Systems that support growth",
+                  desc: "Not just a launch—we help create momentum that lasts.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.num}
+                  className="grid grid-cols-[45px_1fr_auto] items-center gap-3 py-5 border-b border-[#cbd2c7]"
+                >
+                  <span className="font-mono text-[11px] text-[#66736a]">{item.num}</span>
+                  <div>
+                    <b className="text-[17px] sm:text-[18px] tracking-[-0.045em] text-[#0c1210] block">
+                      {item.title}
+                    </b>
+                    <p className="text-[#66736a] text-[12px] mt-0.5">{item.desc}</p>
+                  </div>
+                  <span className="text-[#66736a] text-[16px]">↗</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. HOW IT WORKS SECTION (Deep Forest Green #17382b) */}
+      <section className="bg-[#17382b] text-[#f4f6ed] py-24 lg:py-28 border-t border-b border-white/10" id="how">
+        <div className="wrap">
+          <div className="max-w-[690px] space-y-4 mb-16">
+            <div className="eyebrow">How it works</div>
+            <h2 className="text-[34px] sm:text-[46px] lg:text-[58px] font-bold leading-[1.08] tracking-[-0.055em] text-[#f4f6ed]">
+              A simpler way to build well.
+            </h2>
+            <p className="text-[#c7d5cb] text-[15px]">
+              Clear steps. Collaborative decisions. A business that is more ready for what’s next.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-white/20">
+            {[
+              {
+                num: "01",
+                title: "Discover",
+                desc: "Tell us where you are and where you want the business to go.",
+              },
+              {
+                num: "02",
+                title: "Define",
+                desc: "We shape the right priorities, scope and pathway together.",
+              },
+              {
+                num: "03",
+                title: "Build",
+                desc: "Our specialists bring your foundations, brand and systems to life.",
+              },
+              {
+                num: "04",
+                title: "Move forward",
+                desc: "Launch with confidence and keep building with the right support.",
+              },
+            ].map((step, idx) => (
+              <div
+                key={step.num}
+                className={`py-8 sm:pr-6 min-h-[220px] ${idx < 3 ? "lg:border-r border-white/20" : ""}`}
+              >
+                <strong className="block text-[#c9f95a] font-mono text-[11px] mb-8">
+                  {step.num}
+                </strong>
+                <h3 className="text-[22px] font-bold tracking-[-0.04em] leading-[1.18] text-[#f4f6ed] mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-[12px] text-[#c0d0c6] leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. CORPORATE STATEMENT SECTION (Light Sage #dfe5d8) */}
+      <section className="py-28 lg:py-36 bg-[#dfe5d8] text-[#0c1210] text-center">
+        <div className="wrap">
+          <blockquote className="max-w-[1050px] mx-auto font-serif text-[28px] sm:text-[42px] lg:text-[62px] font-semibold leading-[1.12] tracking-[-0.055em] text-[#0c1210]">
+            “We believe Nigerian businesses deserve the{" "}
+            <em className="italic text-[#3b7858] font-normal">
+              same clarity, confidence and systems
+            </em>{" "}
+            as their biggest ambitions.”
+          </blockquote>
+          <cite className="block mt-8 font-mono text-[11px] tracking-[0.13em] not-italic text-[#57675c] uppercase">
+            — THE EPONIX CORPORATE STATEMENT
+          </cite>
+        </div>
+      </section>
+
+      {/* 10. CONSULTATION INTAKE FORM (Dark #101713) */}
+      <section className="bg-[#101713] text-[#f4f6ed] py-24 lg:py-28 border-t border-[rgba(244,246,237,0.14)]" id="consult">
+        <div className="wrap">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+            {/* Info Left */}
+            <div className="lg:col-span-5 space-y-5">
+              <div className="eyebrow">Let’s start a conversation</div>
+              <h2 className="text-[34px] sm:text-[46px] lg:text-[62px] font-bold leading-[1.0] tracking-[-0.07em] text-[#f4f6ed]">
+                Build what your business needs next.
+              </h2>
+              <p className="text-[#b5c1ba] text-[15px] leading-relaxed max-w-[410px]">
+                Tell us a little about your business. Our team will use it to begin the right conversation with you.
+              </p>
+            </div>
+
+            {/* Form Right */}
             <div className="lg:col-span-7">
               {isSubmitted ? (
-                <div className="bg-[#0d1711] border border-[#33473a] p-8 text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-[#c6ff3f] text-[#071007] flex items-center justify-center mx-auto">
+                <div className="p-8 border border-[#c9f95a]/40 bg-[#151e1a] text-center space-y-4">
+                  <div className="w-12 h-12 bg-[#c9f95a] text-[#0c1210] flex items-center justify-center mx-auto">
                     <Check className="w-6 h-6" />
                   </div>
-                  <h3 className="heading-3">Inquiry Submitted</h3>
-                  <p className="text-[15px] text-[#aab6ad] max-w-md mx-auto">
-                    Thank you, <strong>{formData.fullName}</strong>. The Eponix team has received your details for <em>{formData.businessName || "your business"}</em> and will reach out to you shortly.
+                  <h3 className="text-[22px] font-bold text-[#f4f6ed]">Consultation Request Received</h3>
+                  <p className="text-[14px] text-[#c2ccc5] max-w-md mx-auto">
+                    Thank you, <strong>{formData.name}</strong>. Your request for <em>{formData.service}</em> has been routed to our team. We will reach out shortly.
                   </p>
                   <button
                     onClick={() => {
                       setIsSubmitted(false);
-                      setFormData({
-                        fullName: "",
-                        businessName: "",
-                        email: "",
-                        phoneNumber: "",
-                        businessStage: "Select stage",
-                        primaryGoal: "Select goal",
-                        projectDetails: "",
-                        agreeTerms: true,
-                      });
+                      setFormData({ name: "", email: "", service: "Business foundation", message: "" });
                     }}
-                    className="ep-btn ep-btn-light mt-4"
+                    className="btn primary !mt-4"
                   >
-                    Submit another application
+                    Send another request
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="ep-form">
+                <form onSubmit={handleSubmit} className="border-t border-[rgba(244,246,237,0.14)]">
                   {errorMessage && (
                     <div className="p-3 mb-4 text-xs bg-red-950 text-red-200 border border-red-800">
                       {errorMessage}
                     </div>
                   )}
 
-                  <div>
-                    <label>Full Name</label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      placeholder="e.g. Oluwaseun Adeleke"
-                    />
-                  </div>
-
-                  <div>
-                    <label>Business Name</label>
-                    <input
-                      type="text"
-                      value={formData.businessName}
-                      onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                      placeholder="e.g. Apex Dynamics Ltd"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label>Email Address</label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="name@company.com"
-                      />
-                    </div>
-                    <div>
-                      <label>Phone Number</label>
-                      <input
-                        type="tel"
-                        required
-                        value={formData.phoneNumber}
-                        onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                        placeholder="+234 800 000 0000"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label>Business Stage</label>
-                      <select
-                        value={formData.businessStage}
-                        onChange={(e) => setFormData({ ...formData, businessStage: e.target.value })}
-                      >
-                        <option value="Select stage">Select stage</option>
-                        <option value="Idea / Pre-launch">Idea / Pre-launch</option>
-                        <option value="Newly registered">Newly registered</option>
-                        <option value="Existing business">Existing business</option>
-                        <option value="Growing business">Growing business</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label>Primary Goal</label>
-                      <select
-                        value={formData.primaryGoal}
-                        onChange={(e) => setFormData({ ...formData, primaryGoal: e.target.value })}
-                      >
-                        <option value="Select goal">Select goal</option>
-                        <option value="Registration & compliance">Registration &amp; compliance</option>
-                        <option value="Branding">Branding</option>
-                        <option value="Website & digital presence">Website &amp; digital presence</option>
-                        <option value="AI & automation">AI &amp; automation</option>
-                        <option value="Marketing & growth">Marketing &amp; growth</option>
-                        <option value="Complete business launch">Complete business launch</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label>Additional Inquiries / Project Details</label>
-                    <textarea
-                      value={formData.projectDetails}
-                      onChange={(e) => setFormData({ ...formData, projectDetails: e.target.value })}
-                      placeholder="Tell us anything important about your business, project needs, timeline or questions."
-                    />
-                  </div>
-
-                  <div className="flex items-center gap-2 pt-2">
-                    <input
-                      type="checkbox"
-                      id="agreeTerms"
-                      checked={formData.agreeTerms}
-                      onChange={(e) => setFormData({ ...formData, agreeTerms: e.target.checked })}
-                      required
-                      style={{ width: "auto" }}
-                    />
-                    <label htmlFor="agreeTerms" style={{ margin: 0, fontWeight: 400, fontSize: "13px", color: "#aab6ad" }}>
-                      I agree to the Terms of Service and Privacy Policy.
+                  <div className="relative border-b border-[rgba(244,246,237,0.14)]">
+                    <label className="absolute top-5 left-0 font-mono text-[10px] tracking-[0.1em] text-[#98a89d] uppercase">
+                      YOUR NAME *
                     </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full border-0 outline-none bg-transparent text-[#f4f6ed] font-semibold text-[16px] pt-11 pb-4"
+                    />
+                  </div>
+
+                  <div className="relative border-b border-[rgba(244,246,237,0.14)]">
+                    <label className="absolute top-5 left-0 font-mono text-[10px] tracking-[0.1em] text-[#98a89d] uppercase">
+                      EMAIL ADDRESS *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full border-0 outline-none bg-transparent text-[#f4f6ed] font-semibold text-[16px] pt-11 pb-4"
+                    />
+                  </div>
+
+                  <div className="relative border-b border-[rgba(244,246,237,0.14)]">
+                    <label className="absolute top-5 left-0 font-mono text-[10px] tracking-[0.1em] text-[#98a89d] uppercase">
+                      WHAT DO YOU NEED HELP WITH?
+                    </label>
+                    <select
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      className="w-full border-0 outline-none bg-transparent text-[#f4f6ed] font-semibold text-[16px] pt-11 pb-4 cursor-pointer"
+                    >
+                      <option className="text-[#0c1210]" value="Business foundation">Business foundation</option>
+                      <option className="text-[#0c1210]" value="Brand and digital presence">Brand and digital presence</option>
+                      <option className="text-[#0c1210]" value="AI and automation">AI and automation</option>
+                      <option className="text-[#0c1210]" value="Growth support">Growth support</option>
+                      <option className="text-[#0c1210]" value="Not sure yet">Not sure yet</option>
+                    </select>
+                  </div>
+
+                  <div className="relative border-b border-[rgba(244,246,237,0.14)]">
+                    <label className="absolute top-5 left-0 font-mono text-[10px] tracking-[0.1em] text-[#98a89d] uppercase">
+                      TELL US BRIEFLY
+                    </label>
+                    <textarea
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full border-0 outline-none bg-transparent text-[#f4f6ed] font-semibold text-[16px] pt-11 pb-4 h-[110px] resize-y"
+                    />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="ep-btn ep-btn-dark w-full mt-4"
+                    className="btn primary !mt-7 disabled:opacity-50"
                   >
-                    {isSubmitting ? "Submitting Application..." : "Submit Application"}
+                    <span>{isSubmitting ? "Submitting..." : "Request a consultation"}</span>
+                    <span className="text-[18px] leading-none">→</span>
                   </button>
                 </form>
               )}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 11. FINAL CTA BANNER (Electric Lime #c9f95a) */}
+      <section className="bg-[#c9f95a] text-[#0c1210] py-24 lg:py-28">
+        <div className="wrap flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
+          <h2 className="text-[38px] sm:text-[56px] lg:text-[80px] font-bold leading-[0.97] tracking-[-0.075em] max-w-[830px]">
+            Ready to build with more{" "}
+            <em className="font-serif italic font-semibold text-[#0c1210]">clarity?</em>
+          </h2>
+          <a href="#consult" className="btn dark whitespace-nowrap">
+            <span>Book a consultation</span>
+            <span className="text-[18px] leading-none">→</span>
+          </a>
         </div>
       </section>
     </div>

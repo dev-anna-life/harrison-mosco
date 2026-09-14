@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Check, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 
 const trademarkClasses = [
   "Chemicals",
@@ -54,505 +54,642 @@ const trademarkClasses = [
 
 type PathwayKey = "ultimate" | "cac" | "compliance" | "trademark" | "brand" | "growth";
 
-interface PathwayData {
-  key: PathwayKey;
+interface FlowData {
   eyebrow: string;
   title: string;
-  intro: string;
-  packages: {
-    name: string;
-    price: string;
+  titleEm: string;
+  desc: string;
+  stats: [string, string][];
+  defaultSupport: string;
+  featureNote?: string;
+  cards: {
+    badge: string;
+    title: string;
+    desc: string;
     items: string[];
-    featured?: boolean;
+    price: string;
   }[];
 }
 
-const pathwaysData: Record<PathwayKey, PathwayData> = {
+const serviceData: Record<PathwayKey, FlowData> = {
   ultimate: {
-    key: "ultimate",
-    eyebrow: "01 / Signature",
-    title: "Ultimate Business Launch Package",
-    intro: "One coordinated package across six core areas of a professional business launch.",
-    packages: [
+    eyebrow: "THE SIGNATURE PACKAGE",
+    title: "One package.",
+    titleEm: "Six core areas.",
+    desc: "The Ultimate Business Launch Package brings the foundations needed to establish, present and operate a new business professionally into one focused build.",
+    stats: [
+      ["ONE COORDINATED TEAM", "A clear launch workflow"],
+      ["ALL-INCLUSIVE", "Complete 6-pillar build"],
+      ["DOCUMENT CHECKLIST", "Guidance before we begin"],
+      ["DIGITAL DELIVERY", "Key assets delivered securely"],
+    ],
+    defaultSupport: "Launch consultation",
+    featureNote:
+      "This is a coordinated launch package: company setup, compliance support, trademark pathway, premium branding, website/corporate email and digital business tools work together as one structured build.",
+    cards: [
       {
-        name: "Ultimate Launch",
-        price: "₦1,000,000",
-        items: [
-          "Complete CAC Limited Company or Business Name Registration",
-          "Tax ID (TIN) & SCUML Compliance Registration",
-          "Trademark Search & Official Filing Setup",
-          "Full Corporate Brand Identity (Logo, Letterhead, Business Card, Staff ID, 12-page Profile)",
-          "High-Performance Custom Website + Corporate Email + 1-Yr Domain & SSL",
-          "AI Operations & Lead Generation Workflow Setup",
-        ],
-        featured: true,
+        badge: "01",
+        title: "Company Registration",
+        desc: "The right CAC registration route for your chosen structure.",
+        items: ["Business Name or Limited Company pathway", "Core registration documents", "Registration guidance"],
+        price: "INCLUDED",
+      },
+      {
+        badge: "02",
+        title: "Tax & Compliance",
+        desc: "Early readiness for key compliance needs.",
+        items: ["NRS Tax ID setup", "Compliance guidance", "SCUML where applicable"],
+        price: "INCLUDED",
+      },
+      {
+        badge: "03",
+        title: "Trademark Support",
+        desc: "Start protecting the name you are building.",
+        items: ["Name and class guidance", "Search support", "Registration pathway"],
+        price: "INCLUDED",
+      },
+      {
+        badge: "04",
+        title: "Premium Branding",
+        desc: "A strong identity for a professional business.",
+        items: ["Logo direction", "Core touchpoints", "Company profile direction"],
+        price: "INCLUDED",
+      },
+      {
+        badge: "05",
+        title: "Website & Corporate Email",
+        desc: "A credible digital home and business communications base.",
+        items: ["Domain & email setup", "Professional website", "Hosting / SSL pathway"],
+        price: "INCLUDED",
+      },
+      {
+        badge: "06",
+        title: "Digital Business Tools",
+        desc: "Practical paths for customers to connect and act.",
+        items: ["Social connection", "Booking / payment readiness", "Launch support"],
+        price: "INCLUDED",
       },
     ],
   },
   cac: {
-    key: "cac",
-    eyebrow: "02 / Foundation",
-    title: "CAC Registration",
-    intro: "Choose the package that fits your Nigerian CAC incorporation structure.",
-    packages: [
+    eyebrow: "CAC REGISTRATION",
+    title: "Start with the",
+    titleEm: "right legal foundation.",
+    desc: "Open the route that fits your business or organisation. Each pathway has support levels, requirements and a tailored request process.",
+    stats: [
+      ["THREE PATHWAYS", "Business, Company, NGO"],
+      ["CLEAR PROCESS", "Guided document preparation"],
+      ["DOCUMENT-LED", "Clear requirements"],
+      ["DIGITAL DELIVERY", "Original certified documents"],
+    ],
+    defaultSupport: "CAC registration request",
+    featureNote:
+      "Open a CAC pathway above to choose Business Name, Limited Company or NGO / Incorporated Trustees registration. The request form below captures initial details; Eponix will then issue the full document checklist for the chosen route.",
+    cards: [
       {
-        name: "Business Name",
-        price: "₦45,000",
-        items: [
-          "CAC Business Name registration certificate",
-          "Official CAC Status Report",
-          "NRS Tax Identification Number (TIN)",
-          "Digital document delivery",
-        ],
+        badge: "BUSINESS NAME",
+        title: "Business Name Registration",
+        desc: "For sole proprietors and small-scale businesses ready to formalise.",
+        items: ["CAC Certificate", "Status Report", "NRS Tax ID pathway"],
+        price: "FROM ₦35,000",
       },
       {
-        name: "Limited Company (Pro)",
-        price: "₦95,000",
-        items: [
-          "CAC Limited Liability Company (RC) incorporation",
-          "Official Status Report & Certified Memorandum & Articles (MEMART)",
-          "Tax ID (TIN) & Joint Tax Board profile setup",
-          "Corporate resolution and banking compliance readiness",
-        ],
-        featured: true,
+        badge: "LIMITED COMPANY",
+        title: "Limited Company Registration",
+        desc: "For incorporation, directors/shareholders and a corporate structure.",
+        items: ["CAC incorporation documents", "Status Report & MEMART", "Tax ID pathway"],
+        price: "FROM ₦60,000",
       },
       {
-        name: "NGO / Incorporated Trustees",
-        price: "₦220,000",
-        items: [
-          "Incorporated Trustees CAC registration",
-          "National newspaper publication coordination",
-          "Official Constitution, Status Report & Certificate",
-          "SCUML anti-money laundering setup guidance",
-        ],
+        badge: "INCORPORATED TRUSTEES",
+        title: "NGO / Trustee Registration",
+        desc: "For NGOs, associations, faith organisations and social clubs.",
+        items: ["Trustee-led registration", "Constitution & publications", "Organisation documentation"],
+        price: "FROM ₦130,000",
       },
     ],
   },
   compliance: {
-    key: "compliance",
-    eyebrow: "03 / Readiness",
-    title: "Compliance & Tax",
-    intro: "Statutory licensing, anti-money laundering certification, and tax registrations.",
-    packages: [
+    eyebrow: "COMPLIANCE & TAX",
+    title: "Be ready to operate",
+    titleEm: "with confidence.",
+    desc: "Select the compliance or tax setup your business needs. We confirm the relevant document list and delivery route before work begins.",
+    stats: [
+      ["REGULATORY READY", "Support that fits your stage"],
+      ["TAX COMPLIANCE", "TIN & Rev360 portal"],
+      ["DOCUMENT CHECKLIST", "Confirmed per service"],
+      ["GUIDED SUPPORT", "Clear next steps"],
+    ],
+    defaultSupport: "Compliance request",
+    cards: [
       {
-        name: "SCUML Registration",
-        price: "₦65,000",
-        items: [
-          "Special Control Unit Against Money Laundering (SCUML) clearance",
-          "Full EFCC compliance verification",
-          "Digital & physical certificate delivery",
-          "Mandatory commercial banking compliance checklist",
-        ],
+        badge: "SCUML",
+        title: "SCUML Registration",
+        desc: "Compliance documentation and reporting-readiness support.",
+        items: ["SCUML certificate pathway", "Compliance guidance", "Monthly reporting template"],
+        price: "FROM ₦65,000",
       },
       {
-        name: "NRS Tax ID & Rev360",
-        price: "₦40,000",
-        items: [
-          "Corporate Tax ID (TIN) validation & generation",
-          "Rev360 / NRS revenue portal onboarding",
-          "Tax clearance certificate documentation guidance",
-          "Initial VAT & Withholding Tax profile activation",
-        ],
-        featured: true,
+        badge: "NRS / REV360",
+        title: "NRS Tax ID & Rev360",
+        desc: "Set up tax identity and filing account access.",
+        items: ["NRS Tax ID", "Rev360 account", "Tax portal readiness"],
+        price: "FROM ₦40,000",
       },
       {
-        name: "NAFDAC & Regulatory Advisory",
-        price: "Custom",
-        items: [
-          "Product formulation and facility inspection audit",
-          "Pre-submission compliance documentation",
-          "Liaison with regulatory authorities",
-          "Official product registry filing",
-        ],
+        badge: "REGULATORY",
+        title: "NAFDAC & More",
+        desc: "A scoped route for NAFDAC and sector-specific requirements.",
+        items: ["Product / business review", "Document checklist", "Application support scope"],
+        price: "CUSTOM SCOPE",
       },
     ],
   },
   trademark: {
-    key: "trademark",
-    eyebrow: "04 / Protection",
-    title: "Trademark Registration",
-    intro: "Comprehensive brand name, logo mark, and slogan protection across all 45 Nice classes.",
-    packages: [
+    eyebrow: "TRADEMARK REGISTRATION",
+    title: "Protect the name you are",
+    titleEm: "building.",
+    desc: "Choose the right support level, then submit the brand, owner and goods/services information needed to begin.",
+    stats: [
+      ["CLASSES 1–45", "Choose relevant classes"],
+      ["REGISTRY VERIFIED", "Official Trade Marks Registry"],
+      ["SEARCH FIRST", "Availability before filing"],
+      ["DIGITAL DELIVERY", "Updates & documents"],
+    ],
+    defaultSupport: "Trademark request",
+    cards: [
       {
-        name: "Trademark Search & Filing",
-        price: "₦95,000",
-        items: [
-          "Pre-filing availability search across the trademark registry",
-          "Official Trade Marks Registry statutory filing",
-          "Official Acknowledgment Letter and Acceptance Document",
-          "Official Trademark Journal publication tracking",
-        ],
-        featured: true,
+        badge: "START",
+        title: "Availability Search",
+        desc: "A considered first review before an application is filed.",
+        items: ["Trademark name review", "Eligibility review", "Search guidance"],
+        price: "FROM ₦15,000",
       },
       {
-        name: "Multi-Class Trademark",
-        price: "₦165,000",
-        items: [
-          "Comprehensive multi-class filing across related product/service classes",
-          "Class analysis and scope consultation",
-          "Complete journal publication tracking",
-          "Certificate issuance monitoring",
-        ],
+        badge: "FILE",
+        title: "Trademark Filing",
+        desc: "Filing support for a suitable search outcome.",
+        items: ["Application filing", "Acknowledgement support", "One trademark class"],
+        price: "FROM ₦60,000",
+      },
+      {
+        badge: "COMPLETE",
+        title: "Search & Registration",
+        desc: "Joined-up support from early search through registration.",
+        items: ["Pre-filing search", "Trademark application", "Registration support"],
+        price: "FROM ₦70,000",
       },
     ],
   },
   brand: {
-    key: "brand",
-    eyebrow: "05 / Expression",
-    title: "Brand Strategy & Digital",
-    intro: "Corporate visual identity systems, modern web platforms, and digital presence.",
-    packages: [
+    eyebrow: "BRAND & DIGITAL",
+    title: "Present a business people can",
+    titleEm: "trust.",
+    desc: "Build the identity, website and customer-ready tools that make it easier for people to find, understand and choose you.",
+    stats: [
+      ["CONNECTED PRESENCE", "Brand to website"],
+      ["EXECUTIVE DESIGN", "Modern visual standards"],
+      ["BUILT AROUND YOU", "Scope before build"],
+      ["READY TO GROW", "Tools that connect"],
+    ],
+    defaultSupport: "Brand & website enquiry",
+    cards: [
       {
-        name: "Executive Brand Identity",
-        price: "₦120,000",
-        items: [
-          "Primary & secondary logo marks, color palette and typography rules",
-          "Letterhead, invoice, business card & staff ID print-ready templates",
-          "Comprehensive 12-page company profile design",
-          "Social media brand asset kit",
-        ],
+        badge: "BRAND",
+        title: "Brand Identity",
+        desc: "Clarify the look, language and key touchpoints.",
+        items: ["Brand direction", "Logo system", "Business collateral"],
+        price: "FROM ₦120,000",
       },
       {
-        name: "Web Platform & Corporate Email",
-        price: "₦250,000",
-        items: [
-          "High-performance custom responsive corporate website",
-          "Custom domain name, SSL security, and 1 year hosting",
-          "Google Workspace / Microsoft 365 corporate email setup",
-          "Direct WhatsApp lead routing & interactive inquiry form",
-        ],
-        featured: true,
+        badge: "WEBSITE",
+        title: "Website & Email",
+        desc: "A credible digital home and professional communications base.",
+        items: ["Website design", "Domain & corporate email", "Hosting / SSL pathway"],
+        price: "FROM ₦250,000",
+      },
+      {
+        badge: "TOOLS",
+        title: "Digital Business Tools",
+        desc: "Useful paths for customers to enquire, book, pay and connect.",
+        items: ["Booking setup", "Payment readiness", "Social integration"],
+        price: "CUSTOM SCOPE",
       },
     ],
   },
   growth: {
-    key: "growth",
-    eyebrow: "06 / Momentum",
-    title: "AI, Marketing & Growth",
-    intro: "AI automation, intelligent customer agents, and customer acquisition systems.",
-    packages: [
+    eyebrow: "AI & GROWTH",
+    title: "Create systems that help you",
+    titleEm: "move further.",
+    desc: "Use AI, automation and visibility support to reduce friction, communicate better and create growth momentum.",
+    stats: [
+      ["PRACTICAL AI", "Built around your workflow"],
+      ["AUTOMATED LEADS", "24/7 client response"],
+      ["STRATEGIC BUILD", "Not one-size-fits-all"],
+      ["GROWTH READY", "Systems that scale"],
+    ],
+    defaultSupport: "AI & growth enquiry",
+    cards: [
       {
-        name: "AI Business Automation",
-        price: "₦180,000",
-        items: [
-          "Automated WhatsApp & email lead capture workflows",
-          "24/7 AI customer service agent trained on your business data",
-          "CRM pipeline integration for automated deal tracking",
-          "Invoice & receipt generation automation",
-        ],
-        featured: true,
+        badge: "AUTOMATION",
+        title: "Business Automation",
+        desc: "Connect repetitive work into faster, clearer workflows.",
+        items: ["Workflow audit", "Automation design", "Implementation support"],
+        price: "FROM ₦180,000",
       },
       {
-        name: "Growth & Visibility Engine",
-        price: "₦220,000",
-        items: [
-          "Targeted digital advertising setup (Meta Ads, Google Ads)",
-          "High-converting landing page conversion optimization",
-          "AI video presenter assets & creative ad copy",
-          "Monthly growth analytics & strategy consultation",
-        ],
+        badge: "AGENTIC",
+        title: "AI Agents & Video",
+        desc: "AI assistants and AI video systems for modern work.",
+        items: ["AI agent planning", "Enquiry workflows", "AI creative support"],
+        price: "CUSTOM SCOPE",
+      },
+      {
+        badge: "VISIBILITY",
+        title: "Marketing & Growth",
+        desc: "Turn business direction into stronger visibility.",
+        items: ["Marketing planning", "Content & campaigns", "Growth support"],
+        price: "FROM ₦220,000",
       },
     ],
   },
 };
 
 export default function ServicesPage() {
-  const [activePathway, setActivePathway] = useState<PathwayKey>("ultimate");
+  const [selectedPathway, setSelectedPathway] = useState<PathwayKey | null>(null);
   const [selectedClasses, setSelectedClasses] = useState<number[]>([]);
-  const [showTrademarkModal, setShowTrademarkModal] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    supportLevel: "",
+    businessName: "",
+    details: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const toggleClass = (index: number) => {
-    if (selectedClasses.includes(index)) {
-      setSelectedClasses(selectedClasses.filter((i) => i !== index));
+  const toggleClass = (idx: number) => {
+    if (selectedClasses.includes(idx)) {
+      setSelectedClasses(selectedClasses.filter((i) => i !== idx));
     } else {
-      setSelectedClasses([...selectedClasses, index]);
+      setSelectedClasses([...selectedClasses, idx]);
     }
   };
 
-  const currentPathway = pathwaysData[activePathway];
+  const handleServiceSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          whatsappPhone: formData.phone || "+2340000000000",
+          email: formData.email,
+          proposedBusinessName: formData.businessName || "Services Request",
+          packageInterested: `${selectedPathway ? serviceData[selectedPathway].eyebrow : "General Service"} - ${formData.supportLevel || "Custom"}`,
+          shareCapitalMillions: 1,
+          notes: `${formData.details} | Selected Trademark Classes: ${selectedClasses.join(", ")}`,
+          source: "eponix_services_flow_form",
+        }),
+      });
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const currentFlow = selectedPathway ? serviceData[selectedPathway] : null;
 
   return (
-    <div className="bg-[#0b120f] text-[#f5f7ef]">
-      {/* 1. Hero Simple */}
-      <section className="bg-[#07100c] text-[#f5f7ef] py-20 lg:py-24 border-b border-[rgba(198,255,63,0.14)]">
-        <div className="site-container">
-          <div className="eyebrow">Choose a Starting Point</div>
-          <h1 className="heading-1">Every service is a complete, guided experience.</h1>
-          <p className="lead-text">
-            Start with a specific need or use the Ultimate Launch Package to bring your legal foundation, compliance, identity and digital presence together.
-          </p>
-        </div>
-      </section>
-
-      {/* 2. Services Overview Grid (Service Hub) */}
-      <section className="bg-[#102118] py-20 lg:py-28 border-b border-[#26362c]">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-12">
-            <div>
-              <div className="eyebrow">Services</div>
-              <h2 className="heading-2">Build the right business from the inside out.</h2>
+    <div>
+      {/* 1. HERO (Dark #101713) */}
+      {!currentFlow && (
+        <section className="min-h-[500px] lg:min-h-[540px] flex items-end relative overflow-hidden bg-[#101713] text-[#f4f6ed]">
+          <div className="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#17382b] via-[#101713] to-[#0c1210]" />
+          <div className="wrap w-full relative z-10 pb-16 pt-32 lg:pt-40">
+            <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#c9f95a] mb-3">
+              Eponix service pathways
             </div>
-            <div className="text-[#aab6ad] text-[18px] leading-relaxed">
-              Every pathway is designed to solve a specific business need while fitting into the wider Eponix journey.
-            </div>
+            <h1 className="text-[44px] sm:text-[60px] lg:text-[88px] font-bold leading-[0.96] tracking-[-0.08em] max-w-[800px] mb-4 text-[#f4f6ed]">
+              Build the right business{" "}
+              <em className="font-serif italic font-semibold text-[#c9f95a]">from the inside out.</em>
+            </h1>
+            <p className="max-w-[620px] text-[#d4dfd5] text-[16px] leading-relaxed">
+              Open a service to see its complete pathway: support levels, what it includes, the details we need, and a request form to begin the conversation.
+            </p>
           </div>
+        </section>
+      )}
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <button
-              onClick={() => {
-                setActivePathway("ultimate");
-                document.getElementById("pathway-details")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className={`ep-card dark text-left transition-all ${activePathway === "ultimate" ? "border-[#c6ff3f]" : ""}`}
-            >
-              <div className="ep-tag">01 / Signature</div>
-              <h3 className="heading-3">Ultimate Business Launch</h3>
-              <p>One package across six core areas of a professional business launch.</p>
-              <span className="ep-link text-[#c6ff3f]">Open the package →</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActivePathway("cac");
-                document.getElementById("pathway-details")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className={`ep-card text-left transition-all ${activePathway === "cac" ? "border-[#c6ff3f]" : ""}`}
-            >
-              <div className="ep-tag">02 / Foundation</div>
-              <h3 className="heading-3">CAC Registration</h3>
-              <p>Business Name, Limited Company and NGO / Incorporated Trustees pathways.</p>
-              <span className="ep-link">Open CAC services →</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActivePathway("compliance");
-                document.getElementById("pathway-details")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className={`ep-card text-left transition-all ${activePathway === "compliance" ? "border-[#c6ff3f]" : ""}`}
-            >
-              <div className="ep-tag">03 / Readiness</div>
-              <h3 className="heading-3">Compliance &amp; Tax</h3>
-              <p>SCUML, NRS Tax ID / Rev360, NAFDAC and related support.</p>
-              <span className="ep-link">Open compliance →</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActivePathway("trademark");
-                document.getElementById("pathway-details")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className={`ep-card text-left transition-all ${activePathway === "trademark" ? "border-[#c6ff3f]" : ""}`}
-            >
-              <div className="ep-tag">04 / Protection</div>
-              <h3 className="heading-3">Trademark Registration</h3>
-              <p>Search, filing and all 45 trademark classes.</p>
-              <span className="ep-link">Open trademark →</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActivePathway("brand");
-                document.getElementById("pathway-details")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className={`ep-card text-left transition-all ${activePathway === "brand" ? "border-[#c6ff3f]" : ""}`}
-            >
-              <div className="ep-tag">05 / Expression</div>
-              <h3 className="heading-3">Brand &amp; Digital</h3>
-              <p>Identity, website, corporate email and digital tools.</p>
-              <span className="ep-link">Framework →</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActivePathway("growth");
-                document.getElementById("pathway-details")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className={`ep-card text-left transition-all ${activePathway === "growth" ? "border-[#c6ff3f]" : ""}`}
-            >
-              <div className="ep-tag">06 / Momentum</div>
-              <h3 className="heading-3">AI, Marketing &amp; Growth</h3>
-              <p>Automation, agents, AI video and visibility support.</p>
-              <span className="ep-link">Framework →</span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Dynamic Pathway Interactive Panel */}
-      <section id="pathway-details" className="bg-[#0b120f] py-20 lg:py-28">
-        <div className="site-container">
-          <div className="space-y-4 mb-10">
-            <div className="eyebrow">{currentPathway.eyebrow}</div>
-            <h2 className="heading-2">{currentPathway.title}</h2>
-            <p className="lead-text">{currentPathway.intro}</p>
-          </div>
-
-          {/* Package Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {currentPathway.packages.map((pkg, idx) => (
-              <div
-                key={idx}
-                className={`ep-package ${pkg.featured ? "featured" : ""}`}
-              >
-                <div className={`ep-tag ${pkg.featured ? "text-[#071007] border-[#071007]" : ""}`}>
-                  {pkg.name} {pkg.featured ? "· Most Popular" : ""}
+      {/* 2. CATALOG HUB (Light Cream #e5eadf) */}
+      {!currentFlow && (
+        <section className="bg-[#e5eadf] text-[#0c1210] py-24">
+          <div className="wrap">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 mb-12 items-end">
+              <div className="lg:col-span-7 space-y-3">
+                <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#46785d]">
+                  Choose a starting point
                 </div>
-                <div className="price">{pkg.price}</div>
-                <ul className="space-y-2.5 my-6 text-[14px]">
-                  {pkg.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="font-bold">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-4">
-                  <Link
-                    href={`/#consultation`}
-                    className={`ep-btn w-full ${pkg.featured ? "ep-btn-dark" : "ep-btn-primary"}`}
-                  >
-                    Start {pkg.name}
-                  </Link>
-                </div>
+                <h2 className="text-[34px] sm:text-[46px] lg:text-[62px] font-bold leading-[1.02] tracking-[-0.07em] text-[#0c1210]">
+                  Every service is a complete, guided experience.
+                </h2>
               </div>
-            ))}
-          </div>
+              <div className="lg:col-span-5 text-[15px] text-[#55655b] leading-relaxed">
+                Start with a specific need or use the Ultimate Launch Package to bring your legal foundation, compliance, identity and digital presence together.
+              </div>
+            </div>
 
-          {/* Trademark 45 Class Picker Highlight */}
-          {activePathway === "trademark" && (
-            <div className="mt-12 p-8 bg-[#101914] border border-[#33473a] space-y-6">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                  <h3 className="heading-3">Trademark Classification Index (1 to 45)</h3>
-                  <p className="text-[#aab6ad] text-[15px]">
-                    Select applicable Nice Classification categories for your brand protection filing.
-                  </p>
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {[
+                { key: "ultimate" as PathwayKey, no: "01 / SIGNATURE", title: "Ultimate Business Launch", desc: "One package across six core areas of a professional business launch.", cta: "Open the package →" },
+                { key: "cac" as PathwayKey, no: "02 / FOUNDATION", title: "CAC Registration", desc: "Business Name, Limited Company and NGO / Incorporated Trustees pathways.", cta: "Open CAC services →" },
+                { key: "compliance" as PathwayKey, no: "03 / READINESS", title: "Compliance & Tax", desc: "SCUML, NRS Tax ID / Rev360, NAFDAC and related support.", cta: "Open compliance →" },
+                { key: "trademark" as PathwayKey, no: "04 / PROTECTION", title: "Trademark Registration", desc: "Search, filing and all 45 trademark classes.", cta: "Open trademark →" },
+                { key: "brand" as PathwayKey, no: "05 / EXPRESSION", title: "Brand & Digital", desc: "Identity, website, corporate email and digital tools.", cta: "Open brand services →" },
+                { key: "growth" as PathwayKey, no: "06 / MOMENTUM", title: "AI, Marketing & Growth", desc: "Automation, agents, AI video and visibility support.", cta: "Open growth services →" },
+              ].map((tile) => (
                 <button
+                  key={tile.key}
                   type="button"
-                  onClick={() => setShowTrademarkModal(!showTrademarkModal)}
-                  className="ep-btn ep-btn-light text-xs"
+                  onClick={() => {
+                    setSelectedPathway(tile.key);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="p-7 border border-[#ced7cd] bg-[#f3f5ec] min-h-[245px] text-left hover:bg-[#17382b] hover:text-white transition-all group flex flex-col justify-between"
                 >
-                  {showTrademarkModal ? "Collapse 45 Classes" : "Browse All 45 Classes"}
+                  <div>
+                    <span className="font-mono text-[10px] text-[#4a795d] group-hover:text-[#ccd9cf] block mb-7">
+                      {tile.no}
+                    </span>
+                    <h3 className="text-[22px] font-bold leading-[1.1] tracking-[-0.05em] text-[#0c1210] group-hover:text-white mb-2">
+                      {tile.title}
+                    </h3>
+                    <p className="text-[12px] text-[#5b6b60] group-hover:text-[#ccd9cf] leading-relaxed">
+                      {tile.desc}
+                    </p>
+                  </div>
+                  <b className="block mt-6 text-[12px] text-[#0c1210] group-hover:text-[#c9f95a]">
+                    {tile.cta}
+                  </b>
                 </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 3. DYNAMIC FLOW VIEW */}
+      {currentFlow && (
+        <div>
+          {/* Flow Hero (Dark #0c1210) */}
+          <section className="bg-[#0c1210] text-[#f4f6ed] pt-32 pb-16">
+            <div className="wrap space-y-4">
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedPathway(null);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="font-mono text-[10px] tracking-[0.12em] text-[#c9f95a] hover:underline cursor-pointer"
+              >
+                ← ALL SERVICES
+              </button>
+              <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#c9f95a] pt-2">
+                {currentFlow.eyebrow}
+              </div>
+              <h2 className="text-[38px] sm:text-[54px] lg:text-[68px] font-bold leading-[1.02] tracking-[-0.07em] text-[#f4f6ed]">
+                {currentFlow.title}{" "}
+                <em className="font-serif italic font-semibold text-[#c9f95a]">
+                  {currentFlow.titleEm}
+                </em>
+              </h2>
+              <p className="max-w-[680px] text-[#bdc9c0] text-[16px] leading-relaxed">
+                {currentFlow.desc}
+              </p>
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-[#536057] pt-6 mt-10">
+                {currentFlow.stats.map((st, i) => (
+                  <div
+                    key={i}
+                    className={`py-3 ${i < 3 ? "lg:border-r border-[#536057] lg:pr-5" : ""} ${i > 0 ? "lg:pl-5" : ""}`}
+                  >
+                    <b className="block text-[15px] sm:text-[16px] leading-tight text-[#f4f6ed]">
+                      {st[0]}
+                    </b>
+                    <small className="block font-mono text-[10px] text-[#adbbb1] mt-1">
+                      {st[1]}
+                    </small>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Cards Section (Light Cream #f3f5ec) */}
+          <section className="bg-[#f3f5ec] text-[#0c1210] py-20">
+            <div className="wrap">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-10 items-end">
+                <div className="lg:col-span-7 space-y-2">
+                  <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#46785d]">
+                    Choose a support level
+                  </div>
+                  <h3 className="text-[28px] sm:text-[40px] font-bold tracking-[-0.06em] leading-[1.05] text-[#0c1210]">
+                    See what is included, then choose your path.
+                  </h3>
+                </div>
+                <p className="lg:col-span-5 text-[14px] text-[#59695f]">
+                  Final scope, timeline and pricing are confirmed with Eponix after the relevant requirements have been reviewed.
+                </p>
               </div>
 
-              {showTrademarkModal && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-96 overflow-y-auto pr-2 pt-2">
-                  {trademarkClasses.map((clsName, idx) => {
-                    const classNum = idx + 1;
-                    const isSelected = selectedClasses.includes(classNum);
-                    return (
-                      <button
-                        type="button"
-                        key={classNum}
-                        onClick={() => toggleClass(classNum)}
-                        className={`p-3 text-left border text-xs transition-all flex items-start justify-between gap-2 ${
-                          isSelected
-                            ? "bg-[#c6ff3f] text-[#071007] border-[#c6ff3f] font-bold"
-                            : "bg-[#07100c] text-[#d4ddd6] border-[#26362c] hover:border-[#c6ff3f]/50"
-                        }`}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {currentFlow.cards.map((c, i) => (
+                  <article key={i} className="bg-white border border-[#ced7cd] p-6 min-h-[310px] flex flex-col justify-between">
+                    <div>
+                      <span className="border border-[#aabdaf] rounded-full px-2.5 py-1 font-mono text-[10px] inline-block mb-5">
+                        {c.badge}
+                      </span>
+                      <h4 className="text-[20px] font-bold tracking-[-0.05em] leading-[1.1] text-[#0c1210] mb-2">
+                        {c.title}
+                      </h4>
+                      <p className="text-[12px] text-[#56665b] mb-4">{c.desc}</p>
+                      <ul className="space-y-1.5 text-[12px] text-[#0c1210]">
+                        {c.items.map((it, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="text-[#4b976b] font-bold">•</span>
+                            <span>{it}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pt-6 mt-4 border-t border-[#f0f4ef]">
+                      <b className="block font-mono text-[11px] text-[#407458] mb-3">{c.price}</b>
+                      <a
+                        href="#request"
+                        onClick={() => setFormData({ ...formData, supportLevel: c.title })}
+                        className="btn primary !py-2.5 !px-3.5 !text-[11px]"
                       >
-                        <span>
-                          <strong>Class {classNum}:</strong> {clsName}
-                        </span>
-                        {isSelected && <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />}
-                      </button>
-                    );
-                  })}
+                        Choose this path →
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              {currentFlow.featureNote && (
+                <div className="p-6 bg-[#f6f8f1] border-l-4 border-[#c9f95a] text-[13px] text-[#54645a] mt-8">
+                  {currentFlow.featureNote}
                 </div>
               )}
             </div>
-          )}
+          </section>
 
-          {/* Notice Box */}
-          <div className="ep-notice">
-            <strong>Application &amp; Delivery</strong>
-            <p className="text-[14px]">
-              Complete the consultation application, provide the requested verification documents, and receive approved documents electronically as original digital certified files. Processing timelines and regulatory outcomes remain subject to the relevant government authority.
-            </p>
-          </div>
+          {/* Request Form (Light Sage #e7ece3) */}
+          <section className="bg-[#e7ece3] text-[#0c1210] py-20" id="request">
+            <div className="wrap">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+                <div className="lg:col-span-5 space-y-4">
+                  <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#46785d]">
+                    Start your request
+                  </div>
+                  <h3 className="text-[32px] sm:text-[46px] font-bold tracking-[-0.07em] leading-[1.02] text-[#0c1210]">
+                    Tell us what you need. We’ll guide the next step.
+                  </h3>
+                  <p className="text-[14px] text-[#56665b] leading-relaxed">
+                    This is a service request, not an automatic payment. Eponix will confirm scope, requirements, pricing and timeline before proceeding.
+                  </p>
+                </div>
+
+                <div className="lg:col-span-7">
+                  {isSubmitted ? (
+                    <div className="bg-white border border-[#ced7cd] p-8 text-center space-y-3">
+                      <div className="w-12 h-12 rounded-full bg-[#c9f95a] text-[#0c1210] flex items-center justify-center mx-auto">
+                        <Check className="w-6 h-6" />
+                      </div>
+                      <h4 className="text-[20px] font-bold text-[#0c1210]">Request Received</h4>
+                      <p className="text-[13px] text-[#56665b] max-w-sm mx-auto">
+                        Thank you, <strong>{formData.fullName}</strong>. Your request is ready for the Eponix team. We will review and reach out shortly.
+                      </p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleServiceSubmit} className="bg-white border border-[#ced7cd] p-7 space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div className="flex flex-col gap-1">
+                          <label className="text-[11px] font-extrabold uppercase">Full Name *</label>
+                          <input
+                            required
+                            type="text"
+                            value={formData.fullName}
+                            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                            className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <label className="text-[11px] font-extrabold uppercase">Email Address *</label>
+                          <input
+                            required
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div className="flex flex-col gap-1">
+                          <label className="text-[11px] font-extrabold uppercase">Phone Number</label>
+                          <input
+                            type="tel"
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <label className="text-[11px] font-extrabold uppercase">Support Level</label>
+                          <select
+                            value={formData.supportLevel}
+                            onChange={(e) => setFormData({ ...formData, supportLevel: e.target.value })}
+                            className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                          >
+                            <option value="">{currentFlow.defaultSupport}</option>
+                            {currentFlow.cards.map((c, idx) => (
+                              <option key={idx} value={c.title}>{c.title}</option>
+                            ))}
+                            <option value="Not sure yet">Not sure yet</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col gap-1">
+                        <label className="text-[11px] font-extrabold uppercase">Business / Organisation Name</label>
+                        <input
+                          type="text"
+                          value={formData.businessName}
+                          onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
+                          className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                        />
+                      </div>
+
+                      {/* Trademark Specific 45 Classes List */}
+                      {selectedPathway === "trademark" && (
+                        <div className="flex flex-col gap-1">
+                          <label className="text-[11px] font-extrabold uppercase">Trademark Class / Classes</label>
+                          <div className="h-[170px] overflow-y-auto border border-[#d5ddd4] p-2 space-y-1 bg-[#fbfcfa]">
+                            {trademarkClasses.map((cls, i) => (
+                              <label key={i} className="flex items-center gap-2 text-[12px] cursor-pointer hover:bg-slate-100 p-1">
+                                <input
+                                  type="checkbox"
+                                  checked={selectedClasses.includes(i + 1)}
+                                  onChange={() => toggleClass(i + 1)}
+                                  className="accent-[#c9f95a]"
+                                />
+                                <span>Class {i + 1} — {cls}</span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="flex flex-col gap-1">
+                        <label className="text-[11px] font-extrabold uppercase">
+                          {selectedPathway === "trademark" ? "Goods or Services" : "What would you like us to help with?"}
+                        </label>
+                        <textarea
+                          value={formData.details}
+                          onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                          placeholder={selectedPathway === "trademark" ? "Describe the products or services connected to the trademark." : "Tell us a little about the business, organisation or project."}
+                          className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px] min-h-[90px] resize-y"
+                        />
+                      </div>
+
+                      <p className="text-[11px] text-[#617168] leading-tight">
+                        Please do not send identity documents or sensitive records through this preview form. Eponix will provide a secure document-request process where needed.
+                      </p>
+
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="btn primary !w-full justify-center !mt-4"
+                      >
+                        <span>{isSubmitting ? "Sending..." : "Send request"}</span>
+                        <span className="text-[18px] leading-none">→</span>
+                      </button>
+                    </form>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
-
-      {/* 4. Connected Journey */}
-      <section id="journey" className="bg-[#101914] py-20 lg:py-28 border-t border-b border-[#26362c]">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-12">
-            <div>
-              <div className="eyebrow">Connected Journey</div>
-              <h2 className="heading-2">From Discovery to Automation.</h2>
-            </div>
-            <div className="text-[#aab6ad] text-[18px] leading-relaxed">
-              Discover → Foundation → Identity → Digital → AI &amp; Automation → Growth.
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-[1px] bg-[#26362c]">
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">01</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">DISCOVER</b>
-                <p className="text-[13px] text-[#aab6ad]">Business diagnosis, strategy, idea validation and positioning.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">02</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">FOUNDATION</b>
-                <p className="text-[13px] text-[#aab6ad]">CAC, tax, compliance, trademark and related support.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">03</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">IDENTITY</b>
-                <p className="text-[13px] text-[#aab6ad]">Brand identity and corporate materials.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">04</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">DIGITAL</b>
-                <p className="text-[13px] text-[#aab6ad]">Website, domain, email, forms, portals and tools.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">05</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">AI &amp; AUTOMATION</b>
-                <p className="text-[13px] text-[#aab6ad]">AI video, agents, customer support and workflows.</p>
-              </div>
-            </div>
-
-            <div className="bg-[#0b1510] p-6 min-h-[200px] flex flex-col justify-between">
-              <div className="ep-num">06</div>
-              <div>
-                <b className="text-[15px] text-[#f5f7ef] block mb-1">GROWTH</b>
-                <p className="text-[13px] text-[#aab6ad]">Content, advertising, lead generation and visibility.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Direct CTA Band */}
-      <section className="bg-[#10261a] text-[#f5f7ef] py-16 border-t border-b border-[#33473a]">
-        <div className="site-container flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-          <div>
-            <h2 className="heading-3 mb-2">Let&apos;s build a business that is ready to move.</h2>
-            <p className="text-[#aab6ad] text-[15px]">Schedule your strategic consultation with our governance and digital team.</p>
-          </div>
-          <Link href="/#consultation" className="ep-btn ep-btn-primary whitespace-nowrap">
-            Start a Conversation
-          </Link>
-        </div>
-      </section>
+      )}
     </div>
   );
 }
