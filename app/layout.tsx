@@ -5,9 +5,9 @@ import { Footer } from "@/components/layout/footer";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 
 export const metadata: Metadata = {
-  title: "Eponix Digital — We Build, Brand & Grow Businesses",
+  title: "Business & Digital Solutions | Eponix Digital",
   description:
-    "From business registration and compliance to branding, digital presence, AI, automation and growth, Eponix Digital builds the infrastructure your business needs to operate professionally and grow.",
+    "Eponix Digital — business foundation, branding, digital systems, AI, automation and growth for businesses in Nigeria.",
   keywords: [
     "Eponix Digital",
     "Business Registration Nigeria",
@@ -27,19 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="antialiased scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="min-h-screen flex flex-col bg-[#f4f6ed] text-[#0c1210] font-sans selection:bg-[#c9f95a] selection:text-[#0c1210]">
+      <body className="min-h-screen flex flex-col bg-[#0b120f] text-[#f5f7ef]">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
