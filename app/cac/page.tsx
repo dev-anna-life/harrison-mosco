@@ -231,6 +231,23 @@ export default function CACPage() {
             ))}
           </div>
 
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#07100c] border border-[#26362c] p-6 lg:p-8 mt-12">
+            <div className="lg:col-span-4 overflow-hidden border border-[#26362c]">
+              <img 
+                src="/images/cac-operations-team.jpg" 
+                alt="CAC Accredited Operations Desk" 
+                className="w-full h-[200px] object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div className="lg:col-span-8 space-y-2">
+              <div className="ep-tag text-[#c6ff3f]">Accredited Direct Agent Desk</div>
+              <h3 className="heading-3">Handled by certified Nigerian corporate practitioners.</h3>
+              <p className="text-sm text-[#aab6ad] leading-relaxed">
+                From name reservation to certified status reports and post-incorporation compliance, every filing is verified by our experienced registration team.
+              </p>
+            </div>
+          </div>
+
           <div className="ep-notice mt-10">
             <strong>Application &amp; delivery</strong>
             <p className="text-[14px]">

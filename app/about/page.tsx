@@ -70,6 +70,14 @@ export default function AboutPage() {
                   <span className="block font-mono text-[10px] text-[#68766d] mt-1">SYSTEMS FOR GROWTH</span>
                 </div>
               </div>
+
+              <div className="mt-8 overflow-hidden rounded-sm border border-[#cbd3c9] shadow-md">
+                <img 
+                  src="/images/executive-boardroom.jpg" 
+                  alt="Eponix Executive Strategy & Boardroom Consultation" 
+                  className="w-full h-[260px] sm:h-[320px] object-cover hover:scale-105 transition-transform duration-700" 
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -138,6 +146,14 @@ export default function AboutPage() {
               <p className="text-[#516158] text-[15px] leading-relaxed max-w-[425px]">
                 We do not see a business as a checklist. We see it as a living system—one that deserves thoughtful decisions, a credible presence and room to grow.
               </p>
+
+              <div className="pt-4 overflow-hidden rounded-sm border border-[#b7c3b8] shadow-sm hidden sm:block">
+                <img
+                  src="/images/cac-operations-team.jpg"
+                  alt="Eponix Corporate Services & Filing Desk"
+                  className="w-full h-[220px] object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
             </div>
 
             <div className="lg:col-span-7 border-t border-[#b7c3b8]">

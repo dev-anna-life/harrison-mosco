@@ -185,6 +185,14 @@ export default function UltimatePage() {
                 <span className="ep-tag">Dedicated Support</span>
                 <span className="ep-tag">Secure Submission</span>
               </div>
+
+              <div className="pt-2 overflow-hidden border border-[#26362c] shadow-lg hidden sm:block">
+                <img
+                  src="/images/concierge-reception.jpg"
+                  alt="Eponix Private Concierge Onboarding Desk"
+                  className="w-full h-[220px] object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
             </div>
 
             <div className="lg:col-span-7">

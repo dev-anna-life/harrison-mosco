@@ -217,7 +217,7 @@ header {
 .hero-img {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(8, 15, 12, 0.96) 0%, rgba(8, 15, 12, 0.76) 39%, rgba(8, 15, 12, 0.1) 78%), linear-gradient(0deg, rgba(8, 15, 12, 0.9), transparent 45%);
+  background: linear-gradient(90deg, rgba(8, 15, 12, 0.94) 0%, rgba(8, 15, 12, 0.76) 45%, rgba(8, 15, 12, 0.35) 100%), linear-gradient(0deg, rgba(8, 15, 12, 0.9) 0%, transparent 50%), url('/images/bg-corporate-skyline.jpg') center/cover no-repeat;
   animation: heroZoom 18s ease-in-out infinite alternate;
 }
 

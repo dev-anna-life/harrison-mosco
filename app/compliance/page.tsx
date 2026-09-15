@@ -56,6 +56,23 @@ export default function CompliancePage() {
               <span className="ep-link text-[#7f8d84] mt-6 block">Coming soon →</span>
             </Link>
           </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#07100c] border border-[#26362c] p-6 lg:p-8 mt-12">
+            <div className="lg:col-span-4 overflow-hidden border border-[#26362c]">
+              <img 
+                src="/images/accredited-consultation.jpg" 
+                alt="Accredited Nigerian Tax & Compliance Advisory" 
+                className="w-full h-[200px] object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div className="lg:col-span-8 space-y-2">
+              <div className="ep-tag text-[#c6ff3f]">Regulatory &amp; Tax Desk</div>
+              <h3 className="heading-3">Proactive statutory compliance for growing enterprises.</h3>
+              <p className="text-sm text-[#aab6ad] leading-relaxed">
+                Stay compliant with SCUML anti-money laundering certifications, NRS Tax ID registration, and Rev360 portal filings with accredited professional advisory.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
