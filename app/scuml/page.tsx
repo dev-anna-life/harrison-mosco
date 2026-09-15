@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Check, ShieldCheck, Clock, FileCheck, ArrowRight, Award } from "lucide-react";
+import { Check, ShieldCheck, Clock, FileCheck, ArrowRight, AlertCircle } from "lucide-react";
 
 type PackageType = "Starter" | "Pro" | "Premium";
 
@@ -12,70 +12,46 @@ const packages: Record<
 > = {
   Starter: {
     name: "Starter",
-    price: "₦15,000",
-    description: "Pre-filing Search Only. Mandatory registry availability check before filing.",
+    price: "₦30,000",
+    description: "For clients who only need SCUML certificate registration support.",
     features: [
-      "Registry portal availability search",
-      "Eligibility review before filing",
-      "Search result guidance",
-      "Covers 1 trademark class",
-      "Timeframe: 3–7 working days",
+      "SCUML registration support",
+      "Online portal account setup",
+      "Application follow-up & tracking",
     ],
   },
   Pro: {
     name: "Pro",
-    price: "₦60,000",
-    description: "Registration Only, for trademarks where an approved search has already been completed.",
+    price: "₦40,000",
+    description: "Registration and compliance guide support to help avoid monthly reporting penalties.",
     features: [
-      "Trademark application filing",
-      "Official Acknowledgement Letter support",
-      "Official Acceptance Letter support",
-      "Covers 1 trademark class",
-      "Timeframe: 10–21 working days",
+      "SCUML registration support",
+      "Sensitization / compliance guide",
+      "Monthly reporting template & guide",
+      "Login username & password support",
     ],
   },
   Premium: {
     name: "Premium",
-    price: "₦70,000",
-    description: "The complete route from pre-filing search through trademark registration support.",
+    price: "₦50,000",
+    description: "SCUML, compliance guide and NRS Tax ID/TIN support for account-opening readiness.",
     features: [
-      "Pre-filing trademark availability search",
-      "Eligibility legal review",
-      "Trademark application filing",
-      "Acknowledgement & Acceptance letters",
-      "Covers 1 trademark class",
-      "Timeframe: 10–21 working days",
+      "Everything in Pro",
+      "NRS Tax ID / TIN support",
+      "Bank compliance advisory",
+      "Free priority consultation / support",
     ],
   },
 };
 
-const NICE_CLASSES = [
-  { classNum: "Class 9", desc: "Software, electronics, downloadable digital applications, AI models" },
-  { classNum: "Class 16", desc: "Paper goods, printed matter, stationery, packaging, publications" },
-  { classNum: "Class 25", desc: "Clothing, footwear, headwear, apparel fashion brand" },
-  { classNum: "Class 29", desc: "Meat, fish, poultry, dairy, preserved edible foods" },
-  { classNum: "Class 30", desc: "Coffee, tea, cocoa, bakery, flour, spices, confectionery" },
-  { classNum: "Class 35", desc: "Advertising, business management, marketing, retail, online commerce" },
-  { classNum: "Class 36", desc: "Financial, insurance, real estate, fintech, crypto services" },
-  { classNum: "Class 38", desc: "Telecommunications, broadcasting, streaming, digital networks" },
-  { classNum: "Class 41", desc: "Education, training, entertainment, media production, events" },
-  { classNum: "Class 42", desc: "Technology services, SaaS, software development, cloud computing" },
-  { classNum: "Class 43", desc: "Food & drink services, restaurants, cafes, hospitality, hotels" },
-  { classNum: "Class 44", desc: "Medical services, healthcare, beauty care, agriculture, wellness" },
-  { classNum: "Class 45", desc: "Legal services, security, personal and social advisory services" },
-];
-
-export default function TrademarkPage() {
-  const [selectedPkg, setSelectedPkg] = useState<PackageType>("Premium");
+export default function SCUMLPage() {
+  const [selectedPkg, setSelectedPkg] = useState<PackageType>("Pro");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
-    trademarkName: "",
-    ownerName: "",
-    trademarkClass: "Class 35",
-    additionalClasses: "",
-    productCategory: "",
+    businessName: "",
+    businessActivity: "",
     referralCode: "",
     termsConsent: true,
   });
@@ -100,12 +76,12 @@ export default function TrademarkPage() {
     setErrorMessage("");
 
     if (!formData.fullName || !formData.phone || !formData.email) {
-      setErrorMessage("Please provide your contact name, phone, and active email.");
+      setErrorMessage("Please enter your full name, active email, and phone number.");
       return;
     }
 
-    if (!formData.trademarkName || !formData.ownerName) {
-      setErrorMessage("Please enter your proposed trademark name and applicant/owner name.");
+    if (!formData.businessName) {
+      setErrorMessage("Please enter your registered Business or Organisation name.");
       return;
     }
 
@@ -124,10 +100,10 @@ export default function TrademarkPage() {
           fullName: formData.fullName,
           phone: formData.phone,
           email: formData.email,
-          proposedBusinessName: formData.trademarkName,
-          packageInterested: `Trademark - ${selectedPkg}`,
-          source: "trademark-form",
-          additionalDetails: `Owner: ${formData.ownerName} | Class: ${formData.trademarkClass} | Addl Classes: ${formData.additionalClasses || "None"} | Category: ${formData.productCategory || "N/A"} | Referral: ${formData.referralCode || "N/A"}`,
+          proposedBusinessName: formData.businessName,
+          packageInterested: `SCUML - ${selectedPkg}`,
+          source: "scuml-form",
+          additionalDetails: `Activity: ${formData.businessActivity || "N/A"} | Referral: ${formData.referralCode || "N/A"}`,
         }),
       });
 
@@ -135,7 +111,7 @@ export default function TrademarkPage() {
       if (res.ok && data.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(data.error || "Unable to submit trademark request. Please try again.");
+        setErrorMessage(data.error || "Unable to submit SCUML request. Please try again.");
       }
     } catch (err) {
       setErrorMessage("Network error occurred. Please try again or reach out on WhatsApp.");
@@ -149,10 +125,10 @@ export default function TrademarkPage() {
       {/* 1. Hero Simple */}
       <section className="bg-[#07100c] text-[#f5f7ef] py-16 lg:py-20 border-b border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
-          <div className="eyebrow">Nigeria Trademark Registration</div>
-          <h1 className="heading-1">Protect Your Brand With Trademark Registration</h1>
+          <div className="eyebrow">Nigeria Only</div>
+          <h1 className="heading-1">SCUML Registration Support</h1>
           <p className="lead-text max-w-2xl">
-            Secure the name and identity your customers know you for. Choose a pre-filing search, registration after an approved search, or the complete search and trademark registration package.
+            SCUML registration support for businesses and organisations that need account-opening readiness, compliance guidance, monthly reporting support and proper follow-up.
           </p>
         </div>
       </section>
@@ -162,11 +138,11 @@ export default function TrademarkPage() {
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end mb-8">
             <div>
-              <div className="eyebrow">Trademark Packages</div>
-              <h2 className="heading-2">Choose the trademark service you need.</h2>
+              <div className="eyebrow">Packages</div>
+              <h2 className="heading-2">Choose the SCUML support level you need.</h2>
             </div>
             <div className="text-sm text-[#aab6ad] leading-relaxed">
-              Each package covers one trademark class under the official Nice Classification system.
+              Official SCUML certificates are issued by the Special Control Unit Against Money Laundering (EFCC); Eponix charges for professional assistance, online registration support, account setup, follow-up and consultations.
             </div>
           </div>
 
@@ -193,16 +169,12 @@ export default function TrademarkPage() {
                             : "bg-[#10261a] text-[#c6ff3f]"
                         }`}
                       >
-                        {pkg.name} {pkgKey === "Premium" ? "· Most Popular" : ""}
+                        {pkg.name} {pkgKey === "Pro" ? "· Recommended" : ""}
                       </span>
                       {isSelected && <Check className="w-5 h-5 text-[#071007]" />}
                     </div>
                     <div className="text-3xl font-serif font-bold mt-4 mb-2">{pkg.price}</div>
-                    <p
-                      className={`text-xs ${
-                        isSelected ? "text-[#10261a]" : "text-[#aab6ad]"
-                      }`}
-                    >
+                    <p className={`text-xs ${isSelected ? "text-[#183018]" : "text-[#aab6ad]"}`}>
                       {pkg.description}
                     </p>
                     <ul className="mt-4 space-y-2 text-xs">
@@ -218,8 +190,8 @@ export default function TrademarkPage() {
                     type="button"
                     className={`mt-6 w-full py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                       isSelected
-                        ? "bg-[#071007] text-[#c6ff3f]"
-                        : "bg-[#10261a] text-white hover:bg-[#c6ff3f] hover:text-[#071007]"
+                        ? "bg-[#071007] text-[#f5f7ef]"
+                        : "bg-transparent text-[#f5f7ef] border border-[#c6ff3f] hover:bg-[#c6ff3f] hover:text-[#071007]"
                     }`}
                   >
                     {isSelected ? "Selected" : `Select ${pkg.name}`}
@@ -230,9 +202,9 @@ export default function TrademarkPage() {
           </div>
 
           <div className="ep-notice mt-8">
-            <strong>Additional Classes Notice</strong>
+            <strong>Important Notice</strong>
             <p className="text-xs text-[#aab6ad]">
-              Each additional class attracts the same selected package amount. If a fresh search and resubmission is required for a new name, the applicable fee is communicated before submission.
+              SCUML certificates are issued through the official statutory process. Eponix Digital&apos;s fee is for professional assistance, documentation review, and support, not for the certificate itself.
             </p>
           </div>
         </div>
@@ -248,30 +220,55 @@ export default function TrademarkPage() {
                 <div className="eyebrow">Submit Request</div>
                 <h2 className="heading-2">Complete your application.</h2>
                 <p className="lead-text text-sm mt-4">
-                  Choose your package, provide your trademark and owner details, select the relevant class and submit.
+                  Choose your package, provide the requested information and submit securely. Our compliance team verifies your CAC documentation and initiates filing.
                 </p>
               </div>
 
               <div className="space-y-4">
-                <div className="p-4 bg-[#07100c] border border-[#26362c]">
-                  <div className="text-xs font-mono text-[#c6ff3f] uppercase mb-1">01 / Proposed Trademark Name</div>
-                  <p className="text-xs text-[#aab6ad]">The exact brand name, logo phrase or identity you want to protect.</p>
+                <div className="p-5 bg-[#07100c] border border-[#26362c]">
+                  <div className="w-8 h-8 rounded-full bg-[#c6ff3f] text-[#071007] flex items-center justify-center font-bold text-xs mb-3">
+                    01
+                  </div>
+                  <h3 className="font-serif text-lg font-bold mb-1">Compliance Reminder</h3>
+                  <p className="text-xs text-[#aab6ad] leading-relaxed">
+                    Clients are expected to fulfil their monthly reporting obligations using the applicable compliance guidance.
+                  </p>
                 </div>
-                <div className="p-4 bg-[#07100c] border border-[#26362c]">
-                  <div className="text-xs font-mono text-[#c6ff3f] uppercase mb-1">02 / Owner / Applicant Details</div>
-                  <p className="text-xs text-[#aab6ad]">Name of the individual, company or organisation that will own the trademark.</p>
+
+                <div className="p-5 bg-[#07100c] border border-[#26362c]">
+                  <div className="w-8 h-8 rounded-full bg-[#c6ff3f] text-[#071007] flex items-center justify-center font-bold text-xs mb-3">
+                    02
+                  </div>
+                  <h3 className="font-serif text-lg font-bold mb-1">SCUML Requirements</h3>
+                  <p className="text-xs text-[#aab6ad] leading-relaxed">
+                    Complete CAC documents (Certificate &amp; Status Report) and a valid NIN Slip or International Passport.
+                  </p>
                 </div>
-                <div className="p-4 bg-[#07100c] border border-[#26362c]">
-                  <div className="text-xs font-mono text-[#c6ff3f] uppercase mb-1">03 / Goods or Services</div>
-                  <p className="text-xs text-[#aab6ad]">Describe what products or services the trademark will be used for.</p>
+
+                <div className="p-5 bg-[#07100c] border border-[#26362c]">
+                  <div className="w-8 h-8 rounded-full bg-[#c6ff3f] text-[#071007] flex items-center justify-center font-bold text-xs mb-3">
+                    03
+                  </div>
+                  <h3 className="font-serif text-lg font-bold mb-1">Processing Notice</h3>
+                  <p className="text-xs text-[#aab6ad] leading-relaxed">
+                    Processing is subject to technical/network availability, document readiness and regulatory response.
+                  </p>
                 </div>
               </div>
 
-              <div className="ep-notice">
-                <strong>Processing Notice</strong>
-                <p className="text-xs text-[#aab6ad]">
-                  A pre-filing search is required before a new trademark is filed. Final search results, filing acceptance and regulatory approval remain subject to the Trademark Registry.
-                </p>
+              <div className="p-6 bg-[#10261a] border border-[#33473a] text-xs text-[#d4ddd6]">
+                <strong className="text-white block mb-1">Need Bank Account Readiness?</strong>
+                Banks require SCUML for Designated Non-Financial Businesses &amp; Professions (DNFIs). Let our team guide your account opening.
+                <div className="mt-3">
+                  <a
+                    href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20SCUML%20registration%20support."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[#c6ff3f] font-bold hover:underline"
+                  >
+                    Chat with Consultant &rarr;
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -282,13 +279,13 @@ export default function TrademarkPage() {
                   <div className="w-16 h-16 bg-[#c6ff3f] text-[#071007] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
                     ✓
                   </div>
-                  <h3 className="heading-3">Trademark Request Received</h3>
+                  <h3 className="heading-3">Application Received</h3>
                   <p className="text-[#aab6ad] max-w-md mx-auto text-sm leading-relaxed">
-                    Thank you, <strong className="text-white">{formData.fullName}</strong>. Your Trademark registration request for <strong className="text-[#c6ff3f]">&quot;{formData.trademarkName}&quot;</strong> under the <strong className="text-white">{selectedPkg}</strong> package has been queued for registry availability search.
+                    Thank you, <strong className="text-white">{formData.fullName}</strong>. Your SCUML registration request for <strong className="text-[#c6ff3f]">{formData.businessName}</strong> under the <strong className="text-white">{selectedPkg}</strong> package has been queued for processing.
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
-                      href={`https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20Trademark%20request%20for%20${encodeURIComponent(formData.trademarkName)}%20(${selectedPkg}%20tier).`}
+                      href={`https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20SCUML%20request%20for%20${encodeURIComponent(formData.businessName)}%20(${selectedPkg}%20tier).`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ep-btn ep-btn-primary"
@@ -316,23 +313,23 @@ export default function TrademarkPage() {
 
                   <div className="space-y-2">
                     <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad]">
-                      Selected Trademark Package
+                      Selected SCUML Package
                     </label>
                     <select
                       value={selectedPkg}
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
                       className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
                     >
-                      <option value="Starter">Starter — ₦15,000 (Pre-filing Search Only)</option>
-                      <option value="Pro">Pro — ₦60,000 (Filing Only - After Approved Search)</option>
-                      <option value="Premium">Premium — ₦70,000 (Complete Search + Filing Support)</option>
+                      <option value="Starter">Starter — ₦30,000</option>
+                      <option value="Pro">Pro — ₦40,000 (Recommended)</option>
+                      <option value="Premium">Premium — ₦50,000 (Includes NRS Tax ID)</option>
                     </select>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
-                        Contact Name *
+                        Full Name *
                       </label>
                       <input
                         type="text"
@@ -374,106 +371,69 @@ export default function TrademarkPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
-                        Proposed Trademark / Brand Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="trademarkName"
-                        value={formData.trademarkName}
-                        onChange={handleChange}
-                        required
-                        placeholder="E.g., EPONYX or ZEPHYR"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
-                        Owner / Applicant Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="ownerName"
-                        value={formData.ownerName}
-                        onChange={handleChange}
-                        required
-                        placeholder="Individual or Company Name"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
-                      />
-                    </div>
-                  </div>
-
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
-                      Primary Trademark Class (Nice Classification 1–45) *
-                    </label>
-                    <select
-                      name="trademarkClass"
-                      value={formData.trademarkClass}
-                      onChange={handleChange}
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
-                    >
-                      {NICE_CLASSES.map((nc) => (
-                        <option key={nc.classNum} value={nc.classNum}>
-                          {nc.classNum} — {nc.desc}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
-                      Additional Trademark Classes (Optional)
+                      Registered Business / Organisation Name *
                     </label>
                     <input
                       type="text"
-                      name="additionalClasses"
-                      value={formData.additionalClasses}
+                      name="businessName"
+                      value={formData.businessName}
                       onChange={handleChange}
-                      placeholder="E.g., Class 9, Class 42 (Each additional class: +₦70,000)"
+                      required
+                      placeholder="Exact name as on CAC Certificate"
                       className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
-                      Product or Service Category Description *
+                      Business / Organisation Activity *
                     </label>
                     <textarea
-                      name="productCategory"
-                      value={formData.productCategory}
+                      name="businessActivity"
+                      value={formData.businessActivity}
                       onChange={handleChange}
                       required
-                      placeholder="Describe the exact goods or services sold under this brand name..."
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none min-h-[80px]"
+                      placeholder="Describe the nature of commercial or non-profit operations..."
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none min-h-[90px]"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
-                        Brand Logo or Supporting File (Optional)
+                        CAC Documents (Certificate &amp; Status Report)
+                      </label>
+                      <input
+                        type="file"
+                        multiple
+                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        NIN Slip or International Passport
                       </label>
                       <input
                         type="file"
                         className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs"
                       />
                     </div>
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
-                        Referral Code (Optional)
-                      </label>
-                      <input
-                        type="text"
-                        name="referralCode"
-                        value={formData.referralCode}
-                        onChange={handleChange}
-                        placeholder="Enter code if referred"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
-                      />
-                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      Referral Code (Optional)
+                    </label>
+                    <input
+                      type="text"
+                      name="referralCode"
+                      value={formData.referralCode}
+                      onChange={handleChange}
+                      placeholder="Enter code if referred"
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                    />
                   </div>
 
                   <div className="pt-2">
@@ -485,7 +445,7 @@ export default function TrademarkPage() {
                         className="mt-0.5 accent-[#c6ff3f]"
                       />
                       <span>
-                        I have read and agree to the Terms of Service and Privacy Policy. I acknowledge that final trademark grants are issued by the Federal Trademark Registry.
+                        I have read and agree to the Terms of Service and Privacy Policy. I acknowledge that SCUML certificates are issued by the relevant regulatory authority.
                       </span>
                     </label>
                   </div>
@@ -496,10 +456,10 @@ export default function TrademarkPage() {
                       disabled={isSubmitting}
                       className="ep-btn ep-btn-primary w-full py-4 text-sm font-bold uppercase tracking-wider"
                     >
-                      {isSubmitting ? "Processing Request..." : `Submit Trademark Request (${packages[selectedPkg].price})`}
+                      {isSubmitting ? "Processing Application..." : `Submit SCUML Request (${packages[selectedPkg].price})`}
                     </button>
                     <p className="text-center text-xs text-[#7f8d84] mt-3">
-                      Secure encrypted submission. Official digital acknowledgment and acceptance letters provided.
+                      Secure encrypted submission. Approved compliance documents delivered electronically.
                     </p>
                   </div>
                 </form>

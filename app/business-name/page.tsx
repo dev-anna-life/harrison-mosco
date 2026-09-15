@@ -2,185 +2,626 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import {
-  FileCheck,
-  CheckCircle2,
-  Clock,
-  ShieldCheck,
-  ArrowRight,
-  Phone,
-  Lock,
-} from "lucide-react";
-import { formatNGN } from "@/lib/pricing-engine";
-import { Reveal } from "@/components/motion/Reveal";
-import { HoverCard } from "@/components/motion/HoverCard";
+import { CheckCircle2, ShieldCheck, Clock, FileText, ArrowRight, Check } from "lucide-react";
+
+type PackageType = "Starter" | "Pro" | "Premium";
+
+const packages: Record<
+  PackageType,
+  { name: string; price: string; description: string; features: string[] }
+> = {
+  Starter: {
+    name: "Starter",
+    price: "₦35,000",
+    description: "For individuals and businesses registering a Business Name.",
+    features: ["CAC Business Name Registration", "CAC Status Report", "NRS Tax ID (TIN)"],
+  },
+  Pro: {
+    name: "Pro",
+    price: "₦55,000",
+    description: "Complete legal foundation plus brand identity assets.",
+    features: [
+      "Everything in Starter",
+      "Tax filing & account setup",
+      "Business readiness guidance",
+      "Logo, letterhead, business card and staff ID design",
+    ],
+  },
+  Premium: {
+    name: "Premium",
+    price: "₦180,000",
+    description: "Complete business registration plus full digital launch presence.",
+    features: [
+      "Everything in Pro",
+      "One-page professional corporate website",
+      "Custom business email setup",
+      "Domain name, cloud hosting & SSL for 1 year",
+    ],
+  },
+};
 
 export default function BusinessNamePage() {
-  const [bnPackage, setBnPackage] = useState<"Standard" | "Brand">("Standard");
-  const price = bnPackage === "Standard" ? 25000 : 55000;
+  const [selectedPkg, setSelectedPkg] = useState<PackageType>("Pro");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    surname: "",
+    otherNames: "",
+    dob: "",
+    gender: "Male",
+    email: "",
+    phone: "",
+    state: "",
+    lga: "",
+    city: "",
+    residentialAddress: "",
+    idNumber: "",
+    officeAddress: "",
+    natureOfBusiness: "",
+    proposedName1: "",
+    proposedName2: "",
+    additionalInfo: "",
+    termsConsent: true,
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, termsConsent: e.target.checked }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage("");
+
+    if (!formData.fullName || !formData.phone || !formData.email) {
+      setErrorMessage("Please fill in your full name, phone number, and email.");
+      return;
+    }
+
+    if (!formData.proposedName1) {
+      setErrorMessage("Please provide at least one proposed business name.");
+      return;
+    }
+
+    if (!formData.termsConsent) {
+      setErrorMessage("Please agree to the Terms of Service and Privacy Policy.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          proposedBusinessName: formData.proposedName1,
+          packageInterested: `Business Name - ${selectedPkg}`,
+          source: "business-name-form",
+          additionalDetails: `Surname: ${formData.surname || "N/A"} | Other: ${formData.otherNames || "N/A"} | Proposed 2: ${formData.proposedName2 || "N/A"} | Nature: ${formData.natureOfBusiness || "N/A"} | Address: ${formData.residentialAddress || "N/A"} | Office: ${formData.officeAddress || "N/A"} | Additional: ${formData.additionalInfo || "N/A"}`,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(data.error || "Unable to submit application. Please try again.");
+      }
+    } catch (err: any) {
+      setErrorMessage("Network error occurred. Please try again or reach out on WhatsApp.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <div className="bg-[#0a0e17] text-white min-h-screen relative overflow-hidden">
-      <div className="glow-orb w-[600px] h-[600px] bg-[#FDC902]/8 top-0 left-1/3" />
-
-      {/* Hero */}
-      <section className="py-10 sm:py-24 border-b border-slate-800 relative z-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-6">
-          <Reveal type="down" duration={0.6}>
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDC902]/10 border border-[#FDC902]/30 text-[#FDC902] text-[10px] sm:text-xs font-black uppercase tracking-wider">
-              <FileCheck className="w-3.5 h-3.5 text-[#FDC902] shrink-0" />
-              <span>Enterprise &amp; Sole Proprietorship</span>
-            </span>
-          </Reveal>
-
-          <Reveal type="up" delay={150} duration={0.8}>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.2]">
-              Business Name (Enterprise) Registration
-            </h1>
-            <p className="text-xs sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed mt-2.5 sm:mt-3 font-normal">
-              The fastest way for sole proprietors, freelancers, and small business owners to operate legally, open a corporate bank account, and invoice clients under a registered name.
-            </p>
-          </Reveal>
-
-          <Reveal type="up" delay={300} duration={0.8}>
-            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-5 pt-2 text-xs sm:text-sm font-bold text-slate-300">
-              <span className="flex items-center gap-1.5 text-[#FDC902]">
-                <Clock className="w-3.5 h-3.5 shrink-0" /> 2 to 5 Working Days
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1.5 text-emerald-400">
-                <CheckCircle2 className="w-3.5 h-3.5 shrink-0" /> CAC Status Report Included
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1.5 text-[#FDC902]">
-                <ShieldCheck className="w-3.5 h-3.5 shrink-0" /> Official Tax ID (TIN)
-              </span>
-            </div>
-          </Reveal>
+    <div className="bg-[#0b120f] text-[#f5f7ef] min-h-screen">
+      {/* 1. Hero Simple */}
+      <section className="bg-[#07100c] text-[#f5f7ef] py-16 lg:py-20 border-b border-[rgba(198,255,63,0.14)]">
+        <div className="site-container">
+          <div className="eyebrow">Application</div>
+          <h1 className="heading-1">Business Name Application</h1>
+          <p className="lead-text max-w-2xl">
+            Provide your Business Name registration details and select your package.
+          </p>
         </div>
       </section>
 
-      {/* Packages */}
-      <section className="py-12 sm:py-24 bg-[#070b13]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-            {/* Standard */}
-            <Reveal type="left" duration={0.8}>
-              <HoverCard>
+      {/* 2. Package Selector Banner */}
+      <section className="py-12 bg-[#07100c]/60 border-b border-[#26362c]">
+        <div className="site-container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {(Object.keys(packages) as PackageType[]).map((pkgKey) => {
+              const pkg = packages[pkgKey];
+              const isSelected = selectedPkg === pkgKey;
+              return (
                 <div
-                  onClick={() => setBnPackage("Standard")}
-                  className={`p-5 sm:p-8 rounded-2xl sm:rounded-3xl border-2 transition-all cursor-pointer h-full flex flex-col justify-between ${
-                    bnPackage === "Standard"
-                      ? "bg-[#0f172a] border-[#FDC902] shadow-[0_10px_30px_rgba(253,201,2,0.15)]"
-                      : "bg-[#0a0e17] border-slate-800 hover:border-slate-700"
+                  key={pkgKey}
+                  onClick={() => setSelectedPkg(pkgKey)}
+                  className={`p-6 border transition-all cursor-pointer flex flex-col justify-between ${
+                    isSelected
+                      ? "bg-[#c6ff3f] text-[#071007] border-[#c6ff3f] shadow-lg scale-[1.02]"
+                      : "bg-[#0b120f] text-[#f5f7ef] border-[#26362c] hover:border-[#c6ff3f]/50"
                   }`}
                 >
                   <div>
-                    <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400">
-                      Standard Tier
-                    </span>
-                    <div className="text-2xl sm:text-3xl font-black text-white mt-1.5 sm:mt-2">{formatNGN(25000)}</div>
-                    <p className="text-xs sm:text-sm text-slate-400 mt-1.5 font-normal">
-                      Complete official CAC certificate and status report.
-                    </p>
-
-                    <div className="mt-5 sm:mt-6 space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-slate-300 font-medium">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>CAC Business Name Certificate</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>CAC Status Report</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>Official Tax ID (TIN)</span>
-                      </div>
+                    <div className="flex items-center justify-between">
+                      <span
+                        className={`text-xs font-mono uppercase tracking-widest px-2.5 py-1 ${
+                          isSelected
+                            ? "bg-[#071007] text-[#c6ff3f]"
+                            : "bg-[#10261a] text-[#c6ff3f]"
+                        }`}
+                      >
+                        {pkg.name} {pkgKey === "Pro" ? "· Recommended" : ""}
+                      </span>
+                      {isSelected && <Check className="w-5 h-5 text-[#071007]" />}
                     </div>
+                    <div className="text-3xl font-serif font-bold mt-4 mb-2">{pkg.price}</div>
+                    <p className={`text-xs ${isSelected ? "text-[#183018]" : "text-[#aab6ad]"}`}>
+                      {pkg.description}
+                    </p>
+                    <ul className="mt-4 space-y-2 text-xs">
+                      {pkg.features.map((feat, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="font-bold">•</span>
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
                   <button
                     type="button"
-                    className={`mt-5 sm:mt-6 w-full py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm transition-colors ${
-                      bnPackage === "Standard"
-                        ? "bg-[#FDC902] text-slate-950 shadow-md"
-                        : "bg-slate-900 text-white border border-slate-700"
+                    className={`mt-6 w-full py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                      isSelected
+                        ? "bg-[#071007] text-[#f5f7ef]"
+                        : "bg-transparent text-[#f5f7ef] border border-[#c6ff3f] hover:bg-[#c6ff3f] hover:text-[#071007]"
                     }`}
                   >
-                    {bnPackage === "Standard" ? "Selected Package" : "Choose Standard"}
+                    {isSelected ? "Selected" : `Select ${pkg.name}`}
                   </button>
                 </div>
-              </HoverCard>
-            </Reveal>
-
-            {/* Brand */}
-            <Reveal type="right" delay={150} duration={0.8}>
-              <HoverCard>
-                <div
-                  onClick={() => setBnPackage("Brand")}
-                  className={`p-5 sm:p-8 rounded-2xl sm:rounded-3xl border-2 transition-all cursor-pointer h-full flex flex-col justify-between ${
-                    bnPackage === "Brand"
-                      ? "bg-[#0f172a] border-[#FDC902] shadow-[0_10px_30px_rgba(253,201,2,0.15)]"
-                      : "bg-[#0a0e17] border-slate-800 hover:border-slate-700"
-                  }`}
-                >
-                  <div>
-                    <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-[#FDC902]">
-                      Brand Plus Tier
-                    </span>
-                    <div className="text-2xl sm:text-3xl font-black text-[#FDC902] mt-1.5 sm:mt-2">{formatNGN(55000)}</div>
-                    <p className="text-xs sm:text-sm text-slate-400 mt-1.5 font-normal">
-                      CAC certificate plus executive logo and corporate identity files.
-                    </p>
-
-                    <div className="mt-5 sm:mt-6 space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-slate-200 font-bold">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FDC902] shrink-0" />
-                        <span>Everything in Standard (Certificate, Report, TIN)</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span>Executive Corporate Logo Design</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span>Letterhead &amp; Business Card Template Files</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    className={`mt-5 sm:mt-6 w-full py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm transition-colors ${
-                      bnPackage === "Brand"
-                        ? "bg-[#FDC902] text-slate-950 shadow-md"
-                        : "bg-slate-900 text-white border border-slate-700"
-                    }`}
-                  >
-                    {bnPackage === "Brand" ? "Selected Package" : "Choose Brand Plus"}
-                  </button>
-                </div>
-              </HoverCard>
-            </Reveal>
+              );
+            })}
           </div>
+        </div>
+      </section>
 
-          {/* CTA */}
-          <Reveal type="up" delay={300} duration={0.8}>
-            <div className="mt-8 sm:mt-10 text-center">
-              <a
-                href={`https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20want%20to%20register%20a%20Business%20Name%20(${bnPackage}%20Tier%2C%20${formatNGN(price)}).`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-[0_8px_25px_rgba(253,201,2,0.25)] transition-all text-center"
-              >
-                <Phone className="w-4 h-4 shrink-0" />
-                <span>Start Business Name on WhatsApp ({formatNGN(price)}) &rarr;</span>
-              </a>
+      {/* 3. Form Section */}
+      <section className="py-16 lg:py-24">
+        <div className="site-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Column Overview */}
+            <div className="lg:col-span-4 space-y-6">
+              <div>
+                <div className="eyebrow">Submit Request</div>
+                <h2 className="heading-2">Complete your application.</h2>
+                <p className="lead-text text-sm mt-4">
+                  Choose your package, provide the requested information and submit securely. Our compliance specialists verify all details before official submission.
+                </p>
+              </div>
+
+              <div className="p-6 bg-[#07100c] border border-[#26362c] space-y-4">
+                <div className="text-xs font-mono text-[#c6ff3f] uppercase tracking-wider">
+                  What Happens Next
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-[#c6ff3f] text-[#071007] flex items-center justify-center font-bold text-xs shrink-0">
+                    1
+                  </div>
+                  <p className="text-xs text-[#aab6ad]">
+                    Name availability search is performed immediately on the CAC portal.
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-[#c6ff3f] text-[#071007] flex items-center justify-center font-bold text-xs shrink-0">
+                    2
+                  </div>
+                  <p className="text-xs text-[#aab6ad]">
+                    Documentation &amp; status report preparation within 2–5 business days.
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-[#c6ff3f] text-[#071007] flex items-center justify-center font-bold text-xs shrink-0">
+                    3
+                  </div>
+                  <p className="text-xs text-[#aab6ad]">
+                    Official CAC certificate and digital TIN delivered directly to your email.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 bg-[#10261a] border border-[#33473a] text-xs text-[#d4ddd6]">
+                <strong className="text-white block mb-1">Direct Assistance</strong>
+                Need help deciding or have multiple partners? Reach out to our consultation desk on WhatsApp anytime.
+                <div className="mt-3">
+                  <a
+                    href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20Business%20Name%20registration."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[#c6ff3f] font-bold hover:underline"
+                  >
+                    Chat with Consultant &rarr;
+                  </a>
+                </div>
+              </div>
             </div>
-          </Reveal>
+
+            {/* Right Column Form */}
+            <div className="lg:col-span-8">
+              {submitted ? (
+                <div className="p-10 bg-[#07100c] border border-[#c6ff3f] text-center space-y-5">
+                  <div className="w-16 h-16 bg-[#c6ff3f] text-[#071007] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                    ✓
+                  </div>
+                  <h3 className="heading-3">Application Received</h3>
+                  <p className="text-[#aab6ad] max-w-md mx-auto text-sm leading-relaxed">
+                    Thank you, <strong className="text-white">{formData.fullName}</strong>. Your Business Name registration request for <strong className="text-[#c6ff3f]">{formData.proposedName1}</strong> under the <strong className="text-white">{selectedPkg}</strong> package has been queued for verification.
+                  </p>
+                  <div className="pt-4 flex flex-wrap justify-center gap-4">
+                    <a
+                      href={`https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20Business%20Name%20application%20for%20${encodeURIComponent(formData.proposedName1)}%20(${selectedPkg}%20tier).`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ep-btn ep-btn-primary"
+                    >
+                      Connect on WhatsApp &rarr;
+                    </a>
+                    <button
+                      onClick={() => setSubmitted(false)}
+                      className="ep-btn ep-btn-dark"
+                    >
+                      Submit Another Application
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <form
+                  onSubmit={handleSubmit}
+                  className="bg-[#0d1711] border border-[#33473a] p-6 lg:p-10 space-y-6 shadow-2xl"
+                >
+                  {errorMessage && (
+                    <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded">
+                      {errorMessage}
+                    </div>
+                  )}
+
+                  <div className="space-y-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad]">
+                      Selected Package
+                    </label>
+                    <select
+                      value={selectedPkg}
+                      onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                    >
+                      <option value="Starter">Starter — ₦35,000</option>
+                      <option value="Pro">Pro — ₦55,000 (Recommended)</option>
+                      <option value="Premium">Premium — ₦180,000</option>
+                    </select>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        required
+                        placeholder="John Doe"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Surname
+                      </label>
+                      <input
+                        type="text"
+                        name="surname"
+                        value={formData.surname}
+                        onChange={handleChange}
+                        placeholder="Doe"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Other Names
+                      </label>
+                      <input
+                        type="text"
+                        name="otherNames"
+                        value={formData.otherNames}
+                        onChange={handleChange}
+                        placeholder="Middle name"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Date of Birth
+                      </label>
+                      <input
+                        type="date"
+                        name="dob"
+                        value={formData.dob}
+                        onChange={handleChange}
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Gender
+                      </label>
+                      <select
+                        name="gender"
+                        value={formData.gender}
+                        onChange={handleChange}
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      >
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Active Email *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="john@example.com"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                        placeholder="08012345678"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        State of Residence
+                      </label>
+                      <input
+                        type="text"
+                        name="state"
+                        value={formData.state}
+                        onChange={handleChange}
+                        placeholder="Lagos, Abuja, Rivers..."
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        LGA
+                      </label>
+                      <input
+                        type="text"
+                        name="lga"
+                        value={formData.lga}
+                        onChange={handleChange}
+                        placeholder="Ikeja, Municipal..."
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        City / Town
+                      </label>
+                      <input
+                        type="text"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
+                        placeholder="Victoria Island"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      Residential Address
+                    </label>
+                    <input
+                      type="text"
+                      name="residentialAddress"
+                      value={formData.residentialAddress}
+                      onChange={handleChange}
+                      placeholder="Street address, house number"
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        NIN / Identification Number
+                      </label>
+                      <input
+                        type="text"
+                        name="idNumber"
+                        value={formData.idNumber}
+                        onChange={handleChange}
+                        placeholder="11-digit NIN or Passport No"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Office / Business Address
+                      </label>
+                      <input
+                        type="text"
+                        name="officeAddress"
+                        value={formData.officeAddress}
+                        onChange={handleChange}
+                        placeholder="Physical commercial address"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      Nature of Business *
+                    </label>
+                    <textarea
+                      name="natureOfBusiness"
+                      value={formData.natureOfBusiness}
+                      onChange={handleChange}
+                      required
+                      placeholder="E.g., Information technology consulting, software development, fashion retail, general commerce..."
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none min-h-[90px]"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Proposed Business Name 1 *
+                      </label>
+                      <input
+                        type="text"
+                        name="proposedName1"
+                        value={formData.proposedName1}
+                        onChange={handleChange}
+                        required
+                        placeholder="First name preference"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Proposed Business Name 2 (Alternative)
+                      </label>
+                      <input
+                        type="text"
+                        name="proposedName2"
+                        value={formData.proposedName2}
+                        onChange={handleChange}
+                        placeholder="Alternative name"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Means of Identification
+                      </label>
+                      <input
+                        type="file"
+                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Signature Upload
+                      </label>
+                      <input
+                        type="file"
+                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                        Passport Photograph
+                      </label>
+                      <input
+                        type="file"
+                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      Additional Information (Optional)
+                    </label>
+                    <textarea
+                      name="additionalInfo"
+                      value={formData.additionalInfo}
+                      onChange={handleChange}
+                      placeholder="Any specific requests or requirements..."
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none min-h-[70px]"
+                    />
+                  </div>
+
+                  <div className="pt-2">
+                    <label className="flex items-start gap-3 cursor-pointer text-xs text-[#aab6ad]">
+                      <input
+                        type="checkbox"
+                        checked={formData.termsConsent}
+                        onChange={handleCheckboxChange}
+                        className="mt-0.5 accent-[#c6ff3f]"
+                      />
+                      <span>
+                        I have read and agree to the Terms of Service and Privacy Policy. I confirm that the details provided are accurate and authorize Eponix Digital to conduct official verification.
+                      </span>
+                    </label>
+                  </div>
+
+                  <div className="pt-4 border-t border-[#26362c]">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="ep-btn ep-btn-primary w-full py-4 text-sm font-bold uppercase tracking-wider"
+                    >
+                      {isSubmitting ? "Processing Application..." : `Submit Application (${packages[selectedPkg].price})`}
+                    </button>
+                    <p className="text-center text-xs text-[#7f8d84] mt-3">
+                      Secure submission. Official digital certificates issued upon regulatory approval.
+                    </p>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
         </div>
       </section>
     </div>
   );
 }
+

@@ -31,30 +31,30 @@ export default function CompliancePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="ep-card">
+            <Link href="/scuml" className="ep-card block hover:border-[#c6ff3f] transition-all">
               <div className="ep-tag">01 / Compliance</div>
               <h3 className="heading-3">SCUML</h3>
               <p>Registration support, compliance guidance and follow-up.</p>
-              <Link href="/#consultation" className="ep-link">
+              <span className="ep-link mt-6 block">
                 Open SCUML →
-              </Link>
-            </div>
+              </span>
+            </Link>
 
-            <div className="ep-card lime">
+            <Link href="/tax" className="ep-card lime block hover:brightness-105 transition-all">
               <div className="ep-tag text-[#071007] border-[#071007]">02 / Tax</div>
               <h3 className="heading-3 text-[#071007]">NRS Tax ID / Rev360</h3>
               <p className="text-[#183018]">Tax identity and Rev360 filing-account setup.</p>
-              <Link href="/#consultation" className="ep-link text-[#071007]">
+              <span className="ep-link text-[#071007] mt-6 block">
                 Open Tax setup →
-              </Link>
-            </div>
+              </span>
+            </Link>
 
-            <div className="ep-card">
+            <Link href="/nafdac" className="ep-card block hover:border-[#c6ff3f] transition-all">
               <div className="ep-tag">03 / Regulatory</div>
               <h3 className="heading-3">NAFDAC</h3>
               <p>Service framework reserved for the NAFDAC details to be incorporated.</p>
-              <span className="ep-link text-[#7f8d84]">Coming soon →</span>
-            </div>
+              <span className="ep-link text-[#7f8d84] mt-6 block">Coming soon →</span>
+            </Link>
           </div>
         </div>
       </section>

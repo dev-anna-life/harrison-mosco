@@ -215,7 +215,13 @@ export default function CACPage() {
                 </ul>
                 <div className="mt-auto pt-4">
                   <Link
-                    href={`/#consultation`}
+                    href={
+                      activeCategory === "business"
+                        ? "/business-name"
+                        : activeCategory === "company"
+                        ? "/limited"
+                        : "/trustees"
+                    }
                     className={`ep-btn w-full ${pkg.featured ? "ep-btn-dark" : "ep-btn-primary"}`}
                   >
                     Start {pkg.name}
