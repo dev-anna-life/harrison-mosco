@@ -122,20 +122,38 @@ export default function LimitedCompanyPage() {
 
   return (
     <div className="bg-[#0b120f] text-[#f5f7ef] min-h-screen">
-      {/* 1. Hero Simple */}
-      <section className="bg-[#07100c] text-[#f5f7ef] py-16 lg:py-20 border-b border-[rgba(198,255,63,0.14)]">
+      {/* 1. Hero */}
+      <section className="bg-[#07100c] text-[#f5f7ef] py-16 lg:py-24 border-b border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
-          <div className="eyebrow">Application</div>
-          <h1 className="heading-1">Limited Company Application</h1>
-          <p className="lead-text max-w-2xl">
-            Provide company registration details, directors/shareholders and supporting documents.
+          <div className="eyebrow">Limited Company Registration Packages</div>
+          <h1 className="heading-1 mt-2 mb-4">Start your registration</h1>
+          <p className="lead-text max-w-2xl mb-8">
+            Register a Nigerian Limited Company with CAC, NRS Tax ID, tax filing setup, branding, and website options.
           </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <a href="#packages" className="btn primary">
+              <span>Get Packages</span>
+              <span className="arrow">↓</span>
+            </a>
+            <a href="#form" className="btn">
+              <span>Get Started</span>
+              <span className="arrow">→</span>
+            </a>
+          </div>
         </div>
       </section>
 
       {/* 2. Package Selector Banner */}
-      <section className="py-12 bg-[#07100c]/60 border-b border-[#26362c]">
+      <section id="packages" className="py-16 bg-[#07100c]/60 border-b border-[#26362c]">
         <div className="site-container">
+          <div className="mb-10">
+            <div className="eyebrow">Choose a Plan</div>
+            <h2 className="heading-2">Registration Packages</h2>
+            <p className="lead-text text-sm mt-2">
+              Select the tier that matches your corporate and capital requirements.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {(Object.keys(packages) as PackageType[]).map((pkgKey) => {
               const pkg = packages[pkgKey];
@@ -143,7 +161,11 @@ export default function LimitedCompanyPage() {
               return (
                 <div
                   key={pkgKey}
-                  onClick={() => setSelectedPkg(pkgKey)}
+                  onClick={() => {
+                    setSelectedPkg(pkgKey);
+                    const formEl = document.getElementById("form");
+                    if (formEl) formEl.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className={`p-6 border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
                       ? "bg-[#c6ff3f] text-[#071007] border-[#c6ff3f] shadow-lg scale-[1.02]"
@@ -178,13 +200,13 @@ export default function LimitedCompanyPage() {
                   </div>
                   <button
                     type="button"
-                    className={`mt-6 w-full py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                    className={`mt-6 w-full py-2.5 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
                       isSelected
                         ? "bg-[#071007] text-[#f5f7ef]"
                         : "bg-transparent text-[#f5f7ef] border border-[#c6ff3f] hover:bg-[#c6ff3f] hover:text-[#071007]"
                     }`}
                   >
-                    {isSelected ? "Selected" : `Select ${pkg.name}`}
+                    {isSelected ? "Selected · Continue to Form ↓" : `Select ${pkg.name}`}
                   </button>
                 </div>
               );
@@ -194,7 +216,7 @@ export default function LimitedCompanyPage() {
       </section>
 
       {/* 3. Form Section */}
-      <section className="py-16 lg:py-24">
+      <section id="form" className="py-16 lg:py-24">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column Overview */}

@@ -158,35 +158,35 @@ export default function CACPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
-            <button
-              onClick={() => setActiveCategory("business")}
-              className={`ep-pathway ${activeCategory === "business" ? "active" : ""}`}
+            <Link
+              href="/business-name"
+              className="ep-pathway block hover:border-[#c6ff3f] transition-all group"
             >
               <div className="eyebrow">01 / Business</div>
-              <h3 className="heading-3">Business Name</h3>
+              <h3 className="heading-3 group-hover:text-[#c6ff3f] transition-colors">Business Name</h3>
               <p>For individuals and businesses registering a Business Name.</p>
-              <b className="mt-6 block text-[14px]">Open Business Name →</b>
-            </button>
+              <b className="mt-6 block text-[14px] text-[#c6ff3f]">Choose this path →</b>
+            </Link>
 
-            <button
-              onClick={() => setActiveCategory("company")}
-              className={`ep-pathway ${activeCategory === "company" ? "active" : ""}`}
+            <Link
+              href="/limited"
+              className="ep-pathway block hover:border-[#c6ff3f] transition-all group"
             >
               <div className="eyebrow">02 / Company</div>
-              <h3 className="heading-3">Limited Company</h3>
+              <h3 className="heading-3 group-hover:text-[#c6ff3f] transition-colors">Limited Company</h3>
               <p>For businesses incorporating as a Limited Company.</p>
-              <b className="mt-6 block text-[14px]">Open Limited Company →</b>
-            </button>
+              <b className="mt-6 block text-[14px] text-[#c6ff3f]">Choose this path →</b>
+            </Link>
 
-            <button
-              onClick={() => setActiveCategory("trustees")}
-              className={`ep-pathway ${activeCategory === "trustees" ? "active" : ""}`}
+            <Link
+              href="/trustees"
+              className="ep-pathway block hover:border-[#c6ff3f] transition-all group"
             >
               <div className="eyebrow">03 / NGO</div>
-              <h3 className="heading-3">NGO / Incorporated Trustees</h3>
+              <h3 className="heading-3 group-hover:text-[#c6ff3f] transition-colors">NGO / Incorporated Trustees</h3>
               <p>For organisations registering as Incorporated Trustees.</p>
-              <b className="mt-6 block text-[14px]">Open NGO pathway →</b>
-            </button>
+              <b className="mt-6 block text-[14px] text-[#c6ff3f]">Choose this path →</b>
+            </Link>
           </div>
 
           {/* Packages Panel */}

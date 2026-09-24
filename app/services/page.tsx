@@ -406,38 +406,65 @@ export default function ServicesPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
               {[
-                { key: "ultimate" as PathwayKey, no: "01 / SIGNATURE", title: "Ultimate Business Launch", desc: "One package across six core areas of a professional business launch.", cta: "Open the package →" },
-                { key: "cac" as PathwayKey, no: "02 / FOUNDATION", title: "CAC Registration", desc: "Business Name, Limited Company and NGO / Incorporated Trustees pathways.", cta: "Open CAC services →" },
-                { key: "compliance" as PathwayKey, no: "03 / READINESS", title: "Compliance & Tax", desc: "SCUML, NRS Tax ID / Rev360, NAFDAC and related support.", cta: "Open compliance →" },
-                { key: "trademark" as PathwayKey, no: "04 / PROTECTION", title: "Trademark Registration", desc: "Search, filing and all 45 trademark classes.", cta: "Open trademark →" },
+                { key: "ultimate" as PathwayKey, href: "/ultimate", no: "01 / SIGNATURE", title: "Ultimate Business Launch", desc: "One package across six core areas of a professional business launch.", cta: "Open the package →" },
+                { key: "cac" as PathwayKey, href: "/cac", no: "02 / FOUNDATION", title: "CAC Registration", desc: "Business Name, Limited Company and NGO / Incorporated Trustees pathways.", cta: "Open CAC services →" },
+                { key: "compliance" as PathwayKey, href: "/compliance", no: "03 / READINESS", title: "Compliance & Tax", desc: "SCUML, NRS Tax ID / Rev360, NAFDAC and related support.", cta: "Open compliance →" },
+                { key: "trademark" as PathwayKey, href: "/trademark", no: "04 / PROTECTION", title: "Trademark Registration", desc: "Search, filing and all 45 trademark classes.", cta: "Open trademark →" },
                 { key: "brand" as PathwayKey, no: "05 / EXPRESSION", title: "Brand & Digital", desc: "Identity, website, corporate email and digital tools.", cta: "Open brand services →" },
                 { key: "growth" as PathwayKey, no: "06 / MOMENTUM", title: "AI, Marketing & Growth", desc: "Automation, agents, AI video and visibility support.", cta: "Open growth services →" },
-              ].map((tile) => (
-                <button
-                  key={tile.key}
-                  type="button"
-                  onClick={() => {
-                    setSelectedPathway(tile.key);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="p-7 border border-[#ced7cd] bg-[#f3f5ec] min-h-[245px] text-left hover:bg-[#17382b] hover:text-white transition-all group flex flex-col justify-between"
-                >
-                  <div>
-                    <span className="font-mono text-[10px] text-[#4a795d] group-hover:text-[#ccd9cf] block mb-7">
-                      {tile.no}
-                    </span>
-                    <h3 className="text-[22px] font-bold leading-[1.1] tracking-[-0.05em] text-[#0c1210] group-hover:text-white mb-2">
-                      {tile.title}
-                    </h3>
-                    <p className="text-[12px] text-[#5b6b60] group-hover:text-[#ccd9cf] leading-relaxed">
-                      {tile.desc}
-                    </p>
-                  </div>
-                  <b className="block mt-6 text-[12px] text-[#0c1210] group-hover:text-[#c9f95a]">
-                    {tile.cta}
-                  </b>
-                </button>
-              ))}
+              ].map((tile) => {
+                if (tile.href) {
+                  return (
+                    <Link
+                      key={tile.key}
+                      href={tile.href}
+                      className="p-7 border border-[#ced7cd] bg-[#f3f5ec] min-h-[245px] text-left hover:bg-[#17382b] hover:text-white transition-all group flex flex-col justify-between"
+                    >
+                      <div>
+                        <span className="font-mono text-[10px] text-[#4a795d] group-hover:text-[#ccd9cf] block mb-7">
+                          {tile.no}
+                        </span>
+                        <h3 className="text-[22px] font-bold leading-[1.1] tracking-[-0.05em] text-[#0c1210] group-hover:text-white mb-2">
+                          {tile.title}
+                        </h3>
+                        <p className="text-[12px] text-[#5b6b60] group-hover:text-[#ccd9cf] leading-relaxed">
+                          {tile.desc}
+                        </p>
+                      </div>
+                      <b className="block mt-6 text-[12px] text-[#0c1210] group-hover:text-[#c9f95a]">
+                        {tile.cta}
+                      </b>
+                    </Link>
+                  );
+                }
+
+                return (
+                  <button
+                    key={tile.key}
+                    type="button"
+                    onClick={() => {
+                      setSelectedPathway(tile.key);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className="p-7 border border-[#ced7cd] bg-[#f3f5ec] min-h-[245px] text-left hover:bg-[#17382b] hover:text-white transition-all group flex flex-col justify-between cursor-pointer"
+                  >
+                    <div>
+                      <span className="font-mono text-[10px] text-[#4a795d] group-hover:text-[#ccd9cf] block mb-7">
+                        {tile.no}
+                      </span>
+                      <h3 className="text-[22px] font-bold leading-[1.1] tracking-[-0.05em] text-[#0c1210] group-hover:text-white mb-2">
+                        {tile.title}
+                      </h3>
+                      <p className="text-[12px] text-[#5b6b60] group-hover:text-[#ccd9cf] leading-relaxed">
+                        {tile.desc}
+                      </p>
+                    </div>
+                    <b className="block mt-6 text-[12px] text-[#0c1210] group-hover:text-[#c9f95a]">
+                      {tile.cta}
+                    </b>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </section>

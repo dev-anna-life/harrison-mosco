@@ -50,19 +50,51 @@ const packages: Record<
 };
 
 const NICE_CLASSES = [
-  { classNum: "Class 9", desc: "Software, electronics, downloadable digital applications, AI models" },
-  { classNum: "Class 16", desc: "Paper goods, printed matter, stationery, packaging, publications" },
+  { classNum: "Class 1", desc: "Chemicals for use in industry, science, agriculture, horticulture and forestry" },
+  { classNum: "Class 2", desc: "Paints, varnishes, lacquers, preservatives against rust and wood deterioration" },
+  { classNum: "Class 3", desc: "Non-medicated cosmetics, soaps, perfumes, essential oils, cleaning preparations" },
+  { classNum: "Class 4", desc: "Industrial oils and greases, fuels, illuminants, candles and wicks" },
+  { classNum: "Class 5", desc: "Pharmaceuticals, medical and veterinary preparations, sanitary preparations, baby food" },
+  { classNum: "Class 6", desc: "Common metals and their alloys, metal building materials, transportable metal buildings" },
+  { classNum: "Class 7", desc: "Machines, machine tools, power-operated tools, motors and engines (except land vehicles)" },
+  { classNum: "Class 8", desc: "Hand tools and implements (hand-operated), cutlery, side arms, razors" },
+  { classNum: "Class 9", desc: "Downloadable software, mobile apps, computers, electronics, scientific & AI apparatus" },
+  { classNum: "Class 10", desc: "Surgical, medical, dental and veterinary apparatus and instruments, orthopaedic articles" },
+  { classNum: "Class 11", desc: "Apparatus and installations for lighting, heating, cooling, steam generating, cooking, drying" },
+  { classNum: "Class 12", desc: "Vehicles, apparatus for locomotion by land, air or water" },
+  { classNum: "Class 13", desc: "Firearms, ammunition and projectiles, explosives, fireworks" },
+  { classNum: "Class 14", desc: "Precious metals and their alloys, jewellery, precious and semi-precious stones, horological instruments" },
+  { classNum: "Class 15", desc: "Musical instruments, music stands and stands for musical instruments, conductors' batons" },
+  { classNum: "Class 16", desc: "Paper, cardboard, printed matter, bookbinding material, photographs, stationery, packaging" },
+  { classNum: "Class 17", desc: "Unprocessed and semi-processed rubber, gutta-percha, plastics and resins in extruded form" },
+  { classNum: "Class 18", desc: "Leather and imitations of leather, animal skins, luggage, bags, umbrellas, saddlery" },
+  { classNum: "Class 19", desc: "Materials, not of metal, for building and construction, rigid pipes, asphalt, pitch, bitumen" },
+  { classNum: "Class 20", desc: "Furniture, mirrors, picture frames, containers not of metal for storage or transport" },
+  { classNum: "Class 21", desc: "Household or kitchen utensils and containers, cookware, tableware, glassware, porcelain" },
+  { classNum: "Class 22", desc: "Ropes and string, nets, tents, tarpaulins, sails, sacks for transport and storage of materials" },
+  { classNum: "Class 23", desc: "Yarns and threads for textile use" },
+  { classNum: "Class 24", desc: "Textiles and substitutes for textiles, household linen, curtains of textile or plastic" },
   { classNum: "Class 25", desc: "Clothing, footwear, headwear, apparel fashion brand" },
-  { classNum: "Class 29", desc: "Meat, fish, poultry, dairy, preserved edible foods" },
-  { classNum: "Class 30", desc: "Coffee, tea, cocoa, bakery, flour, spices, confectionery" },
-  { classNum: "Class 35", desc: "Advertising, business management, marketing, retail, online commerce" },
-  { classNum: "Class 36", desc: "Financial, insurance, real estate, fintech, crypto services" },
-  { classNum: "Class 38", desc: "Telecommunications, broadcasting, streaming, digital networks" },
-  { classNum: "Class 41", desc: "Education, training, entertainment, media production, events" },
-  { classNum: "Class 42", desc: "Technology services, SaaS, software development, cloud computing" },
-  { classNum: "Class 43", desc: "Food & drink services, restaurants, cafes, hospitality, hotels" },
-  { classNum: "Class 44", desc: "Medical services, healthcare, beauty care, agriculture, wellness" },
-  { classNum: "Class 45", desc: "Legal services, security, personal and social advisory services" },
+  { classNum: "Class 26", desc: "Lace, braid and embroidery, ribbons and bows, buttons, hooks and eyes, pins and needles" },
+  { classNum: "Class 27", desc: "Carpets, rugs, mats and matting, linoleum and other materials for covering existing floors" },
+  { classNum: "Class 28", desc: "Games, toys and playthings, video game apparatus, gymnastic and sporting articles" },
+  { classNum: "Class 29", desc: "Meat, fish, poultry, game, meat extracts, preserved, frozen, dried and cooked fruits & vegetables" },
+  { classNum: "Class 30", desc: "Coffee, tea, cocoa, rice, pasta, noodles, flour, cereals, bread, pastries, confectionery, spices" },
+  { classNum: "Class 31", desc: "Raw and unprocessed agricultural, aquacultural, horticultural and forestry products, fresh fruits" },
+  { classNum: "Class 32", desc: "Beers, non-alcoholic beverages, mineral and aerated waters, fruit beverages and fruit juices" },
+  { classNum: "Class 33", desc: "Alcoholic beverages (except beers), alcoholic preparations for making beverages" },
+  { classNum: "Class 34", desc: "Tobacco and tobacco substitutes, cigarettes, cigars, electronic cigarettes, smokers' articles" },
+  { classNum: "Class 35", desc: "Advertising, business management, organisation and administration, office functions, retail & e-commerce" },
+  { classNum: "Class 36", desc: "Financial, monetary and banking services, insurance services, real estate affairs, fintech & crypto" },
+  { classNum: "Class 37", desc: "Construction services, installation and repair services, mining extraction, building development" },
+  { classNum: "Class 38", desc: "Telecommunications services, broadcasting, streaming, digital networks & data transmission" },
+  { classNum: "Class 39", desc: "Transport, packaging and storage of goods, travel arrangement, courier & logistics services" },
+  { classNum: "Class 40", desc: "Treatment of materials, custom manufacturing, recycling, waste treatment, printing services" },
+  { classNum: "Class 41", desc: "Education, providing of training, entertainment, sporting and cultural activities, media production" },
+  { classNum: "Class 42", desc: "Scientific and technological services, research and design, IT, software development, SaaS, cloud" },
+  { classNum: "Class 43", desc: "Services for providing food and drink, restaurants, cafes, catering, temporary accommodation, hotels" },
+  { classNum: "Class 44", desc: "Medical services, veterinary services, hygienic and beauty care for human beings or animals, agriculture" },
+  { classNum: "Class 45", desc: "Legal services, security services for physical protection, personal and social services by others" },
 ];
 
 export default function TrademarkPage() {
@@ -146,27 +178,37 @@ export default function TrademarkPage() {
 
   return (
     <div className="bg-[#0b120f] text-[#f5f7ef] min-h-screen">
-      {/* 1. Hero Simple */}
-      <section className="bg-[#07100c] text-[#f5f7ef] py-16 lg:py-20 border-b border-[rgba(198,255,63,0.14)]">
+      {/* 1. Hero */}
+      <section className="bg-[#07100c] text-[#f5f7ef] py-16 lg:py-24 border-b border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
-          <div className="eyebrow">Nigeria Trademark Registration</div>
-          <h1 className="heading-1">Protect Your Brand With Trademark Registration</h1>
-          <p className="lead-text max-w-2xl">
-            Secure the name and identity your customers know you for. Choose a pre-filing search, registration after an approved search, or the complete search and trademark registration package.
+          <div className="eyebrow">Trademark Registration Package</div>
+          <h1 className="heading-1 mt-2 mb-4">Start your registration</h1>
+          <p className="lead-text max-w-2xl mb-8">
+            Trademark name search, filing, acknowledgement and acceptance letter support for Nigerian businesses across all 45 Nice Classification classes.
           </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <a href="#packages" className="btn primary">
+              <span>Get Packages</span>
+              <span className="arrow">↓</span>
+            </a>
+            <a href="#form" className="btn">
+              <span>Get Started</span>
+              <span className="arrow">→</span>
+            </a>
+          </div>
         </div>
       </section>
 
       {/* 2. Package Selector Banner */}
-      <section className="py-12 bg-[#07100c]/60 border-b border-[#26362c]">
+      <section id="packages" className="py-16 bg-[#07100c]/60 border-b border-[#26362c]">
         <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end mb-10">
             <div>
               <div className="eyebrow">Trademark Packages</div>
               <h2 className="heading-2">Choose the trademark service you need.</h2>
             </div>
             <div className="text-sm text-[#aab6ad] leading-relaxed">
-              Each package covers one trademark class under the official Nice Classification system.
+              Each package covers one trademark class under the official 45-class Nice Classification system.
             </div>
           </div>
 
@@ -177,7 +219,11 @@ export default function TrademarkPage() {
               return (
                 <div
                   key={pkgKey}
-                  onClick={() => setSelectedPkg(pkgKey)}
+                  onClick={() => {
+                    setSelectedPkg(pkgKey);
+                    const formEl = document.getElementById("form");
+                    if (formEl) formEl.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className={`p-6 border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
                       ? "bg-[#c6ff3f] text-[#071007] border-[#c6ff3f] shadow-lg scale-[1.02]"
@@ -216,13 +262,13 @@ export default function TrademarkPage() {
                   </div>
                   <button
                     type="button"
-                    className={`mt-6 w-full py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                    className={`mt-6 w-full py-2.5 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer ${
                       isSelected
-                        ? "bg-[#071007] text-[#c6ff3f]"
+                        ? "bg-[#071007] text-[#f5f7ef]"
                         : "bg-[#10261a] text-white hover:bg-[#c6ff3f] hover:text-[#071007]"
                     }`}
                   >
-                    {isSelected ? "Selected" : `Select ${pkg.name}`}
+                    {isSelected ? "Selected · Continue to Form ↓" : `Select ${pkg.name}`}
                   </button>
                 </div>
               );
@@ -239,7 +285,7 @@ export default function TrademarkPage() {
       </section>
 
       {/* 3. Requirements & Intake Form Section */}
-      <section className="py-16 lg:py-24">
+      <section id="form" className="py-16 lg:py-24">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column Overview */}
