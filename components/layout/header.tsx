@@ -22,7 +22,7 @@ export function Header() {
             About
           </Link>
           <Link href="/services" onClick={() => setMobileMenuOpen(false)}>
-            Services
+            Our Services
           </Link>
           <Link href="/#how" onClick={() => setMobileMenuOpen(false)}>
             How it works
