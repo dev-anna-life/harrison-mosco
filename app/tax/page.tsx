@@ -123,7 +123,7 @@ export default function TaxPage() {
   return (
     <div className="bg-[#0b120f] text-[#f5f7ef] min-h-screen">
       {/* 1. Hero Simple */}
-      <section className="bg-[#07100c] text-[#f5f7ef] py-16 lg:py-20 border-b border-[rgba(198,255,63,0.14)]">
+      <section className="bg-[#07100c] text-[#f5f7ef] pt-32 pb-20 lg:pt-36 lg:pb-24 border-b border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
           <div className="eyebrow">Nigeria Tax Setup</div>
           <h1 className="heading-1">NRS Tax ID / Rev360 Tax Filing Account Setup</h1>

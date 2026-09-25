@@ -134,7 +134,7 @@ export default function CACPage() {
   return (
     <div className="bg-[#0b120f] text-[#f5f7ef]">
       {/* 1. Hero Simple */}
-      <section className="bg-[#07100c] text-[#f5f7ef] py-20 lg:py-24 border-b border-[rgba(198,255,63,0.14)]">
+      <section className="bg-[#07100c] text-[#f5f7ef] pt-32 pb-20 lg:pt-40 lg:pb-24 border-b border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
           <div className="eyebrow">Nigeria Business Foundation</div>
           <h1 className="heading-1">CAC Registration</h1>

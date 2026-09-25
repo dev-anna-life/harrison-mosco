@@ -54,7 +54,7 @@ export default function UltimatePage() {
   return (
     <div className="bg-[#0b120f] text-[#f5f7ef]">
       {/* 1. Hero Simple */}
-      <section className="bg-[#07100c] text-[#f5f7ef] py-20 lg:py-24 border-b border-[rgba(198,255,63,0.14)]">
+      <section className="bg-[#07100c] text-[#f5f7ef] pt-32 pb-20 lg:pt-40 lg:pb-24 border-b border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-8 space-y-6">
@@ -162,9 +162,9 @@ export default function UltimatePage() {
             </div>
 
             <div className="ep-card lime">
-              <div className="ep-tag text-[#071007] border-[#071007]">06 / Momentum</div>
-              <h3 className="heading-3 text-[#071007]">AI, Marketing &amp; Growth</h3>
-              <p className="text-[#183018]">Automation, agents, AI video and visibility support.</p>
+              <div className="ep-tag" style={{ color: "#071007", borderColor: "#071007" }}>06 / Operations</div>
+              <h3 className="heading-3" style={{ color: "#071007" }}>Business Automation &amp; Systems</h3>
+              <p style={{ color: "#142519", fontWeight: 600 }}>Workflow automation, client intake systems and scalable business operations.</p>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ export default function CompliancePage() {
   return (
     <div className="bg-[#0b120f] text-[#f5f7ef]">
       {/* 1. Hero Simple */}
-      <section className="bg-[#07100c] text-[#f5f7ef] py-20 lg:py-24 border-b border-[rgba(198,255,63,0.14)]">
+      <section className="bg-[#07100c] text-[#f5f7ef] pt-32 pb-20 lg:pt-40 lg:pb-24 border-b border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
           <div className="eyebrow">Business Readiness</div>
           <h1 className="heading-1">Compliance &amp; Tax</h1>
@@ -41,10 +41,10 @@ export default function CompliancePage() {
             </Link>
 
             <Link href="/tax" className="ep-card lime block hover:brightness-105 transition-all">
-              <div className="ep-tag text-[#071007] border-[#071007]">02 / Tax</div>
-              <h3 className="heading-3 text-[#071007]">NRS Tax ID / Rev360</h3>
-              <p className="text-[#183018]">Tax identity and Rev360 filing-account setup.</p>
-              <span className="ep-link text-[#071007] mt-6 block">
+              <div className="ep-tag" style={{ color: "#071007", borderColor: "#071007" }}>02 / Tax</div>
+              <h3 className="heading-3" style={{ color: "#071007" }}>NRS Tax ID / Rev360</h3>
+              <p style={{ color: "#183018", fontWeight: 600 }}>Tax identity and Rev360 filing-account setup.</p>
+              <span className="ep-link" style={{ color: "#071007", marginTop: "24px", display: "block" }}>
                 Open Tax setup →
               </span>
             </Link>

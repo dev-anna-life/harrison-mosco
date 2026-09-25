@@ -123,7 +123,7 @@ export default function SCUMLPage() {
   return (
     <div className="bg-[#0b120f] text-[#f5f7ef] min-h-screen">
       {/* 1. Hero */}
-      <section className="bg-[#07100c] text-[#f5f7ef] py-16 lg:py-24 border-b border-[rgba(198,255,63,0.14)]">
+      <section className="bg-[#07100c] text-[#f5f7ef] pt-32 pb-20 lg:pt-36 lg:pb-24 border-b border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
           <div className="eyebrow">SCUML Registration Nigeria</div>
           <h1 className="heading-1 mt-2 mb-4">Start your registration</h1>
