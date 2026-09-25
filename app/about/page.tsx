@@ -269,7 +269,7 @@ export default function AboutPage() {
             Let’s build a business that is ready to{" "}
             <em className="font-serif italic font-semibold text-[#0c1210]">move.</em>
           </h2>
-          <Link href="/#consult" className="btn dark whitespace-nowrap">
+          <Link href="/consult" className="btn dark whitespace-nowrap">
             <span>Start a conversation</span>
             <span className="text-[18px] leading-none">→</span>
           </Link>

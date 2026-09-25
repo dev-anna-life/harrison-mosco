@@ -24,15 +24,15 @@ export function Footer() {
             <Link href="/about">About Eponix</Link>
             <Link href="/services">Our Services</Link>
             <Link href="/#how">How It Works</Link>
-            <Link href="/#consult">Consultation</Link>
+            <Link href="/consult">Consultation</Link>
           </div>
 
           <div className="footer-col">
             <h4>CONNECT</h4>
             <a href="mailto:hello@eponixdigital.com">hello@eponixdigital.com</a>
-            <Link href="/#consult">Lagos, Nigeria</Link>
-            <Link href="/#consult">Instagram ↗</Link>
-            <Link href="/#consult">LinkedIn ↗</Link>
+            <Link href="/consult">Lagos, Nigeria</Link>
+            <Link href="/consult">Instagram ↗</Link>
+            <Link href="/consult">LinkedIn ↗</Link>
           </div>
         </div>
 

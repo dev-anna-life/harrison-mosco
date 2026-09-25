@@ -265,7 +265,7 @@ export function Header() {
           </Link>
 
           <Link
-            href="/#consult"
+            href="/consult"
             className="btn"
             onClick={closeAll}
           >

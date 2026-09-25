@@ -56,10 +56,10 @@ export default function HomePage() {
               From business registration and compliance to branding, digital presence, AI, automation and growth, Eponix Digital builds the infrastructure your business needs to operate professionally and grow.
             </p>
             <div className="hero-actions">
-              <a className="btn primary" href="#consult">
+              <Link className="btn primary" href="/consult">
                 <span>Book a Consultation</span>
                 <span className="arrow">→</span>
-              </a>
+              </Link>
               <Link className="btn" href="/services">
                 <span>Explore Our Services</span>
                 <span className="arrow">→</span>
@@ -193,10 +193,10 @@ export default function HomePage() {
                 <h3>Start with intention. Launch with confidence.</h3>
                 <p>Every business is different. We’ll help you shape the right scope for yours.</p>
               </div>
-              <a href="#consult" className="btn">
+              <Link href="/consult" className="btn">
                 <span>Talk to our team</span>
                 <span className="arrow">→</span>
-              </a>
+              </Link>
             </aside>
           </div>
         </div>
@@ -415,10 +415,10 @@ export default function HomePage() {
           <h2>
             Ready to build with more <em>clarity?</em>
           </h2>
-          <a href="#consult" className="btn">
+          <Link href="/consult" className="btn">
             <span>Book a consultation</span>
             <span className="arrow">→</span>
-          </a>
+          </Link>
         </div>
       </section>
     </>
