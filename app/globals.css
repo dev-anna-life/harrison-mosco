@@ -787,10 +787,11 @@ header {
 
 .step {
   display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 22px;
-  padding: 23px 0;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding: 24px 0;
   border-bottom: 1px solid #bbc3b9;
+  align-items: flex-start;
 }
 
 .step:first-child {
@@ -798,14 +799,16 @@ header {
 }
 
 .num {
-  font: 800 12px "DM Mono", monospace;
+  font: 800 12px/1.4 "DM Mono", monospace;
   color: #27523f;
+  white-space: nowrap;
+  padding-top: 3px;
 }
 
 .step h3 {
   font-size: 20px;
   letter-spacing: -0.04em;
-  margin: 0 0 5px;
+  margin: 0 0 6px;
   font-weight: 800;
   color: var(--ink);
 }
@@ -815,6 +818,7 @@ header {
   color: #3b4c42;
   font-weight: 500;
   font-size: 14px;
+  line-height: 1.55;
 }
 
 /* Signature Package */
@@ -1358,18 +1362,52 @@ footer {
     padding-top: 0;
   }
   .journey-intro {
-    padding: 48px 20px;
+    padding: 56px 20px 44px;
+  }
+  .journey-intro h2 {
+    font-size: clamp(28px, 7.2vw, 42px);
+    line-height: 1.08;
+    letter-spacing: -0.05em;
   }
   .timeline {
     padding: 36px 20px;
   }
   .step {
-    grid-template-columns: 36px 1fr;
-    gap: 14px;
-    padding: 18px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 20px 0;
+    border-bottom: 1px solid #cbd2c7;
+  }
+  .step:first-child {
+    padding-top: 0;
+  }
+  .step:last-child {
+    border-bottom: 0;
+  }
+  .step .num {
+    font: 800 11px/1.2 "DM Mono", monospace;
+    letter-spacing: 0.12em;
+    color: #17382b;
+    background: rgba(23, 56, 43, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 4px;
+    white-space: nowrap;
   }
   .step h3 {
-    font-size: 18px;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+  .step p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #3b4c42;
   }
   .package-card {
     grid-template-columns: 1fr;
