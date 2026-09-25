@@ -333,9 +333,9 @@ export default function TrusteesPage() {
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
                       className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
                     >
-                      <option value="Starter">Starter — ₦130,000</option>
-                      <option value="Pro">Pro — ₦180,000 (Recommended: Includes SCUML)</option>
-                      <option value="Premium">Premium — ₦450,000 (Includes Website & Identity)</option>
+                      <option value="Starter">Starter: ₦130,000</option>
+                      <option value="Pro">Pro: ₦180,000 (Recommended: Includes SCUML)</option>
+                      <option value="Premium">Premium: ₦450,000 (Includes Website & Identity)</option>
                     </select>
                   </div>
 

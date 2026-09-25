@@ -19,7 +19,7 @@ const packages: Record<
       "Eligibility review before filing",
       "Search result guidance",
       "Covers 1 trademark class",
-      "Timeframe: 3–7 working days",
+      "Timeframe: 3 to 7 working days",
     ],
   },
   Pro: {
@@ -31,7 +31,7 @@ const packages: Record<
       "Official Acknowledgement Letter support",
       "Official Acceptance Letter support",
       "Covers 1 trademark class",
-      "Timeframe: 10–21 working days",
+      "Timeframe: 10 to 21 working days",
     ],
   },
   Premium: {
@@ -44,7 +44,7 @@ const packages: Record<
       "Trademark application filing",
       "Acknowledgement & Acceptance letters",
       "Covers 1 trademark class",
-      "Timeframe: 10–21 working days",
+      "Timeframe: 10 to 21 working days",
     ],
   },
 };
@@ -369,9 +369,9 @@ export default function TrademarkPage() {
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
                       className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
                     >
-                      <option value="Starter">Starter — ₦15,000 (Pre-filing Search Only)</option>
-                      <option value="Pro">Pro — ₦60,000 (Filing Only - After Approved Search)</option>
-                      <option value="Premium">Premium — ₦70,000 (Complete Search + Filing Support)</option>
+                      <option value="Starter">Starter: ₦15,000 (Pre-filing Search Only)</option>
+                      <option value="Pro">Pro: ₦60,000 (Filing Only: After Approved Search)</option>
+                      <option value="Premium">Premium: ₦70,000 (Complete Search + Filing Support)</option>
                     </select>
                   </div>
 
@@ -453,7 +453,7 @@ export default function TrademarkPage() {
 
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
-                      Primary Trademark Class (Nice Classification 1–45) *
+                      Primary Trademark Class (Nice Classification 1 to 45) *
                     </label>
                     <select
                       name="trademarkClass"
@@ -463,7 +463,7 @@ export default function TrademarkPage() {
                     >
                       {NICE_CLASSES.map((nc) => (
                         <option key={nc.classNum} value={nc.classNum}>
-                          {nc.classNum} — {nc.desc}
+                          {nc.classNum}: {nc.desc}
                         </option>
                       ))}
                     </select>

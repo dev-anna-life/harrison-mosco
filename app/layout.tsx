@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Eponix Digital — Build. Brand. Grow.",
+  title: "Eponix Digital | Build, Brand and Grow Businesses",
   description:
     "Eponix Digital builds the business infrastructure, brand and digital systems that help Nigerian businesses grow.",
   keywords: [

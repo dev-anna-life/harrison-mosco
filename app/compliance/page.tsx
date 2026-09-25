@@ -12,7 +12,7 @@ export default function CompliancePage() {
           <div className="eyebrow">Business Readiness</div>
           <h1 className="heading-1">Compliance &amp; Tax</h1>
           <p className="lead-text">
-            SCUML, NRS Tax ID / Rev360, NAFDAC and related support — organised under one compliance pathway.
+            SCUML, NRS Tax ID / Rev360, NAFDAC and related support, organised under one compliance pathway.
           </p>
         </div>
       </section>

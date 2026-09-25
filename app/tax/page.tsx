@@ -296,9 +296,9 @@ export default function TaxPage() {
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
                       className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
                     >
-                      <option value="Starter">Starter — ₦5,000 (Tax ID Only)</option>
-                      <option value="Pro">Pro — ₦10,000 (Rev360 Filing Account Only)</option>
-                      <option value="Premium">Premium — ₦15,000 (Complete Tax ID + Rev360 Setup)</option>
+                      <option value="Starter">Starter: ₦5,000 (Tax ID Only)</option>
+                      <option value="Pro">Pro: ₦10,000 (Rev360 Filing Account Only)</option>
+                      <option value="Premium">Premium: ₦15,000 (Complete Tax ID + Rev360 Setup)</option>
                     </select>
                   </div>
 

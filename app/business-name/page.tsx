@@ -253,7 +253,7 @@ export default function BusinessNamePage() {
                     2
                   </div>
                   <p className="text-xs text-[#aab6ad]">
-                    Documentation &amp; status report preparation within 2–5 business days.
+                    Documentation &amp; status report preparation within 2 to 5 business days.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
@@ -330,9 +330,9 @@ export default function BusinessNamePage() {
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
                       className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
                     >
-                      <option value="Starter">Starter — ₦35,000</option>
-                      <option value="Pro">Pro — ₦55,000 (Recommended)</option>
-                      <option value="Premium">Premium — ₦180,000</option>
+                      <option value="Starter">Starter: ₦35,000</option>
+                      <option value="Pro">Pro: ₦55,000 (Recommended)</option>
+                      <option value="Premium">Premium: ₦180,000</option>
                     </select>
                   </div>
 

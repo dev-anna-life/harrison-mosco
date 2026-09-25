@@ -211,7 +211,7 @@ const serviceData: Record<PathwayKey, FlowData> = {
     titleEm: "building.",
     desc: "Choose the right support level, then submit the brand, owner and goods/services information needed to begin.",
     stats: [
-      ["CLASSES 1–45", "Choose relevant classes"],
+      ["CLASSES 1 to 45", "Choose relevant classes"],
       ["REGISTRY VERIFIED", "Official Trade Marks Registry"],
       ["SEARCH FIRST", "Availability before filing"],
       ["DIGITAL DELIVERY", "Updates & documents"],
@@ -678,7 +678,7 @@ export default function ServicesPage() {
                                   onChange={() => toggleClass(i + 1)}
                                   className="accent-[#c9f95a]"
                                 />
-                                <span>Class {i + 1} — {cls}</span>
+                                <span>Class {i + 1}: {cls}</span>
                               </label>
                             ))}
                           </div>

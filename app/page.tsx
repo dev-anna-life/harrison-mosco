@@ -100,7 +100,7 @@ export default function HomePage() {
               Eponix Digital is a business infrastructure and digital systems company for ambitious founders, growing teams and established organisations across Nigeria.
             </p>
             <p>
-              We bring the essential pieces together—so your business is properly structured, clearly positioned and ready to scale with confidence.
+              We bring the essential pieces together, so your business is properly structured, clearly positioned and ready to scale with confidence.
             </p>
             <div className="about-lines">
               <div className="about-line">
@@ -284,7 +284,7 @@ export default function HomePage() {
               <span>04</span>
               <div>
                 <b>Systems that support growth</b>
-                <p>Not just a launch—we help create momentum that lasts.</p>
+                <p>Not just a launch, we help create momentum that lasts.</p>
               </div>
               <span>↗</span>
             </div>
@@ -331,7 +331,7 @@ export default function HomePage() {
           <blockquote>
             “We believe Nigerian businesses deserve the <em>same clarity, confidence and systems</em> as their biggest ambitions.”
           </blockquote>
-          <cite>— THE EPONIX CORPORATE STATEMENT</cite>
+          <cite>THE EPONIX CORPORATE STATEMENT</cite>
         </div>
       </section>
 

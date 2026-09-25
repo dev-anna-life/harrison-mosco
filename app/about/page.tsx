@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "About Eponix Digital — Built for Business Progress",
+  title: "About Eponix Digital | Built for Business Progress",
   description:
-    "Meet Eponix Digital—business infrastructure and digital systems for ambitious Nigerian businesses.",
+    "Meet Eponix Digital - business infrastructure and digital systems for ambitious Nigerian businesses.",
 };
 
 export default function AboutPage() {
@@ -23,7 +23,7 @@ export default function AboutPage() {
               the ambition.
             </h1>
             <p className="max-w-[580px] text-[#d6dfd8] text-[16px] sm:text-[17px] leading-relaxed">
-              We help Nigerian founders and teams put the right foundations, identity and systems in place—so their next move is a stronger one.
+              We help Nigerian founders and teams put the right foundations, identity and systems in place so their next move is a stronger one.
             </p>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function AboutPage() {
                 A strong start has range.
               </h3>
               <p className="text-[13px] text-[#bfcdc4] leading-relaxed max-w-[290px]">
-                Every foundation should create room for the business you are building toward—not only where it is today.
+                Every foundation should create room for the business you are building toward, not only where it is today.
               </p>
             </div>
           </div>
@@ -144,7 +144,7 @@ export default function AboutPage() {
                 One clear partner across the moments that matter.
               </h2>
               <p className="text-[#516158] text-[15px] leading-relaxed max-w-[425px]">
-                We do not see a business as a checklist. We see it as a living system—one that deserves thoughtful decisions, a credible presence and room to grow.
+                We do not see a business as a checklist. We see it as a living system: one that deserves thoughtful decisions, a credible presence and room to grow.
               </p>
 
               <div className="pt-4 overflow-hidden rounded-sm border border-[#b7c3b8] shadow-sm hidden sm:block">

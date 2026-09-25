@@ -107,7 +107,7 @@ export default function UltimatePage() {
 
             <div className="ep-card dark">
               <div className="ep-tag">Timeframe</div>
-              <h3 className="heading-3">10–21 working days</h3>
+              <h3 className="heading-3">10 to 21 working days</h3>
               <p>The main launch project is coordinated across multiple service stages.</p>
             </div>
           </div>
@@ -314,7 +314,7 @@ export default function UltimatePage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="ep-btn ep-btn-dark w-full mt-4"
+                    className="ep-btn ep-btn-primary w-full mt-4"
                   >
                     {isSubmitting ? "Submitting Application..." : "Submit Application"}
                   </button>

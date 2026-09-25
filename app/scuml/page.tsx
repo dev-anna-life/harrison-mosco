@@ -334,9 +334,9 @@ export default function SCUMLPage() {
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
                       className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
                     >
-                      <option value="Starter">Starter — ₦30,000</option>
-                      <option value="Pro">Pro — ₦40,000 (Recommended)</option>
-                      <option value="Premium">Premium — ₦50,000 (Includes NRS Tax ID)</option>
+                      <option value="Starter">Starter: ₦30,000</option>
+                      <option value="Pro">Pro: ₦40,000 (Recommended)</option>
+                      <option value="Premium">Premium: ₦50,000 (Includes NRS Tax ID)</option>
                     </select>
                   </div>
 
