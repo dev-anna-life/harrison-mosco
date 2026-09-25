@@ -81,6 +81,11 @@ export default function HomePage() {
           <span>BRAND <i>✦</i></span>
           <span>DIGITISE <i>✦</i></span>
           <span>GROW <i>✦</i></span>
+          <span>REGISTER <i>✦</i></span>
+          <span>BUILD <i>✦</i></span>
+          <span>BRAND <i>✦</i></span>
+          <span>DIGITISE <i>✦</i></span>
+          <span>GROW <i>✦</i></span>
         </div>
       </div>
 

@@ -63,11 +63,11 @@ export default function UltimatePage() {
               <p className="lead-text">
                 Build a professional Nigerian business with registration, compliance, branding and digital infrastructure handled under one coordinated team.
               </p>
-              <div className="pt-2 flex flex-wrap items-center gap-3.5">
-                <a href="#what-you-get" className="ep-btn ep-btn-primary">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+                <a href="#what-you-get" className="ep-btn ep-btn-primary text-center justify-center">
                   See What You Get
                 </a>
-                <a href="#get-started" className="ep-btn ep-btn-light">
+                <a href="#get-started" className="ep-btn ep-btn-light text-center justify-center">
                   Get Started
                 </a>
               </div>

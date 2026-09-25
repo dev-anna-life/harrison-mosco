@@ -499,7 +499,7 @@ export default function ServicesPage() {
                 {currentFlow.desc}
               </p>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-[#536057] pt-6 mt-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-0 border-t border-[#536057] pt-6 mt-10">
                 {currentFlow.stats.map((st, i) => (
                   <div
                     key={i}

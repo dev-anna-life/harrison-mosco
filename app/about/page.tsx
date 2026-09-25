@@ -181,7 +181,7 @@ export default function AboutPage() {
               ].map((item) => (
                 <div
                   key={item.num}
-                  className="grid grid-cols-[54px_1fr] gap-5 py-6 border-b border-[#b7c3b8]"
+                  className="grid grid-cols-[36px_1fr] sm:grid-cols-[54px_1fr] gap-3 sm:gap-5 py-5 sm:py-6 border-b border-[#b7c3b8]"
                 >
                   <span className="font-mono text-[10px] text-[#4d6c5a] pt-1">{item.num}</span>
                   <div>
