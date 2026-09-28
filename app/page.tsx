@@ -56,8 +56,8 @@ export default function HomePage() {
               From business registration and compliance to branding, digital presence, AI, automation and growth, Eponix Digital builds the infrastructure your business needs to operate professionally and grow.
             </p>
             <div className="hero-actions">
-              <Link className="btn primary" href="/consult">
-                <span>Book a Consultation</span>
+              <Link className="btn primary" href="/ultimate">
+                <span>View Ultimate Package</span>
                 <span className="arrow">→</span>
               </Link>
               <Link className="btn" href="/services">
