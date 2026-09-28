@@ -56,10 +56,10 @@ export default function HomePage() {
               From business registration and compliance to branding, digital presence, AI, automation and growth, Eponix Digital builds the infrastructure your business needs to operate professionally and grow.
             </p>
             <div className="hero-actions">
-              <Link className="btn primary" href="/ultimate">
+              <a className="btn primary" href="#package">
                 <span>View Ultimate Package</span>
                 <span className="arrow">→</span>
-              </Link>
+              </a>
               <Link className="btn" href="/services">
                 <span>Explore Our Services</span>
                 <span className="arrow">→</span>
@@ -167,7 +167,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. Signature Package */}
-      <section className="package section">
+      <section className="package section" id="package">
         <div className="wrap">
           <div className="package-card reveal">
             <div className="package-main">
