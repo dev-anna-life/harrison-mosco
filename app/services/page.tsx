@@ -367,10 +367,20 @@ export default function ServicesPage() {
 
   return (
     <div>
-      {/* 1. HERO (Dark #101713) */}
+      {/* 1. HERO (Dark #101713 with Skyline Background) */}
       {!currentFlow && (
         <section className="min-h-[500px] lg:min-h-[540px] flex items-end relative overflow-hidden bg-[#101713] text-[#f4f6ed]">
-          <div className="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#17382b] via-[#101713] to-[#0c1210]" />
+          {/* Corporate Skyline Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/images/ultimate-hero-bg.jpg"
+              alt="Corporate Business Architecture"
+              className="w-full h-full object-cover object-right lg:object-center opacity-90 brightness-100"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#07100c]/95 via-[#07100c]/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07100c] via-transparent to-[#07100c]/30" />
+          </div>
+
           <div className="wrap w-full relative z-10 pb-16 pt-32 lg:pt-40">
             <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#c9f95a] mb-3">
               Eponix service pathways
@@ -470,12 +480,56 @@ export default function ServicesPage() {
         </section>
       )}
 
-      {/* 3. DYNAMIC FLOW VIEW */}
+      {/* 3. TALK TO OUR TEAM / CONSULTATION CTA (Crisp Pure White #ffffff) */}
+      {!currentFlow && (
+        <section className="bg-[#ffffff] text-[#0c1210] py-16 lg:py-20 border-t border-[#dce3da]">
+          <div className="wrap">
+            <div className="p-8 sm:p-12 lg:p-14 rounded-3xl bg-[#f4f7f1] border border-[#c5d1bf] shadow-md flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+              <div className="space-y-3 max-w-2xl">
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">
+                  Need Custom Guidance?
+                </div>
+                <h2 className="text-[28px] sm:text-[38px] font-bold tracking-tight text-[#0c1210] leading-tight">
+                  Speak directly with our business structuring desk.
+                </h2>
+                <p className="text-[14px] sm:text-[15px] text-[#2b3a30] font-medium leading-relaxed">
+                  Have complex corporate shareholding, non-resident directors, or need a tailored combination of services? Book a consultation to discuss your specific roadmap.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4 shrink-0">
+                <Link href="/consult" className="btn primary !py-3.5 !px-6 text-[13px] font-bold">
+                  <span>Book a Consultation</span>
+                  <span className="arrow">→</span>
+                </Link>
+                <a
+                  href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20business%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn !bg-white !text-[#0c1210] border border-[#c5d1bf] hover:!border-[#17382b] !py-3.5 !px-6 text-[13px] font-bold"
+                >
+                  <span>WhatsApp Desk ↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 4. DYNAMIC FLOW VIEW */}
       {currentFlow && (
         <div>
-          {/* Flow Hero (Dark #0c1210) */}
-          <section className="bg-[#0c1210] text-[#f4f6ed] pt-32 pb-16">
-            <div className="wrap space-y-4">
+          {/* Flow Hero (Dark #0c1210 with Skyline Background) */}
+          <section className="bg-[#0c1210] text-[#f4f6ed] pt-32 pb-16 relative overflow-hidden">
+            <div className="absolute inset-0 z-0">
+              <img
+                src="/images/ultimate-hero-bg.jpg"
+                alt="Corporate Business Architecture"
+                className="w-full h-full object-cover object-right lg:object-center opacity-85 brightness-100"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#07100c]/95 via-[#07100c]/75 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#07100c] via-transparent to-[#07100c]/40" />
+            </div>
+            <div className="wrap space-y-4 relative z-10">
               <button
                 type="button"
                 onClick={() => {
@@ -577,74 +631,74 @@ export default function ServicesPage() {
             </div>
           </section>
 
-          {/* Request Form (Light Sage #e7ece3) */}
-          <section className="bg-[#e7ece3] text-[#0c1210] py-20" id="request">
+          {/* Request Form (Crisp Pure White #ffffff) */}
+          <section className="bg-[#ffffff] text-[#0c1210] py-20 border-t border-[#dce3da]" id="request">
             <div className="wrap">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
                 <div className="lg:col-span-5 space-y-4">
-                  <div className="font-mono text-[10px] tracking-[0.16em] uppercase text-[#46785d]">
+                  <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-[#17382b] font-bold">
                     Start your request
                   </div>
                   <h3 className="text-[32px] sm:text-[46px] font-bold tracking-[-0.07em] leading-[1.02] text-[#0c1210]">
                     Tell us what you need. We’ll guide the next step.
                   </h3>
-                  <p className="text-[14px] text-[#56665b] leading-relaxed">
+                  <p className="text-[14px] text-[#2b3a30] font-medium leading-relaxed">
                     This is a service request, not an automatic payment. Eponix will confirm scope, requirements, pricing and timeline before proceeding.
                   </p>
                 </div>
 
                 <div className="lg:col-span-7">
                   {isSubmitted ? (
-                    <div className="bg-white border border-[#ced7cd] p-8 text-center space-y-3">
-                      <div className="w-12 h-12 rounded-full bg-[#c9f95a] text-[#0c1210] flex items-center justify-center mx-auto">
+                    <div className="bg-[#ffffff] border-2 border-[#17382b] p-8 text-center space-y-3 rounded-2xl shadow-xl">
+                      <div className="w-12 h-12 rounded-full bg-[#10261a] text-[#c9f95a] flex items-center justify-center mx-auto font-bold">
                         <Check className="w-6 h-6" />
                       </div>
                       <h4 className="text-[20px] font-bold text-[#0c1210]">Request Received</h4>
-                      <p className="text-[13px] text-[#56665b] max-w-sm mx-auto">
-                        Thank you, <strong>{formData.fullName}</strong>. Your request is ready for the Eponix team. We will review and reach out shortly.
+                      <p className="text-[13px] text-[#2b3a30] font-medium max-w-sm mx-auto">
+                        Thank you, <strong className="text-[#0c1210]">{formData.fullName}</strong>. Your request is ready for the Eponix team. We will review and reach out shortly.
                       </p>
                     </div>
                   ) : (
-                    <form onSubmit={handleServiceSubmit} className="bg-white border border-[#ced7cd] p-7 space-y-4">
+                    <form onSubmit={handleServiceSubmit} className="bg-[#f9faf7] border border-[#ced7cd] p-7 lg:p-9 space-y-4 rounded-2xl shadow-xl">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                         <div className="flex flex-col gap-1">
-                          <label className="text-[11px] font-extrabold uppercase">Full Name *</label>
+                          <label className="text-[11px] font-mono font-bold uppercase text-[#17382b]">Full Name *</label>
                           <input
                             required
                             type="text"
                             value={formData.fullName}
                             onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                            className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                            className="p-3 border border-[#c5d1bf] bg-white text-[#0c1210] text-[13px] rounded-lg focus:border-[#17382b] outline-none font-medium placeholder:text-[#88968d]"
                           />
                         </div>
                         <div className="flex flex-col gap-1">
-                          <label className="text-[11px] font-extrabold uppercase">Email Address *</label>
+                          <label className="text-[11px] font-mono font-bold uppercase text-[#17382b]">Email Address *</label>
                           <input
                             required
                             type="email"
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                            className="p-3 border border-[#c5d1bf] bg-white text-[#0c1210] text-[13px] rounded-lg focus:border-[#17382b] outline-none font-medium placeholder:text-[#88968d]"
                           />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                         <div className="flex flex-col gap-1">
-                          <label className="text-[11px] font-extrabold uppercase">Phone Number</label>
+                          <label className="text-[11px] font-mono font-bold uppercase text-[#17382b]">Phone Number</label>
                           <input
                             type="tel"
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                            className="p-3 border border-[#c5d1bf] bg-white text-[#0c1210] text-[13px] rounded-lg focus:border-[#17382b] outline-none font-medium placeholder:text-[#88968d]"
                           />
                         </div>
                         <div className="flex flex-col gap-1">
-                          <label className="text-[11px] font-extrabold uppercase">Support Level</label>
+                          <label className="text-[11px] font-mono font-bold uppercase text-[#17382b]">Support Level</label>
                           <select
                             value={formData.supportLevel}
                             onChange={(e) => setFormData({ ...formData, supportLevel: e.target.value })}
-                            className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                            className="p-3 border border-[#c5d1bf] bg-white text-[#0c1210] text-[13px] rounded-lg focus:border-[#17382b] outline-none font-semibold"
                           >
                             <option value="">{currentFlow.defaultSupport}</option>
                             {currentFlow.cards.map((c, idx) => (
@@ -656,27 +710,27 @@ export default function ServicesPage() {
                       </div>
 
                       <div className="flex flex-col gap-1">
-                        <label className="text-[11px] font-extrabold uppercase">Business / Organisation Name</label>
+                        <label className="text-[11px] font-mono font-bold uppercase text-[#17382b]">Business / Organisation Name</label>
                         <input
                           type="text"
                           value={formData.businessName}
                           onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                          className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px]"
+                          className="p-3 border border-[#c5d1bf] bg-white text-[#0c1210] text-[13px] rounded-lg focus:border-[#17382b] outline-none font-medium placeholder:text-[#88968d]"
                         />
                       </div>
 
                       {/* Trademark Specific 45 Classes List */}
                       {selectedPathway === "trademark" && (
                         <div className="flex flex-col gap-1">
-                          <label className="text-[11px] font-extrabold uppercase">Trademark Class / Classes</label>
-                          <div className="h-[170px] overflow-y-auto border border-[#d5ddd4] p-2 space-y-1 bg-[#fbfcfa]">
+                          <label className="text-[11px] font-mono font-bold uppercase text-[#17382b]">Trademark Class / Classes</label>
+                          <div className="h-[170px] overflow-y-auto border border-[#c5d1bf] p-2 space-y-1 bg-white rounded-lg">
                             {trademarkClasses.map((cls, i) => (
-                              <label key={i} className="flex items-center gap-2 text-[12px] cursor-pointer hover:bg-slate-100 p-1">
+                              <label key={i} className="flex items-center gap-2 text-[12px] cursor-pointer hover:bg-[#f4f7f1] p-1.5 rounded text-[#0c1210] font-medium">
                                 <input
                                   type="checkbox"
                                   checked={selectedClasses.includes(i + 1)}
                                   onChange={() => toggleClass(i + 1)}
-                                  className="accent-[#c9f95a]"
+                                  className="accent-[#17382b]"
                                 />
                                 <span>Class {i + 1}: {cls}</span>
                               </label>
@@ -686,25 +740,25 @@ export default function ServicesPage() {
                       )}
 
                       <div className="flex flex-col gap-1">
-                        <label className="text-[11px] font-extrabold uppercase">
+                        <label className="text-[11px] font-mono font-bold uppercase text-[#17382b]">
                           {selectedPathway === "trademark" ? "Goods or Services" : "What would you like us to help with?"}
                         </label>
                         <textarea
                           value={formData.details}
                           onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                           placeholder={selectedPathway === "trademark" ? "Describe the products or services connected to the trademark." : "Tell us a little about the business, organisation or project."}
-                          className="p-2.5 border border-[#d5ddd4] bg-[#fbfcfa] text-[13px] min-h-[90px] resize-y"
+                          className="p-3 border border-[#c5d1bf] bg-white text-[#0c1210] text-[13px] rounded-lg focus:border-[#17382b] outline-none min-h-[90px] resize-y font-medium placeholder:text-[#88968d]"
                         />
                       </div>
 
-                      <p className="text-[11px] text-[#617168] leading-tight">
+                      <p className="text-[11px] text-[#617168] leading-tight font-medium">
                         Please do not send identity documents or sensitive records through this preview form. Eponix will provide a secure document-request process where needed.
                       </p>
 
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="btn primary !w-full justify-center !mt-4"
+                        className="btn primary !w-full justify-center !mt-4 !py-3.5 text-sm font-bold"
                       >
                         <span>{isSubmitting ? "Sending..." : "Send request"}</span>
                         <span className="text-[18px] leading-none">→</span>
