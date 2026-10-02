@@ -23,6 +23,7 @@ export function Footer() {
             <h4>EXPLORE</h4>
             <Link href="/about">About Eponix</Link>
             <Link href="/services">Our Services</Link>
+            <Link href="/#why-choose-us">Why Choose Us</Link>
             <Link href="/#how">How It Works</Link>
             <Link href="/consult">Consultation</Link>
           </div>

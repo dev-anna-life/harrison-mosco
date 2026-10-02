@@ -217,7 +217,8 @@ export default function HomePage() {
       </section>
 
       {/* 6. Why Choose Eponix Digital / More Than a Service Provider (#E6EADF cream background) */}
-      <section className="bg-[#E6EADF] text-[#0c1210] py-24 lg:py-32 border-b border-[#ced7cd]" id="services">
+      <section className="bg-[#E6EADF] text-[#0c1210] py-24 lg:py-32 border-b border-[#ced7cd] scroll-mt-24" id="why-choose-us">
+        <span id="why" className="block -mt-24 pt-24 invisible" aria-hidden="true" />
         <div className="site-container">
           {/* Section Header */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-16">

@@ -555,6 +555,17 @@ header {
   padding: 10px 16px;
 }
 
+@media (min-width: 992px) and (max-width: 1180px) {
+  .navlinks {
+    gap: 16px;
+    font-size: 11.5px;
+  }
+  .navlinks .btn {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+}
+
 .menu {
   display: none;
   background: none;

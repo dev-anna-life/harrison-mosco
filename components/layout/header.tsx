@@ -260,6 +260,10 @@ export function Header() {
             )}
           </div>
 
+          <Link href="/#why-choose-us" onClick={closeAll} className="nav-item">
+            Why Choose Us
+          </Link>
+
           <Link href="/#how" onClick={closeAll} className="nav-item">
             How it works
           </Link>
