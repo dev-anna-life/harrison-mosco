@@ -42,7 +42,8 @@ const WHATSAPP_DESK_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "23480881
  */
 function getTransporter() {
   const user = process.env.SMTP_USER || "eponixlimited@gmail.com";
-  const pass = process.env.SMTP_PASS || process.env.EMAIL_PASSWORD || process.env.GMAIL_APP_PASSWORD;
+  const rawPass = process.env.SMTP_PASS || process.env.EMAIL_PASSWORD || process.env.GMAIL_APP_PASSWORD;
+  const pass = rawPass ? rawPass.replace(/\s+/g, "") : undefined;
 
   if (!pass) {
     // If running in development without credentials, use a mock transporter that logs
