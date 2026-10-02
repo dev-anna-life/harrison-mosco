@@ -570,7 +570,7 @@ export default function ServicesPage() {
               </div>
 
               {currentFlow.featureNote && (
-                <div className="p-6 bg-[#f6f8f1] border-l-4 border-[#c9f95a] text-[13px] text-[#54645a] mt-8">
+                <div className="p-6 bg-[#f6f8f1] border-l-4 border-[#17382b] text-[13px] text-[#2b3a30] font-medium mt-8">
                   {currentFlow.featureNote}
                 </div>
               )}

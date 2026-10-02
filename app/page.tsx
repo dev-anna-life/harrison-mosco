@@ -222,22 +222,22 @@ export default function HomePage() {
           {/* Section Header */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-16">
             <div className="lg:col-span-8 space-y-4 reveal">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#ced7cd] bg-[#d8dfd0] font-mono text-[11px] uppercase tracking-wider text-[#265239] font-bold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#ced7cd] bg-[#d8dfd0] font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">
                 Why Choose Eponix Digital
               </div>
               <h2 className="text-[34px] sm:text-[46px] lg:text-[56px] font-bold leading-[1.05] tracking-[-0.05em] text-[#0c1210]">
                 More Than a Service Provider.
-                <span className="block text-[#265239]">A Growth Partner.</span>
+                <span className="block text-[#17382b]">A Growth Partner.</span>
               </h2>
-              <p className="text-[15px] sm:text-[17px] text-[#55655b] max-w-2xl leading-relaxed">
+              <p className="text-[15px] sm:text-[17px] text-[#2b3a30] font-medium max-w-2xl leading-relaxed">
                 We combine expertise, technology and a deep understanding of Nigerian business needs to give you practical solutions that work - from registration to automation and beyond.
               </p>
             </div>
 
             <div className="lg:col-span-4 reveal">
-              <div className="border-l-2 border-[#265239] pl-5 py-2">
-                <p className="text-[14px] sm:text-[15px] text-[#3b4c42] leading-relaxed">
-                  Your business deserves more than just registration. You deserve a partner that understands your journey and helps you <strong className="text-[#17382b] font-semibold">build, brand and grow</strong> with confidence.
+              <div className="border-l-2 border-[#17382b] pl-5 py-2">
+                <p className="text-[14px] sm:text-[15px] text-[#2b3a30] font-medium leading-relaxed">
+                  Your business deserves more than just registration. You deserve a partner that understands your journey and helps you <strong className="text-[#17382b] font-bold">build, brand and grow</strong> with confidence.
                 </p>
               </div>
             </div>
