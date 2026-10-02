@@ -276,9 +276,12 @@ export default function UltimatePage() {
                 </div>
                 <a
                   href="tel:+2347038753272"
-                  className="bg-[#0c1210] text-[#f5f7ef] hover:bg-[#17382b] hover:text-[#c6ff3f] transition-colors py-2.5 px-4 font-mono text-[13px] font-bold tracking-wider uppercase flex items-center justify-center gap-2 w-full text-center"
+                  className="w-full py-2.5 px-4 rounded-md bg-[#0c1210] hover:bg-[#17382b] transition-colors flex items-center justify-center gap-2 text-center"
+                  style={{ backgroundColor: "#0c1210", color: "#ffffff" }}
                 >
-                  Call +234 703 875 3272
+                  <span className="font-mono text-[13px] font-bold tracking-wider uppercase" style={{ color: "#ffffff" }}>
+                    Call +234 703 875 3272
+                  </span>
                 </a>
               </div>
             </div>

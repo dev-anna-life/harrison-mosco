@@ -175,11 +175,11 @@ export default function HomePage() {
             <div className="lg:col-span-6 space-y-6 reveal">
               <div className="flex items-center gap-3">
                 <span className="w-8 h-[2px] bg-[#c9f95a]" />
-                <span className="eyebrow">Nigeria Services</span>
+                <span className="eyebrow">Signature Offer</span>
               </div>
 
-              <h2 className="heading-1 !text-left !my-0">
-                Ultimate Nigeria Business Launch Package
+              <h2 className="heading-1 !text-left !my-0 mb-6 sm:mb-8">
+                Ultimate Business Launch Package
               </h2>
 
               <p className="lead-text !max-w-none text-[#c9d5cd]">
@@ -216,28 +216,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Why Choose Eponix Digital / More Than a Service Provider */}
-      <section className="bg-[#07100c] text-[#f4f6ed] py-24 lg:py-32 border-b border-[rgba(201,249,90,0.14)]" id="services">
+      {/* 6. Why Choose Eponix Digital / More Than a Service Provider (#E6EADF cream background) */}
+      <section className="bg-[#E6EADF] text-[#0c1210] py-24 lg:py-32 border-b border-[#ced7cd]" id="services">
         <div className="site-container">
           {/* Section Header */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-16">
             <div className="lg:col-span-8 space-y-4 reveal">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[rgba(201,249,90,0.4)] bg-[rgba(201,249,90,0.08)] font-mono text-[11px] uppercase tracking-wider text-[#c9f95a]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#ced7cd] bg-[#d8dfd0] font-mono text-[11px] uppercase tracking-wider text-[#265239] font-bold">
                 Why Choose Eponix Digital
               </div>
-              <h2 className="text-[34px] sm:text-[46px] lg:text-[56px] font-bold leading-[1.05] tracking-[-0.05em] text-[#f4f6ed]">
+              <h2 className="text-[34px] sm:text-[46px] lg:text-[56px] font-bold leading-[1.05] tracking-[-0.05em] text-[#0c1210]">
                 More Than a Service Provider.
-                <span className="block text-[#c9f95a]">A Growth Partner.</span>
+                <span className="block text-[#265239]">A Growth Partner.</span>
               </h2>
-              <p className="text-[15px] sm:text-[17px] text-[#aab6ad] max-w-2xl leading-relaxed">
+              <p className="text-[15px] sm:text-[17px] text-[#55655b] max-w-2xl leading-relaxed">
                 We combine expertise, technology and a deep understanding of Nigerian business needs to give you practical solutions that work - from registration to automation and beyond.
               </p>
             </div>
 
             <div className="lg:col-span-4 reveal">
-              <div className="border-l-2 border-[#c9f95a] pl-5 py-2">
-                <p className="text-[14px] sm:text-[15px] text-[#ccd9cf] leading-relaxed">
-                  Your business deserves more than just registration. You deserve a partner that understands your journey and helps you <strong className="text-[#c9f95a] font-semibold">build, brand and grow</strong> with confidence.
+              <div className="border-l-2 border-[#265239] pl-5 py-2">
+                <p className="text-[14px] sm:text-[15px] text-[#3b4c42] leading-relaxed">
+                  Your business deserves more than just registration. You deserve a partner that understands your journey and helps you <strong className="text-[#17382b] font-semibold">build, brand and grow</strong> with confidence.
                 </p>
               </div>
             </div>
@@ -246,127 +246,81 @@ export default function HomePage() {
           {/* 6 Grid Cards - Icons, Headlines & Descriptions ONLY */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
             {/* Card 1 */}
-            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
-              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
+              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
                 <Layers className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
                 All-in-One Business Solutions
               </h3>
-              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+              <p className="text-[14px] text-[#55655b] leading-relaxed">
                 From CAC registration and compliance to branding, digital and automation - everything your business needs in one place.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
-              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
+              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
                 <Users className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
                 Expert Team with Real Experience
               </h3>
-              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+              <p className="text-[14px] text-[#55655b] leading-relaxed">
                 Our team has hands-on experience in business registration, compliance, branding, technology and digital growth in the Nigerian market.
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
-              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
+              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
                 <Zap className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
                 Fast, Reliable &amp; Accurate
               </h3>
-              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+              <p className="text-[14px] text-[#55655b] leading-relaxed">
                 We streamline processes and work directly with the right institutions to ensure fast turnaround without compromising accuracy.
               </p>
             </div>
 
             {/* Card 4 */}
-            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
-              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
+              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
                 <Lock className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
                 Confidential &amp; Professional
               </h3>
-              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+              <p className="text-[14px] text-[#55655b] leading-relaxed">
                 Your information is handled with the highest level of confidentiality, discretion and professionalism.
               </p>
             </div>
 
             {/* Card 5 */}
-            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
-              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
+              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
                 <Cpu className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
                 Technology-Driven Solutions
               </h3>
-              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+              <p className="text-[14px] text-[#55655b] leading-relaxed">
                 We use modern tools, automation and AI to make business setup, compliance and growth easier, faster and more efficient.
               </p>
             </div>
 
             {/* Card 6 */}
-            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
-              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
+              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
                 <TrendingUp className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
                 End-to-End Support &amp; Long-Term Partnership
               </h3>
-              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+              <p className="text-[14px] text-[#55655b] leading-relaxed">
                 We do not just help you start - we stay with you. From your first registration to scaling with AI and digital marketing, we are your long-term growth partner.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Why Eponix */}
-      <section className="why section">
-        <div className="wrap why-grid">
-          <div className="reveal">
-            <div className="eyebrow" style={{ color: "#367054" }}>
-              Why Eponix
-            </div>
-            <h2>We see the whole business, not just the next task.</h2>
-          </div>
-          <div className="why-list reveal">
-            <div className="why-item">
-              <span>01</span>
-              <div>
-                <b>One strategic partner</b>
-                <p>Connected expertise from foundation through growth.</p>
-              </div>
-              <span>↗</span>
-            </div>
-            <div className="why-item">
-              <span>02</span>
-              <div>
-                <b>Built for the Nigerian market</b>
-                <p>Local context, professional standards and practical direction.</p>
-              </div>
-              <span>↗</span>
-            </div>
-            <div className="why-item">
-              <span>03</span>
-              <div>
-                <b>Clarity over complexity</b>
-                <p>We make important business decisions easier to navigate.</p>
-              </div>
-              <span>↗</span>
-            </div>
-            <div className="why-item">
-              <span>04</span>
-              <div>
-                <b>Systems that support growth</b>
-                <p>Not just a launch, we help create momentum that lasts.</p>
-              </div>
-              <span>↗</span>
             </div>
           </div>
         </div>
