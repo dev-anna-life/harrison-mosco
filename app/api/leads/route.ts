@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
         shareCapitalMillions: body.shareCapitalMillions || 1,
         totalEstimatedAmount: body.estimatedBudget || 100000,
         source,
+        additionalDetails,
       });
     } catch (mailErr) {
       console.warn("Could not dispatch email notification:", mailErr);
