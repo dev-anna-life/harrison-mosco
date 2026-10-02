@@ -67,8 +67,8 @@ export default function UltimatePage() {
         </div>
 
         <div className="site-container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
-            <div className="lg:col-span-8 space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-7 space-y-6">
               <div className="eyebrow">Ultimate Nigeria Business Launch</div>
               <h1 className="heading-1">Set Up. Brand. Launch.</h1>
               <p className="lead-text">
@@ -87,16 +87,58 @@ export default function UltimatePage() {
               </div>
             </div>
 
-            <div className="lg:col-span-4">
-              <div className="bg-[rgba(8,15,11,0.92)] border border-[rgba(198,255,63,0.42)] p-7 space-y-4 shadow-2xl backdrop-blur-sm">
-                <div className="ep-tag text-[#c6ff3f]">Complete Premium Package</div>
-                <h3 className="heading-3">Everything your business needs to launch professionally.</h3>
-                <p className="text-[#aab6ad] text-[14px] leading-relaxed">
-                  Registration, compliance, branding and digital setup coordinated under one professional team.
-                </p>
-                <p className="small-text">
-                  Paid professional service package. Not a grant, loan or funding programme.
-                </p>
+            <div className="lg:col-span-5">
+              <div className="bg-[rgba(8,15,11,0.95)] border border-[rgba(198,255,63,0.42)] p-7 sm:p-8 space-y-5 shadow-2xl backdrop-blur-md rounded-2xl">
+                {/* Header Badge */}
+                <div className="flex items-center gap-3 pb-4 border-b border-[rgba(198,255,63,0.18)]">
+                  <div className="w-10 h-10 rounded-full bg-[#10261a] border border-[#2b593f] flex items-center justify-center text-[#c6ff3f] shrink-0">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[13px] font-bold text-white leading-tight">Nigeria's Top Rated</div>
+                    <div className="font-mono text-[10px] tracking-wider uppercase text-[#c6ff3f] font-bold">CAC ACCREDITED COMPANY</div>
+                  </div>
+                </div>
+
+                {/* Eyebrow & Title */}
+                <div className="space-y-2">
+                  <span className="inline-block px-2.5 py-0.5 rounded bg-[rgba(198,255,63,0.12)] border border-[rgba(198,255,63,0.25)] text-[#c6ff3f] font-mono text-[10px] tracking-wider uppercase font-bold">
+                    EVERYTHING INCLUDED
+                  </span>
+                  <h3 className="text-[22px] sm:text-[24px] font-bold text-white tracking-tight leading-snug">
+                    One premium package.
+                  </h3>
+                  <p className="text-[13px] text-[#aab6ad] leading-relaxed">
+                    CAC Limited Company, Trademark, SCUML, NRS Tax Account &amp; Tax ID Certificate, Logo Design, Company Profile, Branding, Website and Business E-mail.
+                  </p>
+                </div>
+
+                {/* 3 Checkmarks */}
+                <div className="space-y-2 pt-2 border-t border-[rgba(198,255,63,0.14)] text-[13px] text-[#d5dfd8]">
+                  <div className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-[#c6ff3f] shrink-0" />
+                    <span>Registration and compliance</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-[#c6ff3f] shrink-0" />
+                    <span>Professional brand identity</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <Check className="w-4 h-4 text-[#c6ff3f] shrink-0" />
+                    <span>Website and business e-mail</span>
+                  </div>
+                </div>
+
+                {/* Action CTA Button */}
+                <div className="pt-2">
+                  <a
+                    href="#application"
+                    className="w-full ep-btn ep-btn-primary !py-3.5 text-center justify-center font-bold text-[14px] flex items-center gap-2 rounded-lg"
+                  >
+                    <span>Pay &amp; start your application</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

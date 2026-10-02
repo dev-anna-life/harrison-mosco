@@ -61,47 +61,47 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. METRIC STRIP (Crisp Warm Light Cream Strip #f3f5ec) */}
-      <section className="bg-[#f3f5ec] py-14 border-b border-[#ced7cd]">
+      {/* 2. METRIC STRIP (Dark Obsidian #07100c - High Contrast Rhyme between Light Hero & Light Story) */}
+      <section className="bg-[#07100c] text-[#f4f6ed] py-14 border-b border-[rgba(201,249,90,0.14)]">
         <div className="site-container">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#dce4d6] border border-[#c5d1bf] flex items-center justify-center text-[#17382b] shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-[rgba(201,249,90,0.1)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a] shrink-0">
                 <Users className="w-6 h-6" />
               </div>
               <div>
-                <div className="text-[28px] sm:text-[34px] font-black text-[#0c1210] leading-tight">500+</div>
-                <div className="text-[13px] text-[#2b3a30] font-bold uppercase tracking-wider font-mono">Businesses Supported</div>
+                <div className="text-[28px] sm:text-[34px] font-black text-[#ffffff] leading-tight">500+</div>
+                <div className="text-[13px] text-[#aab6ad] uppercase tracking-wider font-mono">Businesses Supported</div>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#dce4d6] border border-[#c5d1bf] flex items-center justify-center text-[#17382b] shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-[rgba(201,249,90,0.1)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a] shrink-0">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
-                <div className="text-[28px] sm:text-[34px] font-black text-[#0c1210] leading-tight">98%</div>
-                <div className="text-[13px] text-[#2b3a30] font-bold uppercase tracking-wider font-mono">Client Satisfaction</div>
+                <div className="text-[28px] sm:text-[34px] font-black text-[#ffffff] leading-tight">98%</div>
+                <div className="text-[13px] text-[#aab6ad] uppercase tracking-wider font-mono">Client Satisfaction</div>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#dce4d6] border border-[#c5d1bf] flex items-center justify-center text-[#17382b] shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-[rgba(201,249,90,0.1)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a] shrink-0">
                 <Layers className="w-6 h-6" />
               </div>
               <div>
-                <div className="text-[24px] sm:text-[28px] font-black text-[#0c1210] leading-tight">End-to-End</div>
-                <div className="text-[13px] text-[#2b3a30] font-bold uppercase tracking-wider font-mono">Business Solutions</div>
+                <div className="text-[24px] sm:text-[28px] font-black text-[#ffffff] leading-tight">End-to-End</div>
+                <div className="text-[13px] text-[#aab6ad] uppercase tracking-wider font-mono">Business Solutions</div>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#dce4d6] border border-[#c5d1bf] flex items-center justify-center text-[#17382b] shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-[rgba(201,249,90,0.1)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a] shrink-0">
                 <TrendingUp className="w-6 h-6" />
               </div>
               <div>
-                <div className="text-[24px] sm:text-[28px] font-black text-[#0c1210] leading-tight">Ongoing</div>
-                <div className="text-[13px] text-[#2b3a30] font-bold uppercase tracking-wider font-mono">Support &amp; Growth</div>
+                <div className="text-[24px] sm:text-[28px] font-black text-[#ffffff] leading-tight">Ongoing</div>
+                <div className="text-[13px] text-[#aab6ad] uppercase tracking-wider font-mono">Support &amp; Growth</div>
               </div>
             </div>
           </div>
