@@ -663,6 +663,8 @@ header {
   color: var(--ink);
   overflow: hidden;
   padding: 20px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .ticker {
@@ -674,6 +676,7 @@ header {
   font-size: 12px;
   width: max-content;
   animation: tickerMove 22s linear infinite;
+  justify-content: center;
 }
 
 @keyframes tickerMove {
