@@ -70,12 +70,26 @@ function getTransporter() {
   });
 }
 
+export function formatWhatsAppLinkNumber(phone: string): string {
+  let digits = phone.replace(/[^0-9]/g, "");
+  if (digits.startsWith("234")) {
+    return digits;
+  }
+  if (digits.startsWith("0")) {
+    return "234" + digits.slice(1);
+  }
+  if (digits.length === 10) {
+    return "234" + digits;
+  }
+  return digits;
+}
+
 /**
  * Sends real-time Lead Alert to the Admin (eponixlimited@gmail.com)
  * and sends confirmation welcome email to the client (if email provided).
  */
 export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
-  const cleanPhone = payload.phone.replace(/[^0-9]/g, "");
+  const cleanPhone = formatWhatsAppLinkNumber(payload.phone);
   const directWhatsAppLink = `https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(
     payload.fullName
   )}%2C%20this%20is%20Eponix%20Digital.%20I%20received%20your%20application%20for%20${encodeURIComponent(
@@ -180,21 +194,15 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
             </ul>
           </div>
 
-          <p style="color: #2b3a30; font-size: 14px; line-height: 1.6;">
-            Our business launch and compliance desk has been notified. An assigned specialist will reach out to verify your requirements and guide your next steps.
-          </p>
-
-          <div style="text-align: center; margin: 28px 0 20px;">
-            <a href="https://wa.me/${WHATSAPP_DESK_PHONE}?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20an%20application%20for%20${encodeURIComponent(
-              payload.proposedName || payload.fullName
-            )}%20and%20would%20like%20to%20connect%20with%20an%20advisor." style="background-color: #17382b; color: #ffffff; padding: 14px 28px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 13px;">
-              Connect with Lead Advisor on WhatsApp →
-            </a>
+          <div style="background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">
+            <p style="margin: 0; color: #166534; font-size: 13px; font-weight: 600; line-height: 1.5;">
+              Our business launch and compliance desk has been notified. An assigned specialist will reach out to verify your requirements and guide your next steps directly on WhatsApp / Phone.
+            </p>
           </div>
 
           <p style="font-size: 12px; color: #687c70; text-align: center; border-top: 1px solid #ced7cd; padding-top: 16px; margin-top: 24px;">
             Eponix Digital · RC Accredited Corporate Services &amp; Digital Solutions<br />
-            Email: <a href="mailto:eponixlimited@gmail.com" style="color: #17382b;">eponixlimited@gmail.com</a> · WhatsApp: +${WHATSAPP_DESK_PHONE}
+            Email: <a href="mailto:eponixlimited@gmail.com" style="color: #17382b;">eponixlimited@gmail.com</a> · Support Desk: +${WHATSAPP_DESK_PHONE}
           </p>
         </div>
       `,

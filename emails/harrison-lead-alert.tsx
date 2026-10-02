@@ -21,10 +21,16 @@ export function HarrisonLeadAlertEmail({
   totalEstimatedAmount,
   source,
 }: HarrisonLeadAlertProps) {
-  const cleanPhone = phone.replace(/[^0-9]/g, "");
+  let digits = phone.replace(/[^0-9]/g, "");
+  if (digits.startsWith("0")) {
+    digits = "234" + digits.slice(1);
+  } else if (digits.length === 10) {
+    digits = "234" + digits;
+  }
+  const cleanPhone = digits;
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(
     fullName
-  )}%2C%20this%20is%20Harrison%20Mosco.%20I%20received%20your%20inquiry%20regarding%20${encodeURIComponent(
+  )}%2C%20this%20is%20Eponix%20Digital.%20I%20received%20your%20inquiry%20regarding%20${encodeURIComponent(
     proposedName || "your company incorporation"
   )}.`;
 
