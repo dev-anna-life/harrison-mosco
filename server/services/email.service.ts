@@ -258,32 +258,35 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
             <p style="color: #aab6ad; font-size: 12px; margin: 4px 0 0; text-transform: uppercase; font-family: monospace;">Corporate Services &amp; Digital Infrastructure</p>
           </div>
 
-          <h2 style="color: #0c1210; font-size: 20px; margin-bottom: 12px;">Hello ${payload.fullName},</h2>
-          <p style="color: #2b3a30; font-size: 14px; line-height: 1.6;">
-            Thank you for reaching out to Eponix Digital. We have successfully received your registration application for <strong>${
-              payload.proposedName || "your business"
-            }</strong> under the <strong>${payload.packageType}</strong> package.
+          <div style="text-align: center; margin-bottom: 24px;">
+            <div style="width: 52px; height: 52px; background-color: #dcfce7; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 26px; color: #16a34a; font-weight: bold; line-height: 52px;">
+              ✓
+            </div>
+            <h2 style="color: #0c1210; font-size: 22px; margin: 0 0 6px 0;">Application Received Successfully</h2>
+            <p style="color: #526357; font-size: 13px; margin: 0;">We have received your registration details and queued them for verification.</p>
+          </div>
+
+          <p style="color: #2b3a30; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+            Hello <strong>${payload.fullName}</strong>,<br /><br />
+            Thank you for reaching out to Eponix Digital. Your request for <strong>${
+              payload.proposedName || "your business registration"
+            }</strong> under the <strong>${payload.packageType}</strong> package has been received and logged into our system.
           </p>
 
-          <div style="background-color: #ffffff; border: 1px solid #c5d1bf; border-radius: 8px; padding: 20px; margin: 20px 0;">
-            <h3 style="color: #17382b; font-size: 15px; margin-top: 0; border-bottom: 1px solid #e5eadf; padding-bottom: 8px;">Submitted Application Details</h3>
+          <div style="background-color: #ffffff; border: 1px solid #c5d1bf; border-radius: 8px; padding: 18px 20px; margin: 20px 0;">
+            <h3 style="color: #17382b; font-size: 13px; margin-top: 0; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #e5eadf; padding-bottom: 6px;">Application Overview</h3>
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
               <tr>
-                <td style="padding: 7px 0; color: #475569; width: 40%; font-weight: bold;">Package:</td>
-                <td style="padding: 7px 0; color: #0c1210; font-weight: bold;">${payload.packageType}</td>
+                <td style="padding: 6px 0; color: #475569; width: 40%; font-weight: bold;">Package:</td>
+                <td style="padding: 6px 0; color: #0c1210; font-weight: bold;">${payload.packageType}</td>
               </tr>
               <tr>
-                <td style="padding: 7px 0; color: #475569; font-weight: bold;">Proposed Entity:</td>
-                <td style="padding: 7px 0; color: #0c1210; font-weight: bold;">${payload.proposedName || "Consultation Request"}</td>
+                <td style="padding: 6px 0; color: #475569; font-weight: bold;">Entity Name:</td>
+                <td style="padding: 6px 0; color: #0c1210; font-weight: bold;">${payload.proposedName || "Consultation Request"}</td>
               </tr>
               <tr>
-                <td style="padding: 7px 0; color: #475569; font-weight: bold;">Contact Phone:</td>
-                <td style="padding: 7px 0; color: #0c1210;">${payload.phone}</td>
-              </tr>
-              ${customerDetailRowsHtml}
-              <tr style="border-top: 1px solid #e5eadf;">
-                <td style="padding: 7px 0; color: #475569; font-weight: bold;">Status:</td>
-                <td style="padding: 7px 0; color: #166534; font-weight: bold;">Queued for Specialist Review</td>
+                <td style="padding: 6px 0; color: #475569; font-weight: bold;">Status:</td>
+                <td style="padding: 6px 0; color: #166534; font-weight: bold;">Queued for Specialist Review</td>
               </tr>
             </table>
           </div>
@@ -291,20 +294,19 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
           ${
             payload.files && payload.files.length > 0
               ? `
-          <div style="background-color: #ffffff; border: 1px solid #c5d1bf; border-radius: 8px; padding: 16px; margin: 16px 0;">
-            <h4 style="color: #17382b; margin: 0 0 8px 0; font-size: 13px; font-weight: bold;">📎 Uploaded Documents Received (${payload.files.length})</h4>
-            <ul style="margin: 0; padding-left: 20px; color: #2b3a30; font-size: 13px; line-height: 1.6;">
-              ${payload.files.map((f) => `<li><strong>${f.label || "Document"}:</strong> ${f.filename}</li>`).join("")}
-            </ul>
-            <p style="margin: 6px 0 0 0; color: #687c70; font-size: 11px;">All uploaded files are attached securely to your application intake.</p>
+          <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px 16px; margin: 16px 0;">
+            <p style="margin: 0; color: #166534; font-size: 13px; font-weight: 600;">
+              📎 <strong>${payload.files.length} Supporting Document${payload.files.length > 1 ? "s" : ""}</strong> attached securely to your application.
+            </p>
           </div>
           `
               : ""
           }
 
-          <div style="background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">
-            <p style="margin: 0; color: #166534; font-size: 13px; font-weight: 600; line-height: 1.5;">
-              Our business launch and compliance desk has been notified. An assigned specialist will reach out to verify your requirements and guide your next steps directly on WhatsApp / Phone.
+          <div style="background-color: #f8fafc; border-left: 4px solid #17382b; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">
+            <h4 style="margin: 0 0 4px 0; color: #17382b; font-size: 13px; font-weight: bold;">What Happens Next?</h4>
+            <p style="margin: 0; color: #334155; font-size: 13px; line-height: 1.5;">
+              Our business launch and compliance desk has been assigned to your request. A dedicated specialist will reach out to you directly on WhatsApp or Phone (${payload.phone}) to verify all information and guide you through the process.
             </p>
           </div>
 

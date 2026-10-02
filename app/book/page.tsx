@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Calendar,
@@ -14,14 +14,32 @@ import {
 import { Reveal } from "@/components/motion/Reveal";
 import { HoverCard } from "@/components/motion/HoverCard";
 
+const initialFormData = {
+  name: "",
+  phone: "",
+  email: "",
+  topic: "Limited Company Setup",
+};
+
 export default function BookConsultationPage() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [topic, setTopic] = useState("Limited Company Setup");
+  const [formData, setFormData] = useState(initialFormData);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const resetForm = () => {
+    setSubmitted(false);
+    setFormData(initialFormData);
+    setErrorMessage("");
+  };
+
+  useEffect(() => {
+    if (!submitted) return;
+    const timer = setTimeout(() => {
+      resetForm();
+    }, 60000); // Auto-dismiss after 1 minute (60 seconds)
+    return () => clearTimeout(timer);
+  }, [submitted]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,16 +51,16 @@ export default function BookConsultationPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fullName: name,
-          whatsappPhone: phone || "+2340000000000",
-          email: email || "client@eponixdigital.com",
-          proposedName: topic,
-          packageType: `Consultation (${topic})`,
+          fullName: formData.name,
+          whatsappPhone: formData.phone || "+2340000000000",
+          email: formData.email || "client@eponixdigital.com",
+          proposedName: formData.topic,
+          packageType: `Consultation (${formData.topic})`,
           shareCapitalMillions: 1,
           totalEstimatedAmount: 25000,
           source: "Book Consultation Page",
           additionalDetails: {
-            topic,
+            topic: formData.topic,
             submittedAt: new Date().toISOString(),
           },
         }),
@@ -61,8 +79,8 @@ export default function BookConsultationPage() {
   };
 
   const whatsappUrl = `https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20would%20like%20to%20schedule%20a%20strategic%20consultation%20regarding%20${encodeURIComponent(
-    topic
-  )}.%20My%20name%20is%20${encodeURIComponent(name || "Founder")}.`;
+    formData.topic
+  )}.%20My%20name%20is%20${encodeURIComponent(formData.name || "Founder")}.`;
 
   return (
     <div className="bg-[#0a0e17] text-white min-h-screen relative overflow-hidden">
@@ -95,25 +113,40 @@ export default function BookConsultationPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
             {/* Left Form */}
             <Reveal type="left" duration={0.8} className="lg:col-span-7">
-              <div className="bg-[#0f172a] p-4 sm:p-7 lg:p-9 rounded-2xl sm:rounded-3xl border border-slate-800 shadow-2xl">
+              <div className="bg-[#0f172a] p-4 sm:p-7 lg:p-9 rounded-2xl sm:rounded-3xl border border-slate-800 shadow-2xl relative">
                 {submitted ? (
-                  <div className="text-center space-y-4 sm:space-y-5 py-4 sm:py-6">
+                  <div className="text-center space-y-4 sm:space-y-5 py-4 sm:py-6 relative">
+                    <button
+                      onClick={resetForm}
+                      className="absolute -top-2 right-0 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center font-bold text-sm transition-colors"
+                      title="Close and return to form"
+                    >
+                      ✕
+                    </button>
                     <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7" />
                     </div>
                     <h3 className="text-lg sm:text-2xl font-black text-white">Consultation Request Received</h3>
                     <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                      Thank you, {name}. Click the button below to connect with Harrison Mosco directly on WhatsApp and pick your session time.
+                      Thank you, {formData.name || "Founder"}. Click the button below to connect with Harrison Mosco directly on WhatsApp and pick your session time.
                     </p>
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all shadow-[0_6px_20px_rgba(253,201,2,0.2)] text-center"
-                    >
-                      <Phone className="w-4 h-4 shrink-0" />
-                      <span>Continue to WhatsApp Desk &rarr;</span>
-                    </a>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-7 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs sm:text-sm transition-all shadow-[0_6px_20px_rgba(253,201,2,0.2)] text-center"
+                      >
+                        <Phone className="w-4 h-4 shrink-0" />
+                        <span>Continue to WhatsApp Desk &rarr;</span>
+                      </a>
+                      <button
+                        onClick={resetForm}
+                        className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-5 sm:py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs sm:text-sm transition-all text-center"
+                      >
+                        Submit Another Request
+                      </button>
+                    </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
@@ -128,8 +161,8 @@ export default function BookConsultationPage() {
                       <input
                         type="text"
                         required
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Chukwuemeka Okafor"
                         className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border border-slate-700 rounded-xl text-white font-medium focus:border-[#FDC902] focus:outline-none text-xs sm:text-sm"
                       />
@@ -143,8 +176,8 @@ export default function BookConsultationPage() {
                         <input
                           type="tel"
                           required
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="08088194093"
                           className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border border-slate-700 rounded-xl text-white font-medium focus:border-[#FDC902] focus:outline-none text-xs sm:text-sm"
                         />
@@ -156,8 +189,8 @@ export default function BookConsultationPage() {
                         <input
                           type="email"
                           required
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="you@domain.com"
                           className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border border-slate-700 rounded-xl text-white font-medium focus:border-[#FDC902] focus:outline-none text-xs sm:text-sm"
                         />
@@ -169,8 +202,8 @@ export default function BookConsultationPage() {
                         Discussion Subject *
                       </label>
                       <select
-                        value={topic}
-                        onChange={(e) => setTopic(e.target.value)}
+                        value={formData.topic}
+                        onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
                         className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border border-slate-700 rounded-xl text-white font-bold focus:border-[#FDC902] focus:outline-none text-xs sm:text-sm"
                       >
                         <option value="Limited Company Setup">Limited Company Setup (CAC &amp; Shares)</option>

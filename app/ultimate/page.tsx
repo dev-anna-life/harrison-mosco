@@ -1,24 +1,40 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Check, MessageSquare, Phone, ArrowRight, ShieldCheck, Clock } from "lucide-react";
 
+const initialFormData = {
+  fullName: "",
+  businessName: "",
+  email: "",
+  phoneNumber: "",
+  businessStage: "Idea / Pre-launch",
+  primaryGoal: "Complete business launch",
+  projectDetails: "",
+  agreeTerms: true,
+};
+
 export default function UltimatePage() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    businessName: "",
-    email: "",
-    phoneNumber: "",
-    businessStage: "Idea / Pre-launch",
-    primaryGoal: "Complete business launch",
-    projectDetails: "",
-    agreeTerms: true,
-  });
+  const [formData, setFormData] = useState(initialFormData);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setFormData(initialFormData);
+    setErrorMessage("");
+  };
+
+  useEffect(() => {
+    if (!isSubmitted) return;
+    const timer = setTimeout(() => {
+      resetForm();
+    }, 60000); // Auto-dismiss after 1 minute (60 seconds)
+    return () => clearTimeout(timer);
+  }, [isSubmitted]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -380,14 +396,37 @@ export default function UltimatePage() {
 
             <div className="lg:col-span-7">
               {isSubmitted ? (
-                <div className="bg-[#ffffff] border-2 border-[#17382b] p-8 text-center space-y-4 rounded-2xl shadow-xl">
+                <div className="relative bg-[#ffffff] border-2 border-[#17382b] p-8 text-center space-y-4 rounded-2xl shadow-xl">
+                  <button
+                    onClick={resetForm}
+                    className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#f0f4f1] hover:bg-[#e2e8e3] text-[#17382b] flex items-center justify-center font-bold text-sm transition-colors"
+                    title="Close and return to form"
+                  >
+                    ✕
+                  </button>
                   <div className="w-12 h-12 rounded-full bg-[#10261a] text-[#c9f95a] flex items-center justify-center mx-auto">
                     <Check className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#0c1210]">Application Submitted</h3>
                   <p className="text-[15px] text-[#2b3a30] font-medium max-w-md mx-auto">
-                    Thank you, <strong className="text-[#0c1210]">{formData.fullName}</strong>. The Business Launch Team will reach out to you within 24 hours to begin your incorporation and digital setup.
+                    Thank you, <strong className="text-[#0c1210]">{formData.fullName}</strong>. The Business Launch Team will reach out to you directly on WhatsApp / Phone to begin your incorporation and digital setup.
                   </p>
+                  <div className="pt-2 flex flex-wrap justify-center gap-4">
+                    <a
+                      href={`https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20the%20Ultimate%20Package%20application%20for%20${encodeURIComponent(formData.businessName)}.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ep-btn ep-btn-primary text-xs"
+                    >
+                      Connect on WhatsApp &rarr;
+                    </a>
+                    <button
+                      onClick={resetForm}
+                      className="ep-btn ep-btn-dark text-xs"
+                    >
+                      Submit Another Application
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-5 shadow-xl rounded-2xl text-[#0c1210]">

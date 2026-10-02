@@ -1,22 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { MessageSquare, Phone, CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
 
+const initialFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  businessName: "",
+  service: "Ultimate Business Launch",
+  message: "",
+};
+
 export default function ConsultPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    businessName: "",
-    service: "Ultimate Business Launch",
-    message: "",
-  });
+  const [formData, setFormData] = useState(initialFormData);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setFormData(initialFormData);
+    setErrorMessage("");
+  };
+
+  useEffect(() => {
+    if (!isSubmitted) return;
+    const timer = setTimeout(() => {
+      resetForm();
+    }, 60000); // Auto-dismiss after 1 minute (60 seconds)
+    return () => clearTimeout(timer);
+  }, [isSubmitted]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -176,7 +192,14 @@ export default function ConsultPage() {
             {/* Right Column Form */}
             <div className="lg:col-span-7">
               {isSubmitted ? (
-                <div className="bg-[#ffffff] border-2 border-[#17382b] p-8 lg:p-12 text-center space-y-5 rounded-2xl shadow-xl">
+                <div className="relative bg-[#ffffff] border-2 border-[#17382b] p-8 lg:p-12 text-center space-y-5 rounded-2xl shadow-xl">
+                  <button
+                    onClick={resetForm}
+                    className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#f0f4f1] hover:bg-[#e2e8e3] text-[#17382b] flex items-center justify-center font-bold text-sm transition-colors"
+                    title="Close and return to form"
+                  >
+                    ✕
+                  </button>
                   <div className="w-16 h-16 bg-[#10261a] text-[#c9f95a] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
                     ✓
                   </div>
@@ -194,17 +217,7 @@ export default function ConsultPage() {
                       Connect on WhatsApp &rarr;
                     </a>
                     <button
-                      onClick={() => {
-                        setIsSubmitted(false);
-                        setFormData({
-                          name: "",
-                          email: "",
-                          phone: "",
-                          businessName: "",
-                          service: "Ultimate Business Launch",
-                          message: "",
-                        });
-                      }}
+                      onClick={resetForm}
                       className="ep-btn ep-btn-dark"
                     >
                       Submit Another Inquiry

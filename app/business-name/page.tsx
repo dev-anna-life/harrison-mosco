@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { CheckCircle2, ShieldCheck, Clock, FileText, ArrowRight, Check } from "lucide-react";
 import { processFileInput, type UploadedFileItem } from "@/lib/file-utils";
@@ -41,33 +41,50 @@ const packages: Record<
   },
 };
 
+const initialFormData = {
+  fullName: "",
+  surname: "",
+  otherNames: "",
+  dob: "",
+  gender: "Male",
+  email: "",
+  phone: "",
+  state: "",
+  lga: "",
+  city: "",
+  residentialAddress: "",
+  idNumber: "",
+  officeAddress: "",
+  natureOfBusiness: "",
+  proposedName1: "",
+  proposedName2: "",
+  additionalInfo: "",
+  termsConsent: true,
+};
+
 export default function BusinessNamePage() {
   const [selectedPkg, setSelectedPkg] = useState<PackageType>("Pro");
-  const [formData, setFormData] = useState({
-    fullName: "",
-    surname: "",
-    otherNames: "",
-    dob: "",
-    gender: "Male",
-    email: "",
-    phone: "",
-    state: "",
-    lga: "",
-    city: "",
-    residentialAddress: "",
-    idNumber: "",
-    officeAddress: "",
-    natureOfBusiness: "",
-    proposedName1: "",
-    proposedName2: "",
-    additionalInfo: "",
-    termsConsent: true,
-  });
+  const [formData, setFormData] = useState(initialFormData);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [fileMap, setFileMap] = useState<Record<string, UploadedFileItem[]>>({});
+
+  const resetForm = () => {
+    setSubmitted(false);
+    setFormData(initialFormData);
+    setFileMap({});
+    setErrorMessage("");
+  };
+
+  useEffect(() => {
+    if (!submitted) return;
+    const timer = setTimeout(() => {
+      resetForm();
+    }, 60000); // Auto-dismiss after 1 minute (60 seconds)
+    return () => clearTimeout(timer);
+  }, [submitted]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -414,13 +431,23 @@ export default function BusinessNamePage() {
             {/* Right Column Form */}
             <div className="lg:col-span-8">
               {submitted ? (
-                <div className="p-10 bg-[#ffffff] border-2 border-[#17382b] text-center space-y-5 rounded-2xl shadow-xl">
+                <div className="relative p-10 bg-[#ffffff] border-2 border-[#17382b] text-center space-y-5 rounded-2xl shadow-xl">
+                  <button
+                    onClick={resetForm}
+                    className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#f0f4f1] hover:bg-[#e2e8e3] text-[#17382b] flex items-center justify-center font-bold text-sm transition-colors"
+                    title="Close and return to form"
+                  >
+                    ✕
+                  </button>
                   <div className="w-16 h-16 bg-[#10261a] text-[#c9f95a] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
                     ✓
                   </div>
                   <h3 className="text-2xl font-bold text-[#0c1210]">Application Received</h3>
                   <p className="text-[#2b3a30] max-w-md mx-auto text-sm leading-relaxed font-medium">
-                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.fullName}</strong>. Your Business Name registration request for <strong className="text-[#17382b] font-bold">{formData.proposedName1}</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued for verification.
+                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.fullName || formData.surname}</strong>. Your Business Name registration request for <strong className="text-[#17382b] font-bold">{formData.proposedName1}</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued for verification.
+                  </p>
+                  <p className="text-xs text-[#687c70] italic">
+                    Our compliance specialist will reach out to you directly on WhatsApp / Phone.
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
@@ -432,7 +459,7 @@ export default function BusinessNamePage() {
                       Connect on WhatsApp &rarr;
                     </a>
                     <button
-                      onClick={() => setSubmitted(false)}
+                      onClick={resetForm}
                       className="ep-btn ep-btn-dark"
                     >
                       Submit Another Application
