@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Check, MessageSquare, Phone, Calendar, ArrowRight, ShieldCheck, Clock } from "lucide-react";
+import { Check, MessageSquare, Phone, ArrowRight, ShieldCheck, Clock } from "lucide-react";
 
 export default function UltimatePage() {
   const [formData, setFormData] = useState({
@@ -53,17 +53,17 @@ export default function UltimatePage() {
 
   return (
     <div className="bg-[#0b120f] text-[#f5f7ef]">
-      {/* 1. Hero with Luxury Corporate Background */}
+      {/* 1. Hero with Bold Corporate Background */}
       <section className="relative overflow-hidden bg-[#07100c] text-[#f5f7ef] pt-32 pb-20 lg:pt-40 lg:pb-28 border-b border-[rgba(198,255,63,0.14)]">
-        {/* Background Image with Dark Luxury Gradients */}
+        {/* Bold Background Image with Crisp Contrast */}
         <div className="absolute inset-0 z-0">
           <img
             src="/images/ultimate-hero-bg.jpg"
             alt="Abuja Central Business District Corporate Architecture"
-            className="w-full h-full object-cover object-center opacity-30 mix-blend-luminosity brightness-90"
+            className="w-full h-full object-cover object-right lg:object-center opacity-70 brightness-95"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07100c] via-[#07100c]/90 to-[#07100c]/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07100c] via-transparent to-[#07100c]/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07100c]/95 via-[#07100c]/80 to-[#07100c]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07100c] via-transparent to-[#07100c]/60" />
         </div>
 
         <div className="site-container relative z-10">
@@ -206,8 +206,8 @@ export default function UltimatePage() {
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5 space-y-6">
-              <div className="eyebrow">Direct Advisory &amp; Concierge</div>
-              <h2 className="heading-2">Talk to our senior business launch team.</h2>
+              <div className="eyebrow">Need a clarification?</div>
+              <h2 className="heading-2">Talk to Our team</h2>
               <p className="lead-text">
                 Have specific questions regarding company share capital, trademark classes, compliance filings, or launch timelines? Our senior consultants provide direct advisory.
               </p>
@@ -276,26 +276,6 @@ export default function UltimatePage() {
                 >
                   Call +234 703 875 3272
                 </a>
-              </div>
-
-              {/* Consultation Card - Spans full width */}
-              <div className="sm:col-span-2 bg-gradient-to-r from-[#0d1e14] to-[#0b1710] border border-[#33473a] p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-[#c6ff3f]" />
-                    <span className="text-xs font-mono uppercase text-[#c6ff3f] tracking-wider">Strategy Call</span>
-                  </div>
-                  <h4 className="heading-3 text-[17px]">Schedule a Private Strategy Session</h4>
-                  <p className="text-[#aab6ad] text-[13px] max-w-md">
-                    Book a dedicated 20-minute Zoom or phone call with a senior corporate advisor.
-                  </p>
-                </div>
-                <Link
-                  href="/consult"
-                  className="ep-btn ep-btn-light text-center justify-center shrink-0 text-[13px] py-2.5 px-5"
-                >
-                  Book Consultation →
-                </Link>
               </div>
             </div>
           </div>

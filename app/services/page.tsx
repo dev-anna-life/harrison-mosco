@@ -406,12 +406,12 @@ export default function ServicesPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
               {[
-                { key: "ultimate" as PathwayKey, href: "/ultimate", no: "01 / SIGNATURE", title: "Ultimate Business Launch", desc: "One package across six core areas of a professional business launch.", cta: "Open the package →" },
-                { key: "cac" as PathwayKey, href: "/cac", no: "02 / FOUNDATION", title: "CAC Registration", desc: "Business Name, Limited Company and NGO / Incorporated Trustees pathways.", cta: "Open CAC services →" },
-                { key: "compliance" as PathwayKey, href: "/compliance", no: "03 / READINESS", title: "Compliance & Tax", desc: "SCUML, NRS Tax ID / Rev360, NAFDAC and related support.", cta: "Open compliance →" },
-                { key: "trademark" as PathwayKey, href: "/trademark", no: "04 / PROTECTION", title: "Trademark Registration", desc: "Search, filing and all 45 trademark classes.", cta: "Open trademark →" },
-                { key: "brand" as PathwayKey, no: "05 / EXPRESSION", title: "Brand & Digital", desc: "Identity, website, corporate email and digital tools.", cta: "Open brand services →" },
-                { key: "growth" as PathwayKey, no: "06 / MOMENTUM", title: "AI, Marketing & Growth", desc: "Automation, agents, AI video and visibility support.", cta: "Open growth services →" },
+                { key: "cac" as PathwayKey, href: "/cac", no: "01 / FOUNDATION", title: "CAC Registration", desc: "Business Name, Limited Company and NGO / Incorporated Trustees pathways.", cta: "Open CAC services →" },
+                { key: "compliance" as PathwayKey, href: "/compliance", no: "02 / READINESS", title: "Compliance & Tax", desc: "SCUML, NRS Tax ID / Rev360, NAFDAC and related support.", cta: "Open compliance →" },
+                { key: "trademark" as PathwayKey, href: "/trademark", no: "03 / PROTECTION", title: "Trademark Registration", desc: "Search, filing and all 45 trademark classes.", cta: "Open trademark →" },
+                { key: "brand" as PathwayKey, no: "04 / EXPRESSION", title: "Premium Branding", desc: "Premium logo design, letterhead, business card, staff ID and professional company profile.", cta: "Open brand services →" },
+                { key: "brand" as PathwayKey, no: "05 / DIGITAL", title: "Website & Corporate Email", desc: "Professional domain name, corporate website and corporate email setup.", cta: "Open digital services →" },
+                { key: "growth" as PathwayKey, no: "06 / OPERATIONS", title: "Business Automation & Systems", desc: "Workflow automation, client intake systems and scalable business operations.", cta: "Open automation services →" },
               ].map((tile) => {
                 if (tile.href) {
                   return (
