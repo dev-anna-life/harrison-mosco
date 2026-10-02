@@ -227,75 +227,113 @@ export default function CACPage() {
         </div>
       </section>
 
-      {/* 2. Pathway Selector */}
-      <section className="bg-[#0b120f] py-20 lg:py-28">
+      {/* 2. Pathway Selector (Light Cream #E6EADF Palette) */}
+      <section className="bg-[#E6EADF] text-[#0c1210] py-20 lg:py-28 border-b border-[#ced7cd]">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-12">
             <div>
-              <div className="eyebrow">CAC Registration</div>
-              <h2 className="heading-2">Choose your registration pathway.</h2>
+              <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">CAC Registration</div>
+              <h2 className="text-[34px] sm:text-[46px] font-bold tracking-tight text-[#0c1210] mt-1">Choose your registration pathway.</h2>
             </div>
-            <div className="text-[#aab6ad] text-[18px] leading-relaxed">
+            <div className="text-[#2b3a30] text-[17px] font-medium leading-relaxed">
               Start by choosing what you are registering. Your selected pathway will then reveal its packages, requirements and application.
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
-            <Link
-              href="/business-name"
-              className="ep-pathway block hover:border-[#c6ff3f] transition-all group"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+            <div
+              onClick={() => setActiveCategory("business")}
+              className={`p-7 rounded-2xl border transition-all cursor-pointer block ${
+                activeCategory === "business"
+                  ? "bg-[#07130c] text-white border-2 border-[#c9f95a] shadow-xl scale-[1.02]"
+                  : "bg-[#ffffff] text-[#0c1210] border-[#c5d1bf] hover:border-[#17382b] shadow-sm hover:shadow-md"
+              }`}
             >
-              <div className="eyebrow">01 / Business</div>
-              <h3 className="heading-3 group-hover:text-[#c6ff3f] transition-colors">Business Name</h3>
-              <p>For individuals and businesses registering a Business Name.</p>
-              <b className="mt-6 block text-[14px] text-[#c6ff3f]">Choose this path →</b>
-            </Link>
+              <div className="font-mono text-[11px] uppercase tracking-wider font-bold mb-2 text-[#c9f95a]">01 / Business</div>
+              <h3 className="text-2xl font-bold mb-2">Business Name</h3>
+              <p className={`text-xs ${activeCategory === "business" ? "text-[#c9d5cd]" : "text-[#2b3a30] font-medium"}`}>
+                For individuals and businesses registering a Business Name.
+              </p>
+              <b className={`mt-6 block text-[13px] font-bold uppercase tracking-wider ${activeCategory === "business" ? "text-[#c9f95a]" : "text-[#17382b]"}`}>
+                Select this path &rarr;
+              </b>
+            </div>
 
-            <Link
-              href="/limited"
-              className="ep-pathway block hover:border-[#c6ff3f] transition-all group"
+            <div
+              onClick={() => setActiveCategory("company")}
+              className={`p-7 rounded-2xl border transition-all cursor-pointer block ${
+                activeCategory === "company"
+                  ? "bg-[#07130c] text-white border-2 border-[#c9f95a] shadow-xl scale-[1.02]"
+                  : "bg-[#ffffff] text-[#0c1210] border-[#c5d1bf] hover:border-[#17382b] shadow-sm hover:shadow-md"
+              }`}
             >
-              <div className="eyebrow">02 / Company</div>
-              <h3 className="heading-3 group-hover:text-[#c6ff3f] transition-colors">Limited Company</h3>
-              <p>For businesses incorporating as a Limited Company.</p>
-              <b className="mt-6 block text-[14px] text-[#c6ff3f]">Choose this path →</b>
-            </Link>
+              <div className="font-mono text-[11px] uppercase tracking-wider font-bold mb-2 text-[#c9f95a]">02 / Company</div>
+              <h3 className="text-2xl font-bold mb-2">Limited Company</h3>
+              <p className={`text-xs ${activeCategory === "company" ? "text-[#c9d5cd]" : "text-[#2b3a30] font-medium"}`}>
+                For businesses incorporating as a Limited Company.
+              </p>
+              <b className={`mt-6 block text-[13px] font-bold uppercase tracking-wider ${activeCategory === "company" ? "text-[#c9f95a]" : "text-[#17382b]"}`}>
+                Select this path &rarr;
+              </b>
+            </div>
 
-            <Link
-              href="/trustees"
-              className="ep-pathway block hover:border-[#c6ff3f] transition-all group"
+            <div
+              onClick={() => setActiveCategory("trustees")}
+              className={`p-7 rounded-2xl border transition-all cursor-pointer block ${
+                activeCategory === "trustees"
+                  ? "bg-[#07130c] text-white border-2 border-[#c9f95a] shadow-xl scale-[1.02]"
+                  : "bg-[#ffffff] text-[#0c1210] border-[#c5d1bf] hover:border-[#17382b] shadow-sm hover:shadow-md"
+              }`}
             >
-              <div className="eyebrow">03 / NGO</div>
-              <h3 className="heading-3 group-hover:text-[#c6ff3f] transition-colors">NGO / Incorporated Trustees</h3>
-              <p>For organisations registering as Incorporated Trustees.</p>
-              <b className="mt-6 block text-[14px] text-[#c6ff3f]">Choose this path →</b>
-            </Link>
+              <div className="font-mono text-[11px] uppercase tracking-wider font-bold mb-2 text-[#c9f95a]">03 / NGO</div>
+              <h3 className="text-2xl font-bold mb-2">NGO / Trustees</h3>
+              <p className={`text-xs ${activeCategory === "trustees" ? "text-[#c9d5cd]" : "text-[#2b3a30] font-medium"}`}>
+                For organisations registering as Incorporated Trustees.
+              </p>
+              <b className={`mt-6 block text-[13px] font-bold uppercase tracking-wider ${activeCategory === "trustees" ? "text-[#c9f95a]" : "text-[#17382b]"}`}>
+                Select this path &rarr;
+              </b>
+            </div>
           </div>
 
           {/* Packages Panel */}
-          <div className="space-y-4 mb-8">
-            <h2 className="heading-2">{currentData.title} packages</h2>
-            <p className="lead-text">{currentData.intro}</p>
+          <div className="space-y-3 mb-8">
+            <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-[#0c1210]">{currentData.title} packages</h2>
+            <p className="text-[15px] text-[#2b3a30] font-medium max-w-2xl">{currentData.intro}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {currentData.packages.map((pkg, idx) => (
               <div
                 key={idx}
-                className={`ep-package ${pkg.featured ? "featured" : ""}`}
+                className={`p-7 rounded-2xl border flex flex-col justify-between ${
+                  pkg.featured
+                    ? "bg-[#07130c] text-white border-2 border-[#c9f95a] shadow-2xl scale-[1.02]"
+                    : "bg-[#ffffff] text-[#0c1210] border-[#c5d1bf] shadow-sm"
+                }`}
               >
-                <div className={`ep-tag ${pkg.featured ? "text-[#071007] border-[#071007]" : ""}`}>
-                  {pkg.name} {pkg.featured ? "· Most Popular" : ""}
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`text-xs font-mono uppercase tracking-widest px-2.5 py-1 rounded ${
+                        pkg.featured
+                          ? "bg-[#10261a] text-[#c9f95a] font-bold"
+                          : "bg-[#e5eadf] text-[#17382b] font-bold"
+                      }`}
+                    >
+                      {pkg.name} {pkg.featured ? "· Recommended" : ""}
+                    </span>
+                  </div>
+                  <div className="text-3xl font-bold mt-4 mb-2">{pkg.price}</div>
+                  <ul className="space-y-2.5 my-6 text-xs">
+                    {pkg.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className={`font-bold ${pkg.featured ? "text-[#c9f95a]" : "text-[#17382b]"}`}>•</span>
+                        <span className={pkg.featured ? "text-[#f5f7ef]" : "text-[#2b3a30] font-medium"}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="price">{pkg.price}</div>
-                <ul className="space-y-2.5 my-6 text-[14px]">
-                  {pkg.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="font-bold">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
                 <div className="mt-auto pt-4">
                   <Link
                     href={
@@ -305,7 +343,9 @@ export default function CACPage() {
                         ? "/limited"
                         : "/trustees"
                     }
-                    className={`ep-btn w-full ${pkg.featured ? "ep-btn-dark" : "ep-btn-primary"}`}
+                    className={`w-full ep-btn !py-3.5 text-center justify-center font-bold text-[13px] rounded-lg block ${
+                      pkg.featured ? "ep-btn-primary" : "ep-btn-dark"
+                    }`}
                   >
                     Start {pkg.name}
                   </Link>
@@ -314,8 +354,8 @@ export default function CACPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#07100c] border border-[#26362c] p-6 lg:p-8 mt-12">
-            <div className="lg:col-span-4 overflow-hidden border border-[#26362c]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#ffffff] border border-[#c5d1bf] rounded-2xl p-6 lg:p-8 mt-12 shadow-sm">
+            <div className="lg:col-span-4 overflow-hidden rounded-xl border border-[#c5d1bf]">
               <img 
                 src="/images/cac-operations-team.jpg" 
                 alt="CAC Accredited Operations Desk" 
@@ -323,17 +363,17 @@ export default function CACPage() {
               />
             </div>
             <div className="lg:col-span-8 space-y-2">
-              <div className="ep-tag text-[#c6ff3f]">Accredited Direct Agent Desk</div>
-              <h3 className="heading-3">Handled by certified Nigerian corporate practitioners.</h3>
-              <p className="text-sm text-[#aab6ad] leading-relaxed">
+              <div className="text-xs font-mono text-[#17382b] font-bold uppercase tracking-wider">Accredited Direct Agent Desk</div>
+              <h3 className="text-2xl font-bold text-[#0c1210]">Handled by certified Nigerian corporate practitioners.</h3>
+              <p className="text-sm text-[#2b3a30] font-medium leading-relaxed">
                 From name reservation to certified status reports and post-incorporation compliance, every filing is verified by our experienced registration team.
               </p>
             </div>
           </div>
 
-          <div className="ep-notice mt-10">
-            <strong>Application &amp; delivery</strong>
-            <p className="text-[14px]">
+          <div className="p-6 bg-[#ffffff] border border-[#c5d1bf] rounded-2xl mt-8 shadow-sm">
+            <strong className="text-sm font-bold text-[#0c1210] block mb-1">Application &amp; delivery</strong>
+            <p className="text-xs text-[#2b3a30] font-medium leading-relaxed">
               Complete the relevant application, provide the requested documents and receive approved documents electronically as original digital files. Processing timelines and regulatory outcomes remain subject to the relevant authority.
             </p>
           </div>

@@ -88,97 +88,55 @@ export default function UltimatePage() {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="bg-[rgba(8,15,11,0.95)] border border-[rgba(198,255,63,0.42)] p-7 sm:p-8 space-y-5 shadow-2xl backdrop-blur-md rounded-2xl">
-                {/* Header Badge */}
-                <div className="flex items-center gap-3 pb-4 border-b border-[rgba(198,255,63,0.18)]">
-                  <div className="w-10 h-10 rounded-full bg-[#10261a] border border-[#2b593f] flex items-center justify-center text-[#c6ff3f] shrink-0">
-                    <ShieldCheck className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[13px] font-bold text-white leading-tight">Nigeria's Top Rated</div>
-                    <div className="font-mono text-[10px] tracking-wider uppercase text-[#c6ff3f] font-bold">CAC ACCREDITED COMPANY</div>
-                  </div>
-                </div>
-
-                {/* Eyebrow & Title */}
-                <div className="space-y-2">
-                  <span className="inline-block px-2.5 py-0.5 rounded bg-[rgba(198,255,63,0.12)] border border-[rgba(198,255,63,0.25)] text-[#c6ff3f] font-mono text-[10px] tracking-wider uppercase font-bold">
-                    EVERYTHING INCLUDED
-                  </span>
-                  <h3 className="text-[22px] sm:text-[24px] font-bold text-white tracking-tight leading-snug">
-                    One premium package.
-                  </h3>
-                  <p className="text-[13px] text-[#aab6ad] leading-relaxed">
-                    CAC Limited Company, Trademark, SCUML, NRS Tax Account &amp; Tax ID Certificate, Logo Design, Company Profile, Branding, Website and Business E-mail.
-                  </p>
-                </div>
-
-                {/* 3 Checkmarks */}
-                <div className="space-y-2 pt-2 border-t border-[rgba(198,255,63,0.14)] text-[13px] text-[#d5dfd8]">
-                  <div className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-[#c6ff3f] shrink-0" />
-                    <span>Registration and compliance</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-[#c6ff3f] shrink-0" />
-                    <span>Professional brand identity</span>
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <Check className="w-4 h-4 text-[#c6ff3f] shrink-0" />
-                    <span>Website and business e-mail</span>
-                  </div>
-                </div>
-
-                {/* Action CTA Button */}
-                <div className="pt-2">
-                  <a
-                    href="#application"
-                    className="w-full ep-btn ep-btn-primary !py-3.5 text-center justify-center font-bold text-[14px] flex items-center gap-2 rounded-lg"
-                  >
-                    <span>Pay &amp; start your application</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
+              <div className="bg-[rgba(8,15,11,0.92)] border border-[rgba(198,255,63,0.42)] p-7 sm:p-8 space-y-4 shadow-2xl backdrop-blur-sm rounded-2xl">
+                <div className="ep-tag text-[#c6ff3f]">Complete Premium Package</div>
+                <h3 className="heading-3">Everything your business needs to launch professionally.</h3>
+                <p className="text-[#aab6ad] text-[14px] leading-relaxed">
+                  Registration, compliance, branding and digital setup coordinated under one professional team.
+                </p>
+                <p className="small-text">
+                  Paid professional service package. Not a grant, loan or funding programme.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Band Strip (4-Card Metric Grid) */}
-      <section className="bg-[#10261a] text-[#f5f7ef] py-16 border-t border-b border-[#33473a]">
+      {/* 2. Band Strip (4-Card Metric Grid) (Light Cream #E6EADF Palette) */}
+      <section className="bg-[#E6EADF] text-[#0c1210] py-16 border-b border-[#ced7cd]">
         <div className="site-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="ep-card dark flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-[#ffffff] border border-[#c5d1bf] flex flex-col justify-between shadow-sm">
               <div>
-                <div className="ep-tag">Amount</div>
-                <h3 className="heading-3 mt-2">₦1,000,000</h3>
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">Amount</div>
+                <h3 className="text-2xl font-bold text-[#0c1210] mt-2">₦1,000,000</h3>
               </div>
-              <p className="mt-3 text-[14px] text-[#aab6ad]">One complete premium package, inclusive of 7.5% VAT.</p>
+              <p className="mt-3 text-[13px] text-[#2b3a30] font-medium">One complete premium package, inclusive of 7.5% VAT.</p>
             </div>
 
-            <div className="ep-card dark flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-[#ffffff] border border-[#c5d1bf] flex flex-col justify-between shadow-sm">
               <div>
-                <div className="ep-tag">Requirements</div>
-                <h3 className="heading-3 mt-2">ID + business details</h3>
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">Requirements</div>
+                <h3 className="text-2xl font-bold text-[#0c1210] mt-2">ID + business details</h3>
               </div>
-              <p className="mt-3 text-[14px] text-[#aab6ad]">Start with your identification and essential company information.</p>
+              <p className="mt-3 text-[13px] text-[#2b3a30] font-medium">Start with your identification and essential company information.</p>
             </div>
 
-            <div className="ep-card dark flex flex-col justify-between">
+            <div className="p-6 rounded-2xl bg-[#ffffff] border border-[#c5d1bf] flex flex-col justify-between shadow-sm">
               <div>
-                <div className="ep-tag">Timeframe</div>
-                <h3 className="heading-3 mt-2">10 to 21 working days</h3>
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">Timeframe</div>
+                <h3 className="text-2xl font-bold text-[#0c1210] mt-2">10 to 21 working days</h3>
               </div>
-              <p className="mt-3 text-[14px] text-[#aab6ad]">The main launch project is coordinated across multiple service stages.</p>
+              <p className="mt-3 text-[13px] text-[#2b3a30] font-medium">The main launch project is coordinated across multiple service stages.</p>
             </div>
 
-            <div className="ep-card dark flex flex-col justify-between border-[rgba(198,255,63,0.25)]">
+            <div className="p-6 rounded-2xl bg-[#07130c] text-white border-2 border-[#c9f95a] flex flex-col justify-between shadow-xl">
               <div>
-                <div className="ep-tag text-[#c6ff3f]">Trust &amp; Delivery</div>
-                <h3 className="heading-3 mt-2">Physical + Digital</h3>
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#c9f95a] font-bold">Trust &amp; Delivery</div>
+                <h3 className="text-2xl font-bold text-white mt-2">Physical + Digital</h3>
               </div>
-              <p className="mt-3 text-[14px] text-[#aab6ad] leading-relaxed">
+              <p className="mt-3 text-[13px] text-[#c9d5cd] leading-relaxed">
                 Physical dispatch of verified CAC certificates and regulatory documents nationwide, with full digital brand suites and compliance files available instantly online.
               </p>
             </div>

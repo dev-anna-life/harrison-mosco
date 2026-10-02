@@ -100,48 +100,48 @@ export default function CompliancePage() {
         </div>
       </section>
 
-      {/* 2. Choose a Service */}
-      <section className="bg-[#102118] py-20 lg:py-28 border-b border-[#26362c]">
+      {/* 2. Choose a Service (Light Cream #E6EADF Palette) */}
+      <section className="bg-[#E6EADF] text-[#0c1210] py-20 lg:py-28 border-b border-[#ced7cd]">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-12">
             <div>
-              <div className="eyebrow">Choose a Service</div>
-              <h2 className="heading-2">Build your compliance foundation.</h2>
+              <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">Choose a Service</div>
+              <h2 className="text-[34px] sm:text-[46px] font-bold tracking-tight text-[#0c1210] mt-1">Build your compliance foundation.</h2>
             </div>
-            <div className="text-[#aab6ad] text-[18px] leading-relaxed">
+            <div className="text-[#2b3a30] text-[17px] font-medium leading-relaxed">
               Select the service you need. Each service has its own pathway, package and application.
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link href="/scuml" className="ep-card block hover:border-[#c6ff3f] transition-all">
-              <div className="ep-tag">01 / Compliance</div>
-              <h3 className="heading-3">SCUML</h3>
-              <p>Registration support, compliance guidance and follow-up.</p>
-              <span className="ep-link mt-6 block">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link href="/scuml" className="p-7 rounded-2xl bg-[#ffffff] border border-[#c5d1bf] hover:border-[#17382b] shadow-sm hover:shadow-md block transition-all group">
+              <span className="text-xs font-mono uppercase tracking-widest px-2.5 py-1 rounded bg-[#e5eadf] text-[#17382b] font-bold">01 / Compliance</span>
+              <h3 className="text-2xl font-bold text-[#0c1210] mt-4 mb-2 group-hover:text-[#17382b] transition-colors">SCUML</h3>
+              <p className="text-xs text-[#2b3a30] font-medium leading-relaxed">Registration support, compliance guidance and follow-up.</p>
+              <span className="text-xs font-bold text-[#17382b] mt-6 block uppercase tracking-wider">
                 Open SCUML →
               </span>
             </Link>
 
-            <Link href="/tax" className="ep-card lime block hover:brightness-105 transition-all">
-              <div className="ep-tag" style={{ color: "#071007", borderColor: "#071007" }}>02 / Tax</div>
-              <h3 className="heading-3" style={{ color: "#071007" }}>NRS Tax ID / Rev360</h3>
-              <p style={{ color: "#183018", fontWeight: 600 }}>Tax identity and Rev360 filing-account setup.</p>
-              <span className="ep-link" style={{ color: "#071007", marginTop: "24px", display: "block" }}>
+            <Link href="/tax" className="p-7 rounded-2xl bg-[#07130c] text-white border-2 border-[#c9f95a] shadow-xl block hover:scale-[1.02] transition-all">
+              <span className="text-xs font-mono uppercase tracking-widest px-2.5 py-1 rounded bg-[#10261a] text-[#c9f95a] font-bold">02 / Tax</span>
+              <h3 className="text-2xl font-bold text-white mt-4 mb-2">NRS Tax ID / Rev360</h3>
+              <p className="text-xs text-[#c9d5cd] leading-relaxed">Tax identity and Rev360 filing-account setup.</p>
+              <span className="text-xs font-bold text-[#c9f95a] mt-6 block uppercase tracking-wider">
                 Open Tax setup →
               </span>
             </Link>
 
-            <Link href="/nafdac" className="ep-card block hover:border-[#c6ff3f] transition-all">
-              <div className="ep-tag">03 / Regulatory</div>
-              <h3 className="heading-3">NAFDAC</h3>
-              <p>Service framework reserved for the NAFDAC details to be incorporated.</p>
-              <span className="ep-link text-[#7f8d84] mt-6 block">Coming soon →</span>
+            <Link href="/nafdac" className="p-7 rounded-2xl bg-[#ffffff] border border-[#c5d1bf] hover:border-[#17382b] shadow-sm hover:shadow-md block transition-all group">
+              <span className="text-xs font-mono uppercase tracking-widest px-2.5 py-1 rounded bg-[#e5eadf] text-[#17382b] font-bold">03 / Regulatory</span>
+              <h3 className="text-2xl font-bold text-[#0c1210] mt-4 mb-2 group-hover:text-[#17382b] transition-colors">NAFDAC</h3>
+              <p className="text-xs text-[#2b3a30] font-medium leading-relaxed">Service framework reserved for the NAFDAC details to be incorporated.</p>
+              <span className="text-xs font-bold text-[#526357] mt-6 block uppercase tracking-wider">Coming soon →</span>
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#07100c] border border-[#26362c] p-6 lg:p-8 mt-12">
-            <div className="lg:col-span-4 overflow-hidden border border-[#26362c]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#ffffff] border border-[#c5d1bf] rounded-2xl p-6 lg:p-8 mt-12 shadow-sm">
+            <div className="lg:col-span-4 overflow-hidden rounded-xl border border-[#c5d1bf]">
               <img 
                 src="/images/accredited-consultation.jpg" 
                 alt="Accredited Nigerian Tax & Compliance Advisory" 
@@ -149,9 +149,9 @@ export default function CompliancePage() {
               />
             </div>
             <div className="lg:col-span-8 space-y-2">
-              <div className="ep-tag text-[#c6ff3f]">Regulatory &amp; Tax Desk</div>
-              <h3 className="heading-3">Proactive statutory compliance for growing enterprises.</h3>
-              <p className="text-sm text-[#aab6ad] leading-relaxed">
+              <div className="text-xs font-mono text-[#17382b] font-bold uppercase tracking-wider">Regulatory &amp; Tax Desk</div>
+              <h3 className="text-2xl font-bold text-[#0c1210]">Proactive statutory compliance for growing enterprises.</h3>
+              <p className="text-sm text-[#2b3a30] font-medium leading-relaxed">
                 Stay compliant with SCUML anti-money laundering certifications, NRS Tax ID registration, and Rev360 portal filings with accredited professional advisory.
               </p>
             </div>
