@@ -169,35 +169,48 @@ export default function HomePage() {
       {/* 5. Signature Package */}
       <section className="package section" id="package">
         <div className="wrap">
-          <div className="package-card reveal">
-            <div className="package-main">
-              <span className="pill">SIGNATURE OFFER</span>
-              <h2>The Ultimate Business Launch Package.</h2>
-              <p>
-                A more complete way to start. This guided package brings the core building blocks of a professional business into one focused launch experience.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Column: Copy & Actions */}
+            <div className="lg:col-span-6 space-y-6 reveal">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-[2px] bg-[#c9f95a]" />
+                <span className="eyebrow">Nigeria Services</span>
+              </div>
+
+              <h2 className="heading-1 !text-left !my-0">
+                Ultimate Nigeria Business Launch Package
+              </h2>
+
+              <p className="lead-text !max-w-none text-[#c9d5cd]">
+                We help businesses move from idea to operation, and from operation to growth with CAC registration, compliance, trademark protection, premium branding, digital infrastructure, AI and automation under one roof.
               </p>
-              <div className="deliverables">
-                <div className="deliverable">Business foundation support</div>
-                <div className="deliverable">Brand identity essentials</div>
-                <div className="deliverable">Digital presence setup</div>
-                <div className="deliverable">Operational guidance</div>
-                <div className="deliverable">Launch-ready systems</div>
-                <div className="deliverable">Growth pathway planning</div>
+
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <Link href="/ultimate" className="btn primary">
+                  <span>View Ultimate Package</span>
+                  <span className="arrow">→</span>
+                </Link>
+                <Link
+                  href="/ultimate#application"
+                  className="btn"
+                  style={{ background: "#ffffff", color: "#0c1210", borderColor: "#ffffff" }}
+                >
+                  <span>Get Started</span>
+                  <span className="arrow">→</span>
+                </Link>
               </div>
             </div>
-            <aside className="package-side">
-              <div>
-                <div className="eyebrow" style={{ color: "#17382b" }}>
-                  Built for founders
-                </div>
-                <h3>Start with intention. Launch with confidence.</h3>
-                <p>Every business is different. We’ll help you shape the right scope for yours.</p>
+
+            {/* Right Column: Showcase Image */}
+            <div className="lg:col-span-6 reveal">
+              <div className="relative overflow-hidden rounded-2xl border border-[rgba(201,249,90,0.2)] shadow-[0_20px_60px_rgba(0,0,0,0.6)] group">
+                <img
+                  src="/images/ultimate-boardroom.jpg"
+                  alt="Eponix Digital Executive Business Launch Strategy & Infrastructure"
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                />
               </div>
-              <Link href="/consult" className="btn">
-                <span>Talk to our team</span>
-                <span className="arrow">→</span>
-              </Link>
-            </aside>
+            </div>
           </div>
         </div>
       </section>

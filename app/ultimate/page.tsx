@@ -171,7 +171,8 @@ export default function UltimatePage() {
       </section>
 
       {/* 4. Intake Form */}
-      <section id="get-started" className="bg-[#0b120f] py-20 lg:py-28">
+      <section id="application" className="bg-[#0b120f] py-20 lg:py-28 scroll-mt-24">
+        <span id="get-started" className="block -mt-24 pt-24 invisible" aria-hidden="true" />
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5 space-y-6">
