@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { Layers, Users, Zap, Lock, Cpu, TrendingUp } from "lucide-react";
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
@@ -215,51 +216,112 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Services */}
-      <section className="services section" id="services">
-        <div className="wrap">
-          <div className="section-head reveal">
-            <div className="eyebrow">What we do</div>
-            <h2>Everything your business needs to show up, work better and grow.</h2>
-            <p>Choose focused support or let us build a joined-up foundation around your goals.</p>
+      {/* 6. Why Choose Eponix Digital / More Than a Service Provider */}
+      <section className="bg-[#07100c] text-[#f4f6ed] py-24 lg:py-32 border-b border-[rgba(201,249,90,0.14)]" id="services">
+        <div className="site-container">
+          {/* Section Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-16">
+            <div className="lg:col-span-8 space-y-4 reveal">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[rgba(201,249,90,0.4)] bg-[rgba(201,249,90,0.08)] font-mono text-[11px] uppercase tracking-wider text-[#c9f95a]">
+                Why Choose Eponix Digital
+              </div>
+              <h2 className="text-[34px] sm:text-[46px] lg:text-[56px] font-bold leading-[1.05] tracking-[-0.05em] text-[#f4f6ed]">
+                More Than a Service Provider.
+                <span className="block text-[#c9f95a]">A Growth Partner.</span>
+              </h2>
+              <p className="text-[15px] sm:text-[17px] text-[#aab6ad] max-w-2xl leading-relaxed">
+                We combine expertise, technology and a deep understanding of Nigerian business needs to give you practical solutions that work - from registration to automation and beyond.
+              </p>
+            </div>
+
+            <div className="lg:col-span-4 reveal">
+              <div className="border-l-2 border-[#c9f95a] pl-5 py-2">
+                <p className="text-[14px] sm:text-[15px] text-[#ccd9cf] leading-relaxed">
+                  Your business deserves more than just registration. You deserve a partner that understands your journey and helps you <strong className="text-[#c9f95a] font-semibold">build, brand and grow</strong> with confidence.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="service-grid reveal">
-            <Link className="service" href="/services">
-              <div className="service-n">01</div>
-              <h3>Business Registration &amp; Compliance</h3>
-              <p>Business setup, structure guidance and practical compliance support.</p>
-              <div className="s-arrow">↗</div>
-            </Link>
-            <Link className="service" href="/services">
-              <div className="service-n">02</div>
-              <h3>Brand Strategy &amp; Identity</h3>
-              <p>Clear positioning and a brand presence your audience can trust.</p>
-              <div className="s-arrow">↗</div>
-            </Link>
-            <Link className="service" href="/services">
-              <div className="service-n">03</div>
-              <h3>Website &amp; Digital Presence</h3>
-              <p>High-performing digital homes that make it easy to be found and chosen.</p>
-              <div className="s-arrow">↗</div>
-            </Link>
-            <Link className="service" href="/services">
-              <div className="service-n">04</div>
-              <h3>AI &amp; Business Automation</h3>
-              <p>Practical systems that reduce friction and make everyday work smarter.</p>
-              <div className="s-arrow">↗</div>
-            </Link>
-            <Link className="service" href="/services">
-              <div className="service-n">05</div>
-              <h3>Business Advisory</h3>
-              <p>Strategic guidance for decisions, structure and sustained progress.</p>
-              <div className="s-arrow">↗</div>
-            </Link>
-            <Link className="service" href="/services">
-              <div className="service-n">06</div>
-              <h3>Growth &amp; Visibility</h3>
-              <p>Marketing and digital growth support built around the next opportunity.</p>
-              <div className="s-arrow">↗</div>
-            </Link>
+
+          {/* 6 Grid Cards - Icons, Headlines & Descriptions ONLY */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
+            {/* Card 1 */}
+            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+                <Layers className="w-5 h-5" />
+              </div>
+              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+                All-in-One Business Solutions
+              </h3>
+              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+                From CAC registration and compliance to branding, digital and automation - everything your business needs in one place.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+                <Users className="w-5 h-5" />
+              </div>
+              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+                Expert Team with Real Experience
+              </h3>
+              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+                Our team has hands-on experience in business registration, compliance, branding, technology and digital growth in the Nigerian market.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+                <Zap className="w-5 h-5" />
+              </div>
+              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+                Fast, Reliable &amp; Accurate
+              </h3>
+              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+                We streamline processes and work directly with the right institutions to ensure fast turnaround without compromising accuracy.
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+                <Lock className="w-5 h-5" />
+              </div>
+              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+                Confidential &amp; Professional
+              </h3>
+              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+                Your information is handled with the highest level of confidentiality, discretion and professionalism.
+              </p>
+            </div>
+
+            {/* Card 5 */}
+            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+                <Cpu className="w-5 h-5" />
+              </div>
+              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+                Technology-Driven Solutions
+              </h3>
+              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+                We use modern tools, automation and AI to make business setup, compliance and growth easier, faster and more efficient.
+              </p>
+            </div>
+
+            {/* Card 6 */}
+            <div className="p-7 rounded-2xl bg-[rgba(13,26,19,0.85)] border border-[#213527] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
+                <TrendingUp className="w-5 h-5" />
+              </div>
+              <h3 className="text-[19px] font-bold text-[#f4f6ed] leading-snug">
+                End-to-End Support &amp; Long-Term Partnership
+              </h3>
+              <p className="text-[14px] text-[#aab6ad] leading-relaxed">
+                We do not just help you start - we stay with you. From your first registration to scaling with AI and digital marketing, we are your long-term growth partner.
+              </p>
+            </div>
           </div>
         </div>
       </section>

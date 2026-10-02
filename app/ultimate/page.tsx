@@ -60,10 +60,10 @@ export default function UltimatePage() {
           <img
             src="/images/ultimate-hero-bg.jpg"
             alt="Abuja Central Business District Corporate Architecture"
-            className="w-full h-full object-cover object-right lg:object-center opacity-70 brightness-95"
+            className="w-full h-full object-cover object-right lg:object-center opacity-90 brightness-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#07100c]/95 via-[#07100c]/80 to-[#07100c]/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#07100c] via-transparent to-[#07100c]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07100c]/90 via-[#07100c]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07100c] via-transparent to-[#07100c]/30" />
         </div>
 
         <div className="site-container relative z-10">
@@ -200,29 +200,33 @@ export default function UltimatePage() {
         </div>
       </section>
 
-      {/* 4. Luxury Talk to Our Team Concierge Section */}
-      <section id="talk-to-team" className="bg-[#07130c] text-[#f5f7ef] py-20 lg:py-28 border-b border-[#26362c] scroll-mt-24">
+      {/* 4. Luxury Talk to Our Team Concierge Section (Site Cream #e5eadf) */}
+      <section id="talk-to-team" className="bg-[#e5eadf] text-[#0c1210] py-20 lg:py-28 border-b border-[#ced7cd] scroll-mt-24">
         <span id="team" className="block -mt-24 pt-24 invisible" aria-hidden="true" />
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5 space-y-6">
-              <div className="eyebrow">Need a clarification?</div>
-              <h2 className="heading-2">Talk to Our team</h2>
-              <p className="lead-text">
+              <div className="font-mono text-[11px] tracking-[0.16em] uppercase text-[#367054] font-semibold">
+                Need a clarification?
+              </div>
+              <h2 className="text-[32px] sm:text-[42px] lg:text-[48px] font-bold leading-[1.05] tracking-[-0.05em] text-[#0c1210]">
+                Talk to Our team
+              </h2>
+              <p className="text-[#55655b] text-[15px] sm:text-[16px] leading-relaxed">
                 Have specific questions regarding company share capital, trademark classes, compliance filings, or launch timelines? Our senior consultants provide direct advisory.
               </p>
 
               <div className="space-y-3 pt-2">
-                <div className="flex items-center gap-3 text-[14px] text-[#aab6ad]">
-                  <ShieldCheck className="w-5 h-5 text-[#c6ff3f] shrink-0" />
+                <div className="flex items-center gap-3 text-[14px] text-[#3b4c42]">
+                  <ShieldCheck className="w-5 h-5 text-[#265239] shrink-0" />
                   <span>CAC Accredited Corporate Specialists</span>
                 </div>
-                <div className="flex items-center gap-3 text-[14px] text-[#aab6ad]">
-                  <Clock className="w-5 h-5 text-[#c6ff3f] shrink-0" />
+                <div className="flex items-center gap-3 text-[14px] text-[#3b4c42]">
+                  <Clock className="w-5 h-5 text-[#265239] shrink-0" />
                   <span>Fast response within 15 minutes during business hours</span>
                 </div>
-                <div className="flex items-center gap-3 text-[14px] text-[#aab6ad]">
-                  <Check className="w-5 h-5 text-[#c6ff3f] shrink-0" />
+                <div className="flex items-center gap-3 text-[14px] text-[#3b4c42]">
+                  <Check className="w-5 h-5 text-[#265239] shrink-0" />
                   <span>Strict confidentiality and end-to-end execution</span>
                 </div>
               </div>
@@ -230,7 +234,7 @@ export default function UltimatePage() {
               <div className="pt-3">
                 <a
                   href="#application"
-                  className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#c6ff3f] hover:underline"
+                  className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#265239] font-bold hover:underline"
                 >
                   Or jump directly to the intake form <ArrowRight className="w-3.5 h-3.5" />
                 </a>
@@ -239,13 +243,13 @@ export default function UltimatePage() {
 
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* WhatsApp Card */}
-              <div className="bg-[#0b1710] border border-[rgba(198,255,63,0.3)] p-6 space-y-4 hover:border-[#c6ff3f] transition-all flex flex-col justify-between">
+              <div className="bg-[#f3f5ec] border border-[#ced7cd] p-6 space-y-4 hover:border-[#17382b] transition-all flex flex-col justify-between shadow-sm">
                 <div className="space-y-3">
-                  <div className="w-10 h-10 rounded-lg bg-[rgba(198,255,63,0.12)] border border-[rgba(198,255,63,0.25)] flex items-center justify-center text-[#c6ff3f]">
+                  <div className="w-10 h-10 rounded-lg bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
                     <MessageSquare className="w-5 h-5" />
                   </div>
-                  <h3 className="heading-3 text-[19px]">WhatsApp Advisory</h3>
-                  <p className="text-[#aab6ad] text-[13px] leading-relaxed">
+                  <h3 className="text-[19px] font-bold text-[#0c1210] leading-tight">WhatsApp Advisory</h3>
+                  <p className="text-[#5b6b60] text-[13px] leading-relaxed">
                     Message directly with our senior incorporation and branding lead for real-time answers.
                   </p>
                 </div>
@@ -260,19 +264,19 @@ export default function UltimatePage() {
               </div>
 
               {/* Direct Phone Card */}
-              <div className="bg-[#0b1710] border border-[#26362c] p-6 space-y-4 hover:border-[#c6ff3f] transition-all flex flex-col justify-between">
+              <div className="bg-[#f3f5ec] border border-[#ced7cd] p-6 space-y-4 hover:border-[#17382b] transition-all flex flex-col justify-between shadow-sm">
                 <div className="space-y-3">
-                  <div className="w-10 h-10 rounded-lg bg-[rgba(245,247,239,0.06)] border border-[#33473a] flex items-center justify-center text-[#f5f7ef]">
+                  <div className="w-10 h-10 rounded-lg bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <h3 className="heading-3 text-[19px]">Direct Phone Line</h3>
-                  <p className="text-[#aab6ad] text-[13px] leading-relaxed">
+                  <h3 className="text-[19px] font-bold text-[#0c1210] leading-tight">Direct Phone Line</h3>
+                  <p className="text-[#5b6b60] text-[13px] leading-relaxed">
                     Speak directly to our onboarding desk for immediate consultations and service walkthroughs.
                   </p>
                 </div>
                 <a
                   href="tel:+2347038753272"
-                  className="ep-btn ep-btn-dark border border-[#33473a] text-[#f5f7ef] hover:border-[#c6ff3f] w-full text-center justify-center text-[13px] py-2.5"
+                  className="bg-[#0c1210] text-[#f5f7ef] hover:bg-[#17382b] hover:text-[#c6ff3f] transition-colors py-2.5 px-4 font-mono text-[13px] font-bold tracking-wider uppercase flex items-center justify-center gap-2 w-full text-center"
                 >
                   Call +234 703 875 3272
                 </a>
