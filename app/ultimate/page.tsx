@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { Check, MessageSquare, Phone, Calendar, ArrowRight, ShieldCheck, Clock } from "lucide-react";
 
 export default function UltimatePage() {
   const [formData, setFormData] = useState({
@@ -53,9 +53,20 @@ export default function UltimatePage() {
 
   return (
     <div className="bg-[#0b120f] text-[#f5f7ef]">
-      {/* 1. Hero Simple */}
-      <section className="bg-[#07100c] text-[#f5f7ef] pt-32 pb-20 lg:pt-40 lg:pb-24 border-b border-[rgba(198,255,63,0.14)]">
-        <div className="site-container">
+      {/* 1. Hero with Luxury Corporate Background */}
+      <section className="relative overflow-hidden bg-[#07100c] text-[#f5f7ef] pt-32 pb-20 lg:pt-40 lg:pb-28 border-b border-[rgba(198,255,63,0.14)]">
+        {/* Background Image with Dark Luxury Gradients */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/ultimate-hero-bg.jpg"
+            alt="Abuja Central Business District Corporate Architecture"
+            className="w-full h-full object-cover object-center opacity-30 mix-blend-luminosity brightness-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#07100c] via-[#07100c]/90 to-[#07100c]/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07100c] via-transparent to-[#07100c]/80" />
+        </div>
+
+        <div className="site-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-8 space-y-6">
               <div className="eyebrow">Ultimate Nigeria Business Launch</div>
@@ -63,18 +74,21 @@ export default function UltimatePage() {
               <p className="lead-text">
                 Build a professional Nigerian business with registration, compliance, branding and digital infrastructure handled under one coordinated team.
               </p>
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-                <a href="#what-you-get" className="ep-btn ep-btn-primary text-center justify-center">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 flex-wrap">
+                <a href="#application" className="ep-btn ep-btn-primary text-center justify-center">
+                  Get Started
+                </a>
+                <a href="#what-you-get" className="ep-btn ep-btn-dark border border-[rgba(198,255,63,0.3)] text-[#f5f7ef] hover:border-[#c6ff3f] text-center justify-center">
                   See What You Get
                 </a>
-                <a href="#get-started" className="ep-btn ep-btn-light text-center justify-center">
-                  Get Started
+                <a href="#talk-to-team" className="ep-btn ep-btn-light text-center justify-center">
+                  Talk to Our Team
                 </a>
               </div>
             </div>
 
             <div className="lg:col-span-4">
-              <div className="bg-[rgba(8,15,11,0.88)] border border-[rgba(198,255,63,0.42)] p-7 space-y-4">
+              <div className="bg-[rgba(8,15,11,0.92)] border border-[rgba(198,255,63,0.42)] p-7 space-y-4 shadow-2xl backdrop-blur-sm">
                 <div className="ep-tag text-[#c6ff3f]">Complete Premium Package</div>
                 <h3 className="heading-3">Everything your business needs to launch professionally.</h3>
                 <p className="text-[#aab6ad] text-[14px] leading-relaxed">
@@ -89,26 +103,42 @@ export default function UltimatePage() {
         </div>
       </section>
 
-      {/* 2. Band Strip */}
+      {/* 2. Band Strip (4-Card Metric Grid) */}
       <section className="bg-[#10261a] text-[#f5f7ef] py-16 border-t border-b border-[#33473a]">
         <div className="site-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="ep-card dark">
-              <div className="ep-tag">Amount</div>
-              <h3 className="heading-3">₦1,000,000</h3>
-              <p>One complete premium package, inclusive of 7.5% VAT.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="ep-card dark flex flex-col justify-between">
+              <div>
+                <div className="ep-tag">Amount</div>
+                <h3 className="heading-3 mt-2">₦1,000,000</h3>
+              </div>
+              <p className="mt-3 text-[14px] text-[#aab6ad]">One complete premium package, inclusive of 7.5% VAT.</p>
             </div>
 
-            <div className="ep-card dark">
-              <div className="ep-tag">Requirements</div>
-              <h3 className="heading-3">ID + business details</h3>
-              <p>Start with your identification and essential company information.</p>
+            <div className="ep-card dark flex flex-col justify-between">
+              <div>
+                <div className="ep-tag">Requirements</div>
+                <h3 className="heading-3 mt-2">ID + business details</h3>
+              </div>
+              <p className="mt-3 text-[14px] text-[#aab6ad]">Start with your identification and essential company information.</p>
             </div>
 
-            <div className="ep-card dark">
-              <div className="ep-tag">Timeframe</div>
-              <h3 className="heading-3">10 to 21 working days</h3>
-              <p>The main launch project is coordinated across multiple service stages.</p>
+            <div className="ep-card dark flex flex-col justify-between">
+              <div>
+                <div className="ep-tag">Timeframe</div>
+                <h3 className="heading-3 mt-2">10 to 21 working days</h3>
+              </div>
+              <p className="mt-3 text-[14px] text-[#aab6ad]">The main launch project is coordinated across multiple service stages.</p>
+            </div>
+
+            <div className="ep-card dark flex flex-col justify-between border-[rgba(198,255,63,0.25)]">
+              <div>
+                <div className="ep-tag text-[#c6ff3f]">Trust &amp; Delivery</div>
+                <h3 className="heading-3 mt-2">Physical + Digital</h3>
+              </div>
+              <p className="mt-3 text-[14px] text-[#aab6ad] leading-relaxed">
+                Physical dispatch of verified CAC certificates and regulatory documents nationwide, with full digital brand suites and compliance files available instantly online.
+              </p>
             </div>
           </div>
         </div>
@@ -170,7 +200,109 @@ export default function UltimatePage() {
         </div>
       </section>
 
-      {/* 4. Intake Form */}
+      {/* 4. Luxury Talk to Our Team Concierge Section */}
+      <section id="talk-to-team" className="bg-[#07130c] text-[#f5f7ef] py-20 lg:py-28 border-b border-[#26362c] scroll-mt-24">
+        <span id="team" className="block -mt-24 pt-24 invisible" aria-hidden="true" />
+        <div className="site-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5 space-y-6">
+              <div className="eyebrow">Direct Advisory &amp; Concierge</div>
+              <h2 className="heading-2">Talk to our senior business launch team.</h2>
+              <p className="lead-text">
+                Have specific questions regarding company share capital, trademark classes, compliance filings, or launch timelines? Our senior consultants provide direct advisory.
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center gap-3 text-[14px] text-[#aab6ad]">
+                  <ShieldCheck className="w-5 h-5 text-[#c6ff3f] shrink-0" />
+                  <span>CAC Accredited Corporate Specialists</span>
+                </div>
+                <div className="flex items-center gap-3 text-[14px] text-[#aab6ad]">
+                  <Clock className="w-5 h-5 text-[#c6ff3f] shrink-0" />
+                  <span>Fast response within 15 minutes during business hours</span>
+                </div>
+                <div className="flex items-center gap-3 text-[14px] text-[#aab6ad]">
+                  <Check className="w-5 h-5 text-[#c6ff3f] shrink-0" />
+                  <span>Strict confidentiality and end-to-end execution</span>
+                </div>
+              </div>
+
+              <div className="pt-3">
+                <a
+                  href="#application"
+                  className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#c6ff3f] hover:underline"
+                >
+                  Or jump directly to the intake form <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* WhatsApp Card */}
+              <div className="bg-[#0b1710] border border-[rgba(198,255,63,0.3)] p-6 space-y-4 hover:border-[#c6ff3f] transition-all flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="w-10 h-10 rounded-lg bg-[rgba(198,255,63,0.12)] border border-[rgba(198,255,63,0.25)] flex items-center justify-center text-[#c6ff3f]">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
+                  <h3 className="heading-3 text-[19px]">WhatsApp Advisory</h3>
+                  <p className="text-[#aab6ad] text-[13px] leading-relaxed">
+                    Message directly with our senior incorporation and branding lead for real-time answers.
+                  </p>
+                </div>
+                <a
+                  href="https://wa.me/2347038753272?text=Hello%20Eponix%20Team%2C%20I%20am%20interested%20in%20the%20Ultimate%20Nigeria%20Business%20Launch%20Package.%20Please%20guide%20me."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ep-btn ep-btn-primary w-full text-center justify-center text-[13px] py-2.5"
+                >
+                  Chat on WhatsApp →
+                </a>
+              </div>
+
+              {/* Direct Phone Card */}
+              <div className="bg-[#0b1710] border border-[#26362c] p-6 space-y-4 hover:border-[#c6ff3f] transition-all flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="w-10 h-10 rounded-lg bg-[rgba(245,247,239,0.06)] border border-[#33473a] flex items-center justify-center text-[#f5f7ef]">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <h3 className="heading-3 text-[19px]">Direct Phone Line</h3>
+                  <p className="text-[#aab6ad] text-[13px] leading-relaxed">
+                    Speak directly to our onboarding desk for immediate consultations and service walkthroughs.
+                  </p>
+                </div>
+                <a
+                  href="tel:+2347038753272"
+                  className="ep-btn ep-btn-dark border border-[#33473a] text-[#f5f7ef] hover:border-[#c6ff3f] w-full text-center justify-center text-[13px] py-2.5"
+                >
+                  Call +234 703 875 3272
+                </a>
+              </div>
+
+              {/* Consultation Card - Spans full width */}
+              <div className="sm:col-span-2 bg-gradient-to-r from-[#0d1e14] to-[#0b1710] border border-[#33473a] p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="space-y-1.5">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-[#c6ff3f]" />
+                    <span className="text-xs font-mono uppercase text-[#c6ff3f] tracking-wider">Strategy Call</span>
+                  </div>
+                  <h4 className="heading-3 text-[17px]">Schedule a Private Strategy Session</h4>
+                  <p className="text-[#aab6ad] text-[13px] max-w-md">
+                    Book a dedicated 20-minute Zoom or phone call with a senior corporate advisor.
+                  </p>
+                </div>
+                <Link
+                  href="/consult"
+                  className="ep-btn ep-btn-light text-center justify-center shrink-0 text-[13px] py-2.5 px-5"
+                >
+                  Book Consultation →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Intake Form */}
       <section id="application" className="bg-[#0b120f] py-20 lg:py-28 scroll-mt-24">
         <span id="get-started" className="block -mt-24 pt-24 invisible" aria-hidden="true" />
         <div className="site-container">
