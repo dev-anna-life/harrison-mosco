@@ -87,16 +87,46 @@ export default function UltimatePage() {
               </div>
             </div>
 
+            {/* Right Column: Stretchy Advisory Card */}
             <div className="lg:col-span-5">
-              <div className="bg-[rgba(8,15,11,0.92)] border border-[rgba(198,255,63,0.42)] p-7 sm:p-8 space-y-4 shadow-2xl backdrop-blur-sm rounded-2xl">
-                <div className="ep-tag text-[#c6ff3f]">Complete Premium Package</div>
-                <h3 className="heading-3">Everything your business needs to launch professionally.</h3>
-                <p className="text-[#aab6ad] text-[14px] leading-relaxed">
-                  Registration, compliance, branding and digital setup coordinated under one professional team.
-                </p>
-                <p className="small-text">
-                  Paid professional service package. Not a grant, loan or funding programme.
-                </p>
+              <div className="bg-[rgba(8,15,11,0.95)] border border-[rgba(198,255,63,0.42)] p-7 sm:p-9 space-y-5 shadow-2xl backdrop-blur-sm rounded-2xl flex flex-col justify-between">
+                {/* Header Badge */}
+                <div className="flex items-center gap-3 pb-4 border-b border-[rgba(198,255,63,0.18)]">
+                  <div className="w-10 h-10 rounded-full bg-[#10261a] border border-[#2b593f] flex items-center justify-center text-[#c6ff3f] shrink-0">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-[13px] font-bold text-white leading-tight">Nigeria's Top Rated</div>
+                    <div className="font-mono text-[10px] tracking-wider uppercase text-[#c6ff3f] font-bold">CAC ACCREDITED COMPANY</div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="font-mono text-[11px] uppercase tracking-wider text-[#c6ff3f] font-bold">
+                    Everything included
+                  </div>
+                  <h2 className="text-[22px] sm:text-[26px] font-bold text-white tracking-tight leading-snug">
+                    One premium package.
+                  </h2>
+                  <p className="text-[13px] text-[#aab6ad] leading-relaxed">
+                    CAC Limited Company, Trademark, SCUML, NRS Tax Account &amp; Tax ID Certificate, Logo Design, Company Profile, Branding, Website and Business E-mail.
+                  </p>
+                </div>
+
+                <ul className="space-y-2.5 pt-2 border-t border-[rgba(198,255,63,0.18)] text-xs">
+                  <li className="flex items-center gap-2 text-[#f5f7ef] font-medium">
+                    <Check className="w-4 h-4 text-[#c6ff3f] shrink-0" />
+                    <span>Registration and compliance</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-[#f5f7ef] font-medium">
+                    <Check className="w-4 h-4 text-[#c6ff3f] shrink-0" />
+                    <span>Professional brand identity</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-[#f5f7ef] font-medium">
+                    <Check className="w-4 h-4 text-[#c6ff3f] shrink-0" />
+                    <span>Website and business e-mail</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -289,24 +319,24 @@ export default function UltimatePage() {
         </div>
       </section>
 
-      {/* 5. Intake Form */}
-      <section id="application" className="bg-[#0b120f] py-20 lg:py-28 scroll-mt-24">
+      {/* 5. Intake Form (Crisp Pure White #ffffff Palette) */}
+      <section id="application" className="bg-[#ffffff] text-[#0c1210] py-20 lg:py-28 border-t border-[#dce3da] scroll-mt-24">
         <span id="get-started" className="block -mt-24 pt-24 invisible" aria-hidden="true" />
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5 space-y-6">
-              <div className="eyebrow">Get Started</div>
-              <h2 className="heading-2">Tell us about your business.</h2>
-              <p className="lead-text">
+              <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">Get Started</div>
+              <h2 className="text-[32px] sm:text-[44px] font-bold tracking-tight text-[#0c1210] leading-tight">Tell us about your business.</h2>
+              <p className="text-[15px] text-[#2b3a30] font-medium leading-relaxed">
                 Complete the details below and the Business Launch Team will review your request and contact you.
               </p>
               <div className="flex flex-wrap gap-2.5 pt-2">
-                <span className="ep-tag">One Team</span>
-                <span className="ep-tag">Dedicated Support</span>
-                <span className="ep-tag">Secure Submission</span>
+                <span className="text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded bg-[#f4f7f1] border border-[#c5d1bf] text-[#17382b] font-bold">One Team</span>
+                <span className="text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded bg-[#f4f7f1] border border-[#c5d1bf] text-[#17382b] font-bold">Dedicated Support</span>
+                <span className="text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded bg-[#f4f7f1] border border-[#c5d1bf] text-[#17382b] font-bold">Secure Submission</span>
               </div>
 
-              <div className="pt-2 overflow-hidden border border-[#26362c] shadow-lg hidden sm:block">
+              <div className="pt-2 overflow-hidden rounded-2xl border border-[#c5d1bf] shadow-md hidden sm:block">
                 <img
                   src="/images/concierge-reception.jpg"
                   alt="Eponix Private Concierge Onboarding Desk"
@@ -317,73 +347,79 @@ export default function UltimatePage() {
 
             <div className="lg:col-span-7">
               {isSubmitted ? (
-                <div className="bg-[#0d1711] border border-[#33473a] p-8 text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-[#c6ff3f] text-[#071007] flex items-center justify-center mx-auto">
+                <div className="bg-[#ffffff] border-2 border-[#17382b] p-8 text-center space-y-4 rounded-2xl shadow-xl">
+                  <div className="w-12 h-12 rounded-full bg-[#10261a] text-[#c9f95a] flex items-center justify-center mx-auto">
                     <Check className="w-6 h-6" />
                   </div>
-                  <h3 className="heading-3">Application Submitted</h3>
-                  <p className="text-[15px] text-[#aab6ad] max-w-md mx-auto">
-                    Thank you, <strong>{formData.fullName}</strong>. The Business Launch Team will reach out to you within 24 hours to begin your incorporation and digital setup.
+                  <h3 className="text-2xl font-bold text-[#0c1210]">Application Submitted</h3>
+                  <p className="text-[15px] text-[#2b3a30] font-medium max-w-md mx-auto">
+                    Thank you, <strong className="text-[#0c1210]">{formData.fullName}</strong>. The Business Launch Team will reach out to you within 24 hours to begin your incorporation and digital setup.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="ep-form">
+                <form onSubmit={handleSubmit} className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-5 shadow-xl rounded-2xl text-[#0c1210]">
                   {errorMessage && (
-                    <div className="p-3 mb-4 text-xs bg-red-950 text-red-200 border border-red-800">
+                    <div className="p-3 mb-4 text-xs bg-red-950 text-red-200 border border-red-800 rounded">
                       {errorMessage}
                     </div>
                   )}
 
                   <div>
-                    <label>Full Name</label>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">Full Name *</label>
                     <input
                       type="text"
                       required
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="e.g. Chukwuemeka Eze"
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                     />
                   </div>
 
                   <div>
-                    <label>Business Name</label>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">Business Name *</label>
                     <input
                       type="text"
+                      required
                       value={formData.businessName}
                       onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                       placeholder="e.g. Eponix Global Ventures"
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label>Email Address</label>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">Email Address *</label>
                       <input
                         type="email"
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="name@company.com"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                     <div>
-                      <label>Phone Number</label>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">Phone Number *</label>
                       <input
                         type="tel"
                         required
                         value={formData.phoneNumber}
                         onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                         placeholder="+234 800 000 0000"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label>Business Stage</label>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">Business Stage</label>
                       <select
                         value={formData.businessStage}
                         onChange={(e) => setFormData({ ...formData, businessStage: e.target.value })}
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-semibold transition-all"
                       >
                         <option value="Idea / Pre-launch">Idea / Pre-launch</option>
                         <option value="Newly registered">Newly registered</option>
@@ -392,10 +428,11 @@ export default function UltimatePage() {
                       </select>
                     </div>
                     <div>
-                      <label>Primary Goal</label>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">Primary Goal</label>
                       <select
                         value={formData.primaryGoal}
                         onChange={(e) => setFormData({ ...formData, primaryGoal: e.target.value })}
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-semibold transition-all"
                       >
                         <option value="Complete business launch">Complete business launch</option>
                         <option value="Registration">Registration</option>
@@ -409,11 +446,12 @@ export default function UltimatePage() {
                   </div>
 
                   <div>
-                    <label>Additional Inquiries / Project Details</label>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">Additional Inquiries / Project Details</label>
                     <textarea
                       value={formData.projectDetails}
                       onChange={(e) => setFormData({ ...formData, projectDetails: e.target.value })}
                       placeholder="Tell us anything important about your business, timeline, or launch objectives."
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d] min-h-[90px] resize-vertical"
                     />
                   </div>
 
@@ -424,9 +462,9 @@ export default function UltimatePage() {
                       checked={formData.agreeTerms}
                       onChange={(e) => setFormData({ ...formData, agreeTerms: e.target.checked })}
                       required
-                      style={{ width: "auto" }}
+                      className="accent-[#17382b]"
                     />
-                    <label htmlFor="agreeTermsUlt" style={{ margin: 0, fontWeight: 400, fontSize: "13px", color: "#aab6ad" }}>
+                    <label htmlFor="agreeTermsUlt" className="text-xs text-[#2b3a30] font-medium cursor-pointer">
                       I agree to the Terms of Service and Privacy Policy.
                     </label>
                   </div>
@@ -434,7 +472,7 @@ export default function UltimatePage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="ep-btn ep-btn-primary w-full mt-4"
+                    className="ep-btn ep-btn-primary w-full py-4 text-center justify-center font-bold tracking-wider rounded-lg cursor-pointer"
                   >
                     {isSubmitting ? "Submitting Application..." : "Submit Application"}
                   </button>
