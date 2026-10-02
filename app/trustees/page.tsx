@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Check, ShieldCheck, Clock, Users, FileCheck, ArrowRight } from "lucide-react";
+import { processFileInput, type UploadedFileItem } from "@/lib/file-utils";
 
 type PackageType = "Starter" | "Pro" | "Premium";
 
@@ -69,6 +70,7 @@ export default function TrusteesPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fileMap, setFileMap] = useState<Record<string, UploadedFileItem[]>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -79,6 +81,28 @@ export default function TrusteesPage() {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, termsConsent: e.target.checked }));
+  };
+
+  const handleFileChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: string,
+    label: string
+  ) => {
+    try {
+      if (!e.target.files || e.target.files.length === 0) {
+        setFileMap((prev) => {
+          const next = { ...prev };
+          delete next[key];
+          return next;
+        });
+        return;
+      }
+      const processed = await processFileInput(e.target.files, label);
+      setFileMap((prev) => ({ ...prev, [key]: processed }));
+    } catch (err: any) {
+      alert(err.message || "File upload error");
+      e.target.value = "";
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -118,6 +142,7 @@ export default function TrusteesPage() {
     setIsSubmitting(true);
 
     try {
+      const allFiles = Object.values(fileMap).flat();
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -128,6 +153,7 @@ export default function TrusteesPage() {
           proposedBusinessName: formData.proposedName1 || formData.organisationName,
           packageInterested: `NGO / Incorporated Trustees - ${selectedPkg}`,
           source: "trustees-form",
+          files: allFiles,
           submittedDetails: {
             "Contact Phone": formData.phone,
             "Email Address": formData.email,
@@ -136,6 +162,9 @@ export default function TrusteesPage() {
             "Aims & Objectives": formData.purposeObjectives,
             "Trustee Details": formData.trusteeDetails || "N/A",
             "Additional Notes": formData.additionalInfo || "N/A",
+            ...(allFiles.length > 0
+              ? { "Attached Documents": allFiles.map((f) => `${f.label || "File"}: ${f.filename}`).join(", ") }
+              : {}),
           },
         }),
       });
@@ -536,8 +565,18 @@ export default function TrusteesPage() {
                       <input
                         type="file"
                         multiple
+                        onChange={(e) => handleFileChange(e, "trusteeDocs", "Trustee ID Documents (NIN/Passport)")}
                         className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
+                      {fileMap["trusteeDocs"] && fileMap["trusteeDocs"].length > 0 && (
+                        <div className="mt-1.5 space-y-0.5">
+                          {fileMap["trusteeDocs"].map((f, idx) => (
+                            <span key={idx} className="text-[11px] text-[#166534] font-bold block">
+                              ✓ {f.filename} attached
+                            </span>
+                          ))}
+                        </div>
+                      )}
                       <span className="text-[10px] text-[#526357] font-medium mt-1 block">
                         Upload NIN slips, Passports, or valid IDs for all trustees.
                       </span>
@@ -548,8 +587,14 @@ export default function TrusteesPage() {
                       </label>
                       <input
                         type="file"
+                        onChange={(e) => handleFileChange(e, "constitutionDoc", "Constitution / Minutes Document")}
                         className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
+                      {fileMap["constitutionDoc"] && fileMap["constitutionDoc"].length > 0 && (
+                        <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                          ✓ {fileMap["constitutionDoc"][0].filename} attached
+                        </span>
+                      )}
                       <span className="text-[10px] text-[#526357] font-medium mt-1 block">
                         If you have an existing drafted constitution or minutes of meeting.
                       </span>

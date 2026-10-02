@@ -4,6 +4,14 @@
 
 import nodemailer, { type SendMailOptions } from "nodemailer";
 
+export interface LeadAttachment {
+  filename: string;
+  contentType: string;
+  base64: string;
+  label?: string;
+  size?: number;
+}
+
 export interface LeadEmailPayload {
   fullName: string;
   phone: string;
@@ -15,6 +23,7 @@ export interface LeadEmailPayload {
   source: string;
   additionalDetails?: string;
   submittedDetails?: Record<string, string | number | undefined | null>;
+  files?: LeadAttachment[];
 }
 
 export interface ClientReceiptPayload {
@@ -97,6 +106,23 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
 
   const transporter = getTransporter();
 
+  // Prepare attachments for Nodemailer
+  const attachments: SendMailOptions["attachments"] = [];
+  if (payload.files && Array.isArray(payload.files) && payload.files.length > 0) {
+    for (const f of payload.files) {
+      if (f && f.base64 && f.filename) {
+        const rawBase64 = f.base64.includes(";base64,")
+          ? f.base64.split(";base64,").pop() || ""
+          : f.base64;
+        attachments.push({
+          filename: f.filename,
+          content: Buffer.from(rawBase64, "base64"),
+          contentType: f.contentType || "application/octet-stream",
+        });
+      }
+    }
+  }
+
   // Build unified details map
   const detailsMap: Record<string, string> = {};
   if (payload.submittedDetails) {
@@ -144,7 +170,10 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
   const adminMailOptions: SendMailOptions = {
     from: `"Eponix Digital Alerts" <${process.env.SMTP_USER || "eponixlimited@gmail.com"}>`,
     to: ADMIN_EMAIL,
-    subject: `🚨 New Lead: ${payload.fullName} - ${payload.packageType} (${payload.proposedName || "Business Inquiry"})`,
+    subject: `🚨 New Lead: ${payload.fullName} - ${payload.packageType} (${payload.proposedName || "Business Inquiry"})${
+      attachments.length > 0 ? ` [${attachments.length} Attachment${attachments.length > 1 ? "s" : ""}]` : ""
+    }`,
+    attachments: attachments.length > 0 ? attachments : undefined,
     html: `
       <div style="font-family: Arial, sans-serif; background-color: #07100c; color: #f5f7ef; padding: 32px; border-radius: 12px; max-width: 600px; margin: auto;">
         <div style="border-bottom: 2px solid #c6ff3f; padding-bottom: 16px; margin-bottom: 24px;">
@@ -181,6 +210,20 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
             ${detailRowsHtml}
           </table>
         </div>
+
+        ${
+          payload.files && payload.files.length > 0
+            ? `
+        <div style="background-color: #0d1711; border: 1px solid #26362c; border-radius: 8px; padding: 18px; margin-bottom: 20px;">
+          <h4 style="color: #c6ff3f; margin: 0 0 10px 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">📎 Attached Customer Documents (${payload.files.length})</h4>
+          <ul style="margin: 0; padding-left: 20px; color: #f5f7ef; font-size: 13px; line-height: 1.6;">
+            ${payload.files.map((f) => `<li><strong>${f.label || "Document"}:</strong> ${f.filename}</li>`).join("")}
+          </ul>
+          <p style="margin: 10px 0 0 0; color: #aab6ad; font-size: 11px;">(Files are attached directly to this email for instant download)</p>
+        </div>
+        `
+            : ""
+        }
 
         <div style="text-align: center; margin-top: 24px;">
           <a href="${directWhatsAppLink}" style="background-color: #c6ff3f; color: #071007; padding: 14px 28px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 14px;">
@@ -244,6 +287,20 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
               </tr>
             </table>
           </div>
+
+          ${
+            payload.files && payload.files.length > 0
+              ? `
+          <div style="background-color: #ffffff; border: 1px solid #c5d1bf; border-radius: 8px; padding: 16px; margin: 16px 0;">
+            <h4 style="color: #17382b; margin: 0 0 8px 0; font-size: 13px; font-weight: bold;">📎 Uploaded Documents Received (${payload.files.length})</h4>
+            <ul style="margin: 0; padding-left: 20px; color: #2b3a30; font-size: 13px; line-height: 1.6;">
+              ${payload.files.map((f) => `<li><strong>${f.label || "Document"}:</strong> ${f.filename}</li>`).join("")}
+            </ul>
+            <p style="margin: 6px 0 0 0; color: #687c70; font-size: 11px;">All uploaded files are attached securely to your application intake.</p>
+          </div>
+          `
+              : ""
+          }
 
           <div style="background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0; color: #166534; font-size: 13px; font-weight: 600; line-height: 1.5;">

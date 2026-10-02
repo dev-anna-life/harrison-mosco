@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Check, ShieldCheck, Clock, FileCheck, ArrowRight, Award } from "lucide-react";
+import { processFileInput, type UploadedFileItem } from "@/lib/file-utils";
 
 type PackageType = "Starter" | "Pro" | "Premium";
 
@@ -115,6 +116,7 @@ export default function TrademarkPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fileMap, setFileMap] = useState<Record<string, UploadedFileItem[]>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -125,6 +127,28 @@ export default function TrademarkPage() {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, termsConsent: e.target.checked }));
+  };
+
+  const handleFileChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: string,
+    label: string
+  ) => {
+    try {
+      if (!e.target.files || e.target.files.length === 0) {
+        setFileMap((prev) => {
+          const next = { ...prev };
+          delete next[key];
+          return next;
+        });
+        return;
+      }
+      const processed = await processFileInput(e.target.files, label);
+      setFileMap((prev) => ({ ...prev, [key]: processed }));
+    } catch (err: any) {
+      alert(err.message || "File upload error");
+      e.target.value = "";
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -164,6 +188,7 @@ export default function TrademarkPage() {
     setIsSubmitting(true);
 
     try {
+      const allFiles = Object.values(fileMap).flat();
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -174,6 +199,7 @@ export default function TrademarkPage() {
           proposedBusinessName: formData.trademarkName,
           packageInterested: `Trademark - ${selectedPkg}`,
           source: "trademark-form",
+          files: allFiles,
           submittedDetails: {
             "Contact Phone": formData.phone,
             "Email Address": formData.email,
@@ -183,6 +209,9 @@ export default function TrademarkPage() {
             "Additional Classes": formData.additionalClasses || "None",
             "Product / Service Category": formData.productCategory || "N/A",
             "Referral Code": formData.referralCode || "N/A",
+            ...(allFiles.length > 0
+              ? { "Attached Documents": allFiles.map((f) => `${f.label || "File"}: ${f.filename}`).join(", ") }
+              : {}),
           },
         }),
       });
@@ -589,8 +618,14 @@ export default function TrademarkPage() {
                       </label>
                       <input
                         type="file"
+                        onChange={(e) => handleFileChange(e, "brandLogo", "Brand Logo / Supporting Artwork")}
                         className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
+                      {fileMap["brandLogo"] && fileMap["brandLogo"].length > 0 && (
+                        <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                          ✓ {fileMap["brandLogo"][0].filename} attached
+                        </span>
+                      )}
                     </div>
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Check, ShieldCheck, Clock, FileCheck, ArrowRight, AlertCircle } from "lucide-react";
+import { processFileInput, type UploadedFileItem } from "@/lib/file-utils";
 
 type PackageType = "Starter" | "Pro" | "Premium";
 
@@ -59,6 +60,7 @@ export default function SCUMLPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fileMap, setFileMap] = useState<Record<string, UploadedFileItem[]>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -69,6 +71,28 @@ export default function SCUMLPage() {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, termsConsent: e.target.checked }));
+  };
+
+  const handleFileChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: string,
+    label: string
+  ) => {
+    try {
+      if (!e.target.files || e.target.files.length === 0) {
+        setFileMap((prev) => {
+          const next = { ...prev };
+          delete next[key];
+          return next;
+        });
+        return;
+      }
+      const processed = await processFileInput(e.target.files, label);
+      setFileMap((prev) => ({ ...prev, [key]: processed }));
+    } catch (err: any) {
+      alert(err.message || "File upload error");
+      e.target.value = "";
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -103,6 +127,7 @@ export default function SCUMLPage() {
     setIsSubmitting(true);
 
     try {
+      const allFiles = Object.values(fileMap).flat();
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -113,12 +138,16 @@ export default function SCUMLPage() {
           proposedBusinessName: formData.businessName,
           packageInterested: `SCUML - ${selectedPkg}`,
           source: "scuml-form",
+          files: allFiles,
           submittedDetails: {
             "Contact Phone": formData.phone,
             "Email Address": formData.email,
             "Registered Entity Name": formData.businessName,
             "Business / DNFI Activity": formData.businessActivity || "General Designated Non-Financial Business",
             "Referral Code": formData.referralCode || "N/A",
+            ...(allFiles.length > 0
+              ? { "Attached Documents": allFiles.map((f) => `${f.label || "File"}: ${f.filename}`).join(", ") }
+              : {}),
           },
         }),
       });
@@ -488,8 +517,18 @@ export default function SCUMLPage() {
                       <input
                         type="file"
                         multiple
+                        onChange={(e) => handleFileChange(e, "cacDocs", "CAC Certificate & Status Report")}
                         className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
+                      {fileMap["cacDocs"] && fileMap["cacDocs"].length > 0 && (
+                        <div className="mt-1.5 space-y-0.5">
+                          {fileMap["cacDocs"].map((f, idx) => (
+                            <span key={idx} className="text-[11px] text-[#166534] font-bold block">
+                              ✓ {f.filename} attached
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
@@ -497,8 +536,14 @@ export default function SCUMLPage() {
                       </label>
                       <input
                         type="file"
+                        onChange={(e) => handleFileChange(e, "idDoc", "NIN Slip / International Passport")}
                         className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
+                      {fileMap["idDoc"] && fileMap["idDoc"].length > 0 && (
+                        <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                          ✓ {fileMap["idDoc"][0].filename} attached
+                        </span>
+                      )}
                     </div>
                   </div>
 

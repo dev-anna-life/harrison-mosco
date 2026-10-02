@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Check, ShieldCheck, Clock, Building2, FileCheck, ArrowRight } from "lucide-react";
+import { processFileInput, type UploadedFileItem } from "@/lib/file-utils";
 
 type PackageType = "Starter" | "Pro" | "Premium";
 
@@ -59,6 +60,7 @@ export default function LimitedCompanyPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fileMap, setFileMap] = useState<Record<string, UploadedFileItem[]>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -69,6 +71,28 @@ export default function LimitedCompanyPage() {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, termsConsent: e.target.checked }));
+  };
+
+  const handleFileChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: string,
+    label: string
+  ) => {
+    try {
+      if (!e.target.files || e.target.files.length === 0) {
+        setFileMap((prev) => {
+          const next = { ...prev };
+          delete next[key];
+          return next;
+        });
+        return;
+      }
+      const processed = await processFileInput(e.target.files, label);
+      setFileMap((prev) => ({ ...prev, [key]: processed }));
+    } catch (err: any) {
+      alert(err.message || "File upload error");
+      e.target.value = "";
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -108,6 +132,7 @@ export default function LimitedCompanyPage() {
     setIsSubmitting(true);
 
     try {
+      const allFiles = Object.values(fileMap).flat();
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -118,6 +143,7 @@ export default function LimitedCompanyPage() {
           proposedBusinessName: formData.proposedName1,
           packageInterested: `Limited Company - ${selectedPkg}`,
           source: "company-form",
+          files: allFiles,
           submittedDetails: {
             "Contact Phone": formData.phone,
             "Email Address": formData.email,
@@ -127,6 +153,9 @@ export default function LimitedCompanyPage() {
             "Nature of Business": formData.natureOfBusiness,
             "Director / Shareholder Info": formData.directorDetails || "N/A",
             "Additional Director Notes": formData.additionalDirectorInfo || "N/A",
+            ...(allFiles.length > 0
+              ? { "Attached Documents": allFiles.map((f) => `${f.label || "File"}: ${f.filename}`).join(", ") }
+              : {}),
           },
         }),
       });
@@ -553,8 +582,18 @@ export default function LimitedCompanyPage() {
                       <input
                         type="file"
                         multiple
+                        onChange={(e) => handleFileChange(e, "directorDocs", "Director / Shareholder IDs (NIN/Passport)")}
                         className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
+                      {fileMap["directorDocs"] && fileMap["directorDocs"].length > 0 && (
+                        <div className="mt-1.5 space-y-0.5">
+                          {fileMap["directorDocs"].map((f, idx) => (
+                            <span key={idx} className="text-[11px] text-[#166534] font-bold block">
+                              ✓ {f.filename} attached
+                            </span>
+                          ))}
+                        </div>
+                      )}
                       <span className="text-[10px] text-[#526357] mt-1 block font-medium">
                         Upload NIN slips, Passports, or valid IDs for directors.
                       </span>

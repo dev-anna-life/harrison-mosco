@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { CheckCircle2, ShieldCheck, Clock, FileText, ArrowRight, Check } from "lucide-react";
+import { processFileInput, type UploadedFileItem } from "@/lib/file-utils";
 
 type PackageType = "Starter" | "Pro" | "Premium";
 
@@ -66,6 +67,7 @@ export default function BusinessNamePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [fileMap, setFileMap] = useState<Record<string, UploadedFileItem[]>>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -76,6 +78,28 @@ export default function BusinessNamePage() {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, termsConsent: e.target.checked }));
+  };
+
+  const handleFileChange = async (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key: string,
+    label: string
+  ) => {
+    try {
+      if (!e.target.files || e.target.files.length === 0) {
+        setFileMap((prev) => {
+          const next = { ...prev };
+          delete next[key];
+          return next;
+        });
+        return;
+      }
+      const processed = await processFileInput(e.target.files, label);
+      setFileMap((prev) => ({ ...prev, [key]: processed }));
+    } catch (err: any) {
+      alert(err.message || "File upload error");
+      e.target.value = "";
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -125,6 +149,7 @@ export default function BusinessNamePage() {
     setIsSubmitting(true);
 
     try {
+      const allFiles = Object.values(fileMap).flat();
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -135,6 +160,7 @@ export default function BusinessNamePage() {
           proposedBusinessName: formData.proposedName1,
           packageInterested: `Business Name - ${selectedPkg}`,
           source: "business-name-form",
+          files: allFiles,
           submittedDetails: {
             "Date of Birth": formData.dob,
             "Gender": formData.gender,
@@ -148,6 +174,9 @@ export default function BusinessNamePage() {
             "Proposed Business Name 1": formData.proposedName1,
             "Proposed Business Name 2": formData.proposedName2 || "N/A",
             "Additional Information": formData.additionalInfo || "N/A",
+            ...(allFiles.length > 0
+              ? { "Attached Documents": allFiles.map((f) => `${f.label || "File"}: ${f.filename}`).join(", ") }
+              : {}),
           },
         }),
       });
@@ -678,8 +707,14 @@ export default function BusinessNamePage() {
                       </label>
                       <input
                         type="file"
+                        onChange={(e) => handleFileChange(e, "meansOfId", "Means of Identification (NIN/Passport)")}
                         className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
+                      {fileMap["meansOfId"] && fileMap["meansOfId"].length > 0 && (
+                        <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                          ✓ {fileMap["meansOfId"][0].filename} attached
+                        </span>
+                      )}
                     </div>
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
@@ -687,8 +722,14 @@ export default function BusinessNamePage() {
                       </label>
                       <input
                         type="file"
+                        onChange={(e) => handleFileChange(e, "signature", "Signature Upload")}
                         className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
+                      {fileMap["signature"] && fileMap["signature"].length > 0 && (
+                        <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                          ✓ {fileMap["signature"][0].filename} attached
+                        </span>
+                      )}
                     </div>
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
@@ -696,8 +737,14 @@ export default function BusinessNamePage() {
                       </label>
                       <input
                         type="file"
+                        onChange={(e) => handleFileChange(e, "passport", "Passport Photograph")}
                         className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
+                      {fileMap["passport"] && fileMap["passport"].length > 0 && (
+                        <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                          ✓ {fileMap["passport"][0].filename} attached
+                        </span>
+                      )}
                     </div>
                   </div>
 

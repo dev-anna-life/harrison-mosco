@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
     });
 
     const submittedDetails = body.submittedDetails || undefined;
+    const files = Array.isArray(body.files) && body.files.length > 0 ? body.files : undefined;
 
     // Send notification email / alert
     try {
@@ -47,6 +48,7 @@ export async function POST(req: NextRequest) {
         source,
         additionalDetails,
         submittedDetails,
+        files,
       });
     } catch (mailErr) {
       console.warn("Could not dispatch email notification:", mailErr);
