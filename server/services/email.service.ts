@@ -35,7 +35,7 @@ export interface ClientReceiptPayload {
 }
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "eponixlimited@gmail.com";
-const WHATSAPP_DESK_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2348137092154";
+const WHATSAPP_DESK_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2348088194093";
 
 /**
  * Creates and returns the active Nodemailer transporter

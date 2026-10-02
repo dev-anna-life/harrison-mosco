@@ -189,7 +189,7 @@ export default function SingleServicesPage() {
 
                     <div className="pt-4 sm:pt-6 mt-4 sm:mt-6 border-t border-slate-800">
                       <a
-                        href={`https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20want%20to%20order%20the%20${encodeURIComponent(
+                        href={`https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20want%20to%20order%20the%20${encodeURIComponent(
                           svc.title
                         )}%20(${formatNGN(svc.price)}).`}
                         target="_blank"

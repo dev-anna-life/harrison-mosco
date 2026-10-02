@@ -18,7 +18,7 @@ export function LivePreviewer() {
       : `${displayName} Ltd`;
 
   const whatsappMessage = `Hello Harrison Mosco, I just previewed my company name "${displayLimitedName}" on your website. I want to check its CAC availability and start my registration.`;
-  const whatsappUrl = `https://wa.me/2348137092154?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/2348088194093?text=${encodeURIComponent(whatsappMessage)}`;
 
   const handleDownloadCertificatePDF = () => {
     printDigitalReceipt({

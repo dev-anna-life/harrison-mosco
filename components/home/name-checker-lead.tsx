@@ -55,7 +55,7 @@ export function NameCheckerLead() {
     }
   };
 
-  const whatsappReservationUrl = `https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20just%20ran%20a%20CAC%20name%20check%20for%20"${encodeURIComponent(
+  const whatsappReservationUrl = `https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20just%20ran%20a%20CAC%20name%20check%20for%20"${encodeURIComponent(
     proposedName
   )}"%20on%20your%20website.%20My%20name%20is%20${encodeURIComponent(
     fullName
@@ -97,7 +97,7 @@ export function NameCheckerLead() {
               required
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="WhatsApp Number (08123...)"
+              placeholder="WhatsApp Number (08088194093)"
               className="px-4 py-3 sm:py-4 bg-[#0a0e17] border border-slate-700 focus:border-[#FDC902] rounded-xl text-white text-sm font-medium focus:outline-none"
             />
             <input

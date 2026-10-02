@@ -287,7 +287,7 @@ export function printDigitalReceipt(order: {
 
         <div class="footer">
           <div>Corporate Affairs Commission Accredited Legal Desk</div>
-          <div>Direct Support: +234 813 709 2154 • support@harrisonmosco.ng</div>
+          <div>Direct Support: +234 808 819 4093 • support@harrisonmosco.ng</div>
         </div>
       </div>
       <script>

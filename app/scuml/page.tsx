@@ -324,7 +324,7 @@ export default function SCUMLPage() {
                 Banks require SCUML for Designated Non-Financial Businesses &amp; Professions (DNFIs). Let our team guide your account opening.
                 <div className="mt-3">
                   <a
-                    href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20SCUML%20registration%20support."
+                    href="https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20SCUML%20registration%20support."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-[#c6ff3f] font-bold hover:underline"
@@ -348,7 +348,7 @@ export default function SCUMLPage() {
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
-                      href={`https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20SCUML%20request%20for%20${encodeURIComponent(formData.businessName)}%20(${selectedPkg}%20tier).`}
+                      href={`https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20SCUML%20request%20for%20${encodeURIComponent(formData.businessName)}%20(${selectedPkg}%20tier).`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ep-btn ep-btn-primary"
@@ -428,7 +428,7 @@ export default function SCUMLPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        placeholder="08012345678"
+                        placeholder="08088194093"
                         className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>

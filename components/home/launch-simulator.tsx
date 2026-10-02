@@ -70,7 +70,7 @@ export function LaunchSimulator() {
 • Total Estimated: ${pricing.formattedTotal}
 Please confirm availability and let's get started.`;
 
-  const whatsappUrl = `https://wa.me/2348137092154?text=${encodeURIComponent(whatsappPayload)}`;
+  const whatsappUrl = `https://wa.me/2348088194093?text=${encodeURIComponent(whatsappPayload)}`;
 
   return (
     <section className="py-16 sm:py-32 bg-[#0a0e17] border-b border-slate-800 text-white relative overflow-hidden">
@@ -309,7 +309,7 @@ Please confirm availability and let's get started.`;
                     <input
                       type="tel"
                       required
-                      placeholder="WhatsApp (e.g. 08123...)"
+                      placeholder="WhatsApp (e.g. 08088194093)"
                       value={leadPhone}
                       onChange={(e) => setLeadPhone(e.target.value)}
                       className="px-4 py-3 bg-[#0a0e17] border border-slate-700 rounded-xl text-white placeholder:text-slate-500 text-xs sm:text-sm font-medium"

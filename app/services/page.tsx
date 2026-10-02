@@ -502,7 +502,7 @@ export default function ServicesPage() {
                   <span className="arrow">→</span>
                 </Link>
                 <a
-                  href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20business%20services."
+                  href="https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20business%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn !bg-white !text-[#0c1210] border border-[#c5d1bf] hover:!border-[#17382b] !py-3.5 !px-6 text-[13px] font-bold"

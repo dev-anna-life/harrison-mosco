@@ -315,7 +315,7 @@ export default function TaxPage() {
                 </p>
                 <div className="mt-3">
                   <a
-                    href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20NRS%20Tax%20ID%20or%20Rev360%20setup."
+                    href="https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20NRS%20Tax%20ID%20or%20Rev360%20setup."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-[#c9f95a] font-bold hover:underline"
@@ -339,7 +339,7 @@ export default function TaxPage() {
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
-                      href={`https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20Tax%20ID%20%2F%20Rev360%20setup%20request%20for%20${encodeURIComponent(formData.businessName)}%20(${selectedPkg}%20tier).`}
+                      href={`https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20Tax%20ID%20%2F%20Rev360%20setup%20request%20for%20${encodeURIComponent(formData.businessName)}%20(${selectedPkg}%20tier).`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ep-btn ep-btn-primary"
@@ -419,7 +419,7 @@ export default function TaxPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        placeholder="08012345678"
+                        placeholder="08088194093"
                         className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>

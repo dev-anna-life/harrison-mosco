@@ -88,7 +88,7 @@ export function ClientReceiptSummaryEmail({
         {/* WhatsApp Direct Support */}
         <div style={{ textAlign: "center", margin: "28px 0 12px 0" }}>
           <a
-            href={`https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20am%20following%20up%20on%20my%20order%20Ref%3A%20${orderReference}.`}
+            href={`https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20am%20following%20up%20on%20my%20order%20Ref%3A%20${orderReference}.`}
             style={{
               display: "inline-block",
               backgroundColor: "#0f172a",

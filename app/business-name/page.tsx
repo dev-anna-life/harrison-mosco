@@ -333,7 +333,7 @@ export default function BusinessNamePage() {
                 Need help deciding or have multiple partners? Reach out to our consultation desk on WhatsApp anytime.
                 <div className="mt-3">
                   <a
-                    href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20Business%20Name%20registration."
+                    href="https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20Business%20Name%20registration."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-[#c9f95a] font-bold hover:underline"
@@ -357,7 +357,7 @@ export default function BusinessNamePage() {
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
-                      href={`https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20Business%20Name%20application%20for%20${encodeURIComponent(formData.proposedName1)}%20(${selectedPkg}%20tier).`}
+                      href={`https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20Business%20Name%20application%20for%20${encodeURIComponent(formData.proposedName1)}%20(${selectedPkg}%20tier).`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ep-btn ep-btn-primary"

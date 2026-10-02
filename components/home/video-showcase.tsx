@@ -204,7 +204,7 @@ export function VideoShowcase() {
               </div>
 
               <a
-                href={`https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20want%20to%20order%20a%20commercial%20video%20like%20the%20${encodeURIComponent(
+                href={`https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20want%20to%20order%20a%20commercial%20video%20like%20the%20${encodeURIComponent(
                   selectedVideo.title
                 )}%20sample.`}
                 target="_blank"

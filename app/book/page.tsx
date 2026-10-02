@@ -20,13 +20,47 @@ export default function BookConsultationPage() {
   const [email, setEmail] = useState("");
   const [topic, setTopic] = useState("Limited Company Setup");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: name,
+          whatsappPhone: phone || "+2340000000000",
+          email: email || "client@eponixdigital.com",
+          proposedName: topic,
+          packageType: `Consultation (${topic})`,
+          shareCapitalMillions: 1,
+          totalEstimatedAmount: 25000,
+          source: "Book Consultation Page",
+          additionalDetails: {
+            topic,
+            submittedAt: new Date().toISOString(),
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit request");
+      }
+
+      setSubmitted(true);
+    } catch {
+      setErrorMessage("Network error occurred. Please try again or reach out on WhatsApp.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const whatsappUrl = `https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20would%20like%20to%20schedule%20a%20strategic%20consultation%20regarding%20${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20would%20like%20to%20schedule%20a%20strategic%20consultation%20regarding%20${encodeURIComponent(
     topic
   )}.%20My%20name%20is%20${encodeURIComponent(name || "Founder")}.`;
 
@@ -111,7 +145,7 @@ export default function BookConsultationPage() {
                           required
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="08137092154"
+                          placeholder="08088194093"
                           className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 bg-[#0a0e17] border border-slate-700 rounded-xl text-white font-medium focus:border-[#FDC902] focus:outline-none text-xs sm:text-sm"
                         />
                       </div>
@@ -148,13 +182,18 @@ export default function BookConsultationPage() {
                       </select>
                     </div>
 
+                    {errorMessage && (
+                      <p className="text-red-400 text-xs font-medium">{errorMessage}</p>
+                    )}
+
                     <div className="flex justify-center sm:justify-start pt-1">
                       <button
                         type="submit"
-                        className="w-auto inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl transition-all shadow-[0_6px_20px_rgba(253,201,2,0.2)] gap-2"
+                        disabled={isSubmitting}
+                        className="w-auto inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3.5 bg-[#FDC902] hover:bg-amber-400 disabled:opacity-50 text-slate-950 font-black text-xs sm:text-sm rounded-xl transition-all shadow-[0_6px_20px_rgba(253,201,2,0.2)] gap-2"
                       >
                         <Phone className="w-4 h-4 shrink-0" />
-                        <span>Request Strategy Session</span>
+                        <span>{isSubmitting ? "Submitting..." : "Request Strategy Session"}</span>
                       </button>
                     </div>
                   </form>
@@ -174,7 +213,7 @@ export default function BookConsultationPage() {
                     You do not need to wait for a scheduled call. Harrison Mosco responds directly to founder inquiries on WhatsApp during business hours.
                   </p>
                   <a
-                    href="https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20want%20to%20ask%20a%20direct%20question%20about%20my%20business%20registration."
+                    href="https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20want%20to%20ask%20a%20direct%20question%20about%20my%20business%20registration."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-full py-2.5 sm:py-3.5 text-center bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-[#FDC902]/60 text-white font-bold rounded-xl text-xs sm:text-sm transition-all"
@@ -187,7 +226,7 @@ export default function BookConsultationPage() {
               <div className="p-4 sm:p-5 bg-[#0a0e17] rounded-xl sm:rounded-2xl border border-slate-800 text-[11px] sm:text-xs text-slate-400 space-y-1.5">
                 <span className="text-white font-bold block text-xs sm:text-sm">Head Office Location:</span>
                 <p>Rockville Place, SARS Road, Port Harcourt, Rivers State, Nigeria.</p>
-                <p className="pt-1 text-slate-500">Phone: +234 813 709 2154 • Email: support@harrisonmosco.ng</p>
+                <p className="pt-1 text-slate-500">Phone: +234 808 819 4093 • Email: support@harrisonmosco.ng</p>
               </div>
             </Reveal>
           </div>

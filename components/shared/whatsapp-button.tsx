@@ -31,7 +31,7 @@ export function WhatsAppFloatingButton() {
           </p>
 
           <a
-            href="https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20am%20browsing%20your%20website%20and%20would%20like%20to%20inquire%20about%20registering%20my%20business."
+            href="https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20am%20browsing%20your%20website%20and%20would%20like%20to%20inquire%20about%20registering%20my%20business."
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-2.5 sm:py-3 bg-[#25D366] hover:bg-emerald-600 text-white font-black rounded-xl text-xs flex items-center justify-center gap-2 shadow-md transition-all"

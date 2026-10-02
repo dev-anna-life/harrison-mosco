@@ -31,7 +31,7 @@ export default function NafdacPage() {
               </p>
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 flex-wrap">
                 <a
-                  href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20NAFDAC%20registration%20support."
+                  href="https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20NAFDAC%20registration%20support."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ep-btn ep-btn-primary text-center justify-center"
@@ -117,7 +117,7 @@ export default function NafdacPage() {
             </p>
             <div className="pt-6 flex flex-wrap justify-center gap-4">
               <a
-                href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20NAFDAC%20registration%20support."
+                href="https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20NAFDAC%20registration%20support."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ep-btn ep-btn-primary"

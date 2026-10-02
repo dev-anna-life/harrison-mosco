@@ -284,7 +284,7 @@ export default function UltimatePage() {
                   </p>
                 </div>
                 <a
-                  href="https://wa.me/2347038753272?text=Hello%20Eponix%20Team%2C%20I%20am%20interested%20in%20the%20Ultimate%20Nigeria%20Business%20Launch%20Package.%20Please%20guide%20me."
+                  href="https://wa.me/2348088194093?text=Hello%20Eponix%20Team%2C%20I%20am%20interested%20in%20the%20Ultimate%20Nigeria%20Business%20Launch%20Package.%20Please%20guide%20me."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ep-btn ep-btn-primary w-full text-center justify-center text-[13px] py-2.5"
@@ -305,12 +305,12 @@ export default function UltimatePage() {
                   </p>
                 </div>
                 <a
-                  href="tel:+2347038753272"
+                  href="tel:+2348088194093"
                   className="w-full py-2.5 px-4 rounded-md bg-[#0c1210] hover:bg-[#17382b] transition-colors flex items-center justify-center gap-2 text-center"
                   style={{ backgroundColor: "#0c1210", color: "#ffffff" }}
                 >
                   <span className="font-mono text-[13px] font-bold tracking-wider uppercase" style={{ color: "#ffffff" }}>
-                    Call +234 703 875 3272
+                    Call +234 808 819 4093
                   </span>
                 </a>
               </div>
@@ -407,7 +407,7 @@ export default function UltimatePage() {
                         required
                         value={formData.phoneNumber}
                         onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                        placeholder="+234 800 000 0000"
+                        placeholder="08088194093"
                         className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>

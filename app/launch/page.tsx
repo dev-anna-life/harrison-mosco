@@ -707,13 +707,13 @@ export default function UltimateLaunchPage() {
                     You can also initiate your launch directly with our legal concierge desk on WhatsApp.
                   </p>
                   <a
-                    href="https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20am%20ready%20to%20start%20the%20Ultimate%20Nigeria%20Business%20Launch%20Package%20(NGN%201%2C000%2C000)."
+                    href="https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20am%20ready%20to%20start%20the%20Ultimate%20Nigeria%20Business%20Launch%20Package%20(NGN%201%2C000%2C000)."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-auto inline-flex items-center gap-2 text-xs font-black text-[#FDC902] hover:underline pt-1"
                   >
                     <Phone className="w-3.5 h-3.5" />
-                    Chat with Lead Specialist (+234 813 709 2154)
+                    Chat with Lead Specialist (+234 808 819 4093)
                   </a>
                 </div>
               </Reveal>
@@ -736,7 +736,7 @@ export default function UltimateLaunchPage() {
                       </p>
                       <div className="pt-3">
                         <a
-                          href={`https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20just%20submitted%20my%20application%20for%20the%20Ultimate%20Business%20Launch%20Package%20for%20${encodeURIComponent(formData.businessName || formData.fullName)}.`}
+                          href={`https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20just%20submitted%20my%20application%20for%20the%20Ultimate%20Business%20Launch%20Package%20for%20${encodeURIComponent(formData.businessName || formData.fullName)}.`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="w-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#FDC902] hover:bg-amber-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl gap-2 transition-all"
@@ -821,7 +821,7 @@ export default function UltimateLaunchPage() {
                               required
                               value={formData.phone}
                               onChange={handleInputChange}
-                              placeholder="813 709 2154"
+                              placeholder="808 819 4093"
                               className="w-full px-3.5 py-2.5 rounded-xl bg-[#0a0e17] border border-slate-700 text-white text-xs sm:text-sm placeholder-slate-500 focus:outline-none focus:border-[#FDC902]"
                             />
                           </div>

@@ -49,7 +49,7 @@ export default function ConsultPage() {
     }
   };
 
-  const whatsappUrl = `https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20would%20like%20to%20request%20a%20strategic%20consultation%20for%20my%20business${
+  const whatsappUrl = `https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20would%20like%20to%20request%20a%20strategic%20consultation%20for%20my%20business${
     formData.name ? `%20(Name%3A%20${encodeURIComponent(formData.name)})` : ""
   }.`;
 
@@ -262,7 +262,7 @@ export default function ConsultPage() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+234 812 345 6789"
+                        placeholder="08088194093"
                         className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>

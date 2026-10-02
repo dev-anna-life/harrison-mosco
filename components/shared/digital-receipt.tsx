@@ -46,7 +46,7 @@ export function DigitalReceipt({
     });
   };
 
-  const whatsappShareUrl = `https://wa.me/2348137092154?text=Hello%20Harrison%20Mosco%2C%20I%20downloaded%20my%20invoice%20specification%20Ref%3A%20${orderReference}%20for%20${encodeURIComponent(
+  const whatsappShareUrl = `https://wa.me/2348088194093?text=Hello%20Harrison%20Mosco%2C%20I%20downloaded%20my%20invoice%20specification%20Ref%3A%20${orderReference}%20for%20${encodeURIComponent(
     companyNamePreview
   )}%20(${formatNGN(totalPayable)}).%20Please%20confirm%20my%20order.`;
 

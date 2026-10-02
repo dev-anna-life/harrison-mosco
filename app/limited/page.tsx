@@ -334,7 +334,7 @@ export default function LimitedCompanyPage() {
                 Have complex shareholding or international directors? Speak directly with our incorporation consultants.
                 <div className="mt-3">
                   <a
-                    href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20Limited%20Company%20incorporation."
+                    href="https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20Limited%20Company%20incorporation."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-[#c9f95a] font-bold hover:underline"
@@ -358,7 +358,7 @@ export default function LimitedCompanyPage() {
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
-                      href={`https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20Limited%20Company%20application%20for%20${encodeURIComponent(formData.proposedName1)}%20LTD%20(${selectedPkg}%20tier).`}
+                      href={`https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20a%20Limited%20Company%20application%20for%20${encodeURIComponent(formData.proposedName1)}%20LTD%20(${selectedPkg}%20tier).`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ep-btn ep-btn-primary"
