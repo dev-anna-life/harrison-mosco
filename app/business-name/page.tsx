@@ -280,55 +280,55 @@ export default function BusinessNamePage() {
         </div>
       </section>
 
-      {/* 3. Form Section (Crisp Cream #E6EADF Canvas with High-Contrast Card) */}
-      <section id="form" className="py-20 lg:py-28 bg-[#E6EADF] text-[#0c1210] border-b border-[#ced7cd]">
+      {/* 3. Form Section (Dark Obsidian #07100c Palette) */}
+      <section id="form" className="py-20 lg:py-28 bg-[#07100c] text-[#f5f7ef] border-t border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column Overview */}
             <div className="lg:col-span-4 space-y-6">
               <div>
-                <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#c6ff3f] font-bold">
                   Submit Request
                 </div>
-                <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-[#0c1210] mt-1">
+                <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-white mt-1">
                   Complete your application.
                 </h2>
-                <p className="text-[15px] text-[#2b3a30] font-medium mt-3 leading-relaxed">
+                <p className="text-[15px] text-[#aab6ad] font-medium mt-3 leading-relaxed">
                   Choose your package, provide the requested information and submit securely. Our compliance specialists verify all details before official submission.
                 </p>
               </div>
 
-              <div className="p-6 bg-[#ffffff] border border-[#c5d1bf] rounded-2xl space-y-4 shadow-sm">
-                <div className="text-xs font-mono text-[#17382b] font-bold uppercase tracking-wider">
+              <div className="p-6 bg-[#0d1711] border border-[#26362c] rounded-2xl space-y-4 shadow-xl">
+                <div className="text-xs font-mono text-[#c6ff3f] font-bold uppercase tracking-wider">
                   What Happens Next
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c9f95a] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] flex items-center justify-center font-bold text-xs shrink-0">
                     1
                   </div>
-                  <p className="text-xs text-[#2b3a30] font-medium">
+                  <p className="text-xs text-[#aab6ad] font-medium">
                     Name availability search is performed immediately on the CAC portal.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c9f95a] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] flex items-center justify-center font-bold text-xs shrink-0">
                     2
                   </div>
-                  <p className="text-xs text-[#2b3a30] font-medium">
+                  <p className="text-xs text-[#aab6ad] font-medium">
                     Documentation &amp; status report preparation within 2 to 5 business days.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c9f95a] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] flex items-center justify-center font-bold text-xs shrink-0">
                     3
                   </div>
-                  <p className="text-xs text-[#2b3a30] font-medium">
+                  <p className="text-xs text-[#aab6ad] font-medium">
                     Official CAC certificate and digital TIN delivered directly to your email.
                   </p>
                 </div>
               </div>
 
-              <div className="p-6 bg-[#07130c] border border-[#1e3b2b] rounded-2xl text-xs text-[#c9d5cd] shadow-md">
+              <div className="p-6 bg-[#10261a] border border-[#33473a] rounded-2xl text-xs text-[#d4ddd6] shadow-md">
                 <strong className="text-white block mb-1 text-sm font-bold">Direct Assistance Desk</strong>
                 Need help deciding or have multiple partners? Reach out to our consultation desk on WhatsApp anytime.
                 <div className="mt-3">
@@ -336,7 +336,7 @@ export default function BusinessNamePage() {
                     href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20Business%20Name%20registration."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[#c9f95a] font-bold hover:underline"
+                    className="inline-flex items-center gap-1.5 text-[#c6ff3f] font-bold hover:underline"
                   >
                     Chat with Consultant &rarr;
                   </a>
@@ -347,13 +347,13 @@ export default function BusinessNamePage() {
             {/* Right Column Form */}
             <div className="lg:col-span-8">
               {submitted ? (
-                <div className="p-10 bg-[#ffffff] border-2 border-[#17382b] text-center space-y-5 rounded-2xl shadow-xl">
-                  <div className="w-16 h-16 bg-[#10261a] text-[#c9f95a] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                <div className="p-10 bg-[#0d1711] border border-[#26362c] text-center space-y-5 rounded-2xl shadow-xl">
+                  <div className="w-16 h-16 bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
                     ✓
                   </div>
-                  <h3 className="text-2xl font-bold text-[#0c1210]">Application Received</h3>
-                  <p className="text-[#2b3a30] max-w-md mx-auto text-sm leading-relaxed font-medium">
-                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.fullName}</strong>. Your Business Name registration request for <strong className="text-[#17382b] font-bold">{formData.proposedName1}</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued for verification.
+                  <h3 className="text-2xl font-bold text-white">Application Received</h3>
+                  <p className="text-[#aab6ad] max-w-md mx-auto text-sm leading-relaxed font-medium">
+                    Thank you, <strong className="text-white font-bold">{formData.fullName}</strong>. Your Business Name registration request for <strong className="text-[#c6ff3f] font-bold">{formData.proposedName1}</strong> under the <strong className="text-white font-bold">{selectedPkg}</strong> package has been queued for verification.
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
@@ -366,7 +366,7 @@ export default function BusinessNamePage() {
                     </a>
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="ep-btn ep-btn-dark"
+                      className="ep-btn ep-btn-light"
                     >
                       Submit Another Application
                     </button>
@@ -375,7 +375,7 @@ export default function BusinessNamePage() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="bg-[#ffffff] border border-[#c5d1bf] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl"
+                  className="bg-[#0d1711] border border-[#26362c] p-6 lg:p-10 space-y-6 shadow-2xl rounded-2xl text-[#f5f7ef]"
                 >
                   {errorMessage && (
                     <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
@@ -384,13 +384,13 @@ export default function BusinessNamePage() {
                   )}
 
                   <div className="space-y-2">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#c6ff3f] font-bold">
                       Selected Package
                     </label>
                     <select
                       value={selectedPkg}
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
-                      className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                     >
                       <option value="Starter">Starter: ₦35,000</option>
                       <option value="Pro">Pro: ₦55,000 (Recommended)</option>
@@ -400,7 +400,7 @@ export default function BusinessNamePage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Full Name *
                       </label>
                       <input
@@ -410,11 +410,11 @@ export default function BusinessNamePage() {
                         onChange={handleChange}
                         required
                         placeholder="John Doe"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Surname
                       </label>
                       <input
@@ -423,14 +423,14 @@ export default function BusinessNamePage() {
                         value={formData.surname}
                         onChange={handleChange}
                         placeholder="Doe"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Other Names
                       </label>
                       <input
@@ -439,11 +439,11 @@ export default function BusinessNamePage() {
                         value={formData.otherNames}
                         onChange={handleChange}
                         placeholder="Middle name"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Date of Birth
                       </label>
                       <input
@@ -451,18 +451,18 @@ export default function BusinessNamePage() {
                         name="dob"
                         value={formData.dob}
                         onChange={handleChange}
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Gender
                       </label>
                       <select
                         name="gender"
                         value={formData.gender}
                         onChange={handleChange}
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       >
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -472,7 +472,7 @@ export default function BusinessNamePage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Active Email *
                       </label>
                       <input
@@ -482,11 +482,11 @@ export default function BusinessNamePage() {
                         onChange={handleChange}
                         required
                         placeholder="john@example.com"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -496,14 +496,14 @@ export default function BusinessNamePage() {
                         onChange={handleChange}
                         required
                         placeholder="08012345678"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         State of Residence
                       </label>
                       <input
@@ -512,11 +512,11 @@ export default function BusinessNamePage() {
                         value={formData.state}
                         onChange={handleChange}
                         placeholder="Lagos, Abuja, Rivers..."
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         LGA
                       </label>
                       <input
@@ -525,11 +525,11 @@ export default function BusinessNamePage() {
                         value={formData.lga}
                         onChange={handleChange}
                         placeholder="Ikeja, Municipal..."
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         City / Town
                       </label>
                       <input
@@ -538,13 +538,13 @@ export default function BusinessNamePage() {
                         value={formData.city}
                         onChange={handleChange}
                         placeholder="Victoria Island"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                       Residential Address
                     </label>
                     <input
@@ -553,13 +553,13 @@ export default function BusinessNamePage() {
                       value={formData.residentialAddress}
                       onChange={handleChange}
                       placeholder="Street address, house number"
-                      className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         NIN / Identification Number
                       </label>
                       <input
@@ -568,11 +568,11 @@ export default function BusinessNamePage() {
                         value={formData.idNumber}
                         onChange={handleChange}
                         placeholder="11-digit NIN or Passport No"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Office / Business Address
                       </label>
                       <input
@@ -581,13 +581,13 @@ export default function BusinessNamePage() {
                         value={formData.officeAddress}
                         onChange={handleChange}
                         placeholder="Physical commercial address"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                       Nature of Business *
                     </label>
                     <textarea
@@ -596,13 +596,13 @@ export default function BusinessNamePage() {
                       onChange={handleChange}
                       required
                       placeholder="E.g., Information technology consulting, software development, fashion retail, general commerce..."
-                      className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none min-h-[90px] font-medium"
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none min-h-[90px] font-medium"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Proposed Business Name 1 *
                       </label>
                       <input
@@ -612,11 +612,11 @@ export default function BusinessNamePage() {
                         onChange={handleChange}
                         required
                         placeholder="First name preference"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Proposed Business Name 2 (Alternative)
                       </label>
                       <input
@@ -625,43 +625,43 @@ export default function BusinessNamePage() {
                         value={formData.proposedName2}
                         onChange={handleChange}
                         placeholder="Alternative name"
-                        className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Means of Identification
                       </label>
                       <input
                         type="file"
-                        className="w-full bg-[#f8faf6] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
+                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Signature Upload
                       </label>
                       <input
                         type="file"
-                        className="w-full bg-[#f8faf6] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
+                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                         Passport Photograph
                       </label>
                       <input
                         type="file"
-                        className="w-full bg-[#f8faf6] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
+                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
                       Additional Information (Optional)
                     </label>
                     <textarea
@@ -669,17 +669,17 @@ export default function BusinessNamePage() {
                       value={formData.additionalInfo}
                       onChange={handleChange}
                       placeholder="Any specific requests or requirements..."
-                      className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] p-3 text-sm rounded-lg outline-none min-h-[70px] font-medium"
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none min-h-[70px] font-medium"
                     />
                   </div>
 
                   <div className="pt-2">
-                    <label className="flex items-start gap-3 cursor-pointer text-xs text-[#2b3a30] font-medium">
+                    <label className="flex items-start gap-3 cursor-pointer text-xs text-[#aab6ad] font-medium">
                       <input
                         type="checkbox"
                         checked={formData.termsConsent}
                         onChange={handleCheckboxChange}
-                        className="mt-0.5 accent-[#17382b]"
+                        className="mt-0.5 accent-[#c6ff3f]"
                       />
                       <span>
                         I have read and agree to the Terms of Service and Privacy Policy. I confirm that the details provided are accurate and authorize Eponix Digital to conduct official verification.
@@ -687,7 +687,7 @@ export default function BusinessNamePage() {
                     </label>
                   </div>
 
-                  <div className="pt-4 border-t border-[#c5d1bf]">
+                  <div className="pt-4 border-t border-[#26362c]">
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -695,7 +695,7 @@ export default function BusinessNamePage() {
                     >
                       {isSubmitting ? "Processing Application..." : `Submit Application (${packages[selectedPkg].price})`}
                     </button>
-                    <p className="text-center text-xs text-[#526357] font-medium mt-3">
+                    <p className="text-center text-xs text-[#aab6ad] font-medium mt-3">
                       Secure submission. Official digital certificates issued upon regulatory approval.
                     </p>
                   </div>

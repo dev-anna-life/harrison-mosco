@@ -281,55 +281,55 @@ export default function LimitedCompanyPage() {
         </div>
       </section>
 
-      {/* 3. Form Section (Crisp Cream #E6EADF Canvas with High-Contrast Card) */}
-      <section id="form" className="py-20 lg:py-28 bg-[#E6EADF] text-[#0c1210] border-b border-[#ced7cd]">
+      {/* 3. Form Section (Dark Obsidian #07100c Palette) */}
+      <section id="form" className="py-20 lg:py-28 bg-[#07100c] text-[#f5f7ef] border-t border-[rgba(198,255,63,0.14)]">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column Overview */}
             <div className="lg:col-span-4 space-y-6">
               <div>
-                <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#c6ff3f] font-bold">
                   Submit Request
                 </div>
-                <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-[#0c1210] mt-1">
+                <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-white mt-1">
                   Complete your application.
                 </h2>
-                <p className="text-[15px] text-[#2b3a30] font-medium mt-3 leading-relaxed">
+                <p className="text-[15px] text-[#aab6ad] font-medium mt-3 leading-relaxed">
                   Choose your package, provide the requested information and submit securely. Our corporate legal team prepares the official MemArt, status report, and regulatory documents.
                 </p>
               </div>
 
-              <div className="p-6 bg-[#ffffff] border border-[#c5d1bf] rounded-2xl space-y-4 shadow-sm">
-                <div className="text-xs font-mono text-[#17382b] font-bold uppercase tracking-wider">
+              <div className="p-6 bg-[#0d1711] border border-[#26362c] rounded-2xl space-y-4 shadow-xl">
+                <div className="text-xs font-mono text-[#c6ff3f] font-bold uppercase tracking-wider">
                   Incorporation Roadmap
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c9f95a] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] flex items-center justify-center font-bold text-xs shrink-0">
                     1
                   </div>
-                  <p className="text-xs text-[#2b3a30] font-medium">
+                  <p className="text-xs text-[#aab6ad] font-medium">
                     CAC portal name availability reservation (1 to 2 days).
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c9f95a] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] flex items-center justify-center font-bold text-xs shrink-0">
                     2
                   </div>
-                  <p className="text-xs text-[#2b3a30] font-medium">
+                  <p className="text-xs text-[#aab6ad] font-medium">
                     FBR stamping, share distribution &amp; MemArt verification.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c9f95a] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] flex items-center justify-center font-bold text-xs shrink-0">
                     3
                   </div>
-                  <p className="text-xs text-[#2b3a30] font-medium">
+                  <p className="text-xs text-[#aab6ad] font-medium">
                     Issuance of Certificate of Incorporation, Status Report &amp; TIN.
                   </p>
                 </div>
               </div>
 
-              <div className="p-6 bg-[#07130c] border border-[#1e3b2b] rounded-2xl text-xs text-[#c9d5cd] shadow-md">
+              <div className="p-6 bg-[#10261a] border border-[#33473a] rounded-2xl text-xs text-[#d4ddd6] shadow-md">
                 <strong className="text-white block mb-1 text-sm font-bold">Corporate Structuring Desk</strong>
                 Have complex shareholding or international directors? Speak directly with our incorporation consultants.
                 <div className="mt-3">
@@ -337,7 +337,7 @@ export default function LimitedCompanyPage() {
                     href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20Limited%20Company%20incorporation."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[#c9f95a] font-bold hover:underline"
+                    className="inline-flex items-center gap-1.5 text-[#c6ff3f] font-bold hover:underline"
                   >
                     Chat with Consultant &rarr;
                   </a>
@@ -348,13 +348,13 @@ export default function LimitedCompanyPage() {
             {/* Right Column Form */}
             <div className="lg:col-span-8">
               {submitted ? (
-                <div className="p-10 bg-[#ffffff] border-2 border-[#17382b] text-center space-y-5 rounded-2xl shadow-xl">
-                  <div className="w-16 h-16 bg-[#10261a] text-[#c9f95a] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                <div className="p-10 bg-[#07100c] border-2 border-[#c6ff3f] text-center space-y-5 rounded-2xl shadow-2xl">
+                  <div className="w-16 h-16 bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
                     ✓
                   </div>
-                  <h3 className="text-2xl font-bold text-[#0c1210]">Application Received</h3>
-                  <p className="text-[#2b3a30] max-w-md mx-auto text-sm leading-relaxed font-medium">
-                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.fullName}</strong>. Your Limited Company incorporation request for <strong className="text-[#17382b] font-bold">{formData.proposedName1} LTD</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued for verification.
+                  <h3 className="text-2xl font-bold text-white">Application Received</h3>
+                  <p className="text-[#aab6ad] max-w-md mx-auto text-sm leading-relaxed font-medium">
+                    Thank you, <strong className="text-white font-bold">{formData.fullName}</strong>. Your Limited Company incorporation request for <strong className="text-[#c6ff3f] font-bold">{formData.proposedName1} LTD</strong> under the <strong className="text-white font-bold">{selectedPkg}</strong> package has been queued for verification.
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
@@ -376,22 +376,22 @@ export default function LimitedCompanyPage() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="bg-[#ffffff] border border-[#c5d1bf] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
+                  className="bg-[#0d1711] border border-[#26362c] p-6 lg:p-10 space-y-6 shadow-2xl rounded-2xl text-[#f5f7ef]"
                 >
                   {errorMessage && (
-                    <div className="p-4 bg-red-50 border border-red-300 text-red-800 text-xs rounded-lg">
+                    <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
                       {errorMessage}
                     </div>
                   )}
 
                   <div className="space-y-2">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#c6ff3f] font-bold">
                       Selected Package
                     </label>
                     <select
                       value={selectedPkg}
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
-                      className="w-full bg-[#f8faf6] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] outline-none rounded-lg font-medium"
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none rounded-lg font-medium"
                     >
                       <option value="Starter">Starter: ₦60,000</option>
                       <option value="Pro">Pro: ₦100,000 (Recommended)</option>
@@ -401,7 +401,7 @@ export default function LimitedCompanyPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                         Proposed Company Name 1 *
                       </label>
                       <input
@@ -411,11 +411,11 @@ export default function LimitedCompanyPage() {
                         onChange={handleChange}
                         required
                         placeholder="E.g., Nexus Zenith Synergy Ltd"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none rounded-lg font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                         Proposed Company Name 2 (Alternative)
                       </label>
                       <input
@@ -424,14 +424,14 @@ export default function LimitedCompanyPage() {
                         value={formData.proposedName2}
                         onChange={handleChange}
                         placeholder="E.g., Nexus Zenith Global Ltd"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none rounded-lg font-medium"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                         Authorized Share Capital (₦)
                       </label>
                       <input
@@ -440,14 +440,14 @@ export default function LimitedCompanyPage() {
                         value={formData.shareCapital}
                         onChange={handleChange}
                         placeholder="1,000,000 (Standard)"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none rounded-lg font-medium"
                       />
                       <span className="text-[10px] text-[#7f8d84] mt-1 block">
                         Standard private limited company starts at ₦1,000,000 minimum share capital.
                       </span>
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                         Nature of Business *
                       </label>
                       <input
@@ -457,14 +457,14 @@ export default function LimitedCompanyPage() {
                         onChange={handleChange}
                         required
                         placeholder="E.g., Tech consulting, general commerce, import/export..."
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none rounded-lg font-medium"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                         Primary Contact Name *
                       </label>
                       <input
@@ -474,11 +474,11 @@ export default function LimitedCompanyPage() {
                         onChange={handleChange}
                         required
                         placeholder="Full legal name"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none rounded-lg font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                         Active Email *
                       </label>
                       <input
@@ -488,11 +488,11 @@ export default function LimitedCompanyPage() {
                         onChange={handleChange}
                         required
                         placeholder="corporate@example.com"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none rounded-lg font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                         Phone Number *
                       </label>
                       <input
@@ -502,13 +502,13 @@ export default function LimitedCompanyPage() {
                         onChange={handleChange}
                         required
                         placeholder="08012345678"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none rounded-lg font-medium"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                       Director / Shareholder Details
                     </label>
                     <textarea
@@ -516,26 +516,26 @@ export default function LimitedCompanyPage() {
                       value={formData.directorDetails}
                       onChange={handleChange}
                       placeholder="List each director's Full Name, Residential Address, Phone, Email, and Share Percentage (e.g. Director 1: 60%, Director 2: 40%)..."
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none min-h-[100px]"
+                      className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none min-h-[100px] rounded-lg font-medium"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                         Director / Shareholder Documents
                       </label>
                       <input
                         type="file"
                         multiple
-                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs"
+                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded"
                       />
                       <span className="text-[10px] text-[#7f8d84] mt-1 block">
                         Upload NIN slips, Passports, or valid IDs for directors.
                       </span>
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] mb-2 font-bold">
                         Additional Information
                       </label>
                       <input
@@ -544,7 +544,7 @@ export default function LimitedCompanyPage() {
                         value={formData.additionalDirectorInfo}
                         onChange={handleChange}
                         placeholder="Company secretary preference, special clauses, etc."
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none"
+                        className="w-full bg-[#07100c] text-white border border-[#26362c] p-3 text-sm focus:border-[#c6ff3f] outline-none rounded-lg font-medium"
                       />
                     </div>
                   </div>
@@ -567,7 +567,7 @@ export default function LimitedCompanyPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="ep-btn ep-btn-primary w-full py-4 text-sm font-bold uppercase tracking-wider"
+                      className="ep-btn ep-btn-primary w-full py-4 text-sm font-bold uppercase tracking-wider rounded-lg"
                     >
                       {isSubmitting ? "Processing Application..." : `Submit Application (${packages[selectedPkg].price})`}
                     </button>
