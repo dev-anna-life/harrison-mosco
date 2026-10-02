@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Suspense } from "react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ScrollObserver } from "@/components/motion/ScrollObserver";
+import { PageTransitionLoader } from "@/components/motion/PageTransitionLoader";
 
 export const metadata: Metadata = {
   title: "Eponix Digital | Build, Brand and Grow Businesses",
@@ -36,6 +38,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Suspense fallback={null}>
+          <PageTransitionLoader />
+        </Suspense>
         <ScrollObserver />
         <Header />
         <main id="top">{children}</main>

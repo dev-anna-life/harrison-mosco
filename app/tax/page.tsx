@@ -271,61 +271,71 @@ export default function TaxPage() {
         </div>
       </section>
 
-      {/* 3. Requirements & Intake Form Section (Dark Obsidian #07100c Palette) */}
-      <section id="form" className="py-20 lg:py-28 bg-[#07100c] text-[#f5f7ef] border-t border-[rgba(198,255,63,0.14)]">
+      {/* 3. Requirements & Intake Form Section (Crisp Pure White #ffffff Palette) */}
+      <section id="form" className="py-20 lg:py-28 bg-[#ffffff] text-[#0c1210] border-t border-[#dce3da]">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column Overview */}
             <div className="lg:col-span-4 space-y-6">
               <div>
-                <div className="font-mono text-[11px] uppercase tracking-wider text-[#c6ff3f] font-bold">
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">
                   Submit Request
                 </div>
-                <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-white mt-1">
+                <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-[#0c1210] mt-1">
                   Complete your application.
                 </h2>
-                <p className="text-[15px] text-[#aab6ad] font-medium mt-3 leading-relaxed">
+                <p className="text-[15px] text-[#2b3a30] font-medium mt-3 leading-relaxed">
                   Choose your package, provide business details and upload the required verification documents.
                 </p>
               </div>
 
               <div className="space-y-4">
-                <div className="p-5 bg-[#0d1711] border border-[#26362c] rounded-2xl shadow-sm">
-                  <div className="text-xs font-mono text-[#c6ff3f] font-bold uppercase mb-1">01 / Business Details</div>
-                  <p className="text-xs text-[#aab6ad] font-medium">Registered business or company name and CAC registration type.</p>
+                <div className="p-5 bg-[#f4f7f1] border border-[#c5d1bf] rounded-2xl shadow-sm">
+                  <div className="text-xs font-mono text-[#17382b] font-bold uppercase mb-1">01 / Business Details</div>
+                  <p className="text-xs text-[#2b3a30] font-medium">Registered business or company name and CAC registration type.</p>
                 </div>
-                <div className="p-5 bg-[#0d1711] border border-[#26362c] rounded-2xl shadow-sm">
-                  <div className="text-xs font-mono text-[#c6ff3f] font-bold uppercase mb-1">02 / Utility Bill</div>
-                  <p className="text-xs text-[#aab6ad] font-medium">Required for Rev360 setup. Upload a clear current utility bill.</p>
+                <div className="p-5 bg-[#f4f7f1] border border-[#c5d1bf] rounded-2xl shadow-sm">
+                  <div className="text-xs font-mono text-[#17382b] font-bold uppercase mb-1">02 / Utility Bill</div>
+                  <p className="text-xs text-[#2b3a30] font-medium">Required for Rev360 setup. Upload a clear current utility bill.</p>
                 </div>
-                <div className="p-5 bg-[#0d1711] border border-[#26362c] rounded-2xl shadow-sm">
-                  <div className="text-xs font-mono text-[#c6ff3f] font-bold uppercase mb-1">03 / Means of ID</div>
-                  <p className="text-xs text-[#aab6ad] font-medium">Valid NIN document, passport, driver&apos;s licence or voter card.</p>
+                <div className="p-5 bg-[#f4f7f1] border border-[#c5d1bf] rounded-2xl shadow-sm">
+                  <div className="text-xs font-mono text-[#17382b] font-bold uppercase mb-1">03 / Means of ID</div>
+                  <p className="text-xs text-[#2b3a30] font-medium">Valid NIN document, passport, driver&apos;s licence or voter card.</p>
                 </div>
-                <div className="p-5 bg-[#0d1711] border border-[#26362c] rounded-2xl shadow-sm">
-                  <div className="text-xs font-mono text-[#c6ff3f] font-bold uppercase mb-1">04 / Status Report</div>
-                  <p className="text-xs text-[#aab6ad] font-medium">Required where applicable for registered companies undergoing Rev360 setup.</p>
+                <div className="p-5 bg-[#f4f7f1] border border-[#c5d1bf] rounded-2xl shadow-sm">
+                  <div className="text-xs font-mono text-[#17382b] font-bold uppercase mb-1">04 / Status Report</div>
+                  <p className="text-xs text-[#2b3a30] font-medium">Required where applicable for registered companies undergoing Rev360 setup.</p>
                 </div>
               </div>
 
-              <div className="p-6 bg-[#10261a] border border-[#33473a] rounded-2xl text-xs text-[#d4ddd6] shadow-md">
+              <div className="p-6 bg-[#07130c] border border-[#1e3b2b] rounded-2xl text-xs text-[#c9d5cd] shadow-md">
                 <strong className="text-white block mb-1 text-sm font-bold">NRS Tax ID &amp; Rev360 Processing Notice</strong>
-                <p className="text-xs text-[#d4ddd6] leading-relaxed">
+                <p className="text-xs text-[#c9d5cd] leading-relaxed">
                   Processing is subject to technical/network availability, document readiness and regulatory response. Approved tax documents and setup confirmations are delivered electronically as original digital files.
                 </p>
+                <div className="mt-3">
+                  <a
+                    href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20NRS%20Tax%20ID%20or%20Rev360%20setup."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[#c9f95a] font-bold hover:underline"
+                  >
+                    Chat with Tax Specialist &rarr;
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Right Column Form */}
             <div className="lg:col-span-8">
               {submitted ? (
-                <div className="p-10 bg-[#0d1711] border border-[#26362c] text-center space-y-5 rounded-2xl shadow-xl">
-                  <div className="w-16 h-16 bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                <div className="p-10 bg-[#ffffff] border-2 border-[#17382b] text-center space-y-5 rounded-2xl shadow-xl">
+                  <div className="w-16 h-16 bg-[#10261a] text-[#c9f95a] border border-[#2b593f] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
                     ✓
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Tax Request Received</h3>
-                  <p className="text-[#aab6ad] max-w-md mx-auto text-sm leading-relaxed font-medium">
-                    Thank you, <strong className="text-white font-bold">{formData.fullName}</strong>. Your Tax ID / Rev360 setup request for <strong className="text-[#c6ff3f] font-bold">{formData.businessName}</strong> under the <strong className="text-white font-bold">{selectedPkg}</strong> package has been queued.
+                  <h3 className="text-2xl font-bold text-[#0c1210]">Tax Request Received</h3>
+                  <p className="text-[#2b3a30] max-w-md mx-auto text-sm leading-relaxed font-medium">
+                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.fullName}</strong>. Your Tax ID / Rev360 setup request for <strong className="text-[#17382b] font-bold">{formData.businessName}</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued.
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
@@ -338,7 +348,7 @@ export default function TaxPage() {
                     </a>
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="ep-btn ep-btn-light"
+                      className="ep-btn ep-btn-dark"
                     >
                       Submit Another Request
                     </button>
@@ -347,7 +357,7 @@ export default function TaxPage() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="bg-[#0d1711] border border-[#26362c] p-6 lg:p-10 space-y-6 shadow-2xl rounded-2xl text-[#f5f7ef]"
+                  className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
                     <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
@@ -356,13 +366,13 @@ export default function TaxPage() {
                   )}
 
                   <div className="space-y-2">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#c6ff3f] font-bold">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold">
                       Selected Tax Package
                     </label>
                     <select
                       value={selectedPkg}
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-semibold transition-all"
                     >
                       <option value="Starter">Starter: ₦5,000 (Tax ID Only)</option>
                       <option value="Pro">Pro: ₦10,000 (Rev360 Filing Account Only)</option>
@@ -372,7 +382,7 @@ export default function TaxPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Full Name *
                       </label>
                       <input
@@ -382,11 +392,11 @@ export default function TaxPage() {
                         onChange={handleChange}
                         required
                         placeholder="John Doe"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Email Address *
                       </label>
                       <input
@@ -396,11 +406,11 @@ export default function TaxPage() {
                         onChange={handleChange}
                         required
                         placeholder="john@example.com"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -410,14 +420,14 @@ export default function TaxPage() {
                         onChange={handleChange}
                         required
                         placeholder="08012345678"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Business / Company Name *
                       </label>
                       <input
@@ -427,18 +437,18 @@ export default function TaxPage() {
                         onChange={handleChange}
                         required
                         placeholder="Exact CAC registered name"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Registration Type
                       </label>
                       <select
                         name="registrationType"
                         value={formData.registrationType}
                         onChange={handleChange}
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-semibold transition-all"
                       >
                         <option value="Business Name">Business Name (Sole Proprietor / Enterprise)</option>
                         <option value="Limited Company">Limited Company (LTD / PLC)</option>
@@ -448,7 +458,7 @@ export default function TaxPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                       Additional Details / Existing Tax Info (Optional)
                     </label>
                     <textarea
@@ -456,42 +466,42 @@ export default function TaxPage() {
                       value={formData.additionalDetails}
                       onChange={handleChange}
                       placeholder="If you already have an existing Tax ID/TIN or specific state tax office preferences..."
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none min-h-[80px] font-medium"
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg min-h-[80px] font-medium transition-all placeholder:text-[#88968d]"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Utility Bill (For Rev360)
                       </label>
                       <input
                         type="file"
-                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
+                        className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-white file:text-xs file:rounded-md file:font-semibold font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Valid Means of ID
                       </label>
                       <input
                         type="file"
-                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
+                        className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-white file:text-xs file:rounded-md file:font-semibold font-medium"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Status Report (If LTD)
                       </label>
                       <input
                         type="file"
-                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
+                        className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-white file:text-xs file:rounded-md file:font-semibold font-medium"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                       Referral Code (Optional)
                     </label>
                     <input
@@ -500,17 +510,17 @@ export default function TaxPage() {
                       value={formData.referralCode}
                       onChange={handleChange}
                       placeholder="Enter code if referred"
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                     />
                   </div>
 
                   <div className="pt-2">
-                    <label className="flex items-start gap-3 cursor-pointer text-xs text-[#aab6ad] font-medium">
+                    <label className="flex items-start gap-3 cursor-pointer text-xs text-[#2b3a30] font-medium">
                       <input
                         type="checkbox"
                         checked={formData.termsConsent}
                         onChange={handleCheckboxChange}
-                        className="mt-0.5 accent-[#c6ff3f]"
+                        className="mt-0.5 accent-[#17382b]"
                       />
                       <span>
                         I have read and agree to the Terms of Service and Privacy Policy. I confirm that all tax documents provided are genuine.
@@ -518,7 +528,7 @@ export default function TaxPage() {
                     </label>
                   </div>
 
-                  <div className="pt-4 border-t border-[#26362c]">
+                  <div className="pt-4 border-t border-[#ced7cd]">
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -526,8 +536,7 @@ export default function TaxPage() {
                     >
                       {isSubmitting ? "Processing Request..." : `Submit Tax Request (${packages[selectedPkg].price})`}
                     </button>
-                    <p className="text-center text-xs text-[#aab6ad] font-medium mt-3">
-                      Secure encrypted submission. Approved tax documents delivered electronically.
+                    <p className="text-center text-xs text-[#687c70] font-medium mt-3">
                     </p>
                   </div>
                 </form>

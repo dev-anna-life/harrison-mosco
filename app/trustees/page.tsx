@@ -283,55 +283,55 @@ export default function TrusteesPage() {
         </div>
       </section>
 
-      {/* 3. Form Section (Dark Obsidian #07100c Palette) */}
-      <section id="form" className="py-20 lg:py-28 bg-[#07100c] text-[#f5f7ef] border-t border-[rgba(198,255,63,0.14)]">
+      {/* 3. Form Section (Crisp Pure White #ffffff Palette) */}
+      <section id="form" className="py-20 lg:py-28 bg-[#ffffff] text-[#0c1210] border-t border-[#dce3da]">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Column Overview */}
             <div className="lg:col-span-4 space-y-6">
               <div>
-                <div className="font-mono text-[11px] uppercase tracking-wider text-[#c6ff3f] font-bold">
+                <div className="font-mono text-[11px] uppercase tracking-wider text-[#17382b] font-bold">
                   Submit Request
                 </div>
-                <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-white mt-1">
+                <h2 className="text-[32px] sm:text-[42px] font-bold tracking-tight text-[#0c1210] mt-1">
                   Complete your application.
                 </h2>
-                <p className="text-[15px] text-[#aab6ad] font-medium mt-3 leading-relaxed">
+                <p className="text-[15px] text-[#2b3a30] font-medium mt-3 leading-relaxed">
                   Choose your package, provide the requested information and submit securely. Our legal team coordinates constitution drafting, newspaper publication, and CAC commission approvals.
                 </p>
               </div>
 
-              <div className="p-6 bg-[#0d1711] border border-[#26362c] rounded-2xl space-y-4 shadow-xl">
-                <div className="text-xs font-mono text-[#c6ff3f] font-bold uppercase tracking-wider">
+              <div className="p-6 bg-[#f4f7f1] border border-[#c5d1bf] rounded-2xl space-y-4 shadow-sm">
+                <div className="text-xs font-mono text-[#17382b] font-bold uppercase tracking-wider">
                   NGO Regulatory Milestones
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#17382b] text-[#ffffff] flex items-center justify-center font-bold text-xs shrink-0">
                     1
                   </div>
-                  <p className="text-xs text-[#aab6ad] font-medium">
+                  <p className="text-xs text-[#2b3a30] font-medium">
                     Trustee availability search and name reservation on CAC portal.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#17382b] text-[#ffffff] flex items-center justify-center font-bold text-xs shrink-0">
                     2
                   </div>
-                  <p className="text-xs text-[#aab6ad] font-medium">
+                  <p className="text-xs text-[#2b3a30] font-medium">
                     Constitution drafting &amp; mandatory national newspaper 28-day public notice.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#17382b] text-[#ffffff] flex items-center justify-center font-bold text-xs shrink-0">
                     3
                   </div>
-                  <p className="text-xs text-[#aab6ad] font-medium">
+                  <p className="text-xs text-[#2b3a30] font-medium">
                     Issuance of Certificate of Incorporation, Status Report &amp; SCUML support.
                   </p>
                 </div>
               </div>
 
-              <div className="p-6 bg-[#10261a] border border-[#33473a] rounded-2xl text-xs text-[#d4ddd6] shadow-md">
+              <div className="p-6 bg-[#07130c] border border-[#1e3b2b] rounded-2xl text-xs text-[#c9d5cd] shadow-md">
                 <strong className="text-white block mb-1 text-sm font-bold">NGO Legal Desk</strong>
                 Registering a church, foundation, association, club, or charity? Chat directly with our accredited trustees counsel.
                 <div className="mt-3">
@@ -339,7 +339,7 @@ export default function TrusteesPage() {
                     href="https://wa.me/2348137092154?text=Hello%20Eponix%20Digital%2C%20I%20have%20an%20inquiry%20regarding%20NGO%20%2F%20Incorporated%20Trustees%20registration."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[#c6ff3f] font-bold hover:underline"
+                    className="inline-flex items-center gap-1.5 text-[#c9f95a] font-bold hover:underline"
                   >
                     Chat with Consultant &rarr;
                   </a>
@@ -350,13 +350,13 @@ export default function TrusteesPage() {
             {/* Right Column Form */}
             <div className="lg:col-span-8">
               {submitted ? (
-                <div className="p-10 bg-[#0d1711] border border-[#26362c] text-center space-y-5 rounded-2xl shadow-xl">
-                  <div className="w-16 h-16 bg-[#10261a] text-[#c6ff3f] border border-[#2b593f] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                <div className="p-10 bg-[#ffffff] border-2 border-[#17382b] text-center space-y-5 rounded-2xl shadow-xl">
+                  <div className="w-16 h-16 bg-[#10261a] text-[#c9f95a] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
                     ✓
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Application Received</h3>
-                  <p className="text-[#aab6ad] max-w-md mx-auto text-sm leading-relaxed font-medium">
-                    Thank you, <strong className="text-white font-bold">{formData.fullName}</strong>. Your NGO / Incorporated Trustees registration request for <strong className="text-[#c6ff3f] font-bold">{formData.proposedName1 || formData.organisationName}</strong> under the <strong className="text-white font-bold">{selectedPkg}</strong> package has been queued for verification.
+                  <h3 className="text-2xl font-bold text-[#0c1210]">Application Received</h3>
+                  <p className="text-[#2b3a30] max-w-md mx-auto text-sm leading-relaxed font-medium">
+                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.fullName}</strong>. Your NGO / Incorporated Trustees registration request for <strong className="text-[#17382b] font-bold">{formData.proposedName1 || formData.organisationName}</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued for verification.
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
@@ -369,7 +369,7 @@ export default function TrusteesPage() {
                     </a>
                     <button
                       onClick={() => setSubmitted(false)}
-                      className="ep-btn ep-btn-light"
+                      className="ep-btn ep-btn-dark"
                     >
                       Submit Another Application
                     </button>
@@ -378,7 +378,7 @@ export default function TrusteesPage() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="bg-[#0d1711] border border-[#26362c] p-6 lg:p-10 space-y-6 shadow-2xl rounded-2xl text-[#f5f7ef]"
+                  className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
                     <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
@@ -387,13 +387,13 @@ export default function TrusteesPage() {
                   )}
 
                   <div className="space-y-2">
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#c6ff3f] font-bold">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold">
                       Selected Package
                     </label>
                     <select
                       value={selectedPkg}
                       onChange={(e) => setSelectedPkg(e.target.value as PackageType)}
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-semibold transition-all"
                     >
                       <option value="Starter">Starter: ₦130,000</option>
                       <option value="Pro">Pro: ₦180,000 (Recommended: Includes SCUML)</option>
@@ -403,7 +403,7 @@ export default function TrusteesPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Primary Contact Name *
                       </label>
                       <input
@@ -413,11 +413,11 @@ export default function TrusteesPage() {
                         onChange={handleChange}
                         required
                         placeholder="Representative name"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Active Email *
                       </label>
                       <input
@@ -427,11 +427,11 @@ export default function TrusteesPage() {
                         onChange={handleChange}
                         required
                         placeholder="contact@organisation.org"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -441,14 +441,14 @@ export default function TrusteesPage() {
                         onChange={handleChange}
                         required
                         placeholder="08012345678"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Proposed Organisation Name 1 *
                       </label>
                       <input
@@ -458,11 +458,11 @@ export default function TrusteesPage() {
                         onChange={handleChange}
                         required
                         placeholder="E.g., Hope Horizon Initiative"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Proposed Organisation Name 2 (Alternative)
                       </label>
                       <input
@@ -471,13 +471,13 @@ export default function TrusteesPage() {
                         value={formData.proposedName2}
                         onChange={handleChange}
                         placeholder="E.g., Hope Horizon Foundation"
-                        className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none font-medium"
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                       Aims &amp; Objectives / Purpose *
                     </label>
                     <textarea
@@ -486,12 +486,12 @@ export default function TrusteesPage() {
                       onChange={handleChange}
                       required
                       placeholder="Describe the mission, charitable focus, community development, religious or educational objectives of the organisation..."
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none min-h-[90px] font-medium"
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none min-h-[90px] font-medium transition-all placeholder:text-[#88968d]"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                       Trustee Details (Names, Roles &amp; Occupations) *
                     </label>
                     <textarea
@@ -500,40 +500,40 @@ export default function TrusteesPage() {
                       onChange={handleChange}
                       required
                       placeholder="List Chairman, Secretary, and other Trustees (Full legal name, phone, email, occupation, and residential address)..."
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none min-h-[100px] font-medium"
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none min-h-[100px] font-medium transition-all placeholder:text-[#88968d]"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Trustee ID Documents
                       </label>
                       <input
                         type="file"
                         multiple
-                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
+                        className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
-                      <span className="text-[10px] text-[#aab6ad] font-medium mt-1 block">
+                      <span className="text-[10px] text-[#526357] font-medium mt-1 block">
                         Upload NIN slips, Passports, or valid IDs for all trustees.
                       </span>
                     </div>
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                         Constitution / Supporting Documents (Optional)
                       </label>
                       <input
                         type="file"
-                        className="w-full bg-[#07100c] text-xs text-[#aab6ad] border border-[#26362c] p-2 rounded-lg file:mr-2 file:py-1 file:px-2 file:bg-[#10261a] file:border-0 file:text-[#c6ff3f] file:text-xs file:rounded font-medium"
+                        className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
                       />
-                      <span className="text-[10px] text-[#aab6ad] font-medium mt-1 block">
+                      <span className="text-[10px] text-[#526357] font-medium mt-1 block">
                         If you have an existing drafted constitution or minutes of meeting.
                       </span>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#aab6ad] font-bold mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
                       Additional Information (Optional)
                     </label>
                     <textarea
@@ -541,17 +541,17 @@ export default function TrusteesPage() {
                       value={formData.additionalInfo}
                       onChange={handleChange}
                       placeholder="Special clauses, governing body rules, meeting location, etc."
-                      className="w-full bg-[#07100c] text-white border border-[#26362c] focus:border-[#c6ff3f] p-3 text-sm rounded-lg outline-none min-h-[70px] font-medium"
+                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none min-h-[70px] font-medium transition-all placeholder:text-[#88968d]"
                     />
                   </div>
 
                   <div className="pt-2">
-                    <label className="flex items-start gap-3 cursor-pointer text-xs text-[#aab6ad] font-medium">
+                    <label className="flex items-start gap-3 cursor-pointer text-xs text-[#2b3a30] font-medium">
                       <input
                         type="checkbox"
                         checked={formData.termsConsent}
                         onChange={handleCheckboxChange}
-                        className="mt-0.5 accent-[#c6ff3f]"
+                        className="mt-0.5 accent-[#17382b]"
                       />
                       <span>
                         I have read and agree to the Terms of Service and Privacy Policy. I confirm that all trustees have consented and authorize Eponix Digital to conduct official registration and newspaper notices.
@@ -559,15 +559,15 @@ export default function TrusteesPage() {
                     </label>
                   </div>
 
-                  <div className="pt-4 border-t border-[#26362c]">
+                  <div className="pt-4 border-t border-[#ced7cd]">
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="ep-btn ep-btn-primary w-full py-4 text-sm font-bold uppercase tracking-wider rounded-lg"
+                      className="ep-btn ep-btn-primary w-full py-4 text-sm font-bold uppercase tracking-wider rounded-lg shadow-lg hover:shadow-xl transition-all"
                     >
                       {isSubmitting ? "Processing Application..." : `Submit Application (${packages[selectedPkg].price})`}
                     </button>
-                    <p className="text-center text-xs text-[#aab6ad] font-medium mt-3">
+                    <p className="text-center text-xs text-[#526357] font-medium mt-3">
                       Complete legal filing with official newspaper publication and certified CAC trustees certificate.
                     </p>
                   </div>
