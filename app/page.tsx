@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Layers, Users, Zap, Lock, Cpu, TrendingUp } from "lucide-react";
+import { Layers, Users, Zap, Lock, Cpu, TrendingUp, Lightbulb, FileText, Settings, Rocket } from "lucide-react";
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
@@ -243,82 +243,82 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* 6 Grid Cards - Icons, Headlines & Descriptions ONLY */}
+          {/* 6 Grid Cards - Deep Dark Green with White Headline & Light Text */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
             {/* Card 1 */}
-            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
+            <div className="p-7 rounded-2xl bg-[#0b1710] border border-[#1b3425] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-md hover:shadow-xl">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
                 <Layers className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#ffffff] leading-snug">
                 All-in-One Business Solutions
               </h3>
-              <p className="text-[14px] text-[#55655b] leading-relaxed">
+              <p className="text-[14px] text-[#c9d5cd] leading-relaxed">
                 From CAC registration and compliance to branding, digital and automation - everything your business needs in one place.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
+            <div className="p-7 rounded-2xl bg-[#0b1710] border border-[#1b3425] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-md hover:shadow-xl">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
                 <Users className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#ffffff] leading-snug">
                 Expert Team with Real Experience
               </h3>
-              <p className="text-[14px] text-[#55655b] leading-relaxed">
+              <p className="text-[14px] text-[#c9d5cd] leading-relaxed">
                 Our team has hands-on experience in business registration, compliance, branding, technology and digital growth in the Nigerian market.
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
+            <div className="p-7 rounded-2xl bg-[#0b1710] border border-[#1b3425] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-md hover:shadow-xl">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
                 <Zap className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#ffffff] leading-snug">
                 Fast, Reliable &amp; Accurate
               </h3>
-              <p className="text-[14px] text-[#55655b] leading-relaxed">
+              <p className="text-[14px] text-[#c9d5cd] leading-relaxed">
                 We streamline processes and work directly with the right institutions to ensure fast turnaround without compromising accuracy.
               </p>
             </div>
 
             {/* Card 4 */}
-            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
+            <div className="p-7 rounded-2xl bg-[#0b1710] border border-[#1b3425] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-md hover:shadow-xl">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
                 <Lock className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#ffffff] leading-snug">
                 Confidential &amp; Professional
               </h3>
-              <p className="text-[14px] text-[#55655b] leading-relaxed">
+              <p className="text-[14px] text-[#c9d5cd] leading-relaxed">
                 Your information is handled with the highest level of confidentiality, discretion and professionalism.
               </p>
             </div>
 
             {/* Card 5 */}
-            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
+            <div className="p-7 rounded-2xl bg-[#0b1710] border border-[#1b3425] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-md hover:shadow-xl">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
                 <Cpu className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#ffffff] leading-snug">
                 Technology-Driven Solutions
               </h3>
-              <p className="text-[14px] text-[#55655b] leading-relaxed">
+              <p className="text-[14px] text-[#c9d5cd] leading-relaxed">
                 We use modern tools, automation and AI to make business setup, compliance and growth easier, faster and more efficient.
               </p>
             </div>
 
             {/* Card 6 */}
-            <div className="p-7 rounded-2xl bg-[#f3f5ec] border border-[#ced7cd] hover:border-[#265239] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-sm hover:shadow-md">
-              <div className="w-11 h-11 rounded-xl bg-[#e5eadf] border border-[#ced7cd] flex items-center justify-center text-[#17382b]">
+            <div className="p-7 rounded-2xl bg-[#0b1710] border border-[#1b3425] hover:border-[rgba(201,249,90,0.4)] transition-all duration-300 flex flex-col justify-start space-y-4 hover:-translate-y-1 shadow-md hover:shadow-xl">
+              <div className="w-11 h-11 rounded-xl bg-[rgba(201,249,90,0.12)] border border-[rgba(201,249,90,0.25)] flex items-center justify-center text-[#c9f95a]">
                 <TrendingUp className="w-5 h-5" />
               </div>
-              <h3 className="text-[19px] font-bold text-[#0c1210] leading-snug">
+              <h3 className="text-[19px] font-bold text-[#ffffff] leading-snug">
                 End-to-End Support &amp; Long-Term Partnership
               </h3>
-              <p className="text-[14px] text-[#55655b] leading-relaxed">
+              <p className="text-[14px] text-[#c9d5cd] leading-relaxed">
                 We do not just help you start - we stay with you. From your first registration to scaling with AI and digital marketing, we are your long-term growth partner.
               </p>
             </div>
@@ -326,34 +326,96 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. How It Works */}
-      <section className="how section" id="how">
-        <div className="wrap">
-          <div className="section-head reveal">
-            <div className="eyebrow">How it works</div>
-            <h2>A simpler way to build well.</h2>
-            <p>Clear steps. Collaborative decisions. A business that is more ready for what’s next.</p>
+      {/* 8. How It Works (Dark Obsidian / Forest Theme) */}
+      <section className="bg-[#07100c] text-[#f4f6ed] py-24 lg:py-32 border-b border-[rgba(201,249,90,0.14)]" id="how">
+        <div className="site-container">
+          {/* Top 2-Column Showcase */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
+            <div className="lg:col-span-7 space-y-5 reveal">
+              <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] uppercase text-[#c9f95a]">
+                <span className="w-6 h-[2px] bg-[#c9f95a]" />
+                How It Works
+              </div>
+              <h2 className="text-[34px] sm:text-[46px] lg:text-[54px] font-bold leading-[1.05] tracking-[-0.05em] text-[#f4f6ed]">
+                From Idea to <span className="text-[#c9f95a]">Impact.</span>
+                <span className="block">A Clearer Way to Build Your Business.</span>
+              </h2>
+              <p className="text-[15px] sm:text-[17px] text-[#aab6ad] leading-relaxed max-w-xl">
+                We make the process simple, structured and stress-free - breaking your business journey into clear steps, with the right support, tools and expertise at every stage.
+              </p>
+            </div>
+
+            <div className="lg:col-span-5 reveal">
+              <div className="relative overflow-hidden rounded-2xl border border-[rgba(201,249,90,0.2)] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
+                <img
+                  src="/images/how-it-works-executive.jpg"
+                  alt="Eponix Digital Executive Business Launch Strategy & Systems"
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            </div>
           </div>
-          <div className="process reveal">
-            <div className="process-item">
-              <strong>01</strong>
-              <h3>Discover</h3>
-              <p>Tell us where you are and where you want the business to go.</p>
+
+          {/* Bottom 5 Clean Steps (Real Icons + Headlines + Descriptions - No arrows, No bullets) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 pt-12 border-t border-[rgba(201,249,90,0.14)] reveal">
+            {/* Step 1 */}
+            <div className="p-5 rounded-xl bg-[rgba(13,26,19,0.5)] border border-[#1e3b2b] space-y-3">
+              <div className="w-12 h-12 rounded-full border border-[rgba(201,249,90,0.35)] bg-[rgba(201,249,90,0.08)] flex items-center justify-center text-[#c9f95a]">
+                <Lightbulb className="w-5 h-5" />
+              </div>
+              <span className="font-mono text-[11px] text-[#c9f95a] uppercase tracking-wider block font-bold">01</span>
+              <h3 className="text-[18px] font-bold text-[#f4f6ed]">Discover</h3>
+              <p className="text-[13px] text-[#aab6ad] leading-relaxed">
+                Tell us where you are today and where you want to go.
+              </p>
             </div>
-            <div className="process-item">
-              <strong>02</strong>
-              <h3>Define</h3>
-              <p>We shape the right priorities, scope and pathway together.</p>
+
+            {/* Step 2 */}
+            <div className="p-5 rounded-xl bg-[rgba(13,26,19,0.5)] border border-[#1e3b2b] space-y-3">
+              <div className="w-12 h-12 rounded-full border border-[rgba(201,249,90,0.35)] bg-[rgba(201,249,90,0.08)] flex items-center justify-center text-[#c9f95a]">
+                <FileText className="w-5 h-5" />
+              </div>
+              <span className="font-mono text-[11px] text-[#c9f95a] uppercase tracking-wider block font-bold">02</span>
+              <h3 className="text-[18px] font-bold text-[#f4f6ed]">Plan</h3>
+              <p className="text-[13px] text-[#aab6ad] leading-relaxed">
+                We recommend the right solutions for your business.
+              </p>
             </div>
-            <div className="process-item">
-              <strong>03</strong>
-              <h3>Build</h3>
-              <p>Our specialists bring your foundations, brand and systems to life.</p>
+
+            {/* Step 3 */}
+            <div className="p-5 rounded-xl bg-[rgba(13,26,19,0.5)] border border-[#1e3b2b] space-y-3">
+              <div className="w-12 h-12 rounded-full border border-[rgba(201,249,90,0.35)] bg-[rgba(201,249,90,0.08)] flex items-center justify-center text-[#c9f95a]">
+                <Settings className="w-5 h-5" />
+              </div>
+              <span className="font-mono text-[11px] text-[#c9f95a] uppercase tracking-wider block font-bold">03</span>
+              <h3 className="text-[18px] font-bold text-[#f4f6ed]">Execute</h3>
+              <p className="text-[13px] text-[#aab6ad] leading-relaxed">
+                Our experts handle the setup and implementation.
+              </p>
             </div>
-            <div className="process-item">
-              <strong>04</strong>
-              <h3>Move forward</h3>
-              <p>Launch with confidence and keep building with the right support.</p>
+
+            {/* Step 4 */}
+            <div className="p-5 rounded-xl bg-[rgba(13,26,19,0.5)] border border-[#1e3b2b] space-y-3">
+              <div className="w-12 h-12 rounded-full border border-[rgba(201,249,90,0.35)] bg-[rgba(201,249,90,0.08)] flex items-center justify-center text-[#c9f95a]">
+                <Rocket className="w-5 h-5" />
+              </div>
+              <span className="font-mono text-[11px] text-[#c9f95a] uppercase tracking-wider block font-bold">04</span>
+              <h3 className="text-[18px] font-bold text-[#f4f6ed]">Launch</h3>
+              <p className="text-[13px] text-[#aab6ad] leading-relaxed">
+                Your business goes live - professionally and confidently.
+              </p>
+            </div>
+
+            {/* Step 5 */}
+            <div className="p-5 rounded-xl bg-[rgba(13,26,19,0.5)] border border-[#1e3b2b] space-y-3">
+              <div className="w-12 h-12 rounded-full border border-[rgba(201,249,90,0.35)] bg-[rgba(201,249,90,0.08)] flex items-center justify-center text-[#c9f95a]">
+                <TrendingUp className="w-5 h-5" />
+              </div>
+              <span className="font-mono text-[11px] text-[#c9f95a] uppercase tracking-wider block font-bold">05</span>
+              <h3 className="text-[18px] font-bold text-[#f4f6ed]">Grow</h3>
+              <p className="text-[13px] text-[#aab6ad] leading-relaxed">
+                We provide ongoing support as you scale and achieve more.
+              </p>
             </div>
           </div>
         </div>
