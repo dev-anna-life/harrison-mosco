@@ -14,6 +14,7 @@ export interface LeadEmailPayload {
   totalEstimatedAmount?: number;
   source: string;
   additionalDetails?: string;
+  submittedDetails?: Record<string, string | number | undefined | null>;
 }
 
 export interface ClientReceiptPayload {
@@ -46,7 +47,6 @@ function getTransporter() {
   const pass = rawPass ? rawPass.replace(/\s+/g, "") : undefined;
 
   if (!pass) {
-    // If running in development without credentials, use a mock transporter that logs
     return {
       sendMail: async (options: SendMailOptions) => {
         console.log("--------------------------------------------------");
@@ -54,7 +54,6 @@ function getTransporter() {
         console.log(`To: ${options.to}`);
         console.log(`From: ${options.from || user}`);
         console.log(`Subject: ${options.subject}`);
-        console.log(`(Configure SMTP_PASS in .env.local to send live emails via Gmail SMTP)`);
         console.log("--------------------------------------------------");
         return { messageId: `mock-${Date.now()}` };
       },
@@ -98,6 +97,49 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
 
   const transporter = getTransporter();
 
+  // Build unified details map
+  const detailsMap: Record<string, string> = {};
+  if (payload.submittedDetails) {
+    for (const [k, v] of Object.entries(payload.submittedDetails)) {
+      if (v !== undefined && v !== null && v.toString().trim() !== "" && v !== "N/A") {
+        detailsMap[k] = v.toString().trim();
+      }
+    }
+  } else if (payload.additionalDetails) {
+    payload.additionalDetails.split("|").forEach((item) => {
+      const parts = item.split(":");
+      if (parts.length >= 2) {
+        const k = parts[0].trim();
+        const v = parts.slice(1).join(":").trim();
+        if (v && v !== "N/A" && v !== "") {
+          detailsMap[k] = v;
+        }
+      }
+    });
+  }
+
+  const detailRowsHtml = Object.entries(detailsMap)
+    .map(
+      ([k, v]) => `
+      <tr style="border-top: 1px solid #26362c;">
+        <td style="padding: 7px 0; color: #aab6ad; width: 150px; font-weight: bold;">${k}:</td>
+        <td style="padding: 7px 0; color: #ffffff;">${v}</td>
+      </tr>
+    `
+    )
+    .join("");
+
+  const customerDetailRowsHtml = Object.entries(detailsMap)
+    .map(
+      ([k, v]) => `
+      <tr style="border-top: 1px solid #e5eadf;">
+        <td style="padding: 7px 0; color: #475569; width: 40%; font-weight: bold;">${k}:</td>
+        <td style="padding: 7px 0; color: #0c1210;">${v}</td>
+      </tr>
+    `
+    )
+    .join("");
+
   // 1. Send Admin Alert Email to eponixlimited@gmail.com
   const adminMailOptions: SendMailOptions = {
     from: `"Eponix Digital Alerts" <${process.env.SMTP_USER || "eponixlimited@gmail.com"}>`,
@@ -113,7 +155,7 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
         <div style="background-color: #0d1711; border: 1px solid #26362c; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
           <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
             <tr>
-              <td style="padding: 8px 0; color: #aab6ad; width: 140px;"><strong>Client Name:</strong></td>
+              <td style="padding: 8px 0; color: #aab6ad; width: 150px;"><strong>Client Name:</strong></td>
               <td style="padding: 8px 0; color: #ffffff; font-weight: bold;">${payload.fullName}</td>
             </tr>
             <tr>
@@ -136,11 +178,7 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
               <td style="padding: 8px 0; color: #aab6ad;"><strong>Source Origin:</strong></td>
               <td style="padding: 8px 0; color: #aab6ad;">${payload.source}</td>
             </tr>
-            ${
-              payload.additionalDetails
-                ? `<tr><td style="padding: 8px 0; color: #aab6ad;"><strong>Details / Notes:</strong></td><td style="padding: 8px 0; color: #ffffff;">${payload.additionalDetails}</td></tr>`
-                : ""
-            }
+            ${detailRowsHtml}
           </table>
         </div>
 
@@ -179,19 +217,32 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
 
           <h2 style="color: #0c1210; font-size: 20px; margin-bottom: 12px;">Hello ${payload.fullName},</h2>
           <p style="color: #2b3a30; font-size: 14px; line-height: 1.6;">
-            Thank you for reaching out to Eponix Digital. We have successfully received your inquiry for <strong>${
+            Thank you for reaching out to Eponix Digital. We have successfully received your registration application for <strong>${
               payload.proposedName || "your business"
             }</strong> under the <strong>${payload.packageType}</strong> package.
           </p>
 
           <div style="background-color: #ffffff; border: 1px solid #c5d1bf; border-radius: 8px; padding: 20px; margin: 20px 0;">
-            <h3 style="color: #17382b; font-size: 15px; margin-top: 0; border-bottom: 1px solid #e5eadf; padding-bottom: 8px;">Application Summary</h3>
-            <ul style="color: #2b3a30; font-size: 13px; line-height: 1.8; padding-left: 20px; margin-bottom: 0;">
-              <li><strong>Package:</strong> ${payload.packageType}</li>
-              <li><strong>Proposed Company:</strong> ${payload.proposedName || "Consultation Request"}</li>
-              <li><strong>Contact Phone:</strong> ${payload.phone}</li>
-              <li><strong>Status:</strong> Queued for Specialist Review</li>
-            </ul>
+            <h3 style="color: #17382b; font-size: 15px; margin-top: 0; border-bottom: 1px solid #e5eadf; padding-bottom: 8px;">Submitted Application Details</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+              <tr>
+                <td style="padding: 7px 0; color: #475569; width: 40%; font-weight: bold;">Package:</td>
+                <td style="padding: 7px 0; color: #0c1210; font-weight: bold;">${payload.packageType}</td>
+              </tr>
+              <tr>
+                <td style="padding: 7px 0; color: #475569; font-weight: bold;">Proposed Entity:</td>
+                <td style="padding: 7px 0; color: #0c1210; font-weight: bold;">${payload.proposedName || "Consultation Request"}</td>
+              </tr>
+              <tr>
+                <td style="padding: 7px 0; color: #475569; font-weight: bold;">Contact Phone:</td>
+                <td style="padding: 7px 0; color: #0c1210;">${payload.phone}</td>
+              </tr>
+              ${customerDetailRowsHtml}
+              <tr style="border-top: 1px solid #e5eadf;">
+                <td style="padding: 7px 0; color: #475569; font-weight: bold;">Status:</td>
+                <td style="padding: 7px 0; color: #166534; font-weight: bold;">Queued for Specialist Review</td>
+              </tr>
+            </table>
           </div>
 
           <div style="background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">

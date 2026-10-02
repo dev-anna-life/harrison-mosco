@@ -75,13 +75,28 @@ export default function LimitedCompanyPage() {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!formData.fullName || !formData.phone || !formData.email) {
-      setErrorMessage("Please provide your full name, phone number, and active email.");
+    if (!formData.proposedName1) {
+      setErrorMessage("Please enter at least one proposed company name.");
       return;
     }
 
-    if (!formData.proposedName1) {
-      setErrorMessage("Please enter at least one proposed company name.");
+    if (!formData.natureOfBusiness) {
+      setErrorMessage("Please describe the nature of your business.");
+      return;
+    }
+
+    if (!formData.fullName) {
+      setErrorMessage("Please provide your primary contact full legal name.");
+      return;
+    }
+
+    if (!formData.email) {
+      setErrorMessage("Please provide an active email address.");
+      return;
+    }
+
+    if (!formData.phone) {
+      setErrorMessage("Please provide a valid WhatsApp phone number.");
       return;
     }
 
@@ -103,7 +118,16 @@ export default function LimitedCompanyPage() {
           proposedBusinessName: formData.proposedName1,
           packageInterested: `Limited Company - ${selectedPkg}`,
           source: "company-form",
-          additionalDetails: `Proposed 2: ${formData.proposedName2 || "N/A"} | Share Capital: ₦${formData.shareCapital} | Nature: ${formData.natureOfBusiness || "N/A"} | Directors: ${formData.directorDetails || "N/A"} | Extra: ${formData.additionalDirectorInfo || "N/A"}`,
+          submittedDetails: {
+            "Contact Phone": formData.phone,
+            "Email Address": formData.email,
+            "Proposed Company Name 1": formData.proposedName1,
+            "Proposed Company Name 2": formData.proposedName2 || "N/A",
+            "Authorized Share Capital": `₦${formData.shareCapital || "1,000,000"}`,
+            "Nature of Business": formData.natureOfBusiness,
+            "Director / Shareholder Info": formData.directorDetails || "N/A",
+            "Additional Director Notes": formData.additionalDirectorInfo || "N/A",
+          },
         }),
       });
 
@@ -111,7 +135,7 @@ export default function LimitedCompanyPage() {
       if (res.ok && data.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(data.error || "Failed to submit application. Please try again.");
+        setErrorMessage(data.error || "Failed to submit application. Please check all fields and try again.");
       }
     } catch (err) {
       setErrorMessage("Network connection error. Please try again or reach out on WhatsApp.");
@@ -379,8 +403,9 @@ export default function LimitedCompanyPage() {
                   className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
-                    <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
-                      {errorMessage}
+                    <div className="p-4 bg-red-100 border-2 border-red-600 text-red-900 text-sm font-bold rounded-xl flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0 text-xs font-black">!</span>
+                      <span>{errorMessage}</span>
                     </div>
                   )}
 

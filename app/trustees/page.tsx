@@ -85,13 +85,28 @@ export default function TrusteesPage() {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!formData.fullName || !formData.phone || !formData.email) {
-      setErrorMessage("Please enter your full contact name, active email, and phone number.");
+    if (!formData.fullName) {
+      setErrorMessage("Please enter your full contact name.");
+      return;
+    }
+
+    if (!formData.email) {
+      setErrorMessage("Please provide an active email address.");
+      return;
+    }
+
+    if (!formData.phone) {
+      setErrorMessage("Please provide a valid WhatsApp phone number.");
       return;
     }
 
     if (!formData.proposedName1 && !formData.organisationName) {
       setErrorMessage("Please enter your proposed organisation name.");
+      return;
+    }
+
+    if (!formData.purposeObjectives) {
+      setErrorMessage("Please outline the aim, purpose, and objectives of the organisation.");
       return;
     }
 
@@ -113,7 +128,15 @@ export default function TrusteesPage() {
           proposedBusinessName: formData.proposedName1 || formData.organisationName,
           packageInterested: `NGO / Incorporated Trustees - ${selectedPkg}`,
           source: "trustees-form",
-          additionalDetails: `Proposed 2: ${formData.proposedName2 || "N/A"} | Objectives: ${formData.purposeObjectives || "N/A"} | Trustees: ${formData.trusteeDetails || "N/A"} | Additional: ${formData.additionalInfo || "N/A"}`,
+          submittedDetails: {
+            "Contact Phone": formData.phone,
+            "Email Address": formData.email,
+            "Proposed Organisation Name 1": formData.proposedName1 || formData.organisationName,
+            "Proposed Name 2 (Alternative)": formData.proposedName2 || "N/A",
+            "Aims & Objectives": formData.purposeObjectives,
+            "Trustee Details": formData.trusteeDetails || "N/A",
+            "Additional Notes": formData.additionalInfo || "N/A",
+          },
         }),
       });
 
@@ -121,7 +144,7 @@ export default function TrusteesPage() {
       if (res.ok && data.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(data.error || "Unable to submit NGO application. Please try again.");
+        setErrorMessage(data.error || "Unable to submit NGO application. Please check all fields and try again.");
       }
     } catch (err) {
       setErrorMessage("Network error occurred. Please try again or reach out on WhatsApp.");
@@ -381,8 +404,9 @@ export default function TrusteesPage() {
                   className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
-                    <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
-                      {errorMessage}
+                    <div className="p-4 bg-red-100 border-2 border-red-600 text-red-900 text-sm font-bold rounded-xl flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0 text-xs font-black">!</span>
+                      <span>{errorMessage}</span>
                     </div>
                   )}
 

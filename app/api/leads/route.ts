@@ -32,6 +32,8 @@ export async function POST(req: NextRequest) {
       source: `${source}${additionalDetails ? ` | ${additionalDetails.slice(0, 100)}` : ""}`,
     });
 
+    const submittedDetails = body.submittedDetails || undefined;
+
     // Send notification email / alert
     try {
       await sendLeadAlertToHarrison({
@@ -44,6 +46,7 @@ export async function POST(req: NextRequest) {
         totalEstimatedAmount: body.estimatedBudget || 100000,
         source,
         additionalDetails,
+        submittedDetails,
       });
     } catch (mailErr) {
       console.warn("Could not dispatch email notification:", mailErr);

@@ -75,8 +75,18 @@ export default function SCUMLPage() {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!formData.fullName || !formData.phone || !formData.email) {
-      setErrorMessage("Please enter your full name, active email, and phone number.");
+    if (!formData.fullName) {
+      setErrorMessage("Please enter your full contact name.");
+      return;
+    }
+
+    if (!formData.email) {
+      setErrorMessage("Please provide an active email address.");
+      return;
+    }
+
+    if (!formData.phone) {
+      setErrorMessage("Please provide a valid WhatsApp phone number.");
       return;
     }
 
@@ -103,7 +113,13 @@ export default function SCUMLPage() {
           proposedBusinessName: formData.businessName,
           packageInterested: `SCUML - ${selectedPkg}`,
           source: "scuml-form",
-          additionalDetails: `Activity: ${formData.businessActivity || "N/A"} | Referral: ${formData.referralCode || "N/A"}`,
+          submittedDetails: {
+            "Contact Phone": formData.phone,
+            "Email Address": formData.email,
+            "Registered Entity Name": formData.businessName,
+            "Business / DNFI Activity": formData.businessActivity || "General Designated Non-Financial Business",
+            "Referral Code": formData.referralCode || "N/A",
+          },
         }),
       });
 
@@ -111,7 +127,7 @@ export default function SCUMLPage() {
       if (res.ok && data.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(data.error || "Unable to submit SCUML request. Please try again.");
+        setErrorMessage(data.error || "Unable to submit SCUML request. Please check all fields and try again.");
       }
     } catch (err) {
       setErrorMessage("Network error occurred. Please try again or reach out on WhatsApp.");
@@ -369,8 +385,9 @@ export default function SCUMLPage() {
                   className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
-                    <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
-                      {errorMessage}
+                    <div className="p-4 bg-red-100 border-2 border-red-600 text-red-900 text-sm font-bold rounded-xl flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0 text-xs font-black">!</span>
+                      <span>{errorMessage}</span>
                     </div>
                   )}
 

@@ -131,13 +131,28 @@ export default function TrademarkPage() {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!formData.fullName || !formData.phone || !formData.email) {
-      setErrorMessage("Please provide your contact name, phone, and active email.");
+    if (!formData.fullName) {
+      setErrorMessage("Please enter your contact name.");
       return;
     }
 
-    if (!formData.trademarkName || !formData.ownerName) {
-      setErrorMessage("Please enter your proposed trademark name and applicant/owner name.");
+    if (!formData.email) {
+      setErrorMessage("Please provide an active email address.");
+      return;
+    }
+
+    if (!formData.phone) {
+      setErrorMessage("Please provide a valid WhatsApp phone number.");
+      return;
+    }
+
+    if (!formData.trademarkName) {
+      setErrorMessage("Please enter your proposed brand / trademark name.");
+      return;
+    }
+
+    if (!formData.ownerName) {
+      setErrorMessage("Please enter the applicant or proprietor name.");
       return;
     }
 
@@ -159,7 +174,16 @@ export default function TrademarkPage() {
           proposedBusinessName: formData.trademarkName,
           packageInterested: `Trademark - ${selectedPkg}`,
           source: "trademark-form",
-          additionalDetails: `Owner: ${formData.ownerName} | Class: ${formData.trademarkClass} | Addl Classes: ${formData.additionalClasses || "None"} | Category: ${formData.productCategory || "N/A"} | Referral: ${formData.referralCode || "N/A"}`,
+          submittedDetails: {
+            "Contact Phone": formData.phone,
+            "Email Address": formData.email,
+            "Trademark / Brand Name": formData.trademarkName,
+            "Proprietor / Owner Name": formData.ownerName,
+            "Trademark Class": formData.trademarkClass,
+            "Additional Classes": formData.additionalClasses || "None",
+            "Product / Service Category": formData.productCategory || "N/A",
+            "Referral Code": formData.referralCode || "N/A",
+          },
         }),
       });
 
@@ -167,7 +191,7 @@ export default function TrademarkPage() {
       if (res.ok && data.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(data.error || "Unable to submit trademark request. Please try again.");
+        setErrorMessage(data.error || "Unable to submit trademark request. Please check all fields and try again.");
       }
     } catch (err) {
       setErrorMessage("Network error occurred. Please try again or reach out on WhatsApp.");
@@ -415,8 +439,9 @@ export default function TrademarkPage() {
                   className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
-                    <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
-                      {errorMessage}
+                    <div className="p-4 bg-red-100 border-2 border-red-600 text-red-900 text-sm font-bold rounded-xl flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0 text-xs font-black">!</span>
+                      <span>{errorMessage}</span>
                     </div>
                   )}
 

@@ -75,8 +75,18 @@ export default function TaxPage() {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!formData.fullName || !formData.phone || !formData.email) {
-      setErrorMessage("Please enter your full name, email, and phone number.");
+    if (!formData.fullName) {
+      setErrorMessage("Please enter your full contact name.");
+      return;
+    }
+
+    if (!formData.email) {
+      setErrorMessage("Please provide an active email address.");
+      return;
+    }
+
+    if (!formData.phone) {
+      setErrorMessage("Please provide a valid WhatsApp phone number.");
       return;
     }
 
@@ -103,7 +113,14 @@ export default function TaxPage() {
           proposedBusinessName: formData.businessName,
           packageInterested: `Tax ID / Rev360 - ${selectedPkg}`,
           source: "tax-form",
-          additionalDetails: `Type: ${formData.registrationType} | Referral: ${formData.referralCode || "N/A"} | Notes: ${formData.additionalDetails || "N/A"}`,
+          submittedDetails: {
+            "Contact Phone": formData.phone,
+            "Email Address": formData.email,
+            "Registered Business / Entity": formData.businessName,
+            "Entity Registration Type": formData.registrationType,
+            "Referral Code": formData.referralCode || "N/A",
+            "Additional Notes": formData.additionalDetails || "N/A",
+          },
         }),
       });
 
@@ -111,7 +128,7 @@ export default function TaxPage() {
       if (res.ok && data.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(data.error || "Unable to submit tax setup request. Please try again.");
+        setErrorMessage(data.error || "Unable to submit tax setup request. Please check all fields and try again.");
       }
     } catch (err) {
       setErrorMessage("Network error occurred. Please try again or reach out on WhatsApp.");
@@ -360,8 +377,9 @@ export default function TaxPage() {
                   className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
-                    <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
-                      {errorMessage}
+                    <div className="p-4 bg-red-100 border-2 border-red-600 text-red-900 text-sm font-bold rounded-xl flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0 text-xs font-black">!</span>
+                      <span>{errorMessage}</span>
                     </div>
                   )}
 

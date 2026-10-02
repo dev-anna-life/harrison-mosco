@@ -22,8 +22,34 @@ export default function UltimatePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMessage("");
+
+    if (!formData.fullName) {
+      setErrorMessage("Please enter your full contact name.");
+      return;
+    }
+
+    if (!formData.email) {
+      setErrorMessage("Please provide an active email address.");
+      return;
+    }
+
+    if (!formData.phoneNumber) {
+      setErrorMessage("Please provide a valid WhatsApp phone number.");
+      return;
+    }
+
+    if (!formData.businessName) {
+      setErrorMessage("Please enter your proposed or registered business name.");
+      return;
+    }
+
+    if (!formData.agreeTerms) {
+      setErrorMessage("Please accept the Terms of Service and Privacy Policy.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const res = await fetch("/api/leads", {
@@ -33,11 +59,18 @@ export default function UltimatePage() {
           fullName: formData.fullName,
           whatsappPhone: formData.phoneNumber || "+2340000000000",
           email: formData.email,
-          proposedBusinessName: formData.businessName || "Ultimate Launch Application",
+          proposedBusinessName: formData.businessName,
           packageInterested: "Ultimate Business Launch Package (₦1,000,000)",
           shareCapitalMillions: 1,
-          notes: formData.projectDetails,
-          source: "eponix_ultimate_page",
+          source: "ultimate-package-form",
+          submittedDetails: {
+            "Contact Phone": formData.phoneNumber,
+            "Email Address": formData.email,
+            "Proposed Entity Name": formData.businessName,
+            "Business Stage": formData.businessStage,
+            "Primary Goal": formData.primaryGoal,
+            "Project Scope / Details": formData.projectDetails || "Full Suite Incorporation & Branding",
+          },
         }),
       });
 
@@ -45,7 +78,7 @@ export default function UltimatePage() {
       setIsSubmitted(true);
     } catch (err: any) {
       console.error(err);
-      setErrorMessage("Could not submit your application. Please try again or reach out on WhatsApp.");
+      setErrorMessage("Could not submit your application. Please check all fields and try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -359,8 +392,9 @@ export default function UltimatePage() {
               ) : (
                 <form onSubmit={handleSubmit} className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-5 shadow-xl rounded-2xl text-[#0c1210]">
                   {errorMessage && (
-                    <div className="p-3 mb-4 text-xs bg-red-950 text-red-200 border border-red-800 rounded">
-                      {errorMessage}
+                    <div className="p-4 mb-4 bg-red-100 border-2 border-red-600 text-red-900 text-sm font-bold rounded-xl flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0 text-xs font-black">!</span>
+                      <span>{errorMessage}</span>
                     </div>
                   )}
 

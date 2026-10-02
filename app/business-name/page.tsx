@@ -82,8 +82,33 @@ export default function BusinessNamePage() {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!formData.fullName || !formData.phone || !formData.email) {
-      setErrorMessage("Please fill in your full name, phone number, and email.");
+    if (!formData.fullName && !formData.surname) {
+      setErrorMessage("Please enter your full legal name or surname.");
+      return;
+    }
+
+    if (!formData.dob) {
+      setErrorMessage("Please enter your Date of Birth before submitting.");
+      return;
+    }
+
+    if (!formData.gender) {
+      setErrorMessage("Please select your gender.");
+      return;
+    }
+
+    if (!formData.email) {
+      setErrorMessage("Please provide an active email address.");
+      return;
+    }
+
+    if (!formData.phone) {
+      setErrorMessage("Please provide a valid WhatsApp phone number.");
+      return;
+    }
+
+    if (!formData.natureOfBusiness) {
+      setErrorMessage("Please describe the nature of your business.");
       return;
     }
 
@@ -104,13 +129,26 @@ export default function BusinessNamePage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fullName: formData.fullName,
+          fullName: formData.fullName || `${formData.surname} ${formData.otherNames}`.trim(),
           phone: formData.phone,
           email: formData.email,
           proposedBusinessName: formData.proposedName1,
           packageInterested: `Business Name - ${selectedPkg}`,
           source: "business-name-form",
-          additionalDetails: `Surname: ${formData.surname || "N/A"} | Other: ${formData.otherNames || "N/A"} | Proposed 2: ${formData.proposedName2 || "N/A"} | Nature: ${formData.natureOfBusiness || "N/A"} | Address: ${formData.residentialAddress || "N/A"} | Office: ${formData.officeAddress || "N/A"} | Additional: ${formData.additionalInfo || "N/A"}`,
+          submittedDetails: {
+            "Date of Birth": formData.dob,
+            "Gender": formData.gender,
+            "Contact Phone": formData.phone,
+            "Email Address": formData.email,
+            "State & LGA": `${formData.state || "N/A"}, ${formData.lga || "N/A"} (${formData.city || "N/A"})`,
+            "Residential Address": formData.residentialAddress || "N/A",
+            "Office Address": formData.officeAddress || "N/A",
+            "NIN / ID Number": formData.idNumber || "N/A",
+            "Nature of Business": formData.natureOfBusiness,
+            "Proposed Business Name 1": formData.proposedName1,
+            "Proposed Business Name 2": formData.proposedName2 || "N/A",
+            "Additional Information": formData.additionalInfo || "N/A",
+          },
         }),
       });
 
@@ -118,7 +156,7 @@ export default function BusinessNamePage() {
       if (res.ok && data.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(data.error || "Unable to submit application. Please try again.");
+        setErrorMessage(data.error || "Unable to submit application. Please check all fields and try again.");
       }
     } catch (err: any) {
       setErrorMessage("Network error occurred. Please try again or reach out on WhatsApp.");
@@ -378,8 +416,9 @@ export default function BusinessNamePage() {
                   className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
-                    <div className="p-4 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-lg">
-                      {errorMessage}
+                    <div className="p-4 bg-red-100 border-2 border-red-600 text-red-900 text-sm font-bold rounded-xl flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0 text-xs font-black">!</span>
+                      <span>{errorMessage}</span>
                     </div>
                   )}
 
@@ -444,11 +483,12 @@ export default function BusinessNamePage() {
                     </div>
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                        Date of Birth
+                        Date of Birth *
                       </label>
                       <input
                         type="date"
                         name="dob"
+                        required
                         value={formData.dob}
                         onChange={handleChange}
                         className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all"
@@ -456,10 +496,11 @@ export default function BusinessNamePage() {
                     </div>
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                        Gender
+                        Gender *
                       </label>
                       <select
                         name="gender"
+                        required
                         value={formData.gender}
                         onChange={handleChange}
                         className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all"
