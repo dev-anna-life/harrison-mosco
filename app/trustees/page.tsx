@@ -53,15 +53,53 @@ const packages: Record<
 };
 
 const initialFormData = {
-  fullName: "",
-  email: "",
-  phone: "",
-  organisationName: "",
-  purposeObjectives: "",
-  trusteeDetails: "",
+  category: "NGO / Non-Profit",
   proposedName1: "",
   proposedName2: "",
-  additionalInfo: "",
+  purposeObjectives: "",
+  orgEmail: "",
+  orgPhone: "",
+  headOfficeState: "",
+  headOfficeLga: "",
+  headOfficeCity: "",
+  headOfficeAddress: "",
+  // Trustee 1 (Chairman / President)
+  t1FullName: "",
+  t1Surname: "",
+  t1OtherNames: "",
+  t1Role: "Chairman / President",
+  t1Dob: "",
+  t1Gender: "Male",
+  t1Nationality: "Nigerian",
+  t1Phone: "",
+  t1Email: "",
+  t1Occupation: "",
+  t1State: "",
+  t1Lga: "",
+  t1City: "",
+  t1Address: "",
+  t1IdType: "NIN",
+  t1IdNumber: "",
+  // Trustee 2 (Secretary)
+  t2FullName: "",
+  t2Surname: "",
+  t2OtherNames: "",
+  t2Role: "Secretary / General Secretary",
+  t2Dob: "",
+  t2Gender: "Female",
+  t2Nationality: "Nigerian",
+  t2Phone: "",
+  t2Email: "",
+  t2Occupation: "",
+  t2State: "",
+  t2Lga: "",
+  t2City: "",
+  t2Address: "",
+  t2IdType: "NIN",
+  t2IdNumber: "",
+  // Additional Trustees
+  additionalTrustees: "",
+  additionalNotes: "",
   termsConsent: true,
 };
 
@@ -92,12 +130,13 @@ export default function TrusteesPage() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, termsConsent: e.target.checked }));
+    const { name, value, type } = e.target;
+    if (type === "checkbox") {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData((prev) => ({ ...prev, [name]: checked }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleFileChange = async (
@@ -126,28 +165,45 @@ export default function TrusteesPage() {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!formData.fullName) {
-      setErrorMessage("Please enter your full contact name.");
-      return;
-    }
-
-    if (!formData.email) {
-      setErrorMessage("Please provide an active email address.");
-      return;
-    }
-
-    if (!formData.phone) {
-      setErrorMessage("Please provide a valid WhatsApp phone number.");
-      return;
-    }
-
-    if (!formData.proposedName1 && !formData.organisationName) {
-      setErrorMessage("Please enter your proposed organisation name.");
+    if (!formData.proposedName1) {
+      setErrorMessage("Please enter at least one proposed organisation name.");
       return;
     }
 
     if (!formData.purposeObjectives) {
-      setErrorMessage("Please outline the aim, purpose, and objectives of the organisation.");
+      setErrorMessage("Please outline the aims, purpose, and objectives of the organisation.");
+      return;
+    }
+
+    const t1Name = formData.t1FullName || `${formData.t1Surname} ${formData.t1OtherNames}`.trim();
+    if (!t1Name) {
+      setErrorMessage("Please provide Trustee 1 (Chairman/President) full legal name.");
+      return;
+    }
+
+    if (!formData.t1Dob) {
+      setErrorMessage("Please enter Trustee 1's Date of Birth.");
+      return;
+    }
+
+    if (!formData.t1Email) {
+      setErrorMessage("Please provide Trustee 1's active email address.");
+      return;
+    }
+
+    if (!formData.t1Phone) {
+      setErrorMessage("Please provide Trustee 1's WhatsApp phone number.");
+      return;
+    }
+
+    const t2Name = formData.t2FullName || `${formData.t2Surname} ${formData.t2OtherNames}`.trim();
+    if (!t2Name) {
+      setErrorMessage("Please provide Trustee 2 (Secretary) full legal name (CAC requires minimum 2 trustees).");
+      return;
+    }
+
+    if (!formData.t2Dob) {
+      setErrorMessage("Please enter Trustee 2's Date of Birth.");
       return;
     }
 
@@ -160,29 +216,58 @@ export default function TrusteesPage() {
 
     try {
       const allFiles = Object.values(fileMap).flat();
+      const primaryPhone = formData.t1Phone || formData.orgPhone;
+      const primaryEmail = formData.t1Email || formData.orgEmail;
+
+      const detailsMap: Record<string, string> = {
+        "Organisation Category": formData.category,
+        "Proposed Organisation Name 1": formData.proposedName1,
+        "Proposed Name 2 (Alternative)": formData.proposedName2 || "N/A",
+        "Aims & Objectives": formData.purposeObjectives,
+        "Organisation Email & Phone": `${formData.orgEmail || "N/A"} | ${formData.orgPhone || "N/A"}`,
+        "Registered Office Address": `${formData.headOfficeAddress || "N/A"}, ${formData.headOfficeCity || ""}, ${formData.headOfficeLga || ""}, ${formData.headOfficeState || ""}`.trim(),
+        
+        // Trustee 1
+        "Trustee 1 (Chairman) Full Name": t1Name,
+        "Trustee 1 Role": formData.t1Role,
+        "Trustee 1 DOB & Gender": `${formData.t1Dob} (${formData.t1Gender})`,
+        "Trustee 1 Phone & Email": `${formData.t1Phone} | ${formData.t1Email}`,
+        "Trustee 1 Occupation": formData.t1Occupation || "N/A",
+        "Trustee 1 Residential Address": `${formData.t1Address || "N/A"}, ${formData.t1City || ""}, ${formData.t1Lga || ""}, ${formData.t1State || ""}`.trim(),
+        "Trustee 1 ID Number": `${formData.t1IdType}: ${formData.t1IdNumber || "N/A"}`,
+
+        // Trustee 2
+        "Trustee 2 (Secretary) Full Name": t2Name,
+        "Trustee 2 Role": formData.t2Role,
+        "Trustee 2 DOB & Gender": `${formData.t2Dob} (${formData.t2Gender})`,
+        "Trustee 2 Phone & Email": `${formData.t2Phone} | ${formData.t2Email || "N/A"}`,
+        "Trustee 2 Occupation": formData.t2Occupation || "N/A",
+        "Trustee 2 Residential Address": `${formData.t2Address || "N/A"}, ${formData.t2City || ""}, ${formData.t2Lga || ""}, ${formData.t2State || ""}`.trim(),
+        "Trustee 2 ID Number": `${formData.t2IdType}: ${formData.t2IdNumber || "N/A"}`,
+      };
+
+      if (formData.additionalTrustees) {
+        detailsMap["Additional Trustees List"] = formData.additionalTrustees;
+      }
+      if (formData.additionalNotes) {
+        detailsMap["Additional Notes"] = formData.additionalNotes;
+      }
+      if (allFiles.length > 0) {
+        detailsMap["Attached Documents"] = allFiles.map((f) => `${f.label || "File"}: ${f.filename}`).join(", ");
+      }
+
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fullName: formData.fullName,
-          phone: formData.phone,
-          email: formData.email,
-          proposedBusinessName: formData.proposedName1 || formData.organisationName,
+          fullName: t1Name,
+          phone: primaryPhone,
+          email: primaryEmail,
+          proposedBusinessName: formData.proposedName1,
           packageInterested: `NGO / Incorporated Trustees - ${selectedPkg}`,
           source: "trustees-form",
           files: allFiles,
-          submittedDetails: {
-            "Contact Phone": formData.phone,
-            "Email Address": formData.email,
-            "Proposed Organisation Name 1": formData.proposedName1 || formData.organisationName,
-            "Proposed Name 2 (Alternative)": formData.proposedName2 || "N/A",
-            "Aims & Objectives": formData.purposeObjectives,
-            "Trustee Details": formData.trusteeDetails || "N/A",
-            "Additional Notes": formData.additionalInfo || "N/A",
-            ...(allFiles.length > 0
-              ? { "Attached Documents": allFiles.map((f) => `${f.label || "File"}: ${f.filename}`).join(", ") }
-              : {}),
-          },
+          submittedDetails: detailsMap,
         }),
       });
 
@@ -432,14 +517,14 @@ export default function TrusteesPage() {
                   </div>
                   <h3 className="text-2xl font-bold text-[#0c1210]">Application Received</h3>
                   <p className="text-[#2b3a30] max-w-md mx-auto text-sm leading-relaxed font-medium">
-                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.fullName}</strong>. Your NGO / Incorporated Trustees registration request for <strong className="text-[#17382b] font-bold">{formData.proposedName1 || formData.organisationName}</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued for verification.
+                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.t1FullName || `${formData.t1Surname} ${formData.t1OtherNames}`.trim() || "Founder"}</strong>. Your NGO / Incorporated Trustees registration request for <strong className="text-[#17382b] font-bold">{formData.proposedName1}</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued for verification.
                   </p>
                   <p className="text-xs text-[#687c70] italic">
                     Our compliance specialist will reach out to you directly on WhatsApp / Phone.
                   </p>
                   <div className="pt-4 flex flex-wrap justify-center gap-4">
                     <a
-                      href={`https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20an%20NGO%20application%20for%20${encodeURIComponent(formData.proposedName1 || formData.organisationName)}%20(${selectedPkg}%20tier).`}
+                      href={`https://wa.me/2348088194093?text=Hello%20Eponix%20Digital%2C%20I%20just%20submitted%20an%20NGO%20application%20for%20${encodeURIComponent(formData.proposedName1)}%20(${selectedPkg}%20tier).`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ep-btn ep-btn-primary"
@@ -457,7 +542,7 @@ export default function TrusteesPage() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
+                  className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-8 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
                     <div className="p-4 bg-red-100 border-2 border-red-600 text-red-900 text-sm font-bold rounded-xl flex items-center gap-3">
@@ -466,6 +551,7 @@ export default function TrusteesPage() {
                     </div>
                   )}
 
+                  {/* PACKAGE SELECTION */}
                   <div className="space-y-2">
                     <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold">
                       Selected Package
@@ -477,184 +563,811 @@ export default function TrusteesPage() {
                     >
                       <option value="Starter">Starter: ₦130,000</option>
                       <option value="Pro">Pro: ₦180,000 (Recommended: Includes SCUML)</option>
-                      <option value="Premium">Premium: ₦450,000 (Includes Website & Identity)</option>
+                      <option value="Premium">Premium: ₦450,000 (Includes Website &amp; Identity)</option>
                     </select>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {/* SECTION 1: ORGANISATION DETAILS */}
+                  <div className="space-y-4 pt-2 border-t border-[#ced7cd]">
+                    <div className="flex items-center gap-2 text-[#17382b] font-bold text-sm uppercase font-mono tracking-wider">
+                      <span className="w-6 h-6 rounded-full bg-[#17382b] text-[#ffffff] flex items-center justify-center text-xs">1</span>
+                      <span>Organisation Classification &amp; Profile</span>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold">
+                        Organisation Category *
+                      </label>
+                      <select
+                        name="category"
+                        value={formData.category}
+                        onChange={handleChange}
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-semibold transition-all"
+                      >
+                        <option value="NGO / Non-Profit">Non-Governmental Organisation (NGO / Non-Profit)</option>
+                        <option value="Foundation / Charity">Foundation / Charity / Humanitarian Trust</option>
+                        <option value="Church / Christian Ministry">Church / Christian Ministry / Fellowship</option>
+                        <option value="Mosque / Islamic Society">Mosque / Islamic Society / Foundation</option>
+                        <option value="Community / Town Association">Community / Town Development Association</option>
+                        <option value="Alumni / Social Club">Alumni Association / Social Club / Initiative</option>
+                      </select>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                          Proposed Organisation Name 1 *
+                        </label>
+                        <input
+                          type="text"
+                          name="proposedName1"
+                          value={formData.proposedName1}
+                          onChange={handleChange}
+                          required
+                          placeholder="E.g., Hope Horizon Initiative"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                          Proposed Organisation Name 2 (Alternative)
+                        </label>
+                        <input
+                          type="text"
+                          name="proposedName2"
+                          value={formData.proposedName2}
+                          onChange={handleChange}
+                          placeholder="E.g., Hope Horizon Foundation"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                    </div>
+
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                        Primary Contact Name *
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                        Aims, Purpose &amp; Objectives *
+                      </label>
+                      <textarea
+                        name="purposeObjectives"
+                        value={formData.purposeObjectives}
+                        onChange={handleChange}
+                        required
+                        placeholder="Describe the mission, charitable focus, community development, religious, or educational objectives..."
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none min-h-[90px] font-medium transition-all placeholder:text-[#88968d]"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                          Official Organisation Email
+                        </label>
+                        <input
+                          type="email"
+                          name="orgEmail"
+                          value={formData.orgEmail}
+                          onChange={handleChange}
+                          placeholder="info@organisation.org.ng"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                          Official Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          name="orgPhone"
+                          value={formData.orgPhone}
+                          onChange={handleChange}
+                          placeholder="08088194093"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                          Head Office State
+                        </label>
+                        <input
+                          type="text"
+                          name="headOfficeState"
+                          value={formData.headOfficeState}
+                          onChange={handleChange}
+                          placeholder="State"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                          Head Office LGA
+                        </label>
+                        <input
+                          type="text"
+                          name="headOfficeLga"
+                          value={formData.headOfficeLga}
+                          onChange={handleChange}
+                          placeholder="LGA"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                          Head Office City / Town
+                        </label>
+                        <input
+                          type="text"
+                          name="headOfficeCity"
+                          value={formData.headOfficeCity}
+                          onChange={handleChange}
+                          placeholder="City"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                        Full Registered Head Office Address
                       </label>
                       <input
                         type="text"
-                        name="fullName"
-                        value={formData.fullName}
+                        name="headOfficeAddress"
+                        value={formData.headOfficeAddress}
                         onChange={handleChange}
-                        required
-                        placeholder="Representative name"
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                        Active Email *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        placeholder="contact@organisation.org"
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        placeholder="08012345678"
+                        placeholder="Plot number, building name, street address"
                         className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* SECTION 2: TRUSTEE 1 (CHAIRMAN / PRESIDENT) */}
+                  <div className="space-y-4 pt-4 border-t-2 border-[#17382b]/20 bg-[#ffffff] p-5 rounded-xl border border-[#c5d1bf]">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-[#17382b] font-bold text-sm uppercase font-mono tracking-wider">
+                        <span className="w-6 h-6 rounded-full bg-[#17382b] text-[#ffffff] flex items-center justify-center text-xs">2</span>
+                        <span>Trustee 1 Details (Chairman / President)</span>
+                      </div>
+                      <span className="text-[11px] font-bold uppercase bg-[#17382b] text-white px-2.5 py-0.5 rounded">
+                        Chairman of Trustees
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          First Name *
+                        </label>
+                        <input
+                          type="text"
+                          name="t1FullName"
+                          value={formData.t1FullName}
+                          onChange={handleChange}
+                          required
+                          placeholder="John"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Surname *
+                        </label>
+                        <input
+                          type="text"
+                          name="t1Surname"
+                          value={formData.t1Surname}
+                          onChange={handleChange}
+                          required
+                          placeholder="Doe"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Other Names
+                        </label>
+                        <input
+                          type="text"
+                          name="t1OtherNames"
+                          value={formData.t1OtherNames}
+                          onChange={handleChange}
+                          placeholder="Middle name"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Role / Title in Organisation *
+                        </label>
+                        <select
+                          name="t1Role"
+                          value={formData.t1Role}
+                          onChange={handleChange}
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        >
+                          <option value="Chairman / President">Chairman / President</option>
+                          <option value="General Overseer / Pastor">General Overseer / Pastor</option>
+                          <option value="Founder / Lead Trustee">Founder / Lead Trustee</option>
+                          <option value="Imam / Spiritual Leader">Imam / Spiritual Leader</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Date of Birth *
+                        </label>
+                        <input
+                          type="date"
+                          name="t1Dob"
+                          value={formData.t1Dob}
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Gender *
+                        </label>
+                        <select
+                          name="t1Gender"
+                          value={formData.t1Gender}
+                          onChange={handleChange}
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        >
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Active Email *
+                        </label>
+                        <input
+                          type="email"
+                          name="t1Email"
+                          value={formData.t1Email}
+                          onChange={handleChange}
+                          required
+                          placeholder="chairman@example.com"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Phone / WhatsApp *
+                        </label>
+                        <input
+                          type="tel"
+                          name="t1Phone"
+                          value={formData.t1Phone}
+                          onChange={handleChange}
+                          required
+                          placeholder="08012345678"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Occupation
+                        </label>
+                        <input
+                          type="text"
+                          name="t1Occupation"
+                          value={formData.t1Occupation}
+                          onChange={handleChange}
+                          placeholder="Clergy, Professional, Educator..."
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          State of Residence
+                        </label>
+                        <input
+                          type="text"
+                          name="t1State"
+                          value={formData.t1State}
+                          onChange={handleChange}
+                          placeholder="State"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          LGA
+                        </label>
+                        <input
+                          type="text"
+                          name="t1Lga"
+                          value={formData.t1Lga}
+                          onChange={handleChange}
+                          placeholder="LGA"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          City / Town
+                        </label>
+                        <input
+                          type="text"
+                          name="t1City"
+                          value={formData.t1City}
+                          onChange={handleChange}
+                          placeholder="City"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                        Proposed Organisation Name 1 *
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                        Residential Address
                       </label>
                       <input
                         type="text"
-                        name="proposedName1"
-                        value={formData.proposedName1}
+                        name="t1Address"
+                        value={formData.t1Address}
                         onChange={handleChange}
-                        required
-                        placeholder="E.g., Hope Horizon Initiative"
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
+                        placeholder="House number, street address"
+                        className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
                       />
                     </div>
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                        Proposed Organisation Name 2 (Alternative)
-                      </label>
-                      <input
-                        type="text"
-                        name="proposedName2"
-                        value={formData.proposedName2}
-                        onChange={handleChange}
-                        placeholder="E.g., Hope Horizon Foundation"
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
-                      />
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Means of ID Type
+                        </label>
+                        <select
+                          name="t1IdType"
+                          value={formData.t1IdType}
+                          onChange={handleChange}
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        >
+                          <option value="NIN">National Identity Number (NIN)</option>
+                          <option value="International Passport">International Passport</option>
+                          <option value="Driver's License">Driver&apos;s License</option>
+                          <option value="Voter's Card">Voter&apos;s Card</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          NIN / ID Number *
+                        </label>
+                        <input
+                          type="text"
+                          name="t1IdNumber"
+                          value={formData.t1IdNumber}
+                          onChange={handleChange}
+                          required
+                          placeholder="11-digit NIN or Passport No"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                      Aims &amp; Objectives / Purpose *
-                    </label>
-                    <textarea
-                      name="purposeObjectives"
-                      value={formData.purposeObjectives}
-                      onChange={handleChange}
-                      required
-                      placeholder="Describe the mission, charitable focus, community development, religious or educational objectives of the organisation..."
-                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none min-h-[90px] font-medium transition-all placeholder:text-[#88968d]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                      Trustee Details (Names, Roles &amp; Occupations) *
-                    </label>
-                    <textarea
-                      name="trusteeDetails"
-                      value={formData.trusteeDetails}
-                      onChange={handleChange}
-                      required
-                      placeholder="List Chairman, Secretary, and other Trustees (Full legal name, phone, email, occupation, and residential address)..."
-                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none min-h-[100px] font-medium transition-all placeholder:text-[#88968d]"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                        Trustee ID Documents
-                      </label>
-                      <input
-                        type="file"
-                        multiple
-                        onChange={(e) => handleFileChange(e, "trusteeDocs", "Trustee ID Documents (NIN/Passport)")}
-                        className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
-                      />
-                      {fileMap["trusteeDocs"] && fileMap["trusteeDocs"].length > 0 && (
-                        <div className="mt-1.5 space-y-0.5">
-                          {fileMap["trusteeDocs"].map((f, idx) => (
-                            <span key={idx} className="text-[11px] text-[#166534] font-bold block">
-                              ✓ {f.filename} attached
+                    {/* TRUSTEE 1 UPLOADS */}
+                    <div className="pt-2 border-t border-[#e5eadf]">
+                      <div className="text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                        Trustee 1 Document Uploads
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                            Means of ID (NIN/Passport)
+                          </label>
+                          <input
+                            type="file"
+                            onChange={(e) => handleFileChange(e, "t1IdCard", "Trustee 1 ID (NIN/Passport)")}
+                            className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                          />
+                          {fileMap["t1IdCard"] && fileMap["t1IdCard"].length > 0 && (
+                            <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                              ✓ {fileMap["t1IdCard"][0].filename} attached
                             </span>
-                          ))}
+                          )}
                         </div>
-                      )}
-                      <span className="text-[10px] text-[#526357] font-medium mt-1 block">
-                        Upload NIN slips, Passports, or valid IDs for all trustees.
+                        <div>
+                          <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                            Passport Photograph
+                          </label>
+                          <input
+                            type="file"
+                            onChange={(e) => handleFileChange(e, "t1Passport", "Trustee 1 Passport Photo")}
+                            className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                          />
+                          {fileMap["t1Passport"] && fileMap["t1Passport"].length > 0 && (
+                            <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                              ✓ {fileMap["t1Passport"][0].filename} attached
+                            </span>
+                          )}
+                        </div>
+                        <div>
+                          <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                            Signature Specimen
+                          </label>
+                          <input
+                            type="file"
+                            onChange={(e) => handleFileChange(e, "t1Signature", "Trustee 1 Signature")}
+                            className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                          />
+                          {fileMap["t1Signature"] && fileMap["t1Signature"].length > 0 && (
+                            <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                              ✓ {fileMap["t1Signature"][0].filename} attached
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* SECTION 3: TRUSTEE 2 (SECRETARY / GENERAL SECRETARY) */}
+                  <div className="space-y-4 pt-4 border-t-2 border-[#17382b]/20 bg-[#ffffff] p-5 rounded-xl border border-[#c5d1bf]">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-[#17382b] font-bold text-sm uppercase font-mono tracking-wider">
+                        <span className="w-6 h-6 rounded-full bg-[#17382b] text-[#ffffff] flex items-center justify-center text-xs">3</span>
+                        <span>Trustee 2 Details (Secretary / General Secretary)</span>
+                      </div>
+                      <span className="text-[11px] font-bold uppercase bg-[#e5eadf] text-[#17382b] px-2.5 py-0.5 rounded">
+                        Secretary of Trustees
                       </span>
                     </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          First Name *
+                        </label>
+                        <input
+                          type="text"
+                          name="t2FullName"
+                          value={formData.t2FullName}
+                          onChange={handleChange}
+                          required
+                          placeholder="Jane"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Surname *
+                        </label>
+                        <input
+                          type="text"
+                          name="t2Surname"
+                          value={formData.t2Surname}
+                          onChange={handleChange}
+                          required
+                          placeholder="Doe"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Other Names
+                        </label>
+                        <input
+                          type="text"
+                          name="t2OtherNames"
+                          value={formData.t2OtherNames}
+                          onChange={handleChange}
+                          placeholder="Middle name"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Role / Title in Organisation *
+                        </label>
+                        <select
+                          name="t2Role"
+                          value={formData.t2Role}
+                          onChange={handleChange}
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        >
+                          <option value="Secretary / General Secretary">Secretary / General Secretary</option>
+                          <option value="Assistant General Overseer">Assistant General Overseer</option>
+                          <option value="Trustee / Treasurer">Trustee / Treasurer</option>
+                          <option value="Legal Adviser / Trustee">Legal Adviser / Trustee</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Date of Birth *
+                        </label>
+                        <input
+                          type="date"
+                          name="t2Dob"
+                          value={formData.t2Dob}
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Gender *
+                        </label>
+                        <select
+                          name="t2Gender"
+                          value={formData.t2Gender}
+                          onChange={handleChange}
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        >
+                          <option value="Female">Female</option>
+                          <option value="Male">Male</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Active Email
+                        </label>
+                        <input
+                          type="email"
+                          name="t2Email"
+                          value={formData.t2Email}
+                          onChange={handleChange}
+                          placeholder="secretary@example.com"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Phone Number *
+                        </label>
+                        <input
+                          type="tel"
+                          name="t2Phone"
+                          value={formData.t2Phone}
+                          onChange={handleChange}
+                          required
+                          placeholder="08012345678"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Occupation
+                        </label>
+                        <input
+                          type="text"
+                          name="t2Occupation"
+                          value={formData.t2Occupation}
+                          onChange={handleChange}
+                          placeholder="Civil Servant, Legal, Business..."
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          State of Residence
+                        </label>
+                        <input
+                          type="text"
+                          name="t2State"
+                          value={formData.t2State}
+                          onChange={handleChange}
+                          placeholder="State"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          LGA
+                        </label>
+                        <input
+                          type="text"
+                          name="t2Lga"
+                          value={formData.t2Lga}
+                          onChange={handleChange}
+                          placeholder="LGA"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          City / Town
+                        </label>
+                        <input
+                          type="text"
+                          name="t2City"
+                          value={formData.t2City}
+                          onChange={handleChange}
+                          placeholder="City"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                        Constitution / Supporting Documents (Optional)
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                        Residential Address
                       </label>
                       <input
-                        type="file"
-                        onChange={(e) => handleFileChange(e, "constitutionDoc", "Constitution / Minutes Document")}
-                        className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                        type="text"
+                        name="t2Address"
+                        value={formData.t2Address}
+                        onChange={handleChange}
+                        placeholder="House number, street address"
+                        className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
                       />
-                      {fileMap["constitutionDoc"] && fileMap["constitutionDoc"].length > 0 && (
-                        <span className="text-[11px] text-[#166534] font-bold mt-1 block">
-                          ✓ {fileMap["constitutionDoc"][0].filename} attached
-                        </span>
-                      )}
-                      <span className="text-[10px] text-[#526357] font-medium mt-1 block">
-                        If you have an existing drafted constitution or minutes of meeting.
-                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Means of ID Type
+                        </label>
+                        <select
+                          name="t2IdType"
+                          value={formData.t2IdType}
+                          onChange={handleChange}
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        >
+                          <option value="NIN">National Identity Number (NIN)</option>
+                          <option value="International Passport">International Passport</option>
+                          <option value="Driver's License">Driver&apos;s License</option>
+                          <option value="Voter's Card">Voter&apos;s Card</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          NIN / ID Number
+                        </label>
+                        <input
+                          type="text"
+                          name="t2IdNumber"
+                          value={formData.t2IdNumber}
+                          onChange={handleChange}
+                          placeholder="11-digit NIN or Passport No"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* TRUSTEE 2 UPLOADS */}
+                    <div className="pt-2 border-t border-[#e5eadf]">
+                      <div className="text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                        Trustee 2 Document Uploads
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                            Means of ID (NIN/Passport)
+                          </label>
+                          <input
+                            type="file"
+                            onChange={(e) => handleFileChange(e, "t2IdCard", "Trustee 2 ID (NIN/Passport)")}
+                            className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                          />
+                          {fileMap["t2IdCard"] && fileMap["t2IdCard"].length > 0 && (
+                            <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                              ✓ {fileMap["t2IdCard"][0].filename} attached
+                            </span>
+                          )}
+                        </div>
+                        <div>
+                          <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                            Passport Photograph
+                          </label>
+                          <input
+                            type="file"
+                            onChange={(e) => handleFileChange(e, "t2Passport", "Trustee 2 Passport Photo")}
+                            className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                          />
+                          {fileMap["t2Passport"] && fileMap["t2Passport"].length > 0 && (
+                            <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                              ✓ {fileMap["t2Passport"][0].filename} attached
+                            </span>
+                          )}
+                        </div>
+                        <div>
+                          <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                            Signature Specimen
+                          </label>
+                          <input
+                            type="file"
+                            onChange={(e) => handleFileChange(e, "t2Signature", "Trustee 2 Signature")}
+                            className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                          />
+                          {fileMap["t2Signature"] && fileMap["t2Signature"].length > 0 && (
+                            <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                              ✓ {fileMap["t2Signature"][0].filename} attached
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
-                      Additional Information (Optional)
-                    </label>
-                    <textarea
-                      name="additionalInfo"
-                      value={formData.additionalInfo}
-                      onChange={handleChange}
-                      placeholder="Special clauses, governing body rules, meeting location, etc."
-                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none min-h-[70px] font-medium transition-all placeholder:text-[#88968d]"
-                    />
+                  {/* SECTION 4: ADDITIONAL TRUSTEES & CONSTITUTION */}
+                  <div className="space-y-4 pt-2 border-t border-[#ced7cd]">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                        Additional Trustees (Trustee 3, 4, etc. - Optional)
+                      </label>
+                      <textarea
+                        name="additionalTrustees"
+                        value={formData.additionalTrustees}
+                        onChange={handleChange}
+                        placeholder="If you have more than 2 trustees, list their Full Names, Roles, Phone, Email, and Address here..."
+                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none min-h-[70px] font-medium transition-all placeholder:text-[#88968d]"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                          Constitution / Minutes Document (Optional)
+                        </label>
+                        <input
+                          type="file"
+                          onChange={(e) => handleFileChange(e, "constitutionDoc", "Constitution / Minutes Document")}
+                          className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                        />
+                        {fileMap["constitutionDoc"] && fileMap["constitutionDoc"].length > 0 && (
+                          <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                            ✓ {fileMap["constitutionDoc"][0].filename} attached
+                          </span>
+                        )}
+                        <span className="text-[10px] text-[#526357] font-medium mt-1 block">
+                          Upload existing drafted constitution, bye-laws, or minutes of meeting.
+                        </span>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-1">
+                          Additional Information / Special Clauses
+                        </label>
+                        <input
+                          type="text"
+                          name="additionalNotes"
+                          value={formData.additionalNotes}
+                          onChange={handleChange}
+                          placeholder="Governing body clauses, quorum rules..."
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 p-3 text-sm rounded-lg outline-none font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                    </div>
                   </div>
 
+                  {/* TERMS CONSENT */}
                   <div className="pt-2">
                     <label className="flex items-start gap-3 cursor-pointer text-xs text-[#2b3a30] font-medium">
                       <input
                         type="checkbox"
                         checked={formData.termsConsent}
-                        onChange={handleCheckboxChange}
+                        onChange={handleChange}
+                        name="termsConsent"
                         className="mt-0.5 accent-[#17382b]"
                       />
                       <span>
-                        I have read and agree to the Terms of Service and Privacy Policy. I confirm that all trustees have consented and authorize Eponix Digital to conduct official registration and newspaper notices.
+                        I have read and agree to the Terms of Service and Privacy Policy. I confirm that all trustees have consented and authorize Eponix Digital to conduct official CAC registration and mandatory 28-day newspaper notices.
                       </span>
                     </label>
                   </div>
 
+                  {/* SUBMIT BUTTON */}
                   <div className="pt-4 border-t border-[#ced7cd]">
                     <button
                       type="submit"

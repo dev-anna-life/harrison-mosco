@@ -47,11 +47,50 @@ const initialFormData = {
   proposedName2: "",
   natureOfBusiness: "",
   shareCapital: "1,000,000",
-  fullName: "",
-  email: "",
-  phone: "",
-  directorDetails: "",
-  additionalDirectorInfo: "",
+  companyEmail: "",
+  companyPhone: "",
+  headOfficeState: "",
+  headOfficeLga: "",
+  headOfficeCity: "",
+  headOfficeAddress: "",
+  // Director 1
+  d1FullName: "",
+  d1Surname: "",
+  d1OtherNames: "",
+  d1Dob: "",
+  d1Gender: "Male",
+  d1Nationality: "Nigerian",
+  d1Phone: "",
+  d1Email: "",
+  d1Occupation: "",
+  d1State: "",
+  d1Lga: "",
+  d1City: "",
+  d1Address: "",
+  d1IdType: "NIN",
+  d1IdNumber: "",
+  d1SharePercentage: "100%",
+  // Director 2 (Optional)
+  hasSecondDirector: false,
+  d2FullName: "",
+  d2Surname: "",
+  d2OtherNames: "",
+  d2Dob: "",
+  d2Gender: "Female",
+  d2Nationality: "Nigerian",
+  d2Phone: "",
+  d2Email: "",
+  d2Occupation: "",
+  d2State: "",
+  d2Lga: "",
+  d2City: "",
+  d2Address: "",
+  d2IdType: "NIN",
+  d2IdNumber: "",
+  d2SharePercentage: "50%",
+  // Additional
+  secretaryDetails: "",
+  additionalNotes: "",
   termsConsent: true,
 };
 
@@ -82,12 +121,13 @@ export default function LimitedCompanyPage() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, termsConsent: e.target.checked }));
+    const { name, value, type } = e.target;
+    if (type === "checkbox") {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData((prev) => ({ ...prev, [name]: checked }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleFileChange = async (
@@ -122,23 +162,45 @@ export default function LimitedCompanyPage() {
     }
 
     if (!formData.natureOfBusiness) {
-      setErrorMessage("Please describe the nature of your business.");
+      setErrorMessage("Please describe the nature and objects of your business.");
       return;
     }
 
-    if (!formData.fullName) {
-      setErrorMessage("Please provide your primary contact full legal name.");
+    const d1Name = formData.d1FullName || `${formData.d1Surname} ${formData.d1OtherNames}`.trim();
+    if (!d1Name) {
+      setErrorMessage("Please provide Director 1's full legal name.");
       return;
     }
 
-    if (!formData.email) {
-      setErrorMessage("Please provide an active email address.");
+    if (!formData.d1Dob) {
+      setErrorMessage("Please enter Director 1's Date of Birth.");
       return;
     }
 
-    if (!formData.phone) {
-      setErrorMessage("Please provide a valid WhatsApp phone number.");
+    if (!formData.d1Email) {
+      setErrorMessage("Please provide Director 1's active email address.");
       return;
+    }
+
+    if (!formData.d1Phone) {
+      setErrorMessage("Please provide Director 1's WhatsApp phone number.");
+      return;
+    }
+
+    if (formData.hasSecondDirector) {
+      const d2Name = formData.d2FullName || `${formData.d2Surname} ${formData.d2OtherNames}`.trim();
+      if (!d2Name) {
+        setErrorMessage("Please provide Director 2's full legal name.");
+        return;
+      }
+      if (!formData.d2Dob) {
+        setErrorMessage("Please enter Director 2's Date of Birth.");
+        return;
+      }
+      if (!formData.d2Phone) {
+        setErrorMessage("Please provide Director 2's phone number.");
+        return;
+      }
     }
 
     if (!formData.termsConsent) {
@@ -150,30 +212,63 @@ export default function LimitedCompanyPage() {
 
     try {
       const allFiles = Object.values(fileMap).flat();
+      const primaryPhone = formData.d1Phone || formData.companyPhone;
+      const primaryEmail = formData.d1Email || formData.companyEmail;
+
+      const detailsMap: Record<string, string> = {
+        "Proposed Company Name 1": formData.proposedName1,
+        "Proposed Company Name 2": formData.proposedName2 || "N/A",
+        "Authorized Share Capital": `₦${formData.shareCapital || "1,000,000"}`,
+        "Nature of Business": formData.natureOfBusiness,
+        "Company Email": formData.companyEmail || formData.d1Email,
+        "Company Phone": formData.companyPhone || formData.d1Phone,
+        "Head Office Address": `${formData.headOfficeAddress || "N/A"}, ${formData.headOfficeCity || ""}, ${formData.headOfficeLga || ""}, ${formData.headOfficeState || ""}`.trim(),
+        
+        // Director 1 Details
+        "Director 1 Full Name": d1Name,
+        "Director 1 DOB": formData.d1Dob,
+        "Director 1 Gender & Nationality": `${formData.d1Gender} (${formData.d1Nationality})`,
+        "Director 1 Phone & Email": `${formData.d1Phone} | ${formData.d1Email}`,
+        "Director 1 Occupation": formData.d1Occupation || "N/A",
+        "Director 1 Residential Address": `${formData.d1Address || "N/A"}, ${formData.d1City || ""}, ${formData.d1Lga || ""}, ${formData.d1State || ""}`.trim(),
+        "Director 1 ID Number": `${formData.d1IdType}: ${formData.d1IdNumber || "N/A"}`,
+        "Director 1 Shareholding": formData.d1SharePercentage || (formData.hasSecondDirector ? "50%" : "100%"),
+      };
+
+      if (formData.hasSecondDirector) {
+        const d2Name = formData.d2FullName || `${formData.d2Surname} ${formData.d2OtherNames}`.trim();
+        detailsMap["Director 2 Full Name"] = d2Name;
+        detailsMap["Director 2 DOB"] = formData.d2Dob;
+        detailsMap["Director 2 Gender & Nationality"] = `${formData.d2Gender} (${formData.d2Nationality})`;
+        detailsMap["Director 2 Phone & Email"] = `${formData.d2Phone} | ${formData.d2Email || "N/A"}`;
+        detailsMap["Director 2 Occupation"] = formData.d2Occupation || "N/A";
+        detailsMap["Director 2 Residential Address"] = `${formData.d2Address || "N/A"}, ${formData.d2City || ""}, ${formData.d2Lga || ""}, ${formData.d2State || ""}`.trim();
+        detailsMap["Director 2 ID Number"] = `${formData.d2IdType}: ${formData.d2IdNumber || "N/A"}`;
+        detailsMap["Director 2 Shareholding"] = formData.d2SharePercentage || "50%";
+      }
+
+      if (formData.secretaryDetails) {
+        detailsMap["Company Secretary"] = formData.secretaryDetails;
+      }
+      if (formData.additionalNotes) {
+        detailsMap["Additional Information"] = formData.additionalNotes;
+      }
+      if (allFiles.length > 0) {
+        detailsMap["Attached Documents"] = allFiles.map((f) => `${f.label || "File"}: ${f.filename}`).join(", ");
+      }
+
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          fullName: formData.fullName,
-          phone: formData.phone,
-          email: formData.email,
+          fullName: d1Name,
+          phone: primaryPhone,
+          email: primaryEmail,
           proposedBusinessName: formData.proposedName1,
           packageInterested: `Limited Company - ${selectedPkg}`,
           source: "company-form",
           files: allFiles,
-          submittedDetails: {
-            "Contact Phone": formData.phone,
-            "Email Address": formData.email,
-            "Proposed Company Name 1": formData.proposedName1,
-            "Proposed Company Name 2": formData.proposedName2 || "N/A",
-            "Authorized Share Capital": `₦${formData.shareCapital || "1,000,000"}`,
-            "Nature of Business": formData.natureOfBusiness,
-            "Director / Shareholder Info": formData.directorDetails || "N/A",
-            "Additional Director Notes": formData.additionalDirectorInfo || "N/A",
-            ...(allFiles.length > 0
-              ? { "Attached Documents": allFiles.map((f) => `${f.label || "File"}: ${f.filename}`).join(", ") }
-              : {}),
-          },
+          submittedDetails: detailsMap,
         }),
       });
 
@@ -431,7 +526,7 @@ export default function LimitedCompanyPage() {
                   </div>
                   <h3 className="text-2xl font-bold text-[#0c1210]">Application Received</h3>
                   <p className="text-[#2b3a30] max-w-md mx-auto text-sm leading-relaxed font-medium">
-                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.fullName}</strong>. Your Limited Company incorporation request for <strong className="text-[#17382b] font-bold">{formData.proposedName1} LTD</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued for verification.
+                    Thank you, <strong className="text-[#0c1210] font-bold">{formData.d1FullName || `${formData.d1Surname} ${formData.d1OtherNames}`.trim() || "Founder"}</strong>. Your Limited Company incorporation request for <strong className="text-[#17382b] font-bold">{formData.proposedName1} LTD</strong> under the <strong className="text-[#0c1210] font-bold">{selectedPkg}</strong> package has been queued for verification.
                   </p>
                   <p className="text-xs text-[#687c70] italic">
                     Our compliance specialist will reach out to you directly on WhatsApp / Phone.
@@ -456,7 +551,7 @@ export default function LimitedCompanyPage() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-6 shadow-xl rounded-2xl text-[#0c1210]"
+                  className="bg-[#f9faf7] border border-[#ced7cd] p-6 lg:p-10 space-y-8 shadow-xl rounded-2xl text-[#0c1210]"
                 >
                   {errorMessage && (
                     <div className="p-4 bg-red-100 border-2 border-red-600 text-red-900 text-sm font-bold rounded-xl flex items-center gap-3">
@@ -465,6 +560,7 @@ export default function LimitedCompanyPage() {
                     </div>
                   )}
 
+                  {/* PACKAGE SELECTION */}
                   <div className="space-y-2">
                     <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold">
                       Selected Package
@@ -480,180 +576,833 @@ export default function LimitedCompanyPage() {
                     </select>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                        Proposed Company Name 1 *
-                      </label>
-                      <input
-                        type="text"
-                        name="proposedName1"
-                        value={formData.proposedName1}
-                        onChange={handleChange}
-                        required
-                        placeholder="E.g., Nexus Zenith Synergy Ltd"
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
-                      />
+                  {/* SECTION 1: PROPOSED COMPANY DETAILS */}
+                  <div className="space-y-4 pt-2 border-t border-[#ced7cd]">
+                    <div className="flex items-center gap-2 text-[#17382b] font-bold text-sm uppercase font-mono tracking-wider">
+                      <span className="w-6 h-6 rounded-full bg-[#17382b] text-[#ffffff] flex items-center justify-center text-xs">1</span>
+                      <span>Proposed Company Information</span>
                     </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Proposed Company Name 1 *
+                        </label>
+                        <input
+                          type="text"
+                          name="proposedName1"
+                          value={formData.proposedName1}
+                          onChange={handleChange}
+                          required
+                          placeholder="E.g., Nexus Zenith Synergy Ltd"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Proposed Company Name 2 (Alternative)
+                        </label>
+                        <input
+                          type="text"
+                          name="proposedName2"
+                          value={formData.proposedName2}
+                          onChange={handleChange}
+                          placeholder="E.g., Nexus Zenith Global Ltd"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Authorized Share Capital (₦)
+                        </label>
+                        <select
+                          name="shareCapital"
+                          value={formData.shareCapital}
+                          onChange={handleChange}
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-semibold transition-all"
+                        >
+                          <option value="1,000,000">₦1,000,000 (Standard - Covers standard CAC filing)</option>
+                          <option value="2,000,000">₦2,000,000 (₦2 Million)</option>
+                          <option value="5,000,000">₦5,000,000 (₦5 Million)</option>
+                          <option value="10,000,000">₦10,000,000 (₦10 Million - Required for foreign directors/visas)</option>
+                          <option value="20,000,000">₦20,000,000+ (Custom Enterprise Capital)</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Nature / Objects of Business *
+                        </label>
+                        <input
+                          type="text"
+                          name="natureOfBusiness"
+                          value={formData.natureOfBusiness}
+                          onChange={handleChange}
+                          required
+                          placeholder="E.g., Software engineering, real estate development, general contracts..."
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Official Company Email
+                        </label>
+                        <input
+                          type="email"
+                          name="companyEmail"
+                          value={formData.companyEmail}
+                          onChange={handleChange}
+                          placeholder="corporate@company.ng"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Official Company Phone
+                        </label>
+                        <input
+                          type="tel"
+                          name="companyPhone"
+                          value={formData.companyPhone}
+                          onChange={handleChange}
+                          placeholder="08088194093"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Head Office State
+                        </label>
+                        <input
+                          type="text"
+                          name="headOfficeState"
+                          value={formData.headOfficeState}
+                          onChange={handleChange}
+                          placeholder="Rivers, Lagos, Abuja..."
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Head Office LGA
+                        </label>
+                        <input
+                          type="text"
+                          name="headOfficeLga"
+                          value={formData.headOfficeLga}
+                          onChange={handleChange}
+                          placeholder="Port Harcourt, Ikeja..."
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Head Office City / Town
+                        </label>
+                        <input
+                          type="text"
+                          name="headOfficeCity"
+                          value={formData.headOfficeCity}
+                          onChange={handleChange}
+                          placeholder="GRA Phase 2"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                    </div>
+
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                        Proposed Company Name 2 (Alternative)
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                        Full Head Office Street Address
                       </label>
                       <input
                         type="text"
-                        name="proposedName2"
-                        value={formData.proposedName2}
+                        name="headOfficeAddress"
+                        value={formData.headOfficeAddress}
                         onChange={handleChange}
-                        placeholder="E.g., Nexus Zenith Global Ltd"
+                        placeholder="Plot number, building name, street name"
                         className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                        Authorized Share Capital (₦)
-                      </label>
-                      <input
-                        type="text"
-                        name="shareCapital"
-                        value={formData.shareCapital}
-                        onChange={handleChange}
-                        placeholder="1,000,000 (Standard)"
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
-                      />
-                      <span className="text-[10px] text-[#526357] mt-1 block font-medium">
-                        Standard private limited company starts at ₦1,000,000 minimum share capital.
+                  {/* SECTION 2: DIRECTOR 1 (FIRST DIRECTOR & SHAREHOLDER) */}
+                  <div className="space-y-4 pt-4 border-t-2 border-[#17382b]/20 bg-[#ffffff] p-5 rounded-xl border border-[#c5d1bf]">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-[#17382b] font-bold text-sm uppercase font-mono tracking-wider">
+                        <span className="w-6 h-6 rounded-full bg-[#17382b] text-[#ffffff] flex items-center justify-center text-xs">2</span>
+                        <span>Director 1 Details (Primary / First Shareholder)</span>
+                      </div>
+                      <span className="text-[11px] font-bold uppercase bg-[#17382b] text-white px-2.5 py-0.5 rounded">
+                        Managing Director
                       </span>
                     </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          First Name *
+                        </label>
+                        <input
+                          type="text"
+                          name="d1FullName"
+                          value={formData.d1FullName}
+                          onChange={handleChange}
+                          required
+                          placeholder="John"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Surname *
+                        </label>
+                        <input
+                          type="text"
+                          name="d1Surname"
+                          value={formData.d1Surname}
+                          onChange={handleChange}
+                          required
+                          placeholder="Doe"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Other Names
+                        </label>
+                        <input
+                          type="text"
+                          name="d1OtherNames"
+                          value={formData.d1OtherNames}
+                          onChange={handleChange}
+                          placeholder="Middle name"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Date of Birth *
+                        </label>
+                        <input
+                          type="date"
+                          name="d1Dob"
+                          value={formData.d1Dob}
+                          onChange={handleChange}
+                          required
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Gender *
+                        </label>
+                        <select
+                          name="d1Gender"
+                          value={formData.d1Gender}
+                          onChange={handleChange}
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        >
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Nationality *
+                        </label>
+                        <input
+                          type="text"
+                          name="d1Nationality"
+                          value={formData.d1Nationality}
+                          onChange={handleChange}
+                          placeholder="Nigerian"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Active Email *
+                        </label>
+                        <input
+                          type="email"
+                          name="d1Email"
+                          value={formData.d1Email}
+                          onChange={handleChange}
+                          required
+                          placeholder="john@example.com"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Phone / WhatsApp *
+                        </label>
+                        <input
+                          type="tel"
+                          name="d1Phone"
+                          value={formData.d1Phone}
+                          onChange={handleChange}
+                          required
+                          placeholder="08012345678"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Occupation
+                        </label>
+                        <input
+                          type="text"
+                          name="d1Occupation"
+                          value={formData.d1Occupation}
+                          onChange={handleChange}
+                          placeholder="Businessman, Engineer..."
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          State of Residence
+                        </label>
+                        <input
+                          type="text"
+                          name="d1State"
+                          value={formData.d1State}
+                          onChange={handleChange}
+                          placeholder="Lagos, Rivers, Abuja..."
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          LGA
+                        </label>
+                        <input
+                          type="text"
+                          name="d1Lga"
+                          value={formData.d1Lga}
+                          onChange={handleChange}
+                          placeholder="Ikeja, Municipal..."
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          City / Town
+                        </label>
+                        <input
+                          type="text"
+                          name="d1City"
+                          value={formData.d1City}
+                          onChange={handleChange}
+                          placeholder="City"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                    </div>
+
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                        Nature of Business *
+                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                        Residential Address
                       </label>
                       <input
                         type="text"
-                        name="natureOfBusiness"
-                        value={formData.natureOfBusiness}
+                        name="d1Address"
+                        value={formData.d1Address}
                         onChange={handleChange}
-                        required
-                        placeholder="E.g., Tech consulting, general commerce, import/export..."
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        placeholder="House number, street address"
+                        className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
                       />
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                        Primary Contact Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        required
-                        placeholder="Full legal name"
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
-                      />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Means of ID Type
+                        </label>
+                        <select
+                          name="d1IdType"
+                          value={formData.d1IdType}
+                          onChange={handleChange}
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        >
+                          <option value="NIN">National Identity Number (NIN)</option>
+                          <option value="International Passport">International Passport</option>
+                          <option value="Driver's License">Driver&apos;s License</option>
+                          <option value="Voter's Card">Voter&apos;s Card</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          NIN / ID Number *
+                        </label>
+                        <input
+                          type="text"
+                          name="d1IdNumber"
+                          value={formData.d1IdNumber}
+                          onChange={handleChange}
+                          required
+                          placeholder="11-digit NIN or Passport No"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Share Percentage
+                        </label>
+                        <input
+                          type="text"
+                          name="d1SharePercentage"
+                          value={formData.d1SharePercentage}
+                          onChange={handleChange}
+                          placeholder="100% or 50%"
+                          className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                        Active Email *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        placeholder="corporate@example.com"
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        placeholder="08012345678"
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
-                      />
-                    </div>
-                  </div>
 
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                      Director / Shareholder Details
-                    </label>
-                    <textarea
-                      name="directorDetails"
-                      value={formData.directorDetails}
-                      onChange={handleChange}
-                      placeholder="List each director's Full Name, Residential Address, Phone, Email, and Share Percentage (e.g. Director 1: 60%, Director 2: 40%)..."
-                      className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none min-h-[100px] rounded-lg font-medium transition-all placeholder:text-[#88968d]"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                        Director / Shareholder Documents
-                      </label>
-                      <input
-                        type="file"
-                        multiple
-                        onChange={(e) => handleFileChange(e, "directorDocs", "Director / Shareholder IDs (NIN/Passport)")}
-                        className="w-full bg-[#ffffff] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
-                      />
-                      {fileMap["directorDocs"] && fileMap["directorDocs"].length > 0 && (
-                        <div className="mt-1.5 space-y-0.5">
-                          {fileMap["directorDocs"].map((f, idx) => (
-                            <span key={idx} className="text-[11px] text-[#166534] font-bold block">
-                              ✓ {f.filename} attached
+                    {/* DIRECTOR 1 UPLOADS */}
+                    <div className="pt-2 border-t border-[#e5eadf]">
+                      <div className="text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                        Director 1 Document Uploads
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                          <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                            Means of ID (NIN/Passport)
+                          </label>
+                          <input
+                            type="file"
+                            onChange={(e) => handleFileChange(e, "d1IdCard", "Director 1 ID (NIN/Passport)")}
+                            className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                          />
+                          {fileMap["d1IdCard"] && fileMap["d1IdCard"].length > 0 && (
+                            <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                              ✓ {fileMap["d1IdCard"][0].filename} attached
                             </span>
-                          ))}
+                          )}
                         </div>
-                      )}
-                      <span className="text-[10px] text-[#526357] mt-1 block font-medium">
-                        Upload NIN slips, Passports, or valid IDs for directors.
-                      </span>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-2 font-bold">
-                        Additional Information
-                      </label>
-                      <input
-                        type="text"
-                        name="additionalDirectorInfo"
-                        value={formData.additionalDirectorInfo}
-                        onChange={handleChange}
-                        placeholder="Company secretary preference, special clauses, etc."
-                        className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
-                      />
+                        <div>
+                          <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                            Passport Photograph
+                          </label>
+                          <input
+                            type="file"
+                            onChange={(e) => handleFileChange(e, "d1Passport", "Director 1 Passport Photo")}
+                            className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                          />
+                          {fileMap["d1Passport"] && fileMap["d1Passport"].length > 0 && (
+                            <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                              ✓ {fileMap["d1Passport"][0].filename} attached
+                            </span>
+                          )}
+                        </div>
+                        <div>
+                          <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                            Signature Specimen
+                          </label>
+                          <input
+                            type="file"
+                            onChange={(e) => handleFileChange(e, "d1Signature", "Director 1 Signature")}
+                            className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                          />
+                          {fileMap["d1Signature"] && fileMap["d1Signature"].length > 0 && (
+                            <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                              ✓ {fileMap["d1Signature"][0].filename} attached
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
+                  {/* SECTION 3: DIRECTOR 2 (SECOND DIRECTOR & SHAREHOLDER - TOGGLE) */}
+                  <div className="space-y-4 pt-2 border-t border-[#ced7cd]">
+                    <div className="p-4 bg-[#ffffff] border border-[#c5d1bf] rounded-xl flex items-center justify-between">
+                      <div>
+                        <div className="text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold">
+                          Multiple Directors / Shareholders
+                        </div>
+                        <p className="text-xs text-[#526357] font-medium mt-0.5">
+                          Does your company have a second director or co-shareholder?
+                        </p>
+                      </div>
+                      <label className="flex items-center gap-2 cursor-pointer bg-[#f4f7f1] hover:bg-[#eaf0e6] px-4 py-2 border border-[#c5d1bf] rounded-lg transition-all">
+                        <input
+                          type="checkbox"
+                          name="hasSecondDirector"
+                          checked={formData.hasSecondDirector}
+                          onChange={handleChange}
+                          className="accent-[#17382b] w-4 h-4 cursor-pointer"
+                        />
+                        <span className="text-xs font-bold text-[#17382b]">
+                          {formData.hasSecondDirector ? "Director 2 Added ✓" : "+ Add Director 2"}
+                        </span>
+                      </label>
+                    </div>
+
+                    {formData.hasSecondDirector && (
+                      <div className="space-y-4 bg-[#ffffff] p-5 rounded-xl border border-[#c5d1bf] transition-all">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2 text-[#17382b] font-bold text-sm uppercase font-mono tracking-wider">
+                            <span className="w-6 h-6 rounded-full bg-[#17382b] text-[#ffffff] flex items-center justify-center text-xs">3</span>
+                            <span>Director 2 Details (Co-Director / Shareholder)</span>
+                          </div>
+                          <span className="text-[11px] font-bold uppercase bg-[#e5eadf] text-[#17382b] px-2.5 py-0.5 rounded">
+                            Co-Director
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              First Name *
+                            </label>
+                            <input
+                              type="text"
+                              name="d2FullName"
+                              value={formData.d2FullName}
+                              onChange={handleChange}
+                              placeholder="Jane"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Surname *
+                            </label>
+                            <input
+                              type="text"
+                              name="d2Surname"
+                              value={formData.d2Surname}
+                              onChange={handleChange}
+                              placeholder="Doe"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Other Names
+                            </label>
+                            <input
+                              type="text"
+                              name="d2OtherNames"
+                              value={formData.d2OtherNames}
+                              onChange={handleChange}
+                              placeholder="Middle name"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Date of Birth
+                            </label>
+                            <input
+                              type="date"
+                              name="d2Dob"
+                              value={formData.d2Dob}
+                              onChange={handleChange}
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Gender
+                            </label>
+                            <select
+                              name="d2Gender"
+                              value={formData.d2Gender}
+                              onChange={handleChange}
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            >
+                              <option value="Female">Female</option>
+                              <option value="Male">Male</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Nationality
+                            </label>
+                            <input
+                              type="text"
+                              name="d2Nationality"
+                              value={formData.d2Nationality}
+                              onChange={handleChange}
+                              placeholder="Nigerian"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Email Address
+                            </label>
+                            <input
+                              type="email"
+                              name="d2Email"
+                              value={formData.d2Email}
+                              onChange={handleChange}
+                              placeholder="director2@example.com"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Phone Number
+                            </label>
+                            <input
+                              type="tel"
+                              name="d2Phone"
+                              value={formData.d2Phone}
+                              onChange={handleChange}
+                              placeholder="08012345678"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Occupation
+                            </label>
+                            <input
+                              type="text"
+                              name="d2Occupation"
+                              value={formData.d2Occupation}
+                              onChange={handleChange}
+                              placeholder="Professional, Consultant..."
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              State of Residence
+                            </label>
+                            <input
+                              type="text"
+                              name="d2State"
+                              value={formData.d2State}
+                              onChange={handleChange}
+                              placeholder="State"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              LGA
+                            </label>
+                            <input
+                              type="text"
+                              name="d2Lga"
+                              value={formData.d2Lga}
+                              onChange={handleChange}
+                              placeholder="LGA"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              City / Town
+                            </label>
+                            <input
+                              type="text"
+                              name="d2City"
+                              value={formData.d2City}
+                              onChange={handleChange}
+                              placeholder="City"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                            Residential Address
+                          </label>
+                          <input
+                            type="text"
+                            name="d2Address"
+                            value={formData.d2Address}
+                            onChange={handleChange}
+                            placeholder="Residential street address"
+                            className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Means of ID Type
+                            </label>
+                            <select
+                              name="d2IdType"
+                              value={formData.d2IdType}
+                              onChange={handleChange}
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            >
+                              <option value="NIN">National Identity Number (NIN)</option>
+                              <option value="International Passport">International Passport</option>
+                              <option value="Driver's License">Driver&apos;s License</option>
+                              <option value="Voter's Card">Voter&apos;s Card</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              NIN / ID Number
+                            </label>
+                            <input
+                              type="text"
+                              name="d2IdNumber"
+                              value={formData.d2IdNumber}
+                              onChange={handleChange}
+                              placeholder="11-digit NIN or Passport No"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                              Share Percentage
+                            </label>
+                            <input
+                              type="text"
+                              name="d2SharePercentage"
+                              value={formData.d2SharePercentage}
+                              onChange={handleChange}
+                              placeholder="50%"
+                              className="w-full bg-[#f9faf7] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all"
+                            />
+                          </div>
+                        </div>
+
+                        {/* DIRECTOR 2 UPLOADS */}
+                        <div className="pt-2 border-t border-[#e5eadf]">
+                          <div className="text-xs font-mono uppercase tracking-wider text-[#17382b] font-bold mb-2">
+                            Director 2 Document Uploads
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                              <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                                Means of ID (NIN/Passport)
+                              </label>
+                              <input
+                                type="file"
+                                onChange={(e) => handleFileChange(e, "d2IdCard", "Director 2 ID (NIN/Passport)")}
+                                className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                              />
+                              {fileMap["d2IdCard"] && fileMap["d2IdCard"].length > 0 && (
+                                <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                                  ✓ {fileMap["d2IdCard"][0].filename} attached
+                                </span>
+                              )}
+                            </div>
+                            <div>
+                              <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                                Passport Photograph
+                              </label>
+                              <input
+                                type="file"
+                                onChange={(e) => handleFileChange(e, "d2Passport", "Director 2 Passport Photo")}
+                                className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                              />
+                              {fileMap["d2Passport"] && fileMap["d2Passport"].length > 0 && (
+                                <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                                  ✓ {fileMap["d2Passport"][0].filename} attached
+                                </span>
+                              )}
+                            </div>
+                            <div>
+                              <label className="block text-[11px] font-bold text-[#2b3a30] mb-1">
+                                Signature Specimen
+                              </label>
+                              <input
+                                type="file"
+                                onChange={(e) => handleFileChange(e, "d2Signature", "Director 2 Signature")}
+                                className="w-full bg-[#f9faf7] text-xs text-[#2b3a30] border border-[#c5d1bf] p-2 rounded-lg file:mr-2 file:py-1 file:px-2.5 file:bg-[#17382b] file:border-0 file:text-[#ffffff] file:text-xs file:font-semibold file:rounded font-medium"
+                              />
+                              {fileMap["d2Signature"] && fileMap["d2Signature"].length > 0 && (
+                                <span className="text-[11px] text-[#166534] font-bold mt-1 block">
+                                  ✓ {fileMap["d2Signature"][0].filename} attached
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* SECTION 4: SECRETARY & ADDITIONAL INFORMATION */}
+                  <div className="space-y-4 pt-2 border-t border-[#ced7cd]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Company Secretary (Optional)
+                        </label>
+                        <input
+                          type="text"
+                          name="secretaryDetails"
+                          value={formData.secretaryDetails}
+                          onChange={handleChange}
+                          placeholder="Secretary Name & Phone (Optional for small companies)"
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-mono uppercase tracking-wider text-[#17382b] mb-1 font-bold">
+                          Additional Requests or Special Clauses
+                        </label>
+                        <input
+                          type="text"
+                          name="additionalNotes"
+                          value={formData.additionalNotes}
+                          onChange={handleChange}
+                          placeholder="Special MemArt clauses, custom share structures..."
+                          className="w-full bg-[#ffffff] text-[#0c1210] border border-[#c5d1bf] p-3 text-sm focus:border-[#17382b] focus:ring-2 focus:ring-[#17382b]/10 outline-none rounded-lg font-medium transition-all placeholder:text-[#88968d]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* TERMS CONSENT */}
                   <div className="pt-2">
                     <label className="flex items-start gap-3 cursor-pointer text-xs text-[#2b3a30] font-medium">
                       <input
                         type="checkbox"
                         checked={formData.termsConsent}
-                        onChange={handleCheckboxChange}
+                        onChange={handleChange}
+                        name="termsConsent"
                         className="mt-0.5 accent-[#17382b]"
                       />
                       <span>
-                        I have read and agree to the Terms of Service and Privacy Policy. I confirm that all information provided is accurate and authorize Eponix Digital to process incorporation with the Corporate Affairs Commission.
+                        I have read and agree to the Terms of Service and Privacy Policy. I confirm that all information provided is accurate and authorize Eponix Digital to conduct official CAC incorporation filings.
                       </span>
                     </label>
                   </div>
 
+                  {/* SUBMIT BUTTON */}
                   <div className="pt-4 border-t border-[#ced7cd]">
                     <button
                       type="submit"
@@ -663,7 +1412,7 @@ export default function LimitedCompanyPage() {
                       {isSubmitting ? "Processing Application..." : `Submit Application (${packages[selectedPkg].price})`}
                     </button>
                     <p className="text-center text-xs text-[#526357] font-medium mt-3">
-                      Secure encrypted submission. Original digital files delivered upon regulatory approval.
+                      Secure encrypted submission. Certificate of Incorporation, Status Report &amp; TIN delivered upon regulatory approval.
                     </p>
                   </div>
                 </form>
