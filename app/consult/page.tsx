@@ -30,7 +30,7 @@ export default function ConsultPage() {
     if (!isSubmitted) return;
     const timer = setTimeout(() => {
       resetForm();
-    }, 20000); // Auto-dismiss after 20 seconds
+    }, 5000); // Auto-dismiss after 5 seconds
     return () => clearTimeout(timer);
   }, [isSubmitted]);
 
