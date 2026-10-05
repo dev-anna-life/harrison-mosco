@@ -82,7 +82,7 @@ export default function BusinessNamePage() {
     if (!submitted) return;
     const timer = setTimeout(() => {
       resetForm();
-    }, 60000); // Auto-dismiss after 1 minute (60 seconds)
+    }, 20000); // Auto-dismiss after 20 seconds
     return () => clearTimeout(timer);
   }, [submitted]);
 

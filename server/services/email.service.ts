@@ -245,74 +245,51 @@ export async function sendLeadAlertToHarrison(payload: LeadEmailPayload) {
     console.warn("Could not dispatch admin email:", err);
   }
 
-  // 2. Send Customer Confirmation Email (if client entered email)
+  // 2. Send Simple Customer Confirmation Email (if client entered email)
   if (payload.email) {
     const customerMailOptions: SendMailOptions = {
       from: `"Eponix Digital" <${process.env.SMTP_USER || "eponixlimited@gmail.com"}>`,
       to: payload.email,
-      subject: `✨ Application Received — ${payload.proposedName || payload.packageType} | Eponix Digital`,
+      subject: `✨ Thank you for contacting Eponix Digital`,
       html: `
-        <div style="font-family: Arial, sans-serif; background-color: #f9faf7; color: #0c1210; padding: 32px; border-radius: 12px; max-width: 600px; margin: auto; border: 1px solid #ced7cd;">
-          <div style="background-color: #07100c; padding: 24px; border-radius: 8px; margin-bottom: 24px; text-align: center;">
+        <div style="font-family: Arial, sans-serif; background-color: #f9faf7; color: #0c1210; padding: 32px; border-radius: 12px; max-width: 540px; margin: auto; border: 1px solid #ced7cd;">
+          <div style="background-color: #07100c; padding: 22px; border-radius: 8px; margin-bottom: 24px; text-align: center;">
             <h1 style="color: #ffffff; margin: 0; font-size: 22px; letter-spacing: -0.5px;">EPONIX <span style="color: #c6ff3f;">DIGITAL</span></h1>
-            <p style="color: #aab6ad; font-size: 12px; margin: 4px 0 0; text-transform: uppercase; font-family: monospace;">Corporate Services &amp; Digital Infrastructure</p>
+            <p style="color: #aab6ad; font-size: 11px; margin: 4px 0 0; text-transform: uppercase; font-family: monospace;">Corporate Services &amp; Digital Infrastructure</p>
           </div>
 
-          <div style="text-align: center; margin-bottom: 24px;">
-            <div style="width: 52px; height: 52px; background-color: #dcfce7; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 26px; color: #16a34a; font-weight: bold; line-height: 52px;">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <div style="width: 48px; height: 48px; background-color: #dcfce7; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 22px; color: #16a34a; font-weight: bold; line-height: 48px;">
               ✓
             </div>
-            <h2 style="color: #0c1210; font-size: 22px; margin: 0 0 6px 0;">Application Received Successfully</h2>
-            <p style="color: #526357; font-size: 13px; margin: 0;">We have received your registration details and queued them for verification.</p>
+            <h2 style="color: #0c1210; font-size: 20px; margin: 0 0 6px 0;">Application Received</h2>
+            <p style="color: #526357; font-size: 13px; margin: 0;">We have received your submission successfully.</p>
           </div>
 
-          <p style="color: #2b3a30; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+          <p style="color: #2b3a30; font-size: 14px; line-height: 1.6; margin-bottom: 16px;">
             Hello <strong>${payload.fullName}</strong>,<br /><br />
-            Thank you for reaching out to Eponix Digital. Your request for <strong>${
-              payload.proposedName || "your business registration"
-            }</strong> under the <strong>${payload.packageType}</strong> package has been received and logged into our system.
+            Thank you for reaching out to Eponix Digital. We have received your inquiry and our business advisory team is currently reviewing it.
           </p>
 
-          <div style="background-color: #ffffff; border: 1px solid #c5d1bf; border-radius: 8px; padding: 18px 20px; margin: 20px 0;">
-            <h3 style="color: #17382b; font-size: 13px; margin-top: 0; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #e5eadf; padding-bottom: 6px;">Application Overview</h3>
-            <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
-              <tr>
-                <td style="padding: 6px 0; color: #475569; width: 40%; font-weight: bold;">Package:</td>
-                <td style="padding: 6px 0; color: #0c1210; font-weight: bold;">${payload.packageType}</td>
-              </tr>
-              <tr>
-                <td style="padding: 6px 0; color: #475569; font-weight: bold;">Entity Name:</td>
-                <td style="padding: 6px 0; color: #0c1210; font-weight: bold;">${payload.proposedName || "Consultation Request"}</td>
-              </tr>
-              <tr>
-                <td style="padding: 6px 0; color: #475569; font-weight: bold;">Status:</td>
-                <td style="padding: 6px 0; color: #166534; font-weight: bold;">Queued for Specialist Review</td>
-              </tr>
-            </table>
-          </div>
-
-          ${
-            payload.files && payload.files.length > 0
-              ? `
-          <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px 16px; margin: 16px 0;">
-            <p style="margin: 0; color: #166534; font-size: 13px; font-weight: 600;">
-              📎 <strong>${payload.files.length} Supporting Document${payload.files.length > 1 ? "s" : ""}</strong> attached securely to your application.
-            </p>
-          </div>
-          `
-              : ""
-          }
-
-          <div style="background-color: #f8fafc; border-left: 4px solid #17382b; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">
-            <h4 style="margin: 0 0 4px 0; color: #17382b; font-size: 13px; font-weight: bold;">What Happens Next?</h4>
-            <p style="margin: 0; color: #334155; font-size: 13px; line-height: 1.5;">
-              Our business launch and compliance desk has been assigned to your request. A dedicated specialist will reach out to you directly on WhatsApp or Phone (${payload.phone}) to verify all information and guide you through the process.
+          <div style="background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 14px 18px; margin: 20px 0; border-radius: 4px;">
+            <p style="margin: 0; color: #166534; font-size: 13px; line-height: 1.5; font-weight: 500;">
+              A dedicated specialist will reach out to you directly on <strong>WhatsApp / Phone (${payload.phone})</strong> shortly to assist you with the next steps.
             </p>
           </div>
 
-          <p style="font-size: 12px; color: #687c70; text-align: center; border-top: 1px solid #ced7cd; padding-top: 16px; margin-top: 24px;">
+          <p style="color: #2b3a30; font-size: 13px; line-height: 1.6;">
+            If you need immediate assistance or want to ask a direct question, you can reach our official WhatsApp desk anytime:
+          </p>
+
+          <div style="text-align: center; margin: 20px 0;">
+            <a href="https://wa.me/2348088194093" style="background-color: #17382b; color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 13px;">
+              💬 Chat with Eponix Desk on WhatsApp
+            </a>
+          </div>
+
+          <p style="font-size: 11px; color: #687c70; text-align: center; border-top: 1px solid #ced7cd; padding-top: 16px; margin-top: 24px;">
             Eponix Digital · RC Accredited Corporate Services &amp; Digital Solutions<br />
-            Email: <a href="mailto:eponixlimited@gmail.com" style="color: #17382b;">eponixlimited@gmail.com</a> · Support Desk: +${WHATSAPP_DESK_PHONE}
+            Email: <a href="mailto:eponixlimited@gmail.com" style="color: #17382b;">eponixlimited@gmail.com</a> · Support Desk: +234 808 819 4093
           </p>
         </div>
       `,
