@@ -20,6 +20,10 @@ export const metadata: Metadata = {
     "AI Business Automation",
     "Trademark Registration Nigeria",
   ],
+  icons: {
+    icon: "/images/eponix-logo-transparent.png",
+    apple: "/images/eponix-logo-transparent.png",
+  },
 };
 
 export default function RootLayout({
