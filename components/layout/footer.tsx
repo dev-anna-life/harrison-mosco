@@ -7,11 +7,15 @@ export function Footer() {
       <div className="wrap">
         <div className="footer-top">
           <div>
-            <Link className="logo" href="/">
-              <span className="logo-mark" />
-              <span>
-                EPONIX
-                <small>DIGITAL</small>
+            <Link className="logo flex items-center gap-3 mb-3 inline-flex" href="/">
+              <img
+                src="/images/eponix-logo.png"
+                alt="Eponix Digital"
+                className="h-9 sm:h-10 w-auto object-contain rounded"
+              />
+              <span className="flex flex-col">
+                <span className="font-extrabold tracking-wider leading-none text-white text-[18px] sm:text-[20px]">EPONIX</span>
+                <small className="text-[8.5px] font-mono tracking-[0.2em] text-[#c9f95a] uppercase font-bold">DIGITAL</small>
               </span>
             </Link>
             <p className="footer-text">

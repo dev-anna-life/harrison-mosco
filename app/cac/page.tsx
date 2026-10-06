@@ -338,10 +338,10 @@ export default function CACPage() {
                   <Link
                     href={
                       activeCategory === "business"
-                        ? "/business-name"
+                        ? `/business-name?pkg=${encodeURIComponent(pkg.name)}#form`
                         : activeCategory === "company"
-                        ? "/limited"
-                        : "/trustees"
+                        ? `/limited?pkg=${encodeURIComponent(pkg.name)}#form`
+                        : `/trustees?pkg=${encodeURIComponent(pkg.name)}#form`
                     }
                     className={`w-full ep-btn !py-3.5 text-center justify-center font-bold text-[13px] rounded-lg block ${
                       pkg.featured ? "ep-btn-primary" : "ep-btn-dark"

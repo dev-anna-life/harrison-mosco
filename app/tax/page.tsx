@@ -79,6 +79,41 @@ export default function TaxPage() {
     return () => clearTimeout(timer);
   }, [submitted]);
 
+  // Handle URL query parameters (e.g. ?pkg=Premium#form)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const pkgParam = params.get("pkg");
+      if (pkgParam && pkgParam in packages) {
+        setSelectedPkg(pkgParam as PackageType);
+      }
+      if (window.location.hash === "#form" || pkgParam) {
+        setTimeout(() => {
+          const formEl = document.getElementById("form");
+          if (formEl) {
+            const y = formEl.getBoundingClientRect().top + window.pageYOffset - 90;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        }, 150);
+      }
+    }
+  }, []);
+
+  const scrollToForm = (pkgKey: PackageType, e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setSelectedPkg(pkgKey);
+    setTimeout(() => {
+      const formEl = document.getElementById("form");
+      if (formEl) {
+        const y = formEl.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 50);
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
@@ -280,7 +315,7 @@ export default function TaxPage() {
               return (
                 <div
                   key={pkgKey}
-                  onClick={() => setSelectedPkg(pkgKey)}
+                  onClick={(e) => scrollToForm(pkgKey, e)}
                   className={`p-7 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
                       ? "bg-[#07130c] text-white border-2 border-[#c9f95a] shadow-2xl scale-[1.02]"
@@ -319,6 +354,7 @@ export default function TaxPage() {
                   </div>
                   <button
                     type="button"
+                    onClick={(e) => scrollToForm(pkgKey, e)}
                     className={`mt-6 w-full py-3 text-xs font-bold uppercase tracking-wider rounded-lg transition-colors cursor-pointer ${
                       isSelected
                         ? "bg-[#c9f95a] text-[#07130c] hover:bg-white"

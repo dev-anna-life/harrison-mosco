@@ -32,11 +32,15 @@ export function Header() {
   return (
     <header className="header-root">
       <div className="wrap nav">
-        <Link className="logo" href="/" aria-label="Eponix Digital home" onClick={closeAll}>
-          <span className="logo-mark" aria-hidden="true" />
-          <span>
-            EPONIX
-            <small>DIGITAL</small>
+        <Link className="logo flex items-center gap-3" href="/" aria-label="Eponix Digital home" onClick={closeAll}>
+          <img
+            src="/images/eponix-logo.png"
+            alt="Eponix Digital"
+            className="h-8 sm:h-9 w-auto object-contain rounded"
+          />
+          <span className="flex flex-col">
+            <span className="font-extrabold tracking-wider leading-none text-white text-[16px] sm:text-[18px]">EPONIX</span>
+            <small className="text-[8px] font-mono tracking-[0.2em] text-[#c9f95a] uppercase font-bold">DIGITAL</small>
           </span>
         </Link>
 
