@@ -21,8 +21,12 @@ export const metadata: Metadata = {
     "Trademark Registration Nigeria",
   ],
   icons: {
-    icon: "/images/eponix-logo-transparent.png",
-    apple: "/images/eponix-logo-transparent.png",
+    icon: [
+      { url: "/icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/eponix-logo-transparent.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
 };
 
@@ -34,6 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
